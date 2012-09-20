@@ -1,3 +1,4 @@
+# Play!
 logs
 project/project
 project/target
@@ -5,3 +6,10 @@ target
 tmp
 .history
 dist
+.target/
+
+# eclipse
+.settings/
+.classpath
+.loadpath
+.project
