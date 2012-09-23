@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY gngm "http://geonigme/rdf/ontology#">
+    <!ENTITY owl  "http://www.w3.org/2002/07/owl#">
+    <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#">
+    <!ENTITY moat "http://moat-project.org/ns#">
+    <!ENTITY tags "http://www.holygoat.co.uk/owl/redwood/0.1/tags/">
+    <!ENTITY user "http://schemas.talis.com/2005/user/schema#">
+    <!ENTITY geo  "http://www.w3.org/2003/01/geo/wgs84_pos#">
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+    <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+]>
+
+<rdf:RDF xmlns      = "&gngm;"
+         xmlns:gngm = "&gngm;"
+         xmlns:owl  = "&owl;"
+         xmlns:xsd  = "&xsd;"
+         xmlns:moat = "&moat;"
+         xmlns:tags = "&tags;"
+         xmlns:user = "&user;"
+         xmlns:geo  = "&geo;"
+         xmlns:rdf  = "&rdf;"
+         xmlns:rdfs = "&rdfs;">
+
+  <!-- Imports -->
+  <rdf:Description rdf:about="&tags;taggedWithTag">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="&geo;Point">
+    <rdf:type rdf:resource="&owl;Class"/>
+  </rdf:Description>  
+  <rdf:Description rdf:about="&user;User">
+    <rdf:type rdf:resource="&owl;Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="&moat;Tag">
+    <rdf:type rdf:resource="&owl;Class"/>
+  </rdf:Description>
+    
+  <!-- Ontologie -->
+  <owl:Ontology rdf:about="&gngm;">
+    <rdfs:comment>L'ontologie de la chasse aux trésors</rdfs:comment>
+    <rdfs:label>Ontologie d'une chasse aux trésors</rdfs:label> 
+  </owl:Ontology>
+
+  <!-- Classes -->
+  <owl:Class rdf:about="&gngm;Chasse">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;zone" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;description" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;createur" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;cree" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;niveau" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>    
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;tag" />
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;estPublie" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>  
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;note" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>   
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;aEtape" />
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>   
+  </owl:Class>
+
+  <owl:Class rdf:about="&gngm;Etape">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;position" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;description" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;etapeDeLaChasse" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;numeroEtape" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>          
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;aEnigme" />
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="&gngm;Enigme">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;enigmeDeLEtape" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;description" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;numeroEnigme" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;aReponse" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;aIndice" />
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>                  
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;Position">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf rdf:resource="&geo;Point" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;precision" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>        
+  </owl:Class>
+
+  <owl:Class rdf:about="&gngm;Note">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;moyenne" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;nombreVotants" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>          
+  </owl:Class>
+
+  <owl:Class rdf:about="&gngm;Zone">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;point" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;Reponse">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;reponseDeLEnigme" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>  
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;ReponseGeolocalisee">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf rdf:resource="&gngm;Reponse" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;position" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;ReponseTexte">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf rdf:resource="&gngm;Reponse" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;description" />
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;Indice">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;niveau" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;indiceDeLEnigme" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>      
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;IndiceFichier">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf rdf:resource="&gngm;Indice" />
+      <rdfs:subClassOf>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="&gngm;fichier" />
+          <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        </owl:Restriction>
+    </rdfs:subClassOf>        
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;IndiceSon">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf rdf:resource="&gngm;IndiceFichier" />
+  </owl:Class>  
+  
+  <owl:Class rdf:about="&gngm;IndiceImage">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf rdf:resource="&gngm;IndiceFichier" />
+  </owl:Class>
+    
+  <owl:Class rdf:about="&gngm;IndiceTexte">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subClassOf rdf:resource="&gngm;Indice" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gngm;description" />
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>   
+  </owl:Class>
+    
+  <!-- Propriétés de type de donnée -->
+
+  <owl:DatatypeProperty rdf:about="&gngm;description">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+
+  <!-- Chasse -->   
+  <owl:DatatypeProperty rdf:about="&gngm;estPublie">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Chasse" />
+    <rdfs:range rdf:resource="&xsd;boolean" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gngm;cree">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Chasse" />
+    <rdfs:range rdf:resource="&xsd;date" />
+  </owl:DatatypeProperty>    
+        
+  <!-- Etape -->  
+  <owl:DatatypeProperty rdf:about="&gngm;numeroEtape">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Etape" />
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty> 
+  
+  <!-- Enigme -->  
+  <owl:DatatypeProperty rdf:about="&gngm;numeroEnigme">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Enigme" />
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>           
+        
+  <!-- Position -->
+  <owl:DatatypeProperty rdf:about="&gngm;precision">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Position" />
+    <rdfs:range rdf:resource="&xsd;float" />
+  </owl:DatatypeProperty>
+  
+  <!-- Fichier --> 
+  <owl:DatatypeProperty rdf:about="&gngm;fichier">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;IndiceFichier" />
+    <rdfs:range rdf:resource="&xsd;anyURI" />
+  </owl:DatatypeProperty>
+
+  <!-- Note -->
+  <owl:DatatypeProperty rdf:about="&gngm;moyenne">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Note" />
+    <rdfs:range rdf:resource="&xsd;float" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&gngm;nombreVotants">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Note" />
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>
+
+  <!-- Liens -->
+    
+  <!-- Chasse <-> Utilisateur -->
+  <owl:ObjectProperty rdf:about="&gngm;createur">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Chasse" />
+    <rdfs:range rdf:resource="&user;User" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gngm;aCreeChasse">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <owl:inverseOf rdf:resource="&gngm;createur"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gngm;note">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Chasse" />
+    <rdfs:range rdf:resource="&gngm;Note" />
+  </owl:ObjectProperty>
+
+  <!-- Chasse <-> Etape -->
+  <owl:ObjectProperty rdf:about="&gngm;aEtape">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Chasse" />
+    <rdfs:range rdf:resource="&gngm;Etape" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gngm;etapeDeLaChasse">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <owl:inverseOf rdf:resource="&gngm;aEtape"/>
+  </owl:ObjectProperty>
+      
+  <!-- Chasse -> Tag -->
+  <owl:ObjectProperty rdf:about="&gngm;tag">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:subPropertyOf rdf:resource="&tags;taggedWithTag"/>
+    <rdfs:domain rdf:resource="&gngm;Chasse" />
+    <rdfs:range rdf:resource="&moat;Tag" />
+  </owl:ObjectProperty>
+
+  <!-- zone -->
+  <owl:ObjectProperty rdf:about="&gngm;zone">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:range rdf:resource="&gngm;Zone" />
+  </owl:ObjectProperty>
+
+  <!-- position -->
+  <owl:ObjectProperty rdf:about="&gngm;position">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:range rdf:resource="&gngm;Position" />
+  </owl:ObjectProperty>
+
+  <!-- point -->
+  <owl:ObjectProperty rdf:about="&gngm;point">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:range rdf:resource="&geo;Point" />
+  </owl:ObjectProperty>
+
+  <!-- niveau -->
+  <owl:DatatypeProperty rdf:about="&gngm;niveau">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>
+        
+  <!-- Etape <-> Enigme -->
+  <owl:ObjectProperty rdf:about="&gngm;aEnigme">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Etape" />
+    <rdfs:range rdf:resource="&gngm;Enigme" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&gngm;enigmeDeLEtape">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <owl:inverseOf rdf:resource="&gngm;aEnigme"/>
+  </owl:ObjectProperty>
+        
+  <!-- Enigme <-> Reponse -->
+  <owl:ObjectProperty rdf:about="&gngm;aReponse">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Enigme" />
+    <rdfs:range rdf:resource="&gngm;Reponse" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gngm;reponseDeLEnigme">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <owl:inverseOf rdf:resource="&gngm;aReponse"/>
+  </owl:ObjectProperty>
+        
+  <!-- Indice <-> Enigme -->
+  <owl:ObjectProperty rdf:about="&gngm;aIndice">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <rdfs:domain rdf:resource="&gngm;Enigme" />
+    <rdfs:range rdf:resource="&gngm;Indice" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gngm;indiceDeLEnigme">
+    <rdfs:isDefinedBy rdf:resource="&gngm;"/>
+    <owl:inverseOf rdf:resource="&gngm;aIndice"/>
+  </owl:ObjectProperty>
+
+</rdf:RDF>

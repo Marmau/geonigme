@@ -5,12 +5,9 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-# Misc Triple Store tests
-GET 	/sesamewrite				controllers.SesameTest.sesameWrite()
-GET 	/sesameread					controllers.SesameTest.sesameRead()
+GET     /test1                      controllers.Application.test1()
+GET     /test2                      controllers.Application.test2()
 
-GET 	/jenawrite					controllers.JenaTest.jenaWrite()
-GET 	/jenaread					controllers.JenaTest.jenaRead()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,274 @@
+@prefix moat: <http://moat-project.org/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix tags: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix user: <http://schemas.talis.com/2005/user/schema#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix gngm: <http://geonigme.fr/rdf/ontology#> .
+@prefix : <http://geonigme.fr/rdf/ontology#> .
+
+
+
+#################################################################
+#
+#    Ontology
+#
+#################################################################
+
+<http://geonigme.fr/rdf/ontology#> 
+	rdf:type owl:Ontology ;
+	rdfs:label "Ontology of a treasure hunt on Géonigme" ;
+	rdfs:comment "Géonigme's ontology" .
+
+
+
+#################################################################
+#
+#    Object properties
+#
+#################################################################
+
+:enigma 
+	rdf:type owl:InverseFunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Step ;
+	rdfs:range :Enigma .
+
+:step 
+	rdf:type owl:InverseFunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Hunt ;
+	rdfs:range :Step .
+
+:clue 
+	rdf:type owl:InverseFunctionalProperty ; 
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Enigma ;
+	rdfs:range :Clue .
+
+:answer rdf:type owl:InverseFunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Enigma ;
+	rdfs:range :Answer .
+
+:createdBy 
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Hunt ;
+	rdfs:range user:User .
+
+:creatorOf 
+	rdf:type owl:InverseFunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain user:User ;
+	rdfs:range :Hunt ;
+ 	owl:inverseOf :createdBy .
+
+:enigmaOfStep 
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Enigma ;
+	rdfs:range :Step ;
+	owl:inverseOf :enigma .
+
+:stepOfHunt 
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Step ;
+	rdfs:range :Hunt ;
+	owl:inverseOf :step .
+
+:clueOfEnigma 
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Clue ;
+	rdfs:range :Enigma ;
+	owl:inverseOf :clue .
+
+:answerOfEnigma 
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Answer ;
+	rdfs:range :Enigma ;
+	owl:inverseOf :answer .
+
+:mark 
+	rdf:type owl:InverseFunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Hunt ;
+	rdfs:range :Mark .
+
+:firstPoint
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Area ;
+	rdfs:range geo:Point .
+
+:secondPoint
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Area ;
+	rdfs:range geo:Point .
+
+:position 
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain geo:SpatialThing ;
+	rdfs:range :Position .
+
+:tag 
+	rdf:type owl:ObjectProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Hunt ;
+	rdfs:range moat:Tag ;
+	rdfs:subPropertyOf tags:taggedWithTag .
+
+:area
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ; 
+	rdfs:domain :Hunt ;
+	rdfs:range :Area .
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+:createdAt 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ; 
+	rdfs:range xsd:dateTime .
+
+:description 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:range xsd:string .
+
+:isPublished 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Hunt ;
+	rdfs:range xsd:boolean .
+
+:file 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :FileClue ;
+	rdfs:range xsd:anyURI .
+
+:value 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Mark ;
+	rdfs:range xsd:float .
+
+:level 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Hunt ;
+	rdfs:range xsd:unsignedInt .
+
+:number 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:range xsd:unsignedInt .
+
+:accuracy 
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Position ;
+	rdfs:range xsd:float .
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+:Hunt 
+	rdf:type owl:Class ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:Enigma 
+	rdf:type owl:Class ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:Step 
+	rdf:type owl:Class , geo:SpatialThing ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:Clue 
+	rdf:type owl:Class ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:FileClue 
+	rdf:type owl:Class ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:PictureClue 
+	rdf:type owl:Class ; 
+	rdfs:subClassOf :FileClue ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:SoundClue 
+	rdf:type owl:Class ;
+	rdfs:subClassOf :FileClue ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:TextClue 
+	rdf:type owl:Class ;
+	rdfs:subClassOf :Clue ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:Mark 
+	rdf:type owl:Class ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:Position 
+	rdf:type owl:Class ;
+	rdfs:subClassOf geo:Point ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:Answer 
+	rdf:type owl:Class ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:GeolocatedAnswer 
+	rdf:type owl:Class , geo:SpatialThing ; 
+	rdfs:subClassOf :Answer ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:TextAnswer 
+	rdf:type owl:Class ;
+	rdfs:subClassOf :Answer ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+:Area 
+	rdf:type owl:Class ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
+
+
+
+#################################################################
+#
+#    Imports
+#
+#################################################################
+
+moat:Tag rdf:type owl:Class .
+
+user:User rdf:type owl:Class .
+
+geo:Point rdf:type owl:Class .
+
+geo:SpatialThing rdf:type owl:Class .
+
+tags:taggedWithTag rdf:type owl:ObjectProperty .
