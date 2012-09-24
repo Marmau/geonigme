@@ -16,64 +16,58 @@ import org.openrdf.sail.nativerdf.NativeStore;
 
 public class Sesame {
 
-    /**
-     * La connexion au repertoire d'objets RDF global de l'application
-     */
-    private static ObjectConnection connection;
+	/**
+	 * La connexion au repertoire d'objets RDF global de l'application
+	 */
+	private static ObjectConnection connection;
 
-    /**
-     * Initialise la connexion sur le répertoire d'objets RDF
-     * 
-     * @param dir
-     *            Le dossier qui va servir de store pour Sésame
-     * @throws RepositoryException
-     * @throws RepositoryConfigException
-     */
-    public static void initialize(String dir) {
-	if (null == dir) {
-	    throw new InvalidParameterException(
-		    "L'emplacement du répertoire d'enregistrement du store doit être spécifié.");
+	/**
+	 * Initialise la connexion sur le répertoire d'objets RDF
+	 * 
+	 * @param dir
+	 *            Le dossier qui va servir de store pour Sésame
+	 * @throws RepositoryException
+	 * @throws RepositoryConfigException
+	 */
+	public static void initialize(String dir) {
+		if (null == dir) {
+			throw new InvalidParameterException(
+					"L'emplacement du répertoire d'enregistrement du store doit être spécifié.");
+		}
+
+		// Création d'un repertoire sur disque avec gestion de l'inférence
+		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(
+				new NativeStore(new File(dir))));
+
+		ObjectRepositoryFactory factory = new ObjectRepositoryFactory();
+		ObjectRepositoryConfig config = factory.getConfig();
+
+		ObjectRepository or = null;
+		try {
+			or = factory.createRepository(config, r);
+			or.initialize();
+			Sesame.connection = or.getConnection();
+		} catch (RepositoryConfigException | RepositoryException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 	}
 
-	// Création d'un repertoire sur disque avec gestion de l'inférence
-	Repository r = new SailRepository(new ForwardChainingRDFSInferencer(
-		new NativeStore(new File(dir))));
-
-	ObjectRepositoryFactory factory = new ObjectRepositoryFactory();
-	ObjectRepositoryConfig config = factory.getConfig();
-	// try {
-	// config.addConcept(User.class);
-	// } catch (ObjectStoreConfigException e2) {
-	// // TODO Auto-generated catch block
-	// e2.printStackTrace();
-	// }
-
-	ObjectRepository or = null;
-	try {
-	    or = factory.createRepository(config, r);
-	    or.initialize();
-	    Sesame.connection = or.getConnection();
-	} catch (RepositoryConfigException | RepositoryException e) {
-	    e.printStackTrace();
-	    throw new RuntimeException();
+	/**
+	 * Ferme proprement la connexion et le répertoire d'objets RDF
+	 */
+	public static void shutdown() {
+		ObjectRepository or = connection.getRepository();
+		try {
+			connection.close();
+			or.shutDown();
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
 	}
-    }
 
-    /**
-     * Ferme proprement la connexion et le répertoire d'objets RDF
-     */
-    public static void shutdown() {
-	ObjectRepository or = connection.getRepository();
-	try {
-	    connection.close();
-	    or.shutDown();
-	} catch (RepositoryException e) {
-	    e.printStackTrace();
-	    throw new RuntimeException();
+	public static ObjectConnection getObjectConnection() {
+		return connection;
 	}
-    }
-
-    public static ObjectConnection getObjectConnection() {
-	return connection;
-    }
 }
