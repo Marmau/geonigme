@@ -150,7 +150,7 @@
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
 	rdfs:range xsd:string .
 
-:isPublished 
+:published 
 	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
 	rdfs:domain :Hunt ;
