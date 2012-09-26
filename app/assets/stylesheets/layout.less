@@ -1,0 +1,149 @@
+@colorGreen: #41c453;
+@colorClearBlue: #5693f0;
+
+body {
+	background: white;
+	padding: 0px;
+	margin: 0px;
+}
+
+.highlight(@padding: 5px, @color) {
+	background: @color;
+	-moz-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
+	-webkit-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
+	box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
+}
+
+.blue-hightlighted {
+	color: white;
+	.highlight(5px, @colorClearBlue);
+}
+
+.blue {
+	color: @colorClearBlue;
+}
+
+.green {
+	color: @colorGreen;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.btn-green {
+	border: solid 2px @colorGreen;
+	background: white;
+	padding: 0px 5px;
+	color: @colorGreen;
+}
+
+.btn-green:hover {
+	text-decoration: underline;
+	color: @colorGreen;
+}
+
+.btn-arrow {
+	position: relative;
+}
+
+.big.btn-arrow:after {
+	content: "";
+	width: 0px;
+	height: 0px;
+	border-left: 20px solid white;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	right: -20px;
+}
+
+.big.btn-arrow:before {
+	content: "";
+	width: 0px;
+	height: 0px;
+	background:white;
+	border-left: 24px solid;
+	border-top: 18px solid transparent;
+	border-bottom: 18px solid transparent;
+	display: inline-block;
+	position: absolute;
+	top: -2px;
+	right: -25px;
+}
+
+.big {
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: bold;
+}
+
+[class*="span"].left-glue {
+	margin-left: 10px;
+}
+
+header {
+	background-color: @colorClearBlue;
+	height: 178px;
+	border-bottom: solid 2px #002e86;
+
+	.background {
+		margin: auto;
+		width: 940px;
+		height: 180px;
+		background: url(/assets/images/header.png);
+	}
+}
+
+nav {
+	margin: 10px 0px 20px 0px;
+
+	ul {
+		padding: 0px;
+		margin: 0px;
+		li {
+			&.selected {
+				color: white;
+				background: @colorGreen;
+				position: relative;
+
+				&:after {
+					content: "";
+					display: inline-block;
+					width: 0px;
+					height: 0px;
+					vertical-align: top;
+					border-top: 10px solid @colorGreen;
+					border-right: 8px solid transparent;
+					border-left: 8px solid transparent;
+					position: absolute;
+					bottom: -10px;
+					left: 50%;
+					margin-left: -8px;
+					text-align: center;
+				}
+			}
+
+			a {
+				text-decoration: none;
+				color: inherit;
+
+				&:hover {
+					color: inherit;
+					text-decoration: none;
+				}
+			}
+
+			margin-right: 30px;
+			color: @colorGreen;
+			background: white;
+			font-weight: bold;
+			text-transform: uppercase;
+			font-size: 24px;
+			display: inline-block;
+			padding: 8px 8px;
+		}
+	}
+}
