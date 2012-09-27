@@ -4,6 +4,8 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET     /login                      controllers.Application.login()
+POST 	/contact-us/submit			controllers.Application.submitContactForm()
 
 GET     /test1                      controllers.Application.test1()
 GET     /test2                      controllers.Application.test2()
@@ -11,6 +13,7 @@ GET     /test2                      controllers.Application.test2()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
 
 
 
@@ -33,3 +36,11 @@ GET		/enigma/:eid/delete			controllers.Enigma.delete(eid: Integer)
 GET		/hunt/:hid/view				controllers.Hunt.view(hid: Integer)
 GET		/hunt/:hid/delete			controllers.Hunt.delete(hid: Integer)
 GET		/hunt/:hid/publish			controllers.Hunt.publish(hid: Integer)
+
+
+
+# User
+POST    /login                      controllers.User.login()
+POST    /logout                     controllers.User.logout()
+POST    /register                   controllers.User.register()
+

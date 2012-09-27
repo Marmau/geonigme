@@ -1,6 +1,28 @@
-@(message: String)
+@()
 
-@main("Welcome to Play 2.0") {
-    
-    @play20.welcome(message, style = "Java")
+@main("Accueil") { 
+    <ul>
+        <li class="selected"><a>Découvrir</a></li>
+        <li><a href="#">Se connecter</a></li>
+    </ul>
+} {
+    <div class="row-fluid">
+        <div class="span6">
+            <div id="camera-wrap" class="camera_black_skin">
+                <div data-src="@routes.Assets.at("slideshow/illu1.jpg")"></div>
+                <div data-src="@routes.Assets.at("slideshow/illu1.jpg")"></div>
+                <div data-src="@routes.Assets.at("slideshow/illu1.jpg")"></div>
+            </div>
+        </div>
+        <div class="span6 left-glue"> 
+            <p class="big">
+                <span class="blue-hightlighted">Géonigme est un jeu de piste basé sur Montpellier</span>
+            </p>
+            
+            <p class="big blue">Créer des énigmes, partagez les, mais surtout jouez et (re)découvrez la ville&nbsp;!</p>
+            
+            <a class="btn-arrow-green uppercase" href="#">Démarrez maintenant !</a>
+        </div>
+    </div>
+
 }
