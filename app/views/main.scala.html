@@ -1,10 +1,17 @@
 @(title: String)(nav: Html)(content: Html)
 
+@import helper.twitterBootstrap._
+@import _root_.play.mvc.Controller
+@import _root_.forms._
+
+@defining(Controller.form(classOf[ContactUs])) { contactForm =>
+
 <!DOCTYPE html>
 
 <html>
     <head>
         <title>Géonigme - @title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/camera.css")">
@@ -17,9 +24,9 @@
     </head>
     <body>
 		<header>
-			<div class="background"></div>
+			<div class="background container-fluid home"></div>
 		</header>
-        <div class="container-fluid">
+        <div class="container-fluid home">
             <div class="row-fluid">
         		<nav>
         			@nav
@@ -28,7 +35,40 @@
             <section data-role="page">
             	@content
             </section>
-        <footer></footer>
         </div>
+        <footer>
+            <div class="background container-fluid home">
+                <div class="row-fluid">
+                    <div class="span4">
+                        <h1><strong>Qui</strong> sommes-nous ?</h1>
+                        <p>
+                            <strong>Géonigme</strong> a été créé par un groupe d'étudiants à la faculté des sciences
+                            de Montpellier dans le cadre d'un projet d'études portant sur le web de données 
+                            (web sémantique, open data, etc.).
+                        </p>
+                    </div>
+                    <div class="span4">
+                        <h1><strong>Partenaires</strong></h1>
+                    </div>
+                    <div class="span4">
+                        <h1><strong>Contactez</strong>-nous</h1>
+                        @helper.form(action = routes.Application.submitContactForm(), 'id -> "contact-form") {
+                            <div>
+                                <input name="email" type="text" placeholder="@@votre adresse courriel" />
+                            </div>
+                            <div>
+                                <textarea name="content" placeholder="votre message..."></textarea>
+                            </div>
+                            <button type="submit">Envoyer</button>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2012
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
+
+}

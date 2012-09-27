@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+POST 	/contactus/submit			controllers.Application.submitContactForm()
 
 GET     /test1                      controllers.Application.test1()
 GET     /test2                      controllers.Application.test2()
