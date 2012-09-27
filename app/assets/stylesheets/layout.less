@@ -53,11 +53,13 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 .btn-arrow-green {
     position: relative;
     border: solid 2px @colorGreen;
+    border-right: none;
     background: white;
     padding: 0px 5px;
     color: @colorGreen;
     font-size: 24px;
     line-height: 32px;
+    height: 32px;
     font-weight: bold;
 
     &:hover {
@@ -68,37 +70,44 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
         &:after {
             border-left: 20px solid @colorGreen;
         }
+    }
 
-        &:before {
-
-        }
+    &:focus, &:active {
+        top: 3px;
     }
 
     &:after {
         content: "";
-        width: 0px;
-        height: 0px;
-        border-left: 20px solid white;
-        border-top: 16px solid transparent;
-        border-bottom: 16px solid transparent;
-        display: inline-block;
+        border: solid transparent;
+        height: 0;
+        left: 100%;
         position: absolute;
+        width: 0;
+        border-width: 16px;
+        border-left-color: white;
         top: 0px;
-        right: -20px;
     }
 
     &:before {
         content: "";
-        width: 0px;
-        height: 0px;
-        background:white;
-        border-left: 24px solid @colorGreen;
-        border-top: 18px solid transparent;
-        border-bottom: 18px solid transparent;
-        display: inline-block;
+        // width: 0px;
+        // height: 0px;
+        // background:white;
+        // border-left: 24px solid @colorGreen;
+        // border-top: 18px solid transparent;
+        // border-bottom: 18px solid transparent;
+        // display: inline-block;
+        // position: absolute;
+        // top: -2px;
+        // right: -24px;
+        border: solid transparent;
+        height: 0;
+        left: 100%;
         position: absolute;
+        width: 0;
+        border-width: 18px;
+        border-left-color: @colorGreen;
         top: -2px;
-        right: -25px;
     }
 }
 

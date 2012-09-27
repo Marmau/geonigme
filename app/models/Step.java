@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class Step implements gngm.Step {
 
-	Set<gngm.Enigma> enigmas;
-	Hunt hunt;
+	private Set<Enigma> enigmas;
+	private Hunt stepOfHunt;
 
 	@Override
 	public Set<Enigma> getEnigmas() {
@@ -17,19 +17,17 @@ public class Step implements gngm.Step {
 
 	@Override
 	public void setEnigmas(Set<? extends Enigma> enigmas) {
-		this.enigmas = (Set<gngm.Enigma>) enigmas;
-
+		this.enigmas = (Set<Enigma>) enigmas;
 	}
 
 	@Override
 	public Hunt getStepOfHunt() {
-		return hunt;
+		return stepOfHunt;
 	}
 
 	@Override
 	public void setStepOfHunt(Hunt stepOfHunt) {
-		this.hunt = hunt;
-
+		this.stepOfHunt = stepOfHunt;
 	}
 
 }

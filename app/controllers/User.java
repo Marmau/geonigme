@@ -9,7 +9,7 @@ public class User extends Controller {
 		Form<User> userForm = form(User.class);
 
 		User user = userForm.bindFromRequest().get();
-		String mdp = user.getLogin();
+		//String mdp = user.getLogin();
 
 		return ok();
 	}
