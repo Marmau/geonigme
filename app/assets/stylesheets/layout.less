@@ -1,16 +1,32 @@
 @colorGreen: #41c453;
 @colorClearBlue: #5693f0;
 
-body {
-    background: white;
-}
-
 .highlight(@padding: 5px, @color) {
     background: @color;
     -moz-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
     -webkit-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
     box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
 }
+
+.border-radius(@params) {
+    -moz-border-radius: @params;
+    -webkitborder-radius: @params;
+    border-radius: @params;
+}
+
+body {
+    background: white;
+}
+
+textarea {
+    resize: none;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    .border-radius(0px);
+}
+
+
 
 .blue-hightlighted {
     color: white;
@@ -179,4 +195,17 @@ nav {
             padding: 8px 8px;
         }
     }
+}
+
+#contact-form {
+    input[type="text"], textarea, button[type="submit"] {
+        border: solid 1px white;
+        background: transparent;
+        color:white;
+    }
+    
+    input[type="text"], textarea {
+        width: 100%;
+    }
+
 }
