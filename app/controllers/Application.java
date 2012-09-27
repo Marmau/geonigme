@@ -24,13 +24,11 @@ public class Application extends Controller {
 		// TODO
 		return ok();
 	}
-	
+
 	public static Result login() {
 		Form<Login> formLogin = form(Login.class);
 		Form<Register> formRegister = form(Register.class);
-		
-		formRegister.bindFromRequest().ge
-		
+
 		return ok(login.render(formLogin, formRegister));
 	}
 

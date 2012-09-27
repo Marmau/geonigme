@@ -7,7 +7,7 @@ import gngm.Step;
 import java.util.Set;
 
 public class Enigma implements gngm.Enigma {
-	
+
 	private Set<gngm.Answer> answers;
 	private Set<gngm.Clue> clues;
 	private Step enigmaOfStep;
@@ -19,8 +19,8 @@ public class Enigma implements gngm.Enigma {
 
 	@Override
 	public void setAnswers(Set<? extends Answer> answers) {
-		this.answers=(Set<gngm.Answer>) answers;
-		
+		this.answers = (Set<gngm.Answer>) answers;
+
 	}
 
 	@Override
@@ -30,8 +30,8 @@ public class Enigma implements gngm.Enigma {
 
 	@Override
 	public void setClues(Set<? extends Clue> clues) {
-		this.clues=(Set<gngm.Clue>) clues;
-		
+		this.clues = (Set<gngm.Clue>) clues;
+
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class Enigma implements gngm.Enigma {
 
 	@Override
 	public void setEnigmaOfStep(Step enigmaOfStep) {
-		this.enigmaOfStep=enigmaOfStep;
-		
+		this.enigmaOfStep = enigmaOfStep;
+
 	}
 
 }

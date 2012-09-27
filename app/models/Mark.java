@@ -1,7 +1,7 @@
 package models;
 
 public class Mark implements gngm.Mark {
-	
+
 	private Float value;
 
 	@Override
@@ -11,8 +11,8 @@ public class Mark implements gngm.Mark {
 
 	@Override
 	public void setValue(Float value) {
-		this.value=value;
-		
+		this.value = value;
+
 	}
 
 }

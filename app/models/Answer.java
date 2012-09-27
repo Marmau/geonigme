@@ -3,7 +3,7 @@ package models;
 import gngm.Enigma;
 
 public class Answer implements gngm.Answer {
-	
+
 	Enigma answerOfEnigma;
 
 	@Override
@@ -13,8 +13,8 @@ public class Answer implements gngm.Answer {
 
 	@Override
 	public void setAnswerOfEnigma(Enigma answerOfEnigma) {
-		this.answerOfEnigma=answerOfEnigma;
-		
+		this.answerOfEnigma = answerOfEnigma;
+
 	}
 
 }

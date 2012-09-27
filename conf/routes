@@ -5,7 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /login                      controllers.Application.login()
-POST 	/contact-us/submit			controllers.Application.submitContactForm()
+POST 	/contact-us					controllers.Application.submitContactForm()
 
 GET     /test1                      controllers.Application.test1()
 GET     /test2                      controllers.Application.test2()
@@ -17,30 +17,30 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 
-#Hunt
+# Hunt
 GET		/hunt/reset					controllers.Hunt.reset()
-GET		/hunt/create				controllers.Hunt.create()
+GET		/hunt/new					controllers.Hunt.new()
 POST	/hunt/create				controllers.Hunt.create()
-GET		/hunt/:hid/change			controllers.Hunt.change(hid: Integer)
-POST	/hunt/:hid/change			controllers.Hunt.change(hid: Integer)
-GET		/hunt/:hid/step/create		controllers.Hunt.createStep(hid: Integer)
-POST	/hunt/:hid/step/create		controllers.Hunt.createStep(hid: Integer)
-GET		/step/:sid/change			controllers.Step.change(sid: Integer)
-GET		/step/:sid/delete			controllers.Step.delete(sid: Integer)
-POST	/step/:sid/change			controllers.Step.change(sid: Integer)
-GET		/step/:sid/enigma/create	controllers.Step.createEnigma(sid: Integer)
-POST	/step/:sid/enigma/create	controllers.Step.createEnigma(sid: Integer)
-GET		/enigma/:eid/change			controllers.Enigma.change(eid: Integer)
-POST	/enigma/:eid/change			controllers.Enigma.change(eid: Integer)
-GET		/enigma/:eid/delete			controllers.Enigma.delete(eid: Integer)
-GET		/hunt/:hid/view				controllers.Hunt.view(hid: Integer)
-GET		/hunt/:hid/delete			controllers.Hunt.delete(hid: Integer)
-GET		/hunt/:hid/publish			controllers.Hunt.publish(hid: Integer)
+GET		/hunt/:hid/edit				controllers.Hunt.edit(hid: Integer)
+POST	/hunt/:hid/update			controllers.Hunt.update(hid: Integer)
+POST	/hunt/:hid/delete			controllers.Hunt.delete(hid: Integer)
+GET		/hunt/:hid/show				controllers.Hunt.show(hid: Integer)
+POST	/hunt/:hid/publish			controllers.Hunt.publish(hid: Integer)
+GET		/hunt/:hid/step/new			controllers.Step.new(hid: Integer)
+POST	/hunt/:hid/step/create		controllers.Step.create(hid: Integer)
+GET		/step/:sid/edit				controllers.Step.edit(sid: Integer)
+POST	/step/:sid/update			controllers.Step.update(sid: Integer)
+POST	/step/:sid/delete			controllers.Step.delete(sid: Integer)
+GET		/step/:sid/enigma/new		controllers.Enigma.new(sid: Integer)
+POST	/step/:sid/enigma/create	controllers.Enigma.create(sid: Integer)
+GET		/enigma/:eid/edit			controllers.Enigma.edit(eid: Integer)
+POST	/enigma/:eid/update			controllers.Enigma.update(eid: Integer)
+POST	/enigma/:eid/delete			controllers.Enigma.delete(eid: Integer)
 
 
 
 # User
 POST    /login                      controllers.User.login()
-POST    /logout                     controllers.User.logout()
+GET	    /logout                     controllers.User.logout()
 POST    /register                   controllers.User.register()
 
