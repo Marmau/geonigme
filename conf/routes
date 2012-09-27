@@ -11,3 +11,25 @@ GET     /test2                      controllers.Application.test2()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+
+
+#Hunt
+GET		/hunt/reset					controllers.Hunt.reset()
+GET		/hunt/create				controllers.Hunt.create()
+POST	/hunt/create				controllers.Hunt.create()
+GET		/hunt/:hid/change			controllers.Hunt.change(hid: Integer)
+POST	/hunt/:hid/change			controllers.Hunt.change(hid: Integer)
+GET		/hunt/:hid/step/create		controllers.Hunt.createStep(hid: Integer)
+POST	/hunt/:hid/step/create		controllers.Hunt.createStep(hid: Integer)
+GET		/step/:sid/change			controllers.Step.change(sid: Integer)
+GET		/step/:sid/delete			controllers.Step.delete(sid: Integer)
+POST	/step/:sid/change			controllers.Step.change(sid: Integer)
+GET		/step/:sid/enigma/create	controllers.Step.createEnigma(sid: Integer)
+POST	/step/:sid/enigma/create	controllers.Step.createEnigma(sid: Integer)
+GET		/enigma/:eid/change			controllers.Enigma.change(eid: Integer)
+POST	/enigma/:eid/change			controllers.Enigma.change(eid: Integer)
+GET		/enigma/:eid/delete			controllers.Enigma.delete(eid: Integer)
+GET		/hunt/:hid/view				controllers.Hunt.view(hid: Integer)
+GET		/hunt/:hid/delete			controllers.Hunt.delete(hid: Integer)
+GET		/hunt/:hid/publish			controllers.Hunt.publish(hid: Integer)
