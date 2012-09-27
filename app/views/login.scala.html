@@ -1,0 +1,52 @@
+@(formLogin: Form[forms.Login], formRegister: Form[forms.Register])
+
+@main("Connexion - Inscription") { 
+    <ul>
+        <li class=""><a>Découvrir</a></li>
+        <li><a href="selected">Se connecter</a></li>
+    </ul>
+} {
+    <div class="row-fluid">
+        <div class="span6">
+            @helper.form(action = routes.Application.submitLoginForm(), 'id -> "login-form", 'class -> "form-horizontal") {
+               <div class="control-group">
+                    <label class="control-label" for="login-input-login">Pseudonyme</label>
+                    <div class="controls">
+                        <input name="login" id="login-input-login" type="text" />
+                    </div>
+               </div>
+               <div class="control-group">
+                    <label class="control-label" for="login-input-password">Mot de passe</label>
+                    <div class="controls">
+                        <input name="password" id="login-input-password" type="password" />
+                    </div>
+               </div>
+               <button type="submit" class="pull-right uppercase">Se connecter</button>
+            }
+        </div>
+        <div>
+        	@helper.form(action = routes.Application.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
+               <div class="control-group">
+                    <label class="control-label" for="register-input-login">Pseudonyme</label>
+                    <div class="controls">
+                        <input name="login" id="register-input-login" type="text" />
+                    </div>
+               </div>
+               <div class="control-group">
+                    <label class="control-label" for="register-input-password">Mot de passe</label>
+                    <div class="controls">
+                        <input name="password" id="register-input-password" type="text" />
+                    </div>
+               </div>
+               <div class="control-group">
+                    <label class="control-label" for="register-input-email"></label>
+                    <div class="controls">
+                        <input name="email" id="register-input-email" type="text" />
+                    </div>
+               </div>
+               <button type="submit" class="pull-right uppercase">S'inscrire</button>
+            }
+        </div>
+    </div>
+
+}

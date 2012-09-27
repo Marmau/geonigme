@@ -20,3 +20,4 @@ object ApplicationBuild extends Build {
     resolvers += "Crionics Github Repository" at "http://orefalo.github.com/m2repo/releases/")
 }
 
+
