@@ -294,7 +294,7 @@ geo:long rdf:type owl:FunctionalProperty ;
 user:User rdf:type owl:Class .
 
 user:lastLoginTime rdf:type owl:FunctionalProperty ;
-	rdfs:range xsd:string .
+	rdfs:range xsd:dateTime .
 
 user:loginName rdf:type owl:FunctionalProperty ;
 	rdfs:range xsd:string .
