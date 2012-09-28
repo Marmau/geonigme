@@ -20,6 +20,9 @@
 
 <http://geonigme.fr/rdf/ontology#> 
 	rdf:type owl:Ontology ;
+	owl:imports <http://schemas.talis.com/2005/user/schema> ;
+	owl:imports <http://www.holygoat.co.uk/owl/redwood/0.1/tags/> ;
+	owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos> ;
 	rdfs:label "Ontology of a treasure hunt on Géonigme" ;
 	rdfs:comment "Géonigme's ontology" .
 
@@ -123,7 +126,7 @@
 	rdf:type owl:ObjectProperty ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
 	rdfs:domain :Hunt ;
-	rdfs:range moat:Tag ;
+	rdfs:range tags:Tag ;
 	rdfs:subPropertyOf tags:taggedWithTag .
 
 :area
@@ -263,12 +266,38 @@
 #
 #################################################################
 
-moat:Tag rdf:type owl:Class .
+# Tags
 
-user:User rdf:type owl:Class .
+tags:Tag rdf:type owl:Class .
+
+tags:taggedWithTag rdf:type owl:ObjectProperty .
+
+tags:isTagOf rdf:type owl:ObjectProperty .
+
+tags:name rdf:type owl:FunctionalProperty ;
+	rdfs:range xsd:string .
+
+# Geo
 
 geo:Point rdf:type owl:Class .
 
 geo:SpatialThing rdf:type owl:Class .
 
-tags:taggedWithTag rdf:type owl:ObjectProperty .
+geo:lat rdf:type owl:FunctionalProperty ;
+	rdfs:range xsd:string .
+
+geo:long rdf:type owl:FunctionalProperty ;
+	rdfs:range xsd:string .
+
+# User
+
+user:User rdf:type owl:Class .
+
+user:lastLoginTime rdf:type owl:FunctionalProperty ;
+	rdfs:range xsd:string .
+
+user:loginName rdf:type owl:FunctionalProperty ;
+	rdfs:range xsd:string .
+
+user:passwordSha1Hash rdf:type owl:FunctionalProperty ;
+	rdfs:range xsd:string .

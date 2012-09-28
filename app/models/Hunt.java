@@ -6,8 +6,8 @@ import gngm.Step;
 
 import java.util.Set;
 
-import moat.Tag;
 
+import tags.*;
 import user.User;
 
 public class Hunt implements gngm.Hunt {
@@ -16,9 +16,9 @@ public class Hunt implements gngm.Hunt {
 	private Area area;
 	private User createdBy;
 	private boolean published;
-	private Set<gngm.Mark> marks;
-	private Set<gngm.Step> steps;
-	private Set<moat.Tag> tags;
+	private Set<Mark> marks;
+	private Set<Step> steps;
+	private Set<Tag> tags;
 
 	@Override
 	public Area getArea() {
@@ -69,7 +69,7 @@ public class Hunt implements gngm.Hunt {
 
 	@Override
 	public void setMarks(Set<? extends Mark> marks) {
-		this.marks = (Set<gngm.Mark>) marks;
+		this.marks = (Set<Mark>) marks;
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class Hunt implements gngm.Hunt {
 
 	@Override
 	public void setSteps(Set<? extends Step> steps) {
-		this.steps = (Set<gngm.Step>) steps;
+		this.steps = (Set<Step>) steps;
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class Hunt implements gngm.Hunt {
 
 	@Override
 	public void setTags(Set<? extends Tag> tags) {
-		this.tags = (Set<moat.Tag>) tags;
+		this.tags = (Set<Tag>) tags;
 	}
 
 }
