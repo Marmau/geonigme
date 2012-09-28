@@ -2,50 +2,53 @@
 
 @main("Connexion - Inscription") { 
     <ul>
-        <li class=""><a>Découvrir</a></li>
-        <li class="selected"><a>Se connecter</a></li>
+        <li><a class="pushable" href="@routes.Application.index()">Découvrir</a></li>
+        <li class="selected"><a href="@routes.Application.login()">Se connecter</a></li>
     </ul>
 } {
     <div class="row-fluid">
-        <div class="span6">
-            @helper.form(action = routes.User.submitLoginForm(), 'id -> "login-form", 'class -> "form-horizontal") {
-               <div class="control-group">
-                    <label class="control-label" for="login-input-login">Pseudonyme</label>
+        <div class="span6" id="registration">
+            <div class="introduction">
+                <div><strong>Nouveau sur Géonigme ?</strong></div>
+                <div>Inscrivez-vous !</div>
+            </div>
+            @helper.form(action = routes.User.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
+                <div class="control-group">
+                    <label class="control-label" for="registration-input-login">Pseudonyme</label>
                     <div class="controls">
-                        <input name="login" id="login-input-login" type="text" />
+                        <input name="login" id="registration-input-login" type="text" class="span12" />
                     </div>
-               </div>
-               <div class="control-group">
-                    <label class="control-label" for="login-input-password">Mot de passe</label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="registration-input-email">@@dresse courriel</label>
                     <div class="controls">
-                        <input name="password" id="login-input-password" type="password" />
+                        <input name="email" id="registration-input-email" type="text" class="span12" />
                     </div>
-               </div>
-               <button type="submit" class="pull-right uppercase">Se connecter</button>
-            }
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="registration-input-password">Mot de passe</label>
+                    <div class="controls">
+                        <input name="password" id="registration-input-password" type="text" class="span12" />
+                    </div>
+                </div>
+                <button type="submit" class="pushable pull-right uppercase">M'inscrire</button>
+            } 
         </div>
-        <div>
-        	@helper.form(action = routes.User.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
-               <div class="control-group">
-                    <label class="control-label" for="register-input-login">Pseudonyme</label>
-                    <div class="controls">
-                        <input name="login" id="register-input-login" type="text" />
-                    </div>
-               </div>
-               <div class="control-group">
-                    <label class="control-label" for="register-input-password">Mot de passe</label>
-                    <div class="controls">
-                        <input name="password" id="register-input-password" type="text" />
-                    </div>
-               </div>
-               <div class="control-group">
-                    <label class="control-label" for="register-input-email"></label>
-                    <div class="controls">
-                        <input name="email" id="register-input-email" type="text" />
-                    </div>
-               </div>
-               <button type="submit" class="pull-right uppercase">S'inscrire</button>
+        <div class="span6" id="connection">
+            <div class="introduction">
+                <div><strong>&nbsp;</strong></div>
+                <div><strong>Sinon, connectez-vous !</strong></div>
+            </div>
+            @helper.form(action = routes.User.submitLoginForm(), 'id -> "login-form") {
+                <label class="uppercase focus" for="connection-input-login">Pseudonyme</label>
+                <input name="login" id="connection-input-login" type="text" class="span12" autofocus />
+                <label class="uppercase" for="connection-input-password">Mot de passe</label>
+                <input name="password" id="connection-input-password" type="password" class="span12" />
+                <button type="submit" class="pushable pull-right uppercase">Me connecter</button>
             }
+            <p class="pagination-right">
+                <a href="#">J'ai oublié mon mot de passe</a>
+            </p>
         </div>
     </div>
 

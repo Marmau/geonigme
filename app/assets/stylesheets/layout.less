@@ -1,17 +1,7 @@
-@colorGreen: #41c453;
-@colorClearBlue: #5693f0;
+@import "lib.less";
 
-.highlight(@padding: 5px, @color) {
-    background: @color;
-    -moz-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
-    -webkit-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
-    box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
-}
-
-.border-radius(@params) {
-    -moz-border-radius: @params;
-    -webkitborder-radius: @params;
-    border-radius: @params;
+::selection {
+    background: rgba(255, 0, 0, 0.1);
 }
 
 body {
@@ -22,13 +12,42 @@ textarea {
     resize: none;
 }
 
-select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
-    .border-radius(0px);
+.pushable:active, .pushable:focus {
+    position: relative;
+    top: 3px;
+    outline: none;
 }
 
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    .border-radius(0px);
+    border: solid 1px @colorClearBlue;
+    background: transparent;
+    color: @colorClearBlue;
 
+    &:focus {
+        .box-shadow(none);
+        color: @colorDarkBlue;
+        border-color: @colorDarkBlue;
+    }
+}
 
-.blue-hightlighted {
+button, input[type="submit"] {
+    font-weight: bold;
+    padding: 2px 5px;
+    border: solid 1px @colorClearBlue;
+    background: transparent;
+    color: @colorClearBlue;
+}
+
+label {
+    color: @colorClearBlue;
+
+    &.focus {
+        color: @colorDarkBlue;
+    }
+}
+
+.blue-highlighted {
     color: white;
     .highlight(5px, @colorClearBlue);
 }
@@ -54,52 +73,24 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     position: relative;
     border: solid 2px @colorGreen;
     border-right: none;
-    background: white;
+    background: @colorGreen;
     padding: 0px 5px;
-    color: @colorGreen;
+    color: white;
     font-size: 24px;
     line-height: 32px;
     height: 32px;
     font-weight: bold;
+    outline: none;
 
     &:hover {
         color: white;
         text-decoration: none;
         background: @colorGreen;
-
-        &:after {
-            border-left: 20px solid @colorGreen;
-        }
-    }
-
-    &:focus, &:active {
-        top: 3px;
-    }
-
-    &:after {
-        content: "";
-        border: solid transparent;
-        height: 0;
-        left: 100%;
-        position: absolute;
-        width: 0;
-        border-width: 16px;
-        border-left-color: white;
-        top: 0px;
+        outline: none;
     }
 
     &:before {
         content: "";
-        // width: 0px;
-        // height: 0px;
-        // background:white;
-        // border-left: 24px solid @colorGreen;
-        // border-top: 18px solid transparent;
-        // border-bottom: 18px solid transparent;
-        // display: inline-block;
-        // position: absolute;
-        // top: -2px;
-        // right: -24px;
         border: solid transparent;
         height: 0;
         left: 100%;
@@ -124,7 +115,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 header {
     background-color: @colorClearBlue;
     height: 178px;
-    border-bottom: solid 2px #002e86;
+    border-bottom: solid 2px @colorDarkBlue;
 
     .background {
         margin: auto;
@@ -156,7 +147,7 @@ footer {
 }
 
 nav {
-    margin: 10px 0px 20px 0px;
+    margin: 25px 0px 30px 0px;
 
     ul {
         padding: 0px;
@@ -207,6 +198,10 @@ nav {
 }
 
 #contact-form {
+    textarea {
+        height: 100px;
+    }
+
     input[type="text"], textarea, button[type="submit"] {
         border: solid 1px white;
         background: transparent;
@@ -215,6 +210,23 @@ nav {
     
     input[type="text"], textarea {
         width: 100%;
+
+        &::-webkit-input-placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        &:-ms-input-placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        &:-moz-placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
     }
 
+    button[type="submit"]:hover {
+        color: @colorGreen;
+        background: white;
+    }
 }
+

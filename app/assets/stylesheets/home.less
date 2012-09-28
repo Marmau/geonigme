@@ -1,4 +1,93 @@
-.home {
+@import "lib.less";
+
+.container.home {
 	max-width: 940px;
-	margin: auto;
+}
+
+#geonigme-description > * {
+	margin-bottom: 25px;
+}
+
+#registration {
+	padding-right: 3%;
+
+	.introduction {
+		text-align: right;
+		font-size: 24px;
+		color: @colorOrange;
+		margin-bottom: 35px;
+
+		div {
+			margin-bottom: 10px;
+		}
+	}
+
+
+	button[type="submit"] {
+		font-size: 18px;
+		padding: 4px 8px;
+
+		&:hover {
+			color: white;
+			background: @colorClearBlue;
+		}
+	}
+}
+
+#connection {
+	border-left: solid 1px @colorOrange;
+
+	#login-form {
+		overflow: hidden;
+	}
+
+	.introduction {
+		margin-left: 10%;
+		font-size: 24px;
+		color: @colorClearBlue;
+		margin-bottom: 35px;
+
+		div {
+			margin-bottom: 10px;
+		}
+	}
+
+	label {
+		display: inline-block;
+		position: relative;
+		padding: 3px 0px;
+		top: 1px;
+		font-weight: bold;
+		color: white;
+		font-size: 16px;
+		.highlight(10px, @colorClearBlue);
+		margin: 0px;
+		margin-left: 15%;
+
+		&.focus {
+			color: white;
+			.highlight(10px, @colorDarkBlue);
+		}
+	}
+
+	input[type="text"], input[type="password"] {
+		width: 75%;
+		margin-left: 25%;
+	}
+
+	input {
+		margin-bottom: 25px;
+	}
+
+	button[type="submit"] {
+		font-size: 18px;
+		color: white;
+		background: @colorClearBlue;
+		padding: 4px 8px;
+
+		&:hover {
+			background: @colorDarkBlue;
+			border-color: @colorDarkBlue;
+		}
+	}
 }

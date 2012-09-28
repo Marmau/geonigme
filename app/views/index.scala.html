@@ -2,8 +2,8 @@
 
 @main("Accueil") { 
     <ul>
-        <li class="selected"><a>Découvrir</a></li>
-        <li><a href="#">Se connecter</a></li>
+        <li class="selected"><a href="@routes.Application.index()">Découvrir</a></li>
+        <li><a class="pushable" href="@routes.Application.login()">Se connecter</a></li>
     </ul>
 } {
     <div class="row-fluid">
@@ -14,14 +14,14 @@
                 <div data-src="@routes.Assets.at("slideshow/illu1.jpg")"></div>
             </div>
         </div>
-        <div class="span6 left-glue"> 
+        <div class="span6 left-glue" id="geonigme-description"> 
             <p class="big">
-                <span class="blue-hightlighted">Géonigme est un jeu de piste basé sur Montpellier</span>
+                <span class="blue-highlighted">Géonigme est un jeu de piste basé sur Montpellier</span>
             </p>
             
             <p class="big blue">Créer des énigmes, partagez les, mais surtout jouez et (re)découvrez la ville&nbsp;!</p>
             
-            <a class="btn-arrow-green uppercase" href="#">Démarrez maintenant !</a>
+            <a class="btn-arrow-green uppercase pushable" href="@routes.Application.login()">Démarrez maintenant !</a>
         </div>
     </div>
 
