@@ -1,0 +1,25 @@
+@colorGreen: #41c453;
+@colorDarkBlue: #002e86;
+@colorClearBlue: #5693f0;
+@colorOrange: #ffae00;
+
+.highlight(@padding: 5px, @color) {
+    background: @color;
+    -moz-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
+    -webkit-box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
+    box-shadow: @padding 0px 0px @color, -@padding 0px 0px @color;
+    position: relative;
+    left: @padding;
+}
+
+.border-radius(@params) {
+    -moz-border-radius: @params;
+    -webkitborder-radius: @params;
+    border-radius: @params;
+}
+
+.box-shadow(@params) {
+	-webkit-box-shadow: @params;
+    -moz-box-shadow: @params;
+    box-shadow: @params;
+}

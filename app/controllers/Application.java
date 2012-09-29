@@ -6,8 +6,10 @@ import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 
+import forms.*;
 import global.Sesame;
 import models.Hunt;
+import play.data.Form;
 import play.mvc.*;
 
 import views.html.*;
@@ -15,7 +17,7 @@ import views.html.*;
 public class Application extends Controller {
 
     public static Result index() {
-    	return ok(index.render(null));
+    	return ok(index.render());
     }
     
     public static Result submitContactForm() {
@@ -34,18 +36,18 @@ public class Application extends Controller {
 	return ok();
     }
 
-    public static Result test2() throws RepositoryException,
-	    QueryEvaluationException {
-	ObjectConnection oc = Sesame.getObjectConnection();
+	public static Result test2() throws RepositoryException,
+			QueryEvaluationException {
+		ObjectConnection oc = Sesame.getObjectConnection();
 
-	Set<gngm.Hunt> result = oc.getObjects(gngm.Hunt.class).asSet();
+		Set<gngm.Hunt> result = oc.getObjects(gngm.Hunt.class).asSet();
 
-	for (gngm.Hunt h : result) {
-	    System.out.println(h.getLevel());
-	    System.out.println(h.getPublished());
+		for (gngm.Hunt h : result) {
+			System.out.println(h.getLevel());
+			System.out.println(h.getPublished());
+		}
+
+		return ok();
 	}
-
-	return ok();
-    }
 
 }
