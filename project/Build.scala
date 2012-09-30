@@ -17,7 +17,10 @@ object ApplicationBuild extends Build {
   val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
     // Add your own project settings here    
     resolvers += "Aduna Open Source" at "http://repo.aduna-software.org/maven2/releases/",
-    resolvers += "Crionics Github Repository" at "http://orefalo.github.com/m2repo/releases/")
+    resolvers += "Crionics Github Repository" at "http://orefalo.github.com/m2repo/releases/",
+    
+    coffeescriptOptions := Seq()
+  )
 }
 
 

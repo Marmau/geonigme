@@ -1,0 +1,121 @@
+@(formEnigma: Form[forms.Enigma])
+
+@mainDashboard("Nouvelle chasse", "enigma") {
+	<ul class="breadcrumb">
+		<li><a href="#">Tableau de bord</a></li>
+		<li><a href="#">Nom de la chasse</a></li>
+		<li><a href="#">Etape 1</a></li>
+		<li><a>Nouvelle énigme</a></li>
+	</ul>
+} {
+	<div class="row-fluid">
+		<div class="span4">
+			@helper.form(action = routes.Enigma.submitCreateForm(1), 'id -> "create-enigma", 'class -> "form-horizontal") {
+				<div class="control-group">
+					<label class="control-label" for="description-enigma">Enoncé de l'énigme</label>
+					<div class="controls">
+						<textarea class="span12" id="description-enigma" name="description-enigma"></textarea>
+						<p class="help-block">Soyez imaginatif !</p>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Type de réponse</label>
+					<div class="controls">
+						<div class="btn-group" data-toggle="buttons-radio">
+							<div class="btn active" id="response-text-type">Textuelle</div>
+							<div class="btn" id="response-geoloc-type">Géolocalisée</div>
+						</div>
+						<input type="hidden" value="TextAnswer" name="response-type-enigma" id="response-type-enigma" />
+					</div>
+				</div>
+				<div class="control-group" id="text-responses">
+					<label class="control-label">Réponses</label>
+					<div class="controls">
+						<div class="input-append">
+							<input class="span12" type="text" name="responses[]" />
+							<button class="btn add-text-response pushable" type="button"><i class="icon-plus icon-white"></i></button>
+						</div>
+						<p class="help-block">Ajoutez jusqu'à 5 réponses pour votre énigme</p>
+					</div>
+				</div>
+				<div id="geoloc-response">
+					<div class="control-group">
+						<label class="control-label" for="label-position">Lieu</label>
+						<div class="controls">
+							<input class="span12" type="text" id="label-position" name="label-position" placeholder="Place des Grands Hommes" />
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Position</label>
+					<div class="controls">
+						<input type="text" class="span12" id="position-response-display" readonly="readonly" />
+						<input type="hidden" id="position-response" name="position-response" readonly="readonly" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="enigma-accuracy">Précision</label>
+					<div class="controls">
+						<div class="input-append">
+							<input type="text" class="span12" id="enigma-accuracy" name="accuracy-response" />
+							<span class="add-on">mètres<span>
+						</div>
+						<p class="help-block">Placez le marqueur sur la position qui valide l'enigme</p>
+					</div>
+				</div>
+				<div class="control-group" id="clues">
+					<label class="control-label" for="clue1">Indices</label>
+					<div class="controls">
+						<div class="accordion" id="accordion-clues">
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-clues" href="#collapse-clue-1">Indice 1</a>
+									<div class="controls-accordion">
+										<a href="#" class="add-clue"><i class="icon-plus"></i></a>
+									</div>
+								</div>
+								<div class="accordion-body collapse" id="collapse-clue-1">
+									<div class="accordion-inner">
+										<div class="btn-group" data-toggle="buttons-radio">
+											<div class="btn active text-clue-type">Texte</div>
+											<div class="btn file-clue-type">Fichier</div>
+										</div>
+
+										<div class="text-clue-controls">
+											<label>Entrez une citation, un mot, un truc tordu...</label>
+											<textarea class="span12" name="text-clues[]"></textarea>
+										</div>
+										<div class="file-clue-controls">
+											<label class="label-name">Description du fichier</label>
+											<input class="span3 file-description" type="text" placeholder="Notre Dame de Paris" name="file-descriptions[]" />
+											<label class="label-upload">Fichier (image ou son)</label>
+											<div class="btn btn-success fileinput-button">
+												<i class="icon-file icon-white"></i>
+												<span>Sélectionner</span>
+												<input type="file" name="files[]" />
+											</div>
+											<p class="filename clearfix"></p>
+										</div>
+										<input class="type-clue" value="TextClue" name="type-clues[]" type="hidden" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<p class="help-block">Ajoutez autant d'indices que vous le désirez !</p>
+					</div>
+				</div>
+				<!-- <div id="progress-upload" class="progress progress-striped active">
+					<div class="bar"></div>
+				</div> -->
+				<div class="form-actions">
+					<button type="submit" name="submit-enigma" value="save-hunt" class="btn">Enregistrer</button>
+				</div>
+			}
+		</div>
+
+		<div class="span8">
+			<div id="enigma-map" class="fixed-map map"></div>
+		</div>
+
+	</div>
+}

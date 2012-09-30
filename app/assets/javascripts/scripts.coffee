@@ -1,16 +1,10 @@
-$ ->
-	# Initialisation du slideshow de l'accueil
-	$('#camera-wrap').camera(
-		height: '350px',
-		fx: 'scrollLeft',
-		loaderOpacity: 1
-	) if $('#camera-wrap').length > 0
-
-	$('#camera-wrap').cameraPause()
+require ['jquery'], ($) ->
 
 	# Highlight le label du input auquel il est lié lorsque ce dernier est focus
-	$('form input')
+	$('form input, form textarea')
 		.focus ->
-			$('label[for="' + @id + '"]').addClass 'focus'
+			$('label[for="' + @id + '"]').addClass('focus')
+			$(this).siblings().addClass('focus')
 		.blur ->
-			$('label').removeClass 'focus'
+			$('label').removeClass('focus')
+			$(this).siblings().removeClass('focus')

@@ -17,7 +17,7 @@ import views.html.*;
 public class Application extends Controller {
 
 	public static Result index() {
-		return ok(index.render());
+		return ok(views.html.global.index.render());
 	}
 
 	public static Result submitContactForm() {
@@ -28,8 +28,8 @@ public class Application extends Controller {
 	public static Result login() {
 		Form<Login> formLogin = form(Login.class);
 		Form<Register> formRegister = form(Register.class);
-
-		return ok(login.render(formLogin, formRegister));
+				
+		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 
 	public static Result test1() throws RepositoryException {

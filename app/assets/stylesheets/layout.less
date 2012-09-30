@@ -10,12 +10,53 @@ body {
 
 textarea {
     resize: none;
+    height: 100px;
 }
 
 .pushable:active, .pushable:focus {
     position: relative;
-    top: 3px;
+    top: 2px;
     outline: none;
+}
+
+.form-horizontal {
+    .control-label {
+        width: 110px;
+    }
+
+    .controls {
+        margin-left: 120px;
+    }
+
+    .form-actions {
+        padding-left: 120px;
+    }
+}
+
+.input-append .add-on:last-child {
+    .border-radius(0px);
+    text-shadow: none;
+    background: none;
+    border: solid 1px @colorClearBlue;
+    color: @colorClearBlue;
+
+    &.focus {
+        border: solid 1px @colorDarkBlue;
+        color: @colorDarkBlue;
+    }
+}
+
+.input-append .btn:last-child {
+    .border-radius(0px);
+    text-shadow: none;
+    background: @colorClearBlue;
+    border: solid 1px @colorClearBlue;
+    color: white;
+
+    &.focus {
+        border: solid 1px @colorDarkBlue;
+        background: @colorDarkBlue;
+    }
 }
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
@@ -31,12 +72,71 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     }
 }
 
-button, input[type="submit"] {
+.btn-group > .btn:first-child, .btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
+    .border-radius(0px);
+}
+
+.btn-group > .btn {
+    font-weight: normal;
+
+    &:active:not(.active), &:focus:not(.active) {
+        position: relative;
+        top: 2px;
+    }
+}
+
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly] {
+    cursor: not-allowed;
+    background-color: @colorClearBlue;
+    color: white;
+}
+
+input[type="text"], textarea {
+    &::-webkit-input-placeholder {
+        color: rgba(86, 147, 240, 0.5);
+    }
+
+    &:-ms-input-placeholder {
+        color: rgba(86, 147, 240, 0.5);
+    }
+
+    &:-moz-placeholder {
+        color: rgba(86, 147, 240, 0.5);
+    }
+}
+
+.btn {
     font-weight: bold;
-    padding: 2px 5px;
+    padding: 4px 10px;
     border: solid 1px @colorClearBlue;
     background: transparent;
     color: @colorClearBlue;
+    .border-radius(0px);
+    .box-shadow(none);
+    text-shadow: none;
+    text-transform: uppercase;
+
+    &:hover, &.active {
+        color: white;
+        background: @colorClearBlue;
+    }
+
+    &:active, &:focus, &.active{
+        .box-shadow(none);
+        background: @colorClearBlue;
+        color: white;
+    }
+}
+
+.form-actions {
+    background: none;
+    border-top: 1px solid @colorOrange;
+}
+
+.help-block, .form-horizontal input + .help-block, .form-horizontal select + .help-block, .form-horizontal textarea + .help-block {
+    font-size: 13px;
+    color: @colorOrange;
+    margin-top: 5px;
 }
 
 label {
@@ -66,7 +166,7 @@ label {
 
 .copyright {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .btn-arrow-green {
@@ -113,46 +213,33 @@ label {
 }
 
 header {
+    height: 118px;
     background-color: @colorClearBlue;
-    height: 178px;
     border-bottom: solid 2px @colorDarkBlue;
 
     .background {
-        margin: auto;
-        height: 180px;
-        background: url(/assets/images/header.png) no-repeat;
-    }
-}
-
-footer {
-    margin-top: 15px;
-    background-color: @colorGreen;
-    color: white;
-
-    .background {
-        margin: auto;
-        height: 442px;
-        background: url(/assets/images/footer.png) no-repeat;
-    }
-
-    h1 {
-        text-transform: uppercase;
-        font-size: 24px;
-        font-weight: normal;
-
-        strong {
-            font-weight: bold;
-        }
+        background: url(/assets/images/header-small.png) no-repeat left;
+        height: 120px;
     }
 }
 
 nav {
-    margin: 25px 0px 30px 0px;
+    margin: 15px 0px 20px 0px;
 
-    ul {
+    ul.menu {
+        font-size: 14px;
         padding: 0px;
         margin: 0px;
+
         li {
+            margin-right: 20px;
+            color: @colorGreen;
+            background: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 5px 5px;
+
             &.selected {
                 color: white;
                 background: @colorGreen;
@@ -171,7 +258,6 @@ nav {
                     bottom: -10px;
                     left: 50%;
                     margin-left: -8px;
-                    text-align: center;
                 }
             }
 
@@ -184,24 +270,80 @@ nav {
                     text-decoration: none;
                 }
             }
+        }
+    }
 
-            margin-right: 30px;
-            color: @colorGreen;
-            background: white;
+    ul.breadcrumb {
+        overflow: hidden;
+
+        li {
+            text-shadow: none;
             font-weight: bold;
-            text-transform: uppercase;
-            font-size: 24px;
-            display: inline-block;
-            padding: 8px 8px;
+            display: block;
+
+            &:first-child a {
+                padding-left: 10px;
+            }
+
+            &:last-child a {
+                background: none;
+                color: @colorGreen;
+
+                &:after {
+                    border: none;
+                }
+                
+                &:before {
+                    border: none;
+                }
+            }
+
+            a {
+                text-transform: uppercase;
+                color: white;
+                text-decoration: none;
+                padding: 4px 0px 4px 25px;
+                background: @colorGreen;
+                position: relative;
+                display: block;
+                float: left;
+
+                &:after {
+                    content: "";
+                    display: block;
+                    width: 0px;
+                    height: 0px;
+                    border-top: 25px solid transparent;
+                    border-bottom: 25px solid transparent;
+                    border-left: 15px solid @colorGreen;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -25px;
+                    left: 100%;
+                    z-index: 2;
+                }
+
+                &:before {
+                    content: "";
+                    display: block;
+                    width: 0px;
+                    height: 0px;
+                    border-top: 25px solid transparent;
+                    border-bottom: 25px solid transparent;
+                    border-left: 15px solid white;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -25px; 
+                    margin-left: 1px;
+                    left: 100%;
+                    z-index: 1; 
+                }
+            }
         }
     }
 }
 
 #contact-form {
-    textarea {
-        height: 100px;
-    }
-
     input[type="text"], textarea, button[type="submit"] {
         border: solid 1px white;
         background: transparent;
@@ -209,8 +351,6 @@ nav {
     }
     
     input[type="text"], textarea {
-        width: 100%;
-
         &::-webkit-input-placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
@@ -230,3 +370,11 @@ nav {
     }
 }
 
+blockquote {
+    border-left: 5px solid @colorDarkBlue;
+    color: @colorDarkBlue;
+}
+
+q::before, q::after, blockquote::before, blockquote::after {
+    content: none;
+}

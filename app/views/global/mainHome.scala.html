@@ -1,6 +1,5 @@
-@(title: String)(nav: Html)(content: Html)
+@(title: String, start: String = "")(nav: Html)(content: Html)
 
-@import helper.twitterBootstrap._
 @import _root_.play.mvc.Controller
 @import _root_.forms._
 
@@ -17,16 +16,13 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/camera.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.min.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/jquery-1.8.2.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.at("javascripts/jquery.easing-1.3.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.at("javascripts/camera.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.at("javascripts/scripts.js")" type="text/javascript"></script>
+        <script data-main="@routes.Assets.at("javascripts/app")" src="@routes.Assets.at("javascripts/require.min.js")" type="text/javascript" data-start="@start"></script>
     </head>
-    <body>
+    <body class="home">
 		<header>
-			<div class="background container home"></div>
+			<div class="background container"></div>
 		</header>
-        <div class="container home">
+        <div class="container">
             <div class="row-fluid">
         		<nav>
         			@nav
@@ -37,8 +33,8 @@
             </section>
         </div>
         <footer>
-            <div class="background container home">
-                <div class="row-fluid">
+            <div class="background container">
+                <div class="row-fluid informations">
                     <div class="span4">
                         <h1><strong>Qui</strong> sommes-nous ?</h1>
                         <p>
@@ -54,10 +50,10 @@
                         <h1><strong>Contactez</strong>-nous</h1>
                         @helper.form(action = routes.Application.submitContactForm(), 'id -> "contact-form") {
                             <div>
-                                <input name="email" type="text" placeholder="@@votre adresse courriel" class="span12" />
+                                <input name="@contactForm("email").name()" type="text" placeholder="@@votre adresse courriel" class="span12" value="@contactForm("email").value()" />
                             </div>
                             <div>
-                                <textarea name="content" placeholder="votre message..." class="span12"></textarea>
+                                <textarea name="@contactForm("content").name()" placeholder="votre message..." class="span12">@contactForm("email").value()</textarea>
                             </div>
                             <button type="submit" class="pushable pull-right uppercase">Envoyer</button>
                         }
