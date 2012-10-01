@@ -21,92 +21,62 @@
 				<div class="control-group">
 					<label class="control-label">Type de réponse</label>
 					<div class="controls">
-						<div class="btn-group" data-toggle="buttons-radio">
-							<div class="btn active" id="response-text-type">Textuelle</div>
-							<div class="btn" id="response-geoloc-type">Géolocalisée</div>
+						<div class="btn-group" id="answer-type-btn-group" data-toggle="buttons-radio">
+							<div class="btn active" data-selector=".text-answer-controls">Textuelle</div>
+							<div class="btn" data-selector=".geolocated-answer-controls">Géolocalisée</div>
 						</div>
 						<input type="hidden" value="TextAnswer" name="response-type-enigma" id="response-type-enigma" />
 					</div>
 				</div>
-				<div class="control-group" id="text-responses">
-					<label class="control-label">Réponses</label>
-					<div class="controls">
-						<div class="input-append">
-							<input class="span12" type="text" name="responses[]" />
-							<button class="btn add-text-response pushable" type="button"><i class="icon-plus icon-white"></i></button>
+
+				<div class="answer-controls text-answer-controls">
+					<div class="control-group">
+						<label class="control-label">Réponses</label>
+						<div class="controls">
+							<div class="input-append">
+								<input class="span12" type="text" name="responses[]" />
+								<button class="btn add-text-response pushable" type="button"><i class="icon-plus icon-white"></i></button>
+							</div>
+							<p class="help-block">Ajoutez jusqu'à 5 réponses pour votre énigme</p>
 						</div>
-						<p class="help-block">Ajoutez jusqu'à 5 réponses pour votre énigme</p>
 					</div>
 				</div>
-				<div id="geoloc-response">
+					
+				<div class="answer-controls geolocated-answer-controls hide">
 					<div class="control-group">
 						<label class="control-label" for="label-position">Lieu</label>
 						<div class="controls">
 							<input class="span12" type="text" id="label-position" name="label-position" placeholder="Place des Grands Hommes" />
 						</div>
 					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Position</label>
-					<div class="controls">
-						<input type="text" class="span12" id="position-response-display" readonly="readonly" />
-						<input type="hidden" id="position-response" name="position-response" readonly="readonly" />
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="enigma-accuracy">Précision</label>
-					<div class="controls">
-						<div class="input-append">
-							<input type="text" class="span12" id="enigma-accuracy" name="accuracy-response" />
-							<span class="add-on">mètres<span>
+					<div class="control-group">
+						<label class="control-label">Position</label>
+						<div class="controls">
+							<input type="text" class="span12" id="position-response-display" readonly="readonly" />
+							<input type="hidden" id="position-response" name="position-response" readonly="readonly" />
 						</div>
-						<p class="help-block">Placez le marqueur sur la position qui valide l'enigme</p>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="enigma-accuracy">Précision</label>
+						<div class="controls">
+							<div class="input-append">
+								<input type="text" class="span12" id="enigma-accuracy" name="accuracy-response" />
+								<span class="add-on">mètres<span>
+							</div>
+							<p class="help-block">Placez le marqueur sur la position qui valide l'enigme</p>
+						</div>
 					</div>
 				</div>
 				<div class="control-group" id="clues">
-					<label class="control-label" for="clue1">Indices</label>
+					<label class="control-label" for="clue">Indices</label>
 					<div class="controls">
-						<div class="accordion" id="accordion-clues">
-							<div class="accordion-group">
-								<div class="accordion-heading">
-									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-clues" href="#collapse-clue-1">Indice 1</a>
-									<div class="controls-accordion">
-										<a href="#" class="add-clue"><i class="icon-plus"></i></a>
-									</div>
-								</div>
-								<div class="accordion-body collapse" id="collapse-clue-1">
-									<div class="accordion-inner">
-										<div class="btn-group" data-toggle="buttons-radio">
-											<div class="btn active text-clue-type">Texte</div>
-											<div class="btn file-clue-type">Fichier</div>
-										</div>
+						<div id="clues" data-prototype="@HtmlFormat.escape("<div class='clue'><div class='display'></div><input type='hidden' /></div>")">
 
-										<div class="text-clue-controls">
-											<label>Entrez une citation, un mot, un truc tordu...</label>
-											<textarea class="span12" name="text-clues[]"></textarea>
-										</div>
-										<div class="file-clue-controls">
-											<label class="label-name">Description du fichier</label>
-											<input class="span3 file-description" type="text" placeholder="Notre Dame de Paris" name="file-descriptions[]" />
-											<label class="label-upload">Fichier (image ou son)</label>
-											<div class="btn btn-success fileinput-button">
-												<i class="icon-file icon-white"></i>
-												<span>Sélectionner</span>
-												<input type="file" name="files[]" />
-											</div>
-											<p class="filename clearfix"></p>
-										</div>
-										<input class="type-clue" value="TextClue" name="type-clues[]" type="hidden" />
-									</div>
-								</div>
-							</div>
 						</div>
+						<a href="#modal-clue" role="button" class="btn pushable" data-toggle="modal">Ajouter</a>
 						<p class="help-block">Ajoutez autant d'indices que vous le désirez !</p>
 					</div>
 				</div>
-				<!-- <div id="progress-upload" class="progress progress-striped active">
-					<div class="bar"></div>
-				</div> -->
 				<div class="form-actions">
 					<button type="submit" name="submit-enigma" value="save-hunt" class="btn">Enregistrer</button>
 				</div>
@@ -116,6 +86,56 @@
 		<div class="span8">
 			<div id="enigma-map" class="fixed-map map"></div>
 		</div>
+	</div>
 
+	<div class="modal modal-form hide fade in" id="modal-clue" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close pushable" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3>Ajouter un indice</h3>
+		</div>
+		<div class="modal-body container-fluid">
+			<div class="form-horizontal row-fluid">
+				<div class="control-group">
+					<label class="control-label">Type</label>
+					<div class="controls">
+						<div class="btn-group" id="clue-type-btn-group" data-toggle="buttons-radio">
+							<div class="btn active" data-selector=".text-clue-controls">Texte</div>
+							<div class="btn" data-selector=".file-clue-controls">Fichier</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="clue-controls text-clue-controls">
+					<div class="control-group">
+						<label class="control-label" for="text-clue-description">&Eacute;noncé</label>
+						<div class="controls">
+							<textarea class="span12" name="text-clues[]" id="text-clue-description"></textarea>
+							<p class="help-block">Une citation, un mot, un truc tordu...</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="clue-controls file-clue-controls hide">
+					<div class="control-group">
+						<label class="control-label" for="file-clue-description">Description</label>
+						<div class="controls">
+							<input class="span12" type="text" id="file-clue-description" placeholder="Notre Dame de Paris" />
+							<p class="help-block">Description brève de l'image ou du son</p>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="file-clue-link">Lien</label>
+						<div class="controls">
+							<input class="span12" type="text" id="file-clue-link" placeholder="http://...png" />
+							<p class="help-block">Lien vers l'image (*.png *.jpg) ou le son (*.mp3)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn pushable" id="add-clue-btn">Ajouter</button>
+		</div>
 	</div>
 }

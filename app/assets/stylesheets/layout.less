@@ -378,3 +378,37 @@ blockquote {
 q::before, q::after, blockquote::before, blockquote::after {
     content: none;
 }
+
+.modal-form.modal {
+    h3 {
+        color: @colorGreen;
+        text-transform: uppercase;
+        font-size: 18px;
+    }
+
+    .modal-header {
+        border: none;
+    }
+
+    .modal-footer {
+        background: white;
+        border-top: 1px solid @colorOrange;
+        margin: 0px 15px;
+        text-align: left;
+        margin-left: 120px;
+    }
+}
+
+.modal {
+    .border-radius(0px);
+    outline: none;
+
+    .close {
+        color: @colorDarkBlue;
+
+        &:hover {
+            color: @colorDarkBlue;
+            opacity: 1;
+        }
+    }
+}

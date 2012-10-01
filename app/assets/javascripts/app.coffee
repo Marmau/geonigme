@@ -6,11 +6,12 @@ requirejs.config({
 		jquery_easing: 'jquery.easing-1.3',
 		bootstrap: 'bootstrap.min',
 		camera: 'camera.min',
+		autosize: 'jquery.autosize-min',
 		leaflet: '../leaflet/leaflet',
 	}
 })
 
-require ['jquery'], ($) ->
+require ['jquery','bootstrap.min'], ($) ->
 	$ ->
-		require ['scripts', 'bootstrap.min']
+		require ['scripts']
 		require ($.trim $('script').data('start') + ',').split(',')
