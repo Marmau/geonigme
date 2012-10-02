@@ -1,7 +1,7 @@
-@(formLogin: Form[forms.Login], formRegister: Form[forms.Register])
+@(formConnection: Form[forms.Login], formRegistration: Form[forms.Register])
 
-@main("Connexion - Inscription") { 
-    <ul>
+@mainHome("Connexion - Inscription") { 
+    <ul class="menu">
         <li><a class="pushable" href="@routes.Application.index()">Découvrir</a></li>
         <li class="selected"><a href="@routes.Application.login()">Se connecter</a></li>
     </ul>
@@ -14,24 +14,24 @@
             </div>
             @helper.form(action = routes.User.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
                 <div class="control-group">
-                    <label class="control-label" for="registration-input-login">Pseudonyme</label>
+                    <label class="control-label" for="registration-input-pseudonym">Pseudonyme</label>
                     <div class="controls">
-                        <input name="login" id="registration-input-login" type="text" class="span12" />
+                        <input name="@formRegistration("pseudonym").name()" id="registration-input-pseudonym" type="text" class="span12" value="@formRegistration("pseudonym").value()" />
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="registration-input-email">@@dresse courriel</label>
                     <div class="controls">
-                        <input name="email" id="registration-input-email" type="text" class="span12" />
+                        <input name="@formRegistration("email").name()" id="registration-input-email" type="text" class="span12" value="@formRegistration("email").value()" />
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="registration-input-password">Mot de passe</label>
                     <div class="controls">
-                        <input name="password" id="registration-input-password" type="text" class="span12" />
+                        <input name="@formRegistration("password").name()" id="registration-input-password" type="password" class="span12" value="@formRegistration("password").value()" />
                     </div>
                 </div>
-                <button type="submit" class="pushable pull-right uppercase">M'inscrire</button>
+                <button type="submit" class="btn pushable pull-right uppercase">M'inscrire</button>
             } 
         </div>
         <div class="span6" id="connection">
@@ -41,10 +41,10 @@
             </div>
             @helper.form(action = routes.User.submitLoginForm(), 'id -> "login-form") {
                 <label class="uppercase focus" for="connection-input-login">Pseudonyme</label>
-                <input name="login" id="connection-input-login" type="text" class="span12" autofocus />
+                <input name="@formConnection("login").name()" id="connection-input-login" type="text" class="span12" value="@formConnection("login").value()" autofocus />
                 <label class="uppercase" for="connection-input-password">Mot de passe</label>
-                <input name="password" id="connection-input-password" type="password" class="span12" />
-                <button type="submit" class="pushable pull-right uppercase">Me connecter</button>
+                <input name="@formConnection("password").name()" id="connection-input-password" type="password" class="span12" value="@formConnection("password").value()" />
+                <button type="submit" class="btn pushable pull-right uppercase">Me connecter</button>
             }
             <p class="pagination-right">
                 <a href="#">J'ai oublié mon mot de passe</a>

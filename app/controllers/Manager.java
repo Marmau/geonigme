@@ -1,23 +1,49 @@
 package controllers;
 
+import java.util.ArrayList;
+
+import forms.Login;
+import forms.Register;
+
+import play.data.Form;
 import play.mvc.*;
 import views.html.index;
+import models.Hunt;
+import repository.HuntRepository;
 
 public class Manager extends Controller {
 
-//	public static Result menu() {
-//		return ok(menu.render());
-//	}
-
 	public static Result dashboard() {
-		return ok();
+		String user = session("user");
+		if (user == null)
+			return ok(views.html.global.index.render());
+		
+		HuntRepository huntRepo = new HuntRepository();
+		ArrayList<Hunt> hunts = huntRepo.getHuntsByAuthor(Integer.parseInt(user));
+		
+		return ok();//views.html.dashboard.mainDashboard.render("hunts"));
+		
 	}
 
 	public static Result login() {
-		return ok();
+		String user = session("user");
+		if (user != null)
+			return ok();//views.html.dashboard.mainDashboard.render());
+		
+		Form<Login> formLogin = form(Login.class);
+		Form<Register> formRegister = form(Register.class);
+				
+		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 
 	public static Result register() {
-		return ok();
+		String user = session("user");
+		if (user != null)
+			return ok();//views.html.dashboard.mainDashboard.render());
+		
+		Form<Login> formLogin = form(Login.class);
+		Form<Register> formRegister = form(Register.class);
+				
+		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 }

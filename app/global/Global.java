@@ -25,7 +25,7 @@ public class Global extends GlobalSettings {
 	public void onStop(Application app) {
 		super.onStop(app);
 
-		// Initialisation de Sésame
+		// Extinction de Sésame
 		Sesame.shutdown();
 	}
 }
