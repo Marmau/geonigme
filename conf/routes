@@ -16,26 +16,24 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 # Hunt
-#GET		/hunt/reset					controllers.Hunt.reset()
-#GET		/hunt/new					controllers.Hunt.newHunt()
+#GET	/hunt/reset					controllers.Hunt.reset()
+#GET	/hunt/new					controllers.Hunt.newHunt()
 #POST	/hunt/create				controllers.Hunt.create()
-#GET		/hunt/:hid/edit				controllers.Hunt.edit(hid: Integer)
+#GET	/hunt/:hid/edit				controllers.Hunt.edit(hid: Integer)
 #POST	/hunt/:hid/update			controllers.Hunt.update(hid: Integer)
 #POST	/hunt/:hid/delete			controllers.Hunt.delete(hid: Integer)
-#GET		/hunt/:hid/show				controllers.Hunt.show(hid: Integer)
+#GET	/hunt/:hid/show				controllers.Hunt.show(hid: Integer)
 #POST	/hunt/:hid/publish			controllers.Hunt.publish(hid: Integer)
-#GET		/hunt/:hid/step/new			controllers.Step.newStep(hid: Integer)
+#GET	/hunt/:hid/step/new			controllers.Step.newStep(hid: Integer)
 #POST	/hunt/:hid/step/create		controllers.Step.create(hid: Integer)
-#GET		/step/:sid/edit				controllers.Step.edit(sid: Integer)
+#GET	/step/:sid/edit				controllers.Step.edit(sid: Integer)
 #POST	/step/:sid/update			controllers.Step.update(sid: Integer)
 #POST	/step/:sid/delete			controllers.Step.delete(sid: Integer)
-#GET		/step/:sid/enigma/new		controllers.Enigma.newEnigma(sid: Integer)
+#GET	/step/:sid/enigma/new		controllers.Enigma.newEnigma(sid: Integer)
 #POST	/step/:sid/enigma/create	controllers.Enigma.create(sid: Integer)
-#GET		/enigma/:eid/edit			controllers.Enigma.edit(eid: Integer)
+#GET	/enigma/:eid/edit			controllers.Enigma.edit(eid: Integer)
 #POST	/enigma/:eid/update			controllers.Enigma.update(eid: Integer)
 #POST	/enigma/:eid/delete			controllers.Enigma.delete(eid: Integer)
-
-
 
 # User
 POST    /login                      controllers.User.submitLoginForm()
