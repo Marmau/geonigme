@@ -52,7 +52,8 @@
 	rdfs:domain :Enigma ;
 	rdfs:range :Clue .
 
-:answer rdf:type owl:InverseFunctionalProperty ;
+:answer 
+	rdf:type owl:InverseFunctionalProperty ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
 	rdfs:domain :Enigma ;
 	rdfs:range :Answer .
@@ -115,12 +116,6 @@
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
 	rdfs:domain :Area ;
 	rdfs:range geo:Point .
-
-:position 
-	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
-	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
-	rdfs:domain geo:SpatialThing ;
-	rdfs:range :Position .
 
 :tag 
 	rdf:type owl:ObjectProperty ;
@@ -188,7 +183,17 @@
 	rdfs:domain :Position ;
 	rdfs:range xsd:float .
 
+:place
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Position ;
+	rdfs:range xsd:string .
 
+:alternative
+	rdf:type owl:DatatypeProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :TextAnswer ;
+	rdfs:range xsd:string .
 
 #################################################################
 #

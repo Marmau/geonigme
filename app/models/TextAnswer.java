@@ -1,20 +1,19 @@
 package models;
 
-import gngm.Enigma;
+import java.util.Set;
 
-public class TextAnswer implements gngm.TextAnswer {
-
-	Enigma answerOfEnigma;
+public class TextAnswer extends Answer implements gngm.TextAnswer {
 
 	@Override
-	public Enigma getAnswerOfEnigma() {
-		return answerOfEnigma;
+	public Set<String> getAlternatives() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void setAnswerOfEnigma(Enigma answerOfEnigma) {
-		this.answerOfEnigma = answerOfEnigma;
-
+	public void setAlternatives(Set<? extends String> possibleText) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -116,6 +116,11 @@ input[type="text"], textarea {
     text-shadow: none;
     text-transform: uppercase;
 
+    &.inverse {
+        background: @colorClearBlue;
+        color: white;
+    }
+
     &:hover, &.active {
         color: white;
         background: @colorClearBlue;
@@ -125,6 +130,21 @@ input[type="text"], textarea {
         .box-shadow(none);
         background: @colorClearBlue;
         color: white;
+    }
+
+    &.btn-danger {
+        color: @colorRed;
+        border-color: @colorRed;
+
+        &:hover, &.active {
+            background: @colorRed;
+            color: white;
+        }
+
+        &:active, &:focus, &.active{
+            background: @colorRed;
+            color: white;
+        }
     }
 }
 

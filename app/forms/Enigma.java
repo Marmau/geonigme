@@ -1,16 +1,45 @@
 package forms;
 
+import java.util.List;
+
 import play.data.validation.Constraints.Required;
 
 public class Enigma {
 	@Required
 	public String description;
 
-	@Required
-	public Integer type = 1;
+	public Answer answer;
 
-	public String answers;
+	public List<Clue> clues;
+
+	public static class Clue {
+
+		public static final Integer TextClue = 0;
+		public static final Integer FileClue = 1;
+
+		public Integer type = TextClue;
+
+		public String textDescription;
+
+		public String fileDescription;
+
+		public String fileLink;
+	}
 	
-	public String clues;
+	public static class Answer {
+
+		public static Integer TextAnswer = 0;
+		public static Integer GeolocatedAnswer = 1;
+
+		public Integer type = TextAnswer;
+
+		public List<String> possibleTexts;
+
+		public String labelPosition;
+
+		public String position;
+
+		public Integer accuracy;
+	}
 
 }

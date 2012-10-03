@@ -13,3 +13,35 @@ nav {
 .map {
 	width: 100%;
 }
+
+#text-answers .text-answer {
+	margin-bottom: 10px;
+
+	&:nth-last-child(2) {
+		margin-bottom: 0px;
+	}
+
+	.btn.disabled {
+		opacity: 0;
+	}
+}
+
+#clues .clue {
+	background: @colorClearBlue;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	color: white;
+	line-height: 30px;
+	vertical-align: middle;
+
+	.actions {
+		float: right;
+		padding-right: 10px;
+		.btn {
+			margin: 0px;
+			padding: 0px;
+		}
+	}
+}
