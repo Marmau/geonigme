@@ -3,21 +3,20 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET     /login                      controllers.Application.login()
+GET		/							controllers.Application.index()
+GET		/login						controllers.Application.login()
 POST 	/contact-us					controllers.Application.submitContactForm()
 
-GET     /test1                      controllers.Application.test1()
-GET     /test2                      controllers.Application.test2()
+GET		/test1						controllers.Application.test1()
+GET		/test2						controllers.Application.test2()
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET		/assets/*file				controllers.Assets.at(path="/public", file)
 
 
 # Hunt
 #GET	/hunt/reset					controllers.Hunt.reset()
-#POST	/hunt/create				controllers.Hunt.create()
 GET		/hunt/create				controllers.Hunt.create()
 POST	/hunt/create				controllers.Hunt.submitCreateForm()
 
@@ -51,9 +50,9 @@ POST	/step/:sid/enigma/create	controllers.Enigma.submitCreateForm(sid: String)
 #POST	/enigma/:eid/delete			controllers.Enigma.delete(eid: String)
 
 # User
-POST    /login                      controllers.User.submitLoginForm()
-GET	    /logout                     controllers.User.logout()
-POST    /register                   controllers.User.submitRegisterForm()
+POST	/login						controllers.User.submitLoginForm()
+GET		/logout						controllers.User.logout()
+POST	/register					controllers.User.submitRegisterForm()
 
 # Manager
 GET		/dashboard					controllers.Manager.dashboard()

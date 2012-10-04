@@ -72,6 +72,14 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     }
 }
 
+.control-group.error input, .control-group.error select, .control-group.error textarea {
+    .box-shadow(none);
+
+    &:focus {
+        .box-shadow(none);
+    }
+}
+
 .btn-group > .btn:first-child, .btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
     .border-radius(0px);
 }
@@ -93,15 +101,15 @@ input[disabled], select[disabled], textarea[disabled], input[readonly], select[r
 
 input[type="text"], textarea {
     &::-webkit-input-placeholder {
-        color: rgba(86, 147, 240, 0.5);
+        color: rgba(200, 200, 200, 0.5);
     }
 
     &:-ms-input-placeholder {
-        color: rgba(86, 147, 240, 0.5);
+        color: rgba(200, 200, 200, 0.5);
     }
 
     &:-moz-placeholder {
-        color: rgba(86, 147, 240, 0.5);
+        color: rgba(200, 200, 200, 0.5);
     }
 }
 

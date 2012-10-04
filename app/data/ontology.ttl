@@ -143,6 +143,12 @@
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ; 
 	rdfs:range xsd:dateTime .
 
+:name
+	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain :Hunt ; 
+	rdfs:range xsd:string .
+
 :description 
 	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;

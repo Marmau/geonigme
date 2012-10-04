@@ -1,3 +1,7 @@
+Math.roundFloat = (number, digits) ->
+  	return Math.round(number * Math.pow(10, digits)) / Math.pow(10, digits)
+
+
 require ['jquery', 'autosize'], ($) ->
 
 	# Hauteur automatique pour les textarea

@@ -1,5 +1,7 @@
 @(formHunt: Form[forms.Hunt])
 
+@import helpers._
+
 @mainDashboard("Nouvelle chasse", "hunt") {
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
@@ -9,10 +11,13 @@
 	<div class="row-fluid">
 		<div class="span4">
 			@helper.form(action = routes.Hunt.submitCreateForm(), 'id -> "create-hunt", 'class -> "form-horizontal") {
-				<div class="control-group">
+				<div class="control-group @displayIfError(formHunt("name"), "error")">
 					<label class="control-label" for="name-hunt">Nom</label>
 					<div class="controls">
 						<input class="span12" type="text" id="name-hunt" name="@formHunt("name").name" placeholder="Nom de la chasse" value="@formHunt("name").value" />
+						@formHunt("name").errors.map { error =>
+					        <p class="help-block error">@error</p>
+					    }
 					</div>
 				</div>
 				<div class="control-group">
@@ -44,7 +49,7 @@
 					<label class="control-label" for="area-hunt-display">Zone</label>
 					<div class="controls">
 						<input type="text" class="span12" id="area-hunt-display" readonly="readonly" />
-						<p class="help-block">Définissez la area où aura lieu la chasse aux trésors grâce à la carte</p>
+						<p class="help-block">Définissez la zone où aura lieu la chasse aux trésors grâce à la carte</p>
 						<input type="hidden" id="area-hunt" name="@formHunt("area").name" value="@formHunt("area").value" />
 					</div>
 				</div>

@@ -7,7 +7,7 @@ requirejs.config({
 		bootstrap: 'bootstrap',
 		camera: 'camera.min',
 		autosize: 'jquery.autosize-min',
-		leaflet: '../leaflet/leaflet',
+		leaflet: '../leaflet/leaflet-src',
 	}
 })
 

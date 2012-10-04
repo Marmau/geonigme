@@ -11,4 +11,15 @@ package helpers {
     }
 
   }
+
+  object displayIfError {
+  	def apply(field: play.api.data.Field, toDisplay: String): String = {
+
+      if (field.hasErrors) {
+      	return toDisplay;
+      }
+
+      return "";
+    }
+  }
 }
