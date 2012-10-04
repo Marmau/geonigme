@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class Step implements gngm.Step {
 
-	private Set<Enigma> enigmas;
-	private Hunt stepOfHunt;
+	private Set<gngm.Enigma> enigmas;
+	private gngm.Hunt stepOfHunt;
 
 	@Override
 	public Set<Enigma> getEnigmas() {

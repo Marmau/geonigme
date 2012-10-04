@@ -4,7 +4,7 @@ import gngm.Enigma;
 
 public class Answer implements gngm.Answer {
 
-	Enigma answerOfEnigma;
+	private gngm.Enigma answerOfEnigma;
 
 	@Override
 	public Enigma getAnswerOfEnigma() {

@@ -15,7 +15,11 @@ public class Step extends Controller {
 		return ok();
 	}
 	
-	public static Result change(String sid) {
+	public static Result edit(String sid) {
+		return ok();
+	}
+	
+	public static Result update(String sid) {
 		return ok();
 	}
 
@@ -24,6 +28,10 @@ public class Step extends Controller {
 	}
 
 	public static Result createEnigma(String sid) {
+		return ok();
+	}
+	
+	public static Result submitUpdateForm(String sid) {
 		return ok();
 	}
 

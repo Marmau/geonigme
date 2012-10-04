@@ -24,11 +24,19 @@ public class Enigma extends Controller {
         }
 	}
 	
-	public static Result change(String eid) {
+	public static Result edit(String eid) {
 		return ok();
 	}
 
 	public static Result delete(String eid) {
+		return ok();
+	}
+	
+	public static Result update(String eid) {
+		return ok();
+	}
+	
+	public static Result submitUpdateForm(String eid) {
 		return ok();
 	}
 

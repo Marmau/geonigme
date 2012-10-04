@@ -16,9 +16,9 @@ public class Hunt implements gngm.Hunt {
 	private Area area;
 	private User createdBy;
 	private boolean published;
-	private Set<Mark> marks;
-	private Set<Step> steps;
-	private Set<Tag> tags;
+	private Set<gngm.Mark> marks;
+	private Set<gngm.Step> steps;
+	private Set<tags.Tag> tags;
 
 	@Override
 	public Area getArea() {
@@ -87,9 +87,5 @@ public class Hunt implements gngm.Hunt {
 		return tags;
 	}
 
-	@Override
-	public void setTags(Set<? extends Tag> tags) {
-		this.tags = (Set<Tag>) tags;
-	}
 
 }

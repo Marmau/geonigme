@@ -19,16 +19,32 @@ public class Hunt extends Controller {
 		return ok();
 	}
 
-	public static Result change(String hid) {
+	public static Result edit(String hid) {
+		return ok();
+	}
+	
+	public static Result update(String hid) {
+		return ok();
+	}
+	
+	public static Result submitUpdateForm(String hid) {
 		return ok();
 	}
 
 	public static Result delete(String hid) {
 		return ok();
 	}
+	
+	public static Result show(String hid) {
+		return ok();
+	}
 
 	public static Result publish(String hid) {
 		return ok();
 	}
+	
+
+	
+
 
 }
