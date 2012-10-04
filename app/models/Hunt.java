@@ -3,11 +3,10 @@ package models;
 import gngm.Area;
 import gngm.Mark;
 import gngm.Step;
+import tags.Tag;
 
 import java.util.Set;
 
-
-import tags.*;
 import user.User;
 
 public class Hunt implements gngm.Hunt {
@@ -16,9 +15,9 @@ public class Hunt implements gngm.Hunt {
 	private Area area;
 	private User createdBy;
 	private boolean published;
-	private Set<gngm.Mark> marks;
-	private Set<gngm.Step> steps;
-	private Set<tags.Tag> tags;
+	private Set<Mark> marks;
+	private Set<Step> steps;
+	private Set<Tag> tags;
 
 	@Override
 	public Area getArea() {
@@ -29,7 +28,7 @@ public class Hunt implements gngm.Hunt {
 	public void setArea(Area area) {
 		this.area = area;
 	}
-	
+
 	@Override
 	public User getCreatedBy() {
 		return createdBy;
@@ -87,5 +86,9 @@ public class Hunt implements gngm.Hunt {
 		return tags;
 	}
 
+	@Override
+	public void setTags(Set<? extends Tag> tags) {
+		this.tags = (Set<Tag>) tags;
+	}
 
 }
