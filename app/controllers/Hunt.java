@@ -19,15 +19,15 @@ public class Hunt extends Controller {
 		return ok();
 	}
 
-	public static Result change(Integer hid) {
+	public static Result change(String hid) {
 		return ok();
 	}
 
-	public static Result delete(Integer hid) {
+	public static Result delete(String hid) {
 		return ok();
 	}
 
-	public static Result publish(Integer hid) {
+	public static Result publish(String hid) {
 		return ok();
 	}
 

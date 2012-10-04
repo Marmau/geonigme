@@ -5,13 +5,13 @@ import play.mvc.*;
 
 public class Enigma extends Controller {
 
-	public static Result create(Integer sid) {
+	public static Result create(String sid) {
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class);
 		System.out.println(request());
 		return ok(views.html.dashboard.createEnigma.render(formEnigma));
 	}
 	
-	public static Result submitCreateForm(Integer sid) {
+	public static Result submitCreateForm(String sid) {
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class).bindFromRequest();
         
         if(formEnigma.hasErrors()) {
@@ -24,11 +24,11 @@ public class Enigma extends Controller {
         }
 	}
 	
-	public static Result change(Integer eid) {
+	public static Result change(String eid) {
 		return ok();
 	}
 
-	public static Result delete(Integer eid) {
+	public static Result delete(String eid) {
 		return ok();
 	}
 
