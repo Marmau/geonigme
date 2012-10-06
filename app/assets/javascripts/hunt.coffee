@@ -1,8 +1,4 @@
-require ['maps/base_map', 'fixed_map'], (BaseMap) ->
-
-	stringAreaToLatLngBounds = (stringArea) ->
-		coords = (couple.split(',') for couple in stringArea.split('|'))
-		return new L.LatLngBounds(new L.LatLng(coords[0][0], coords[0][1]), new L.LatLng(coords[1][0], coords[1][1]))
+require ['maps/base_map', 'helpers', 'fixed_map'], (BaseMap, helpers) ->
 
 	# Choix du niveau
 	if '' == level = $('#level-hunt').val()
@@ -29,7 +25,7 @@ require ['maps/base_map', 'fixed_map'], (BaseMap) ->
 	markerNorthEast = null
 
 	if area = formArea.val()
-		bounds = stringAreaToLatLngBounds area
+		bounds = helpers.stringAreaToLatLngBounds area
 	else
 		bounds = new L.LatLngBounds(new L.LatLng(43.6, 3.851), new L.LatLng(43.622, 3.896))
 
@@ -71,7 +67,7 @@ require ['maps/base_map', 'fixed_map'], (BaseMap) ->
 
 	# Zone d'affichage
 	formArea.change ->
-		bounds = stringAreaToLatLngBounds $(this).val()
+		bounds = helpers.stringAreaToLatLngBounds $(this).val()
 		formAreaDisplay.val(
 			Math.roundFloat(bounds.getSouthWest().lat, 4) + ', ' + 
 			Math.roundFloat(bounds.getSouthWest().lng, 4) + ' | ' + 

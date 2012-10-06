@@ -9,11 +9,14 @@
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Step.submitCreateForm("1"), 'id -> "create-step", 'class -> "form-horizontal") {
+			@helper.form(action = routes.Step.submitCreateForm("1"), 
+				'id -> "create-step", 
+				'class -> "form-horizontal", 
+				Symbol("data-area") -> "43.609513463116514,3.8740539550781246|43.61240319852854,3.878839015960693") {
 				<blockquote>
 					Une étape regroupe un ensemble d'énigmes qui se déroule dans un périmètre géographique restreint. Le joueur sera guidé grâce à son smartphone vers la position de départ !
 				</blockquote>
-		        <div class="control-group">
+				<div class="control-group">
 					<label class="control-label" for="description-step">Description de l'étape</label>
 					<div class="controls">
 						<textarea class="span12" id="description-step" name="@formStep("description").name">@formStep("description").value</textarea>
