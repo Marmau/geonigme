@@ -2,7 +2,7 @@ package repository;
 
 import java.util.Date;
 
-import models.User;
+import models.old.User;
 
 public class UserRepository extends User {
 

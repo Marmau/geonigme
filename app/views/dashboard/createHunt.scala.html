@@ -11,12 +11,12 @@
 	<div class="row-fluid">
 		<div class="span4">
 			@helper.form(action = routes.Hunt.submitCreateForm(), 'id -> "create-hunt", 'class -> "form-horizontal") {
-				<div class="control-group @displayIfError(formHunt("name"), "error")">
+				<div class="control-group @displayIfError(formHunt("label"), "error")">
 					<label class="control-label" for="name-hunt">Nom</label>
 					<div class="controls">
-						<input class="span12" type="text" id="name-hunt" name="@formHunt("name").name" placeholder="Nom de la chasse" value="@formHunt("name").value" />
-						@formHunt("name").errors.map { error =>
-					        <p class="help-block error">@error</p>
+						<input class="span12" type="text" id="name-hunt" name="@formHunt("label").name" placeholder="Nom de la chasse" value="@formHunt("label").value" />
+						@formHunt("label").errors.map { error =>
+					        <p class="help-block error">@error.message</p>
 					    }
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 				<div class="form-actions">
-					<button type="submit" name="submit-hunt" class="btn pushable">Enregistrer</button>
+					<button type="submit" class="btn pushable">Enregistrer</button>
 				</div>
 			}
 		</div>

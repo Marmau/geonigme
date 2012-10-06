@@ -1,4 +1,4 @@
-package models;
+package models.old;
 
 import org.openrdf.annotations.Iri;
 

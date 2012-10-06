@@ -4,10 +4,22 @@ require ['maps/base_map', 'fixed_map'], (BaseMap) ->
 		coords = (couple.split(',') for couple in stringArea.split('|'))
 		return new L.LatLngBounds(new L.LatLng(coords[0][0], coords[0][1]), new L.LatLng(coords[1][0], coords[1][1]))
 
+	# Choix du niveau
+	if '' == level = $('#level-hunt').val()
+		level = 0
+		$('#level-hunt').val(level)
+
+	$('#level-hunt-group > div').removeClass('active')
+	$('#level-hunt-group > div').eq(level).addClass('active')
+
+	$('#level-hunt-group > div').click ->
+		$('#level-hunt').val($(this).index())
+
 
 	container = $('#create-hunt');
 	formArea = container.find('#area-hunt')
 	formAreaDisplay = container.find('#area-hunt-display')
+	
 	# Initialisation de la map
 	map = new BaseMap $('#hunt-map')
 

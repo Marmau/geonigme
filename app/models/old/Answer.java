@@ -1,8 +1,8 @@
-package models;
+package models.old;
 
 import gngm.Enigma;
 
-public class Answer implements gngm.Answer {
+public class Answer extends Resource implements gngm.Answer {
 
 	private gngm.Enigma answerOfEnigma;
 

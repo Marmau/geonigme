@@ -1,8 +1,8 @@
-package models;
+package models.old;
 
 import gngm.Enigma;
 
-public class Clue implements gngm.Clue {
+public class Clue extends Resource implements gngm.Clue {
 
 	Enigma clueOfEnigma;
 

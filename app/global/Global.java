@@ -19,6 +19,8 @@ public class Global extends GlobalSettings {
 			throw new RuntimeException(
 					"sesame.store.directory de application.conf doit être spécifié");
 		}
+		
+		initializeFormatters();
 	}
 
 	@Override
@@ -27,5 +29,9 @@ public class Global extends GlobalSettings {
 
 		// Extinction de Sésame
 		Sesame.shutdown();
+	}
+	
+	private void initializeFormatters() {
+
 	}
 }

@@ -1,4 +1,4 @@
-package models;
+package models.old;
 
 import gngm.Answer;
 import gngm.Clue;
@@ -6,10 +6,10 @@ import gngm.Step;
 
 import java.util.Set;
 
-public class Enigma implements gngm.Enigma {
+public class Enigma extends Resource implements gngm.Enigma {
 
-	private Set<gngm.Answer> answers;
-	private Set<gngm.Clue> clues;
+	private Set<Answer> answers;
+	private Set<Clue> clues;
 	private Step enigmaOfStep;
 
 	@Override
@@ -19,7 +19,7 @@ public class Enigma implements gngm.Enigma {
 
 	@Override
 	public void setAnswers(Set<? extends Answer> answers) {
-		this.answers = (Set<gngm.Answer>) answers;
+		this.answers = (Set<Answer>) answers;
 
 	}
 
@@ -30,7 +30,7 @@ public class Enigma implements gngm.Enigma {
 
 	@Override
 	public void setClues(Set<? extends Clue> clues) {
-		this.clues = (Set<gngm.Clue>) clues;
+		this.clues = (Set<Clue>) clues;
 
 	}
 

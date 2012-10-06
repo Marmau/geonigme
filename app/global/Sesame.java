@@ -41,15 +41,29 @@ public class Sesame {
 
 		ObjectRepositoryFactory factory = new ObjectRepositoryFactory();
 		ObjectRepositoryConfig config = factory.getConfig();
+		
 
 		ObjectRepository or = null;
 		try {
+//			config.addConcept(models.concepts.Hunt.class);
+//			config.addBehaviour(models.Resource.class);
+//			config.addBehaviour(models.Hunt.class);
+//			config.addBehaviour(models.Tag.class);
+//			config.addBehaviour(models.FileClue.class);
+//			config.addBehaviour(models.Answer.class);
+//			config.addBehaviour(models.GeolocatedAnswer.class);
+//			config.addBehaviour(models.TextAnswer.class);
+//			config.addBehaviour(models.Step.class);
+//			config.addBehaviour(models.Enigma.class);
+//			config.addBehaviour(models.Mark.class);
+//			config.addBehaviour(models.User.class);
+			
 			or = factory.createRepository(config, r);
 			or.initialize();
 			Sesame.connection = or.getConnection();
 		} catch (RepositoryConfigException | RepositoryException e) {
 			e.printStackTrace();
-			throw new RuntimeException();
+			throw new RuntimeException("Erreur à l'initialisation, redémarrez Play!");
 		}
 	}
 

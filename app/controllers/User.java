@@ -5,7 +5,7 @@ import java.util.Date;
 import play.data.Form;
 import play.mvc.*;
 
-import models.*;
+import models.old.*;
 import repository.UserRepository;
 
 public class User extends Controller {
@@ -13,9 +13,9 @@ public class User extends Controller {
 	static String pattern = "([^A-Za-z0-9]+)";
 
 	public static Result submitLoginForm() {
-		Form<models.User> userForm = form(models.User.class);
+		Form<models.old.User> userForm = form(models.old.User.class);
 
-		models.User userResponse = userForm.bindFromRequest().get();
+		models.old.User userResponse = userForm.bindFromRequest().get();
 		String mdp = userResponse.getMdp();
 		String login = userResponse.getLogin();
 
@@ -57,8 +57,8 @@ public class User extends Controller {
 	}
 
 	public static Result submitRegisterForm() {
-		Form<models.User> userForm = form(models.User.class);
-		models.User userResponse = userForm.bindFromRequest().get();
+		Form<models.old.User> userForm = form(models.old.User.class);
+		models.old.User userResponse = userForm.bindFromRequest().get();
 		
 		String mdp = userResponse.getMdp();
 		String login = userResponse.getLogin();

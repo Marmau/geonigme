@@ -1,6 +1,6 @@
-package models;
+package models.old;
 
-public class Mark implements gngm.Mark {
+public class Mark extends Resource implements gngm.Mark {
 
 	private Float value;
 

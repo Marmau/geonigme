@@ -3,8 +3,8 @@ package forms;
 import play.data.validation.Constraints.Required;
 
 public class Hunt {
-	@Required
-	public String name;
+	@Required(message="Vous devez spécifier un nom à votre chasse.")
+	public String label;
 
 	@Required
 	public Integer level = 1;

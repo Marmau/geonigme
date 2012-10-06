@@ -117,13 +117,6 @@
 	rdfs:domain :Area ;
 	rdfs:range geo:Point .
 
-:tag 
-	rdf:type owl:ObjectProperty ;
-	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
-	rdfs:domain :Hunt ;
-	rdfs:range tags:Tag ;
-	rdfs:subPropertyOf tags:taggedWithTag .
-
 :area
 	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ; 
@@ -142,12 +135,6 @@
 	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ; 
 	rdfs:range xsd:dateTime .
-
-:name
-	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
-	rdfs:domain :Hunt ; 
-	rdfs:range xsd:string .
 
 :description 
 	rdf:type owl:DatatypeProperty , owl:FunctionalProperty ; 
@@ -195,12 +182,6 @@
 	rdfs:domain :Position ;
 	rdfs:range xsd:string .
 
-:alternative
-	rdf:type owl:DatatypeProperty ;
-	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
-	rdfs:domain :TextAnswer ;
-	rdfs:range xsd:string .
-
 #################################################################
 #
 #    Classes
@@ -209,22 +190,27 @@
 
 :Hunt 
 	rdf:type owl:Class ;
+	rdfs:subClassOf rdfs:Resource ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :Enigma 
 	rdf:type owl:Class ;
+	rdfs:subClassOf rdfs:Resource ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :Step 
-	rdf:type owl:Class , geo:SpatialThing ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf rdfs:Resource , geo:SpatialThing ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :Clue 
 	rdf:type owl:Class ;
+	rdfs:subClassOf rdfs:Resource ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :FileClue 
 	rdf:type owl:Class ;
+	rdfs:subClassOf :Clue ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :PictureClue 
@@ -244,6 +230,7 @@
 
 :Mark 
 	rdf:type owl:Class ;
+	rdfs:subClassOf rdfs:Resource ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :Position 
@@ -253,11 +240,12 @@
 
 :Answer 
 	rdf:type owl:Class ;
+	rdfs:subClassOf rdfs:Resource ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :GeolocatedAnswer 
-	rdf:type owl:Class , geo:SpatialThing ; 
-	rdfs:subClassOf :Answer ;
+	rdf:type owl:Class ; 
+	rdfs:subClassOf :Answer , geo:SpatialThing ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 :TextAnswer 
@@ -267,6 +255,7 @@
 
 :Area 
 	rdf:type owl:Class ;
+	rdfs:subClassOf rdfs:Resource ;
 	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> .
 
 
@@ -277,11 +266,18 @@
 #
 #################################################################
 
+# Rdfs
+rdfs:label rdfs:range xsd:string .
+
 # Tags
 
 tags:Tag rdf:type owl:Class .
 
-tags:taggedWithTag rdf:type owl:ObjectProperty .
+tags:taggedWithTag 
+	rdf:type owl:ObjectProperty ;
+	rdfs:domain :Hunt ;
+	rdfs:range tags:Tag .
+
 
 tags:isTagOf rdf:type owl:ObjectProperty .
 
@@ -295,10 +291,10 @@ geo:Point rdf:type owl:Class .
 geo:SpatialThing rdf:type owl:Class .
 
 geo:lat rdf:type owl:FunctionalProperty ;
-	rdfs:range xsd:string .
+	rdfs:range xsd:float .
 
 geo:long rdf:type owl:FunctionalProperty ;
-	rdfs:range xsd:string .
+	rdfs:range xsd:float .
 
 # User
 

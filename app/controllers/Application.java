@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.Set;
-
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
@@ -9,13 +7,12 @@ import org.openrdf.repository.object.ObjectConnection;
 import forms.*;
 import global.Sesame;
 import models.Hunt;
+import models.Step;
 import play.data.Form;
 import play.mvc.*;
 
-import views.html.*;
-
 public class Application extends Controller {
-    
+
 	public static Result index() {
 		return ok(views.html.global.index.render());
 	}
@@ -28,7 +25,7 @@ public class Application extends Controller {
 	public static Result login() {
 		Form<Login> formLogin = form(Login.class);
 		Form<Register> formRegister = form(Register.class);
-				
+
 		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 
@@ -36,10 +33,17 @@ public class Application extends Controller {
 		Hunt h = new Hunt();
 		h.setLevel(3);
 		h.setPublished(false);
+		Step s = new Step();
+		s.setLat(3.443f);
+		h.addStep(s);
 
 		ObjectConnection oc = Sesame.getObjectConnection();
 		oc.clear();
 		oc.addObject(h);
+
+		Hunt h2 = new Hunt();
+		h2.setLevel(1);
+		oc.addObject("http://example.com/1", h2);
 
 		return ok();
 	}
@@ -48,14 +52,25 @@ public class Application extends Controller {
 			QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
-		Set<gngm.Hunt> result = oc.getObjects(gngm.Hunt.class).asSet();
+		Hunt h = oc.getObject(Hunt.class, "http://example.com/1");
+		System.out.println(h.getLabel());
+		System.out.println(h.getLevel());
+		System.out.println(h.isPublished());
+		System.out.println(h.getCreatedAt());
+		for (Step s : h.getSteps()) {
+			System.out.println(s.getLat());
+		}
 
-		for (gngm.Hunt h : result) {
-			System.out.println(h.getLevel());
-			System.out.println(h.getPublished());
+		org.openrdf.result.Result<Hunt> h3 = h.getHuntsWithLevel(3);
+		h = h3.next();
+		System.out.println(h.getLabel());
+		System.out.println(h.getLevel());
+		System.out.println(h.isPublished());
+		System.out.println(h.getCreatedAt());
+		for (Step s : h.getSteps()) {
+			System.out.println(s.getLat());
 		}
 
 		return ok();
 	}
-
 }
