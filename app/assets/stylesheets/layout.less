@@ -64,6 +64,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     border: solid 1px @colorClearBlue;
     background: transparent;
     color: @colorClearBlue;
+    .box-shadow(none);
 
     &:focus {
         .box-shadow(none);
@@ -199,41 +200,47 @@ label {
 }
 
 .btn-arrow-green {
-    position: relative;
-    border: solid 2px @colorGreen;
-    border-right: none;
-    background: @colorGreen;
-    padding: 0px 5px;
-    color: white;
-    font-size: 24px;
-    line-height: 32px;
-    height: 32px;
-    font-weight: bold;
-    outline: none;
-
-    &:hover {
-        color: white;
-        text-decoration: none;
+    overflow: hidden;
+    a {
+        display: inline-block;
+        position: relative;
+        border: solid 2px @colorGreen;
+        border-right: none;
         background: @colorGreen;
+        color: white;
+        font-size: 24px;
+        padding: 5px 5px;
+        font-weight: bold;
         outline: none;
-    }
 
-    &:before {
-        content: "";
-        border: solid transparent;
-        height: 0;
-        left: 100%;
-        position: absolute;
-        width: 0;
-        border-width: 18px;
-        border-left-color: @colorGreen;
-        top: -2px;
+        &:hover {
+            color: white;
+            text-decoration: none;
+            background: @colorGreen;
+            outline: none;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent;
+            border-left: 15px solid @colorGreen;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            left: 100%;
+            z-index: 2;
+        }
     }
+  
 }
 
 .big {
     font-size: 24px;
-    line-height: 32px;
+    line-height: initial;
     font-weight: bold;
 }
 
@@ -274,19 +281,19 @@ nav {
                 background: @colorGreen;
                 position: relative;
 
-                &:after {
+                &:before {
                     content: "";
                     display: inline-block;
                     width: 0px;
                     height: 0px;
                     vertical-align: top;
-                    border-top: 10px solid @colorGreen;
-                    border-right: 8px solid transparent;
-                    border-left: 8px solid transparent;
+                    border-top: 15px solid @colorGreen;
+                    border-right: 10px solid transparent;
+                    border-left: 10px solid transparent;
                     position: absolute;
                     bottom: -10px;
                     left: 50%;
-                    margin-left: -8px;
+                    margin-left: -10px;
                 }
             }
 

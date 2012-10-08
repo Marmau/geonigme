@@ -1,7 +1,9 @@
 require ['maps/base_map', 'renumber', 'fixed_map'], (BaseMap) ->
 
+	### Gestion de la map ###
 	# Initialisation de la map
 	map = new BaseMap $('#enigma-map')
+
 
 	### Evenements du formulaire ###
 
@@ -42,9 +44,9 @@ require ['maps/base_map', 'renumber', 'fixed_map'], (BaseMap) ->
 			$(this).val('')
 
 		if (type == 0)
-			container.find('.icon-type-clue').addClass('icon-comment') 
-		else 
-			container.find('.icon-type-clue').addClass('icon-file')
+			container.find('.icon-type-clue').removeClass('icon-file').addClass('icon-comment') 
+		else
+			container.find('.icon-type-clue').removeClass('icon-comment').addClass('icon-file')
 
 		renumberClues()
 
@@ -73,8 +75,8 @@ require ['maps/base_map', 'renumber', 'fixed_map'], (BaseMap) ->
 		modalEditClue.find('.clue-type-btn-group').children().removeClass('active')
 		modalEditClue.find('.clue-controls').addClass('hide')
 
-		$(modalEditClue.find('.clue-type-btn-group').children().get(type)).addClass('active')
-		$(modalEditClue.find('.clue-controls').get(type)).removeClass('hide')
+		modalEditClue.find('.clue-type-btn-group').children().eq(type).addClass('active')
+		modalEditClue.find('.clue-controls').eq(type).removeClass('hide')
 
 		container.find('input').each ->
 			modalEditClue.find('[data-bind="' + $(this).attr('data-bind') + '"]').val($(this).val())

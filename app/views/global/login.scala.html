@@ -40,10 +40,14 @@
                 <div><strong>Sinon, connectez-vous !</strong></div>
             </div>
             @helper.form(action = routes.User.submitLoginForm(), 'id -> "login-form") {
-                <label class="uppercase focus" for="connection-input-login">Pseudonyme</label>
-                <input name="@formConnection("login").name()" id="connection-input-login" type="text" class="span12" value="@formConnection("login").value()" autofocus />
-                <label class="uppercase" for="connection-input-password">Mot de passe</label>
-                <input name="@formConnection("password").name()" id="connection-input-password" type="password" class="span12" value="@formConnection("password").value()" />
+                <div>
+                    <label class="uppercase focus" for="connection-input-login">Pseudonyme</label>
+                    <input name="@formConnection("login").name()" id="connection-input-login" type="text" class="span12" value="@formConnection("login").value()" autofocus />
+                </div>
+                <div>
+                    <label class="uppercase" for="connection-input-password">Mot de passe</label>
+                    <input name="@formConnection("password").name()" id="connection-input-password" type="password" class="span12" value="@formConnection("password").value()" />
+                </div>
                 <button type="submit" class="btn pushable pull-right uppercase">Me connecter</button>
             }
             <p class="pagination-right">

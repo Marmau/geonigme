@@ -1,12 +1,14 @@
-define ['jquery', 'helpers', 'leaflet'], ($, helpers) ->
+define ['jquery', 'helpers', 'maps/icons', 'leaflet'], ($, helpers, icons) ->
 	class PositionAccuracy
 		constructor: (@map, @formPosition, @formAccuracy) ->
 			@markerCenter = new L.Marker(new L.LatLng(43.64, 3.93), {
-				draggable: true
+				draggable: true,
+				icon: icons.blueIcon
 			})
 
 			@markerRadius = new L.Marker(new L.LatLng(43.635, 3.928), {
-				draggable: true
+				draggable: true,
+				icon: icons.smallBlackIcon
 			})
 
 			@circleArea = new L.Circle(@markerCenter.getLatLng(), @markerCenter.getLatLng().distanceTo(@markerRadius.getLatLng()))
@@ -20,6 +22,12 @@ define ['jquery', 'helpers', 'leaflet'], ($, helpers) ->
 				@write()
 
 			@oldPosition = @markerCenter.getLatLng()
+
+			@formAccuracy.keydown =>
+				window.setTimeout =>
+					@drawWithValueForms()
+				, 10
+
 
 		drawCenterBounds: (bounds) ->
 			latLngMarker = bounds.getCenter()
@@ -35,26 +43,27 @@ define ['jquery', 'helpers', 'leaflet'], ($, helpers) ->
 
 			latLngCenter = helpers.stringPositionToLatLng(@formPosition.val())
 
-			latStart = latLngCenter.lat * Math.PI / 180
-			lngStart = latLngCenter.lng * Math.PI / 180
+			latStart = latLngCenter.lat * L.LatLng.DEG_TO_RAD
+			lngStart = latLngCenter.lng * L.LatLng.DEG_TO_RAD
 			R = 6378137
-			dist = accuracy / R
+
+			dist = @formAccuracy.val() / R
 			brng = 2.35; # radians = 135 degres
-			lat = Math.asin(Math.sin(latStart) * Math.cos(dist)
-					  + Math.cos(latStart) * Math.sin(dist) * Math.cos(brng))
+			lat = Math.asin(Math.sin(latStart) * Math.cos(dist) + Math.cos(latStart) * Math.sin(dist) * Math.cos(brng))
 			lng = lngStart + Math.atan2(
-					  Math.sin(brng) * Math.sin(dist) * Math.cos(latStart),
-					  Math.cos(dist) - Math.sin(latStart) * Math.sin(lat)
+						Math.sin(brng) * Math.sin(dist) * Math.cos(latStart),
+						Math.cos(dist) - Math.sin(latStart) * Math.sin(lat)
 					)
 
-			latEnd = lat * 180 / Math.PI
-			lngEnd = lng * 180 / Math.PI
+			latEnd = lat * L.LatLng.RAD_TO_DEG
+			lngEnd = lng * L.LatLng.RAD_TO_DEG
 			latLngRadius = new L.LatLng(latEnd, lngEnd)
 
 			@markerCenter.setLatLng(latLngCenter)
 			@markerRadius.setLatLng(latLngRadius)
 
 			@oldPosition = @markerCenter.getLatLng()
+
 			@drawCircleArea()
 			@write()
 			
