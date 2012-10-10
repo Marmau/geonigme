@@ -7,7 +7,6 @@ import forms.Register;
 
 import play.data.Form;
 import play.mvc.*;
-import views.html.index;
 import models.Hunt;
 import repository.HuntRepository;
 

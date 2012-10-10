@@ -1,0 +1,98 @@
+@(hunt: models.Hunt)
+
+@import helpers._
+
+@mainDashboard("Voir la chasse", "show_hunt") {
+	<ul class="breadcrumb">
+		<li><a href="#">Tableau de bord</a></li>
+		<li><a>Nom de la chasse |<span class="small">Facile</span></a></li>
+	</ul>
+} {
+	<div class="row-fluid">
+		<div class="span4">
+			<section class="hunt">
+				<div id="tags-hunt">
+					<span class="tag"><i class="icon-tag icon-blue"></i>bidule</span>
+					<span class="tag"><i class="icon-tag icon-blue"></i>chouette</span>
+					<span class="tag"><i class="icon-tag icon-blue"></i>cool super</span>
+					<span class="tag"><i class="icon-tag icon-blue"></i>nulle</span>
+				</div>
+				<blockquote id="description-hunt">
+					Superbe description de la chasse. Superbe description de la chasse. Superbe description de la chasse. Superbe description de la chasse.
+				</blockquote>
+				<div class="pull-right actions">
+					<a href="#" class="pushable btn">Modifier</a>
+					<a href="#" class="pushable btn">Publier</a>
+				</div>
+			</section>
+			<section class="steps">
+				<div class="step">
+					<div class="actions pull-right">
+						<a class="small" href="#">Modifier</a>
+						<a class="small" href="#">Ajouter une étape</a>
+					</div>
+					<div class="select">
+						<select>
+							<option value="0">&Eacute;tape 1</option>
+							<option value="0">&Eacute;tape 2</option>
+						</select>
+					</div>
+					<blockquote>
+						Description de l'étape....
+						Description de l'étape....
+						Description de l'étape....
+						Description de l'étape....
+					</blockquote>
+				</div>
+			</section>
+			<section class="enigmas">
+				<div class="actions">
+					<a class="small pull-right" href="#">Ajouter une énigme</a>
+				</div>
+				<div></div>
+				<div class="accordion" id="accordion-enigmas">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-enigmas" href="#collapse-enigma1">
+								&Eacute;nigme 1
+							</a>
+						</div>
+						<div id="collapse-enigma1" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<blockquote>
+									Enoncé de l'énigme....
+									Enoncé de l'énigme....
+									Enoncé de l'énigme....
+									Enoncé de l'énigme....
+								</blockquote>
+								<div class="answer">
+									<h3>Réponses valides</h3>
+									<div>blabla, blabal</div>
+								</div>
+								<div class="clues">
+									<div class="clue">
+										<h3><i class="icon-comment icon-white"></i> Indice 1</h3>
+										<div class="clue-content">
+											blablablab lbal blab lablbl blab lbalbalbal blablbal
+										</div>
+									</div>
+									<div class="clue">
+										<h3><i class="icon-file icon-white"></i> Indice 2</h3>
+										<div class="clue-content">
+											Lien vers le fichier
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+		</div>
+		<div class="span8">
+			<div id="show-hunt-map" class="fixed-map map"></div>
+		</div>
+	</div>
+
+}

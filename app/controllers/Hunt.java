@@ -35,15 +35,11 @@ public class Hunt extends Controller {
 			DatatypeConfigurationException {
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
 
-		System.out.println("AJOUTE");
-
 		if (formHunt.hasErrors()) {
 			System.out.println(formHunt.errors());
 
 			return badRequest(views.html.dashboard.createHunt.render(formHunt));
 		} else {
-			System.out.println("AJOUTE");
-
 			forms.Hunt hunt = formHunt.get();
 			models.Hunt h = new models.Hunt();
 			h.setLabel(hunt.label);
@@ -55,9 +51,10 @@ public class Hunt extends Controller {
 				tag.setName(nameTag.trim());
 				tags.add(tag);
 			}
-//			h.setTags(tags);
+			// h.setTags(tags);
 
-			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
+			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar
+					.getInstance();
 			XMLGregorianCalendar xgcal = DatatypeFactory.newInstance()
 					.newXMLGregorianCalendar(gcal);
 			h.setCreatedAt(xgcal);
@@ -86,7 +83,15 @@ public class Hunt extends Controller {
 	}
 
 	public static Result show(String hid) {
-		return ok();
+		ObjectConnection oc = Sesame.getObjectConnection();
+		
+		models.Hunt h = null;
+		try {
+			h = oc.getObject(models.Hunt.class, models.Hunt.NS + hid);			
+		} catch (Exception e) {
+		}
+		
+		return ok(views.html.dashboard.showHunt.render(h));
 	}
 
 	public static Result publish(String hid) {
