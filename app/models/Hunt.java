@@ -148,7 +148,48 @@ public class Hunt {
 
 	@Sparql("PREFIX gngm:<http://geonigme.fr/rdf/ontology#>\n" +
 			"SELECT ?hunt WHERE { ?hunt gngm:level $level }")
-	public org.openrdf.result.Result<Hunt> getHuntsWithLevel(@Bind("level") Integer level) {
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsWithLevel(@Bind("level") Integer level) {
+		return null;
+	}
+	
+	@Sparql("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+			"PREFIX gngm: <http://geonigme.fr/rdf/ontology#>" +
+			"SELECT ?s WHERE { " +
+            	"?s rdf:type <" + NS +"> ." +
+            	"?s  gngm:cree ?date" +
+        	"}" +
+        	"ORDER BY ?date" +
+        	"LIMIT $number" +
+			"OFFSET $offset ")
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByCreationDate(@Bind("number") Integer number, @Bind("offset") Integer offset) {
+		return null;
+	}
+	
+	@Sparql("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+          "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+          "PREFIX gngm: <http://geonigme.fr/rdf/ontology#>" +
+          "SELECT ?s WHERE {" +
+            "?s rdf:type <NS> ." +
+            "?s rdfs:label ?label ." +
+            "?s gngm:cree ?date ." +
+            "?s gngm:note ?note ." +
+            "?note gngm:moyenne ?moyenne" +
+            "?s gngm:estPublie $published" +
+           "}" +
+           "ORDER BY DESC($order)" +
+           "LIMIT $number" +
+           "OFFSET $offset")
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByParams(@Bind("order") String order, @Bind("number") Integer number, @Bind("offset") Integer offset, @Bind("published") Boolean published) {
+		return null;
+	}
+	
+	@Sparql("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+			"PREFIX gngm: <http://geonigme.fr/rdf/ontology#>" +
+			"SELECT ?s WHERE {" +
+				"?s rdf:type <NS}> ." +
+				"?s gngm:createur <{$author}>" +
+			"}")
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsByAuthor(@Bind("author") String author) {
 		return null;
 	}
 }

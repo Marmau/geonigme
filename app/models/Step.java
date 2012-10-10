@@ -14,6 +14,15 @@ public class Step {
 	private gngm.Hunt stepOfHunt;
 	private Float lat;
 	private Float lng;
+	private Integer id;
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public Integer getId(){
+		return id;
+	}
 
 	@Iri("http://geonigme.fr/rdf/ontology#enigma")
 	public Set<Enigma> getEnigmas() {

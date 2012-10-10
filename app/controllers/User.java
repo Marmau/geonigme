@@ -1,12 +1,20 @@
 package controllers;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import javax.xml.datatype.Duration;
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.namespace.QName;
 
 import play.data.Form;
 import play.mvc.*;
 
 import models.old.*;
-import repository.UserRepository;
 
 public class User extends Controller {
 	
@@ -20,14 +28,14 @@ public class User extends Controller {
 		String login = userResponse.getLogin();
 
 		// Le modele user est à remplir avec les fonctions du userrepository (entre autre), il est utilisé pour le moment
-		UserRepository userRepo = new UserRepository();
+		models.User userRepo = new models.User();
 		//models.User user  = userRepo.findOneBy(array("pseudo" => login));
 		
 		
 	      //Vérifications
 	      String errors = "";
 
-	      if (userRepo == null || userRepo.getMdp() != mdp)
+	      if (userRepo == null || userRepo.getPasswordSha1Hash() != mdp)
 	        errors += "<div id=\"error-pseudo\">Le pseudo et/ou le mot de passe sont incorrects.</div>";
 
 	      if (errors.isEmpty()) {
@@ -40,8 +48,8 @@ public class User extends Controller {
 	    		  return ok();//views.html.manager-login);
 	      }
 	      else {
-	    	  userRepo.setLastConnection(new Date());
-	    	  session("user", userRepo.getLogin()); // id ?
+	    	  userRepo.setLastLoginTime(new Date());
+	    	  session("user", userRepo.getLoginName()); // id ?
 	        
 	          if (userResponse.getMode() == "mobile") 
 	    		  return ok();//views.html.play-selection);
@@ -67,7 +75,7 @@ public class User extends Controller {
 	    //Vérifications
 	    String errors = "";
 	    
-	    UserRepository userRepo = new UserRepository();
+	    models.User userRepo = new models.User();
 
 
 	      if (login.length() < 4)
@@ -88,23 +96,19 @@ public class User extends Controller {
 	     
 	      if (errors.isEmpty()) {
 	        flash("errors", errors);
-	        flash("mode", userRepo.getMode());
-	        if (userRepo.getMode() == "mobile")
-	          return ok();//views.html.play-login);
-	        else
-	          return ok();//views.html.manager-login);
+	        return ok(views.html.play-login);
 	      }
 	      else {
 	    	  userRepo.setMail(mail);
-	    	  userRepo.setLogin(login);
-	    	  userRepo.setMdp(mdp);
+	    	  userRepo.setLoginName(login);
+	    	  userRepo.setPasswordSha1Hash(mdp);
 	    	  userRepo.setInscriptionDate(new Date());
-	    	  userRepo.setLastConnection(new Date());
+	    	  userRepo.setLastLoginTime(new Date());
 	    	  
 	    	  // gestion de la persistence
 	    	  // TODO
 
-	        session("user", userRepo.getLogin()); // id ?
+	        session("user", userRepo.getLoginName()); // id ?
 	        
 	        if (userResponse.getMode() == "mobile") 
 	        	return ok();//views.html.play-selection);
