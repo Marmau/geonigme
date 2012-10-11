@@ -1,4 +1,4 @@
-define ['jquery', 'helpers', 'maps/icons', 'leaflet'], ($, helpers, icons) ->
+define ['jquery', 'helpers', 'maps/icons', 'leaflet'], ($, Helpers, icons) ->
 	class PositionAccuracy
 		constructor: (@map, @formPosition, @formAccuracy) ->
 			@markerCenter = new L.Marker(new L.LatLng(43.64, 3.93), {
@@ -41,7 +41,7 @@ define ['jquery', 'helpers', 'maps/icons', 'leaflet'], ($, helpers, icons) ->
 			if @formPosition.val() == '' or @formAccuracy.val() == '' 
 				return
 
-			latLngCenter = helpers.stringPositionToLatLng(@formPosition.val())
+			latLngCenter = Helpers.stringPositionToLatLng(@formPosition.val())
 
 			latStart = latLngCenter.lat * L.LatLng.DEG_TO_RAD
 			lngStart = latLngCenter.lng * L.LatLng.DEG_TO_RAD

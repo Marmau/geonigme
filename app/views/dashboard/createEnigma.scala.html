@@ -6,13 +6,18 @@
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
 		<li><a href="#">Nom de la chasse</a></li>
-		<li><a href="#">Etape 1</a></li>
+		<li><a href="#">&Eacute;tape 1</a></li>
 		<li><a>Nouvelle énigme</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Enigma.submitCreateForm("1"), 'id -> "create-enigma", 'class -> "form-horizontal") {
+			@helper.form(action = routes.Enigma.submitCreateForm("1"), 
+				'id -> "create-enigma", 
+				'class -> "form-horizontal",
+				Symbol("data-area") -> "43.609513463116514,3.8740539550781246|43.61240319852854,3.878839015960693",
+				Symbol("data-start-position") -> "43.610,3.875",
+				Symbol("data-start-accuracy") -> "40") {
 				<div class="control-group">
 					<label class="control-label" for="description-enigma">Enoncé de l'énigme</label>
 					<div class="controls">
@@ -56,15 +61,15 @@
 					<div class="control-group">
 						<label class="control-label">Position</label>
 						<div class="controls">
-							<input type="text" class="span12" id="position-response-display" readonly="readonly" />
-							<input type="hidden" id="position-response" value="@formEnigma("answer.position").value" name="@formEnigma("answer.position").name" readonly="readonly" />
+							<input type="text" class="span12" id="position-answer-display" readonly="readonly" />
+							<input type="hidden" id="position-answer" value="@formEnigma("answer.position").value" name="@formEnigma("answer.position").name" readonly="readonly" />
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="enigma-accuracy">Précision</label>
+						<label class="control-label" for="accuracy-answer">Précision</label>
 						<div class="controls">
 							<div class="input-append">
-								<input type="text" class="span12" id="enigma-accuracy" value="@formEnigma("answer.accuracy").value" name="@formEnigma("answer.accuracy").name" />
+								<input type="text" class="span12" id="accuracy-answer" value="@formEnigma("answer.accuracy").value" name="@formEnigma("answer.accuracy").name" />
 								<span class="add-on">mètres<span>
 							</div>
 							<p class="help-block">Placez le marqueur sur la position qui valide l'enigme</p>

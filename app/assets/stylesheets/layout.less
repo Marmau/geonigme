@@ -59,6 +59,10 @@ textarea {
     }
 }
 
+.actions {
+    overflow: hidden;
+}
+
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
     .border-radius(0px);
     border: solid 1px @colorClearBlue;
@@ -73,6 +77,32 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     }
 }
 
+.select {
+    position: relative;
+    display: inline-block;
+    
+    select {
+        padding: 0px 5px;
+        outline: none;
+        line-height: initial;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        &:focus, &:active {
+            outline: none;
+        }
+    }
+
+    &:after {
+        content: "▼";
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        color: @colorDarkBlue;
+        padding: 5px 8px;
+        pointer-events: none;
+    }
+}
 .control-group.error input, .control-group.error select, .control-group.error textarea {
     .box-shadow(none);
 
@@ -242,6 +272,13 @@ label {
     font-size: 24px;
     line-height: initial;
     font-weight: bold;
+}
+
+.small {
+    font-size: 11px;
+    font-weight: normal;
+    text-transform: lowercase;
+    line-height: initial;
 }
 
 [class*="span"].left-glue {
@@ -447,4 +484,62 @@ q::before, q::after, blockquote::before, blockquote::after {
             opacity: 1;
         }
     }
+}
+
+.leaflet-popup-content-wrapper {
+    .border-radius(0px);
+    .leaflet-popup-content {
+        margin: 4px 30px 5px 4px;
+    }
+}
+
+.icon-blue {
+    background-image: url("../images/glyphicons-halflings-blue.png");
+}
+
+.accordion {
+    .accordion-group {
+        .border-radius(0px);
+        border-color: @colorDarkBlue;
+
+        .accordion-inner {
+            border-color: @colorDarkBlue;
+            padding-left: 0px;
+
+            h3 {
+                background: @colorDarkBlue;
+                color: white;
+                text-transform: uppercase;
+                font-size: 13px;
+                margin: 0px;
+                padding: 2px 5px;
+                line-height: initial;
+                display: inline-block;
+
+                & + * {
+                    padding-left: 15px;
+                }
+            }
+        }
+
+        .accordion-heading {
+            background: @colorDarkBlue;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            .accordion-toggle {
+                padding: 3px 15px;
+            }
+
+            a {
+                color: white;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    
 }

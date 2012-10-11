@@ -1,18 +1,49 @@
-require ['maps/base_map', 'renumber', 'fixed_map'], (BaseMap) ->
+require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'helpers', 'renumber', 'fixed_map'], (BaseMap, PositionAccuracy, Icon, Helpers) ->
+
+	container = $('#create-enigma')
+	formPosition = container.find('#position-answer')
+	formPositionDisplay = container.find('#position-answer-display')
+	formAccuracy = container.find('#accuracy-answer')
+
+
 
 	### Gestion de la map ###
 	# Initialisation de la map
 	map = new BaseMap $('#enigma-map')
+	pa = new PositionAccuracy map, formPosition, formAccuracy
 
+	formPosition.change ->
+		coords = Helpers.stringPositionToLatLng($(this).val())
+		formPositionDisplay.val(
+			Math.roundFloat(coords.lat, 4) + ', ' + 
+			Math.roundFloat(coords.lng, 4)
+		)
+
+	areaHunt = Helpers.stringAreaToLatLngBounds(container.data('area'))
+	startPositionStep = Helpers.stringPositionToLatLng(container.data('start-position'))
+	startAccuracyStep = container.data('start-accuracy')
+
+	Helpers.drawZoneHunt(map, areaHunt)
+	Helpers.drawStartStep(map, startPositionStep, startAccuracyStep)
+
+	if formPosition.val() != '' and formAccuracy.val() != ''
+		pa.drawWithValueForms()
+	else
+		pa.drawCenterBounds(areaHunt)
 
 	### Evenements du formulaire ###
 
 	# Toggle type de réponse
-	$('.answer-type-btn-group > div').click ->
-		$('.answer-controls').addClass 'hide'
-		$($(this).data('selector')).removeClass 'hide'
-		$(this).parent().siblings('input').val($(this).index())
+	container.find('.answer-type-btn-group > div').click ->
+		type = $(this).index()
+		container.find('.answer-controls').addClass 'hide'
+		container.find($(this).data('selector')).removeClass 'hide'
+		$(this).parent().siblings('input').val(type)
 
+		if type == 1
+			pa.displayMarkerCenter()
+		else 
+			pa.hideMarkerCenter()
 
 	# Toggle modal ajout indice
 	$('.clue-type-btn-group > div').click ->
@@ -137,9 +168,6 @@ require ['maps/base_map', 'renumber', 'fixed_map'], (BaseMap) ->
 		newLastInput.children('input').val('');
 		disableLastButtonIfMax()
 		
-	test = containerTextAnswers.children('.text-answer .btn').last()
-
-
 	containerTextAnswers.children('.text-answer .btn').bind('click', removeTextAnswer)
 	containerTextAnswers.children('.text-answer .btn').last().unbind().bind('click', addTextAnswer)
 
