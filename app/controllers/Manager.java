@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import forms.Login;
 import forms.Register;
@@ -8,7 +9,6 @@ import forms.Register;
 import play.data.Form;
 import play.mvc.*;
 import models.Hunt;
-import repository.HuntRepository;
 
 public class Manager extends Controller {
 
@@ -17,8 +17,8 @@ public class Manager extends Controller {
 		if (user == null)
 			return ok(views.html.global.index.render());
 		
-		HuntRepository huntRepo = new HuntRepository();
-		ArrayList<Hunt> hunts = huntRepo.getHuntsByAuthor(Integer.parseInt(user));
+		models.Hunt huntRepo = new models.Hunt();
+		Set<org.openrdf.result.Result<Hunt>> hunts = huntRepo.getHuntsByAuthor(user);
 		
 		return ok();//views.html.dashboard.mainDashboard.render("hunts"));
 		

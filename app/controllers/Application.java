@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.HashSet;
+
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
@@ -61,8 +63,8 @@ public class Application extends Controller {
 			System.out.println(s.getLat());
 		}
 
-		org.openrdf.result.Result<Hunt> h3 = h.getHuntsWithLevel(3);
-		h = h3.next();
+		HashSet<org.openrdf.result.Result<Hunt>> h3 = (HashSet<org.openrdf.result.Result<Hunt>>) h.getHuntsWithLevel(3);
+		h = (Hunt) h3.iterator().next();
 		System.out.println(h.getLabel());
 		System.out.println(h.getLevel());
 		System.out.println(h.isPublished());

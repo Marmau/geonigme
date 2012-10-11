@@ -9,8 +9,6 @@ import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import models.old.Tag;
-
 import org.openrdf.annotations.Bind;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
@@ -21,6 +19,9 @@ import user.User;
 public class Hunt {
 
 	public static final String NS = "http://geonigme.fr/hunt/";
+	public static final String RDF = "<http://www.w3.org/1999/02/22-rdf-syntax-ns#>";
+	public static final String RDFS = "<http://www.w3.org/2000/01/rdf-schema#>";
+	public static final String GNGM = "<http://geonigme.fr/rdf/ontology#>";
 
 	private Integer level;
 	private Area area;
@@ -146,9 +147,50 @@ public class Hunt {
 		this.tags = tags;
 	}
 
-	@Sparql("PREFIX gngm:<http://geonigme.fr/rdf/ontology#>\n" +
+	@Sparql("PREFIX gngm: " + GNGM +
 			"SELECT ?hunt WHERE { ?hunt gngm:level $level }")
-	public org.openrdf.result.Result<Hunt> getHuntsWithLevel(@Bind("level") Integer level) {
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsWithLevel(@Bind("level") Integer level) {
+		return null;
+	}
+	
+	@Sparql("PREFIX rdf: " + RDF +
+			"PREFIX gngm: " + GNGM +
+			"SELECT ?s WHERE { " +
+            	"?s rdf:type <" + NS +"> ." +
+            	"?s  gngm:cree ?date" +
+        	"}" +
+        	"ORDER BY ?date" +
+        	"LIMIT $number" +
+			"OFFSET $offset ")
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByCreationDate(@Bind("number") Integer number, @Bind("offset") Integer offset) {
+		return null;
+	}
+	
+	@Sparql("PREFIX rdf: " + RDF +
+          "PREFIX rdfs: " + RDFS +
+          "PREFIX gngm: " + GNGM +
+          "SELECT ?s WHERE {" +
+            "?s rdf:type <" + NS + "> ." +
+            "?s rdfs:label ?label ." +
+            "?s gngm:cree ?date ." +
+            "?s gngm:note ?note ." +
+            "?note gngm:moyenne ?moyenne" +
+            "?s gngm:estPublie $published" +
+           "}" +
+           "ORDER BY DESC($order)" +
+           "LIMIT $number" +
+           "OFFSET $offset")
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByParams(@Bind("order") String order, @Bind("number") Integer number, @Bind("offset") Integer offset, @Bind("published") Boolean published) {
+		return null;
+	}
+	
+	@Sparql("PREFIX rdf: " + RDF +
+			"PREFIX gngm: " + GNGM +
+			"SELECT ?s WHERE {" +
+				"?s rdf:type <" + NS + "> ." +
+				"?s gngm:createur <{$author}>" +
+			"}")
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsByAuthor(@Bind("author") String author) {
 		return null;
 	}
 }
