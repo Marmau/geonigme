@@ -9,8 +9,6 @@ import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import models.old.Tag;
-
 import org.openrdf.annotations.Bind;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;

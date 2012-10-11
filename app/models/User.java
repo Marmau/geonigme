@@ -13,6 +13,8 @@ import org.openrdf.annotations.Sparql;
 @Iri("http://schemas.talis.com/2005/user/schema#User")
 public class User {
 	
+	public static final String NS = "http://geonigme.fr/user/";
+	
 	private String creator;
 	private Date inscriptionDate;
 	private Date lastLoginTime;
