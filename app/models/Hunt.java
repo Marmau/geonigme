@@ -21,6 +21,9 @@ import user.User;
 public class Hunt {
 
 	public static final String NS = "http://geonigme.fr/hunt/";
+	public static final String RDF = "<http://www.w3.org/1999/02/22-rdf-syntax-ns#>";
+	public static final String RDFS = "<http://www.w3.org/2000/01/rdf-schema#>";
+	public static final String GNGM = "<http://geonigme.fr/rdf/ontology#>";
 
 	private Integer level;
 	private Area area;
@@ -146,14 +149,14 @@ public class Hunt {
 		this.tags = tags;
 	}
 
-	@Sparql("PREFIX gngm:<http://geonigme.fr/rdf/ontology#>\n" +
+	@Sparql("PREFIX gngm: " + GNGM +
 			"SELECT ?hunt WHERE { ?hunt gngm:level $level }")
 	public Set<org.openrdf.result.Result<Hunt>> getHuntsWithLevel(@Bind("level") Integer level) {
 		return null;
 	}
 	
-	@Sparql("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
-			"PREFIX gngm: <http://geonigme.fr/rdf/ontology#>" +
+	@Sparql("PREFIX rdf: " + RDF +
+			"PREFIX gngm: " + GNGM +
 			"SELECT ?s WHERE { " +
             	"?s rdf:type <" + NS +"> ." +
             	"?s  gngm:cree ?date" +
@@ -165,11 +168,11 @@ public class Hunt {
 		return null;
 	}
 	
-	@Sparql("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
-          "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
-          "PREFIX gngm: <http://geonigme.fr/rdf/ontology#>" +
+	@Sparql("PREFIX rdf: " + RDF +
+          "PREFIX rdfs: " + RDFS +
+          "PREFIX gngm: " + GNGM +
           "SELECT ?s WHERE {" +
-            "?s rdf:type <NS> ." +
+            "?s rdf:type <" + NS + "> ." +
             "?s rdfs:label ?label ." +
             "?s gngm:cree ?date ." +
             "?s gngm:note ?note ." +
@@ -183,10 +186,10 @@ public class Hunt {
 		return null;
 	}
 	
-	@Sparql("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
-			"PREFIX gngm: <http://geonigme.fr/rdf/ontology#>" +
+	@Sparql("PREFIX rdf: " + RDF +
+			"PREFIX gngm: " + GNGM +
 			"SELECT ?s WHERE {" +
-				"?s rdf:type <NS}> ." +
+				"?s rdf:type <" + NS + "> ." +
 				"?s gngm:createur <{$author}>" +
 			"}")
 	public Set<org.openrdf.result.Result<Hunt>> getHuntsByAuthor(@Bind("author") String author) {
