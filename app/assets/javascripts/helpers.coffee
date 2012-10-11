@@ -50,4 +50,39 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 		map.addLayer(circle)
 		map.addLayer(marker)
 
+		return {
+			'circle': circle,
+			'marker': marker 
+		}
+
+	Helpers.drawGeolocatedAnswer = (map, start, accuracy) ->
+		circle = new L.Circle(start, accuracy, {
+			color: '#B94A48',
+			weight: 2,
+			opacity: 1
+			fill: true,
+			fillColor: '#B94A48',
+			fillOpacity: 0.2
+		})
+
+		marker = new L.Circle(start, 4, {
+			color: '#B94A48',
+			weight: '2',
+			opacity: 1,
+			fill: true,
+			fillColor: '#B94A48',
+			fillOpacity: 0.9
+		})
+
+		marker.bindPopup('Arrivée')
+		circle.bindPopup('Arrivée')
+
+		map.addLayer(circle)
+		map.addLayer(marker)
+
+		return {
+			'circle': circle,
+			'marker': marker 
+		}		
+
 	return Helpers

@@ -9,7 +9,7 @@
 	</ul>
 } {
 	<div class="row-fluid">
-		<div class="span4">
+		<div class="span4" id="show-hunt">
 			<section class="hunt">
 				<div id="tags-hunt">
 					<span class="tag"><i class="icon-tag icon-blue"></i>bidule</span>
@@ -20,23 +20,23 @@
 				<blockquote id="description-hunt">
 					Superbe description de la chasse. Superbe description de la chasse. Superbe description de la chasse. Superbe description de la chasse.
 				</blockquote>
-				<div class="pull-right actions">
-					<a href="#" class="pushable btn">Modifier</a>
-					<a href="#" class="pushable btn">Publier</a>
+				<div class="actions">
+					<a href="#" class="action">Modifier</a>
+					<a href="#" class="action">Publier</a>
 				</div>
 			</section>
 			<section class="steps">
-				<div class="step">
-					<div class="actions pull-right">
-						<a class="small" href="#">Modifier</a>
-						<a class="small" href="#">Ajouter une étape</a>
+				<div class="step" id="step1">
+					<div class="actions">
+						<a href="#" class="action add-step">Ajouter une étape</a>
 					</div>
-					<div class="select">
+					<div class="select" id="select-step">
 						<select>
 							<option value="0">&Eacute;tape 1</option>
 							<option value="0">&Eacute;tape 2</option>
 						</select>
 					</div>
+					<a class="update-step pushable" href="#">Modifier</a>
 					<blockquote>
 						Description de l'étape....
 						Description de l'étape....
@@ -47,7 +47,7 @@
 			</section>
 			<section class="enigmas">
 				<div class="actions">
-					<a class="small pull-right" href="#">Ajouter une énigme</a>
+					<a href="#" class="action">Ajouter une énigme</a>
 				</div>
 				<div></div>
 				<div class="accordion" id="accordion-enigmas">
@@ -72,17 +72,20 @@
 								<div class="clues">
 									<div class="clue">
 										<h3><i class="icon-comment icon-white"></i> Indice 1</h3>
-										<div class="clue-content">
+										<div>
 											blablablab lbal blab lablbl blab lbalbalbal blablbal
 										</div>
 									</div>
 									<div class="clue">
 										<h3><i class="icon-file icon-white"></i> Indice 2</h3>
-										<div class="clue-content">
+										<div>
 											Lien vers le fichier
 										</div>
 									</div>
 								</div>
+							</div>
+							<div class="actions">
+								<a href="#" class="action update-enigma">Modifier</a>
 							</div>
 						</div>
 					</div>
