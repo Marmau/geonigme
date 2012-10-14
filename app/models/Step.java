@@ -10,11 +10,12 @@ import org.openrdf.annotations.Iri;
 @Iri("http://geonigme.fr/rdf/ontology#Step")
 public class Step {
 
-	private Set<gngm.Enigma> enigmas;
-	private gngm.Hunt stepOfHunt;
+	private Set<Enigma> enigmas;
+	private Hunt stepOfHunt;
 	private Float lat;
 	private Float lng;
 	private Integer id;
+	private String description;
 	
 	public void setId(Integer id) {
 		this.id = id;
@@ -22,6 +23,16 @@ public class Step {
 	
 	public Integer getId(){
 		return id;
+	}
+	
+	@Iri("http://geonigme.fr/rdf/ontology#description")
+	public String getDescription() {
+		return description;
+	}
+
+	@Iri("http://geonigme.fr/rdf/ontology#description")
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Iri("http://geonigme.fr/rdf/ontology#enigma")

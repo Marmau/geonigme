@@ -1,8 +1,6 @@
 package controllers;
 
 import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -11,7 +9,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import global.Sesame;
 
-import models.old.Tag;
+import models.Area;
+import models.Tag;
 
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
@@ -40,29 +39,19 @@ public class Hunt extends Controller {
 
 			return badRequest(views.html.dashboard.createHunt.render(formHunt));
 		} else {
-			forms.Hunt hunt = formHunt.get();
-			models.Hunt h = new models.Hunt();
-			h.setLabel(hunt.label);
-			h.setLevel(hunt.level);
-			h.setPublished(false);
-			Set<Tag> tags = new HashSet<Tag>();
-			for (String nameTag : hunt.tags.split(",")) {
-				Tag tag = new Tag();
-				tag.setName(nameTag.trim());
-				tags.add(tag);
-			}
-			// h.setTags(tags);
-
-			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar
-					.getInstance();
-			XMLGregorianCalendar xgcal = DatatypeFactory.newInstance()
-					.newXMLGregorianCalendar(gcal);
-			h.setCreatedAt(xgcal);
-
+			models.Hunt h = formToHunt(formHunt.get());
 			ObjectConnection oc = Sesame.getObjectConnection();
-			oc.addObject(models.Hunt.NS + UUID.randomUUID().toString(), h);
 
-			return ok();
+			System.out.println(h.getArea().toTemplateString());
+//			for (Tag tag: h.getTags()) {
+//				oc.addObject(tag);
+//			}
+//			oc.addObject(h.getArea());
+			
+			String hid = UUID.randomUUID().toString();
+			oc.addObject(models.Hunt.NS + hid, h);
+
+			return redirect(routes.Hunt.show(hid));
 		}
 	}
 
@@ -84,18 +73,41 @@ public class Hunt extends Controller {
 
 	public static Result show(String hid) {
 		ObjectConnection oc = Sesame.getObjectConnection();
-		
+
 		models.Hunt h = null;
 		try {
-			h = oc.getObject(models.Hunt.class, models.Hunt.NS + hid);			
+			h = oc.getObject(models.Hunt.class, models.Hunt.NS + hid);
 		} catch (Exception e) {
+			return notFound();
 		}
-		
-		return ok(views.html.dashboard.showHunt.render(h));
+
+		return ok(views.html.dashboard.showHunt.render(hid, h));
 	}
 
 	public static Result publish(String hid) {
 		return ok();
+	}
+
+	private static models.Hunt formToHunt(forms.Hunt form)
+			throws DatatypeConfigurationException {
+		models.Hunt h = new models.Hunt();
+		h.setDescription(form.description);
+		h.setLabel(form.label);
+		h.setLevel(form.level);
+		h.setPublished(false);
+		for (Tag t: Tag.fromString(form.tags)) {
+			System.out.println(t.getName());
+		}
+		h.setTags(Tag.fromString(form.tags));
+		h.setArea(Area.fromString(form.area));
+
+		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar
+				.getInstance();
+		XMLGregorianCalendar xgcal = DatatypeFactory.newInstance()
+				.newXMLGregorianCalendar(gcal);
+		h.setCreatedAt(xgcal);
+
+		return h;
 	}
 
 }

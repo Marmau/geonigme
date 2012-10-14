@@ -1,2 +1,12 @@
 models.Hunt
 models.Step
+models.Answer
+models.Enigma
+models.FileClue
+models.GeolocatedAnswer
+models.Mark
+models.Tag
+models.TextAnswer
+models.User
+models.Area
+models.Point

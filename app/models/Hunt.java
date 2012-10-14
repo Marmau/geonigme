@@ -1,7 +1,5 @@
 package models;
 
-import gngm.Area;
-import gngm.Mark;
 import rdfs.subPropertyOf;
 
 import java.util.HashSet;
@@ -147,49 +145,49 @@ public class Hunt {
 		this.tags = tags;
 	}
 
-	@Sparql("PREFIX gngm: " + GNGM +
-			"SELECT ?hunt WHERE { ?hunt gngm:level $level }")
+//	@Sparql("PREFIX gngm: " + GNGM + "\n" +
+//			"SELECT ?hunt WHERE { ?hunt gngm:level $level }")
 	public Set<org.openrdf.result.Result<Hunt>> getHuntsWithLevel(@Bind("level") Integer level) {
 		return null;
 	}
 	
-	@Sparql("PREFIX rdf: " + RDF +
-			"PREFIX gngm: " + GNGM +
-			"SELECT ?s WHERE { " +
-            	"?s rdf:type <" + NS +"> ." +
-            	"?s  gngm:cree ?date" +
-        	"}" +
-        	"ORDER BY ?date" +
-        	"LIMIT $number" +
-			"OFFSET $offset ")
+//	@Sparql("PREFIX rdf:" + RDF + "\n" +
+//			"PREFIX gngm:" + GNGM + "\n" +
+//			"SELECT ?s WHERE { " +
+//            	"?s rdf:type <" + NS +"> . " +
+//            	"?s  gngm:cree ?date " +
+//        	"} " +
+//        	"ORDER BY ?date " +
+//        	"LIMIT $number " +
+//			"OFFSET $offset ")
 	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByCreationDate(@Bind("number") Integer number, @Bind("offset") Integer offset) {
 		return null;
 	}
 	
-	@Sparql("PREFIX rdf: " + RDF +
-          "PREFIX rdfs: " + RDFS +
-          "PREFIX gngm: " + GNGM +
-          "SELECT ?s WHERE {" +
-            "?s rdf:type <" + NS + "> ." +
-            "?s rdfs:label ?label ." +
-            "?s gngm:cree ?date ." +
-            "?s gngm:note ?note ." +
-            "?note gngm:moyenne ?moyenne" +
-            "?s gngm:estPublie $published" +
-           "}" +
-           "ORDER BY DESC($order)" +
-           "LIMIT $number" +
-           "OFFSET $offset")
+//	@Sparql("PREFIX rdf:" + RDF + "\n" +
+//			"PREFIX rdfs:" + RDFS + "\n" +
+//			"PREFIX gngm:" + GNGM + "\n" +
+//			"SELECT ?s WHERE {" +
+//				"?s rdf:type <http://geonigme.fr/rdf/ontology#Hunt> ." +
+//				"?s rdfs:label ?label ." +
+//            	"?s gngm:cree ?date ." +
+//            	"?s gngm:note ?note ." +
+//            	"?note gngm:moyenne ?moyenne " +
+//            	"?s gngm:estPublie $published " +
+//        	"} " +
+//        	"ORDER BY DESC($order) " +
+//    		"LIMIT $number " +
+//			"OFFSET $offset")
 	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByParams(@Bind("order") String order, @Bind("number") Integer number, @Bind("offset") Integer offset, @Bind("published") Boolean published) {
 		return null;
 	}
 	
-	@Sparql("PREFIX rdf: " + RDF +
-			"PREFIX gngm: " + GNGM +
-			"SELECT ?s WHERE {" +
-				"?s rdf:type <" + NS + "> ." +
-				"?s gngm:createur <{$author}>" +
-			"}")
+//	@Sparql("PREFIX rdf:" + RDF + "\n" +
+//			"PREFIX gngm:" + GNGM + "\n" +
+//			"SELECT ?s WHERE { " +
+//				"?s rdf:type <" + NS + "> . " +
+//				"?s gngm:createur <{$author}> " +
+//			"}")
 	public Set<org.openrdf.result.Result<Hunt>> getHuntsByAuthor(@Bind("author") String author) {
 		return null;
 	}

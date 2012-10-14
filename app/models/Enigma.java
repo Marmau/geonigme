@@ -7,35 +7,46 @@ import org.openrdf.annotations.Iri;
 @Iri("http://geonigme.fr/rdf/ontology#Enigma")
 public class Enigma {
 	
-	private Set<? extends Answer> answers;
-	private Set<? extends Clue> clues;
+	private Set<Answer> answers;
+	private Set<Clue> clues;
 	private Step enigmaOfStep;
+	private String description;
+	
+	@Iri("http://geonigme.fr/rdf/ontology#description")
+	public String getDescription() {
+		return description;
+	}
+
+	@Iri("http://geonigme.fr/rdf/ontology#description")
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 	@Iri("http://geonigme.fr/rdf/ontology#answer")
-	Set<? extends Answer> getAnswers() {
+	public Set<Answer> getAnswers() {
 		return answers;
 	}
 	@Iri("http://geonigme.fr/rdf/ontology#answer")
-	void setAnswers(Set<? extends Answer> answers) {
+	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
 	}
 
 	@Iri("http://geonigme.fr/rdf/ontology#clue")
-	Set<? extends Clue> getClues() {
+	public Set<? extends Clue> getClues() {
 		return clues;
 	}
 	@Iri("http://geonigme.fr/rdf/ontology#clue")
-	void setClues(Set<? extends Clue> clues) {
+	public void setClues(Set<Clue> clues) {
 		this.clues = clues;
 	}
 
 	@Iri("http://geonigme.fr/rdf/ontology#enigmaOfStep")
-	Step getEnigmaOfStep() {
+	public Step getEnigmaOfStep() {
 		return enigmaOfStep;
 	}
 	
 	@Iri("http://geonigme.fr/rdf/ontology#enigmaOfStep")
-	void setEnigmaOfStep(Step enigmaOfStep) {
+	public void setEnigmaOfStep(Step enigmaOfStep) {
 		this.enigmaOfStep = enigmaOfStep;
 	}
 }

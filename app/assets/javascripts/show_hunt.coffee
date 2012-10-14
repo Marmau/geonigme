@@ -21,7 +21,20 @@ require ['maps/base_map', 'maps/icons', 'helpers', 'fixed_map'], (BaseMap, Icons
 		if position and accuracy
 			geolocatedAnswerLayers = Helpers.drawGeolocatedAnswer(map, position, accuracy)
 
-	container = $('#show-hunt');
+
+	container = $('#show-hunt')
+
+	bounds = Helpers.stringAreaToLatLngBounds(container.data('area-hunt'))
+	areaHunt = new L.Rectangle(bounds, {
+		clickable: true,
+		color: '#555555',
+		fill: true,
+		fillColor: '#555555',
+		fillOpacity: 0.05
+	}).addTo(map)
+
+	areaHunt.bindPopup('Zone de la chasse')
+	map.fitBounds(bounds)
 
 	accordionEnigmas = container.find('#accordion-enigmas')
 

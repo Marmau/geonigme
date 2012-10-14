@@ -1,24 +1,26 @@
-@(hunt: models.Hunt)
+@(hid: String, hunt: models.Hunt)
 
 @import helpers._
 
 @mainDashboard("Voir la chasse", "show_hunt") {
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
-		<li><a>Nom de la chasse |<span class="small">Facile</span></a></li>
+		<li><a>@hunt.getLabel() |<span class="small">Facile</span></a></li>
 	</ul>
 } {
 	<div class="row-fluid">
-		<div class="span4" id="show-hunt">
+		<div class="span4" id="show-hunt" data-area-hunt="@hunt.getArea().toTemplateString()">
 			<section class="hunt">
 				<div id="tags-hunt">
-					<span class="tag"><i class="icon-tag icon-blue"></i>bidule</span>
+					@for(tag <- hunt.getTags()) {
+						<span class="tag"><i class="icon-tag icon-blue"></i>@tag.getName()</span>
+					}
 					<span class="tag"><i class="icon-tag icon-blue"></i>chouette</span>
 					<span class="tag"><i class="icon-tag icon-blue"></i>cool super</span>
 					<span class="tag"><i class="icon-tag icon-blue"></i>nulle</span>
 				</div>
 				<blockquote id="description-hunt">
-					Superbe description de la chasse. Superbe description de la chasse. Superbe description de la chasse. Superbe description de la chasse.
+					@hunt.getDescription()
 				</blockquote>
 				<div class="actions">
 					<a href="#" class="action">Modifier</a>
@@ -26,72 +28,85 @@
 				</div>
 			</section>
 			<section class="steps">
-				<div class="step" id="step1">
-					<div class="actions">
-						<a href="#" class="action add-step">Ajouter une étape</a>
-					</div>
+				<div class="actions">
+					<a href="@routes.Step.create(hid)" class="action add-step">Ajouter une étape</a>
+				</div>
+				@if(hunt.getSteps().isEmpty()) {
+					<p class="no-step">Aucune étape... Créez-en une !</p>
+				} else {
 					<div class="select" id="select-step">
 						<select>
-							<option value="0">&Eacute;tape 1</option>
-							<option value="0">&Eacute;tape 2</option>
+							@for((step, i) <- hunt.getSteps().zipWithIndex) {
+								<option value="@i">&Eacute;tape @i</option>
+								<option value="@i">&Eacute;tape @i</option>
+							}
 						</select>
 					</div>
-					<a class="update-step pushable" href="#">Modifier</a>
-					<blockquote>
-						Description de l'étape....
-						Description de l'étape....
-						Description de l'étape....
-						Description de l'étape....
-					</blockquote>
-				</div>
-			</section>
-			<section class="enigmas">
-				<div class="actions">
-					<a href="#" class="action">Ajouter une énigme</a>
-				</div>
-				<div></div>
-				<div class="accordion" id="accordion-enigmas">
-					<div class="accordion-group">
-						<div class="accordion-heading">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-enigmas" href="#collapse-enigma1">
-								&Eacute;nigme 1
-							</a>
-						</div>
-						<div id="collapse-enigma1" class="accordion-body collapse in">
-							<div class="accordion-inner">
-								<blockquote>
-									Enoncé de l'énigme....
-									Enoncé de l'énigme....
-									Enoncé de l'énigme....
-									Enoncé de l'énigme....
-								</blockquote>
-								<div class="answer">
-									<h3>Réponses valides</h3>
-									<div>blabla, blabal</div>
+					@for((step, i) <- hunt.getSteps().zipWithIndex) {
+		 				<div class="step" id="step@i">
+							<a class="update-step pushable" href="#">Modifier</a>
+							<blockquote>
+								@step.getDescription()
+							</blockquote>
+							<section class="enigmas">
+								<div class="actions">
+									<a href="#" class="action">Ajouter une énigme</a>
 								</div>
-								<div class="clues">
-									<div class="clue">
-										<h3><i class="icon-comment icon-white"></i> Indice 1</h3>
-										<div>
-											blablablab lbal blab lablbl blab lbalbalbal blablbal
-										</div>
-									</div>
-									<div class="clue">
-										<h3><i class="icon-file icon-white"></i> Indice 2</h3>
-										<div>
-											Lien vers le fichier
-										</div>
-									</div>
+								<div class="accordion" id="accordion-enigmas">
+									@if(step.getEnigmas().isEmpty()) {
+										Aucune énigme... Créez-en une !
+									} else {
+										@for((enigma, i) <- step.getEnigmas().zipWithIndex) {
+											<div class="accordion-group">
+												<div class="accordion-heading">
+													<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-enigmas" href="#collapse-enigma1">
+														&Eacute;nigme @i
+													</a>
+												</div>
+												<div id="collapse-enigma1" class="accordion-body collapse in">
+													<div class="accordion-inner">
+														<blockquote>
+															@enigma.getDescription()
+														</blockquote>
+														<div class="answer">
+															<h3>Réponses valides</h3>
+															<div>blabla, blabal</div>
+														</div>
+														<div class="clues">
+															@if(enigma.getClues().isEmpty()) {
+																Aucun indice...
+															} else {
+																@for((clue, i) <- enigma.getClues().zipWithIndex) {
+																	<div class="clue">
+																		<h3><i class="icon-comment icon-white"></i> Indice @i</h3>
+																		<div>
+																			blablablab lbal blab lablbl blab lbalbalbal blablbal
+																		</div>
+																	</div>
+																	<div class="clue">
+																		<h3><i class="icon-file icon-white"></i> Indice @i</h3>
+																		<div>
+																			Lien vers le fichier
+																		</div>
+																	</div>
+																}
+															}
+														</div>
+													</div>
+													<div class="actions">
+														<a href="#" class="action update-enigma">Modifier</a>
+													</div>
+												</div>
+											</div>
+										}
+									}
 								</div>
-							</div>
-							<div class="actions">
-								<a href="#" class="action update-enigma">Modifier</a>
-							</div>
+							</section>
 						</div>
-					</div>
-				</div>
-
+					}
+				}
 			</section>
+			
 		</div>
 		<div class="span8">
 			<div id="show-hunt-map" class="fixed-map map"></div>
