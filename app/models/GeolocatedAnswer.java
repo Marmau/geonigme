@@ -1,28 +1,20 @@
 package models;
 
 import org.openrdf.annotations.Iri;
-import rdfs.subClassOf;
 
-@subClassOf({"http://geonigme.fr/rdf/ontology#Answer", "http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"})
-@Iri("http://geonigme.fr/rdf/ontology#GeolocatedAnswer")
+@Iri(NS.GNGM + "GeolocatedAnswer")
 public class GeolocatedAnswer extends Answer {
 
-	private Float lat;
-	private Float lng;
+	private Position position;
 	
-	public Float getLat() {
-		return lat;
+	@Iri(NS.GNGM + "position")
+	public Position getPosition() {
+		return position;
 	}
-	public void setLat(Float lat) {
-		this.lat = lat;
+
+	@Iri(NS.GNGM + "position")
+	public void setPosition(Position position) {
+		this.position = position;
 	}
-	public Float getLng() {
-		return lng;
-	}
-	public void setLng(Float lng) {
-		this.lng = lng;
-	}
-	
-	
-	
+
 }

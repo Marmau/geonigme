@@ -16,33 +16,33 @@ public class Manager extends Controller {
 		String user = session("user");
 		if (user == null)
 			return ok(views.html.global.index.render());
-		
+
 		models.Hunt huntRepo = new models.Hunt();
 		Set<org.openrdf.result.Result<Hunt>> hunts = huntRepo.getHuntsByAuthor(user);
-		
-		return ok();//views.html.dashboard.mainDashboard.render("hunts"));
-		
+
+		return ok();// views.html.dashboard.mainDashboard.render("hunts"));
+
 	}
 
 	public static Result login() {
 		String user = session("user");
 		if (user != null)
-			return ok();//views.html.dashboard.mainDashboard.render());
-		
+			return ok();// views.html.dashboard.mainDashboard.render());
+
 		Form<Login> formLogin = form(Login.class);
 		Form<Register> formRegister = form(Register.class);
-				
+
 		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 
 	public static Result register() {
 		String user = session("user");
 		if (user != null)
-			return ok();//views.html.dashboard.mainDashboard.render());
-		
+			return ok();// views.html.dashboard.mainDashboard.render());
+
 		Form<Login> formLogin = form(Login.class);
 		Form<Register> formRegister = form(Register.class);
-				
+
 		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 }

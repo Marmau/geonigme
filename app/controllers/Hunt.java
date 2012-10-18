@@ -30,26 +30,17 @@ public class Hunt extends Controller {
 		return ok(views.html.dashboard.createHunt.render(formHunt));
 	}
 
-	public static Result submitCreateForm() throws RepositoryException,
-			DatatypeConfigurationException {
+	public static Result submitCreateForm() throws RepositoryException, DatatypeConfigurationException {
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
 
 		if (formHunt.hasErrors()) {
-			System.out.println(formHunt.errors());
-
 			return badRequest(views.html.dashboard.createHunt.render(formHunt));
 		} else {
 			models.Hunt h = formToHunt(formHunt.get());
 			ObjectConnection oc = Sesame.getObjectConnection();
 
-			System.out.println(h.getArea().toTemplateString());
-//			for (Tag tag: h.getTags()) {
-//				oc.addObject(tag);
-//			}
-//			oc.addObject(h.getArea());
-			
 			String hid = UUID.randomUUID().toString();
-			oc.addObject(models.Hunt.NS + hid, h);
+			oc.addObject(models.Hunt.URI + hid, h);
 
 			return redirect(routes.Hunt.show(hid));
 		}
@@ -76,35 +67,32 @@ public class Hunt extends Controller {
 
 		models.Hunt h = null;
 		try {
-			h = oc.getObject(models.Hunt.class, models.Hunt.NS + hid);
+			h = oc.getObject(models.Hunt.class, models.Hunt.URI + hid);
 		} catch (Exception e) {
 			return notFound();
 		}
 
-		return ok(views.html.dashboard.showHunt.render(hid, h));
+		return ok(views.html.dashboard.showHunt.render(h));
 	}
 
 	public static Result publish(String hid) {
 		return ok();
 	}
 
-	private static models.Hunt formToHunt(forms.Hunt form)
-			throws DatatypeConfigurationException {
+	private static models.Hunt formToHunt(forms.Hunt form) throws DatatypeConfigurationException {
 		models.Hunt h = new models.Hunt();
 		h.setDescription(form.description);
 		h.setLabel(form.label);
 		h.setLevel(form.level);
 		h.setPublished(false);
-		for (Tag t: Tag.fromString(form.tags)) {
+		for (Tag t : Tag.createFrom(form.tags)) {
 			System.out.println(t.getName());
 		}
-		h.setTags(Tag.fromString(form.tags));
-		h.setArea(Area.fromString(form.area));
+		h.setTags(Tag.createFrom(form.tags));
+		h.setArea(Area.createFrom(form.area));
 
-		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar
-				.getInstance();
-		XMLGregorianCalendar xgcal = DatatypeFactory.newInstance()
-				.newXMLGregorianCalendar(gcal);
+		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
+		XMLGregorianCalendar xgcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
 		h.setCreatedAt(xgcal);
 
 		return h;

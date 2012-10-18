@@ -1,4 +1,4 @@
-@(hid: String, hunt: models.Hunt)
+@(hunt: models.Hunt)
 
 @import helpers._
 
@@ -29,32 +29,33 @@
 			</section>
 			<section class="steps">
 				<div class="actions">
-					<a href="@routes.Step.create(hid)" class="action add-step">Ajouter une étape</a>
+					<a href="@routes.Step.create(hunt.getId())" class="action add-step">Ajouter une étape</a>
 				</div>
 				@if(hunt.getSteps().isEmpty()) {
-					<p class="no-step">Aucune étape... Créez-en une !</p>
+					<a class="underline" href="@routes.Step.create(hunt.getId())" class="no-step">Aucune étape... Créez-en une !</a>
 				} else {
 					<div class="select" id="select-step">
 						<select>
 							@for((step, i) <- hunt.getSteps().zipWithIndex) {
-								<option value="@i">&Eacute;tape @i</option>
 								<option value="@i">&Eacute;tape @i</option>
 							}
 						</select>
 					</div>
 					@for((step, i) <- hunt.getSteps().zipWithIndex) {
 		 				<div class="step" id="step@i">
-							<a class="update-step pushable" href="#">Modifier</a>
+		 					<div class="update-link">
+								<a class="update-step pushable" href="#">Modifier</a>
+							</div>
 							<blockquote>
 								@step.getDescription()
 							</blockquote>
 							<section class="enigmas">
 								<div class="actions">
-									<a href="#" class="action">Ajouter une énigme</a>
+									<a href="@routes.Enigma.create(step.getId())" class="action">Ajouter une énigme</a>
 								</div>
 								<div class="accordion" id="accordion-enigmas">
 									@if(step.getEnigmas().isEmpty()) {
-										Aucune énigme... Créez-en une !
+										<a class="underline" href="@routes.Enigma.create(step.getId())" class="no-enigma">Aucune énigme... Créez-en une !</a>
 									} else {
 										@for((enigma, i) <- step.getEnigmas().zipWithIndex) {
 											<div class="accordion-group">

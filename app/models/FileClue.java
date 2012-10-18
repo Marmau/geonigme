@@ -2,21 +2,19 @@ package models;
 
 import java.net.URI;
 import org.openrdf.annotations.Iri;
-import rdfs.subClassOf;
 
-@subClassOf({"http://geonigme.fr/rdf/ontology#Clue"})
-@Iri("http://geonigme.fr/rdf/ontology#FileClue")
+@Iri(NS.GNGM + "FileClue")
 public class FileClue extends Clue {
-	
+
 	private URI file;
-	
-	@Iri("http://geonigme.fr/rdf/ontology#file")
-	URI getFile() {
+
+	@Iri(NS.GNGM + "file")
+	public URI getFile() {
 		return file;
 	}
-	
-	@Iri("http://geonigme.fr/rdf/ontology#file")
-	void setFile(URI file) {
+
+	@Iri(NS.GNGM + "file")
+	public void setFile(URI file) {
 		this.file = file;
 	}
 }

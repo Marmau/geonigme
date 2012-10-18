@@ -1,79 +1,79 @@
 package models;
 
-import gngm.Enigma;
-import gngm.Hunt;
-
 import java.util.Set;
 
 import org.openrdf.annotations.Iri;
+import org.openrdf.annotations.Sparql;
+import org.openrdf.model.Resource;
+import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.repository.object.RDFObject;
 
-@Iri("http://geonigme.fr/rdf/ontology#Step")
-public class Step {
+@Iri(NS.GNGM + "Step")
+public class Step implements RDFObject {
 
-	private Set<Enigma> enigmas;
+	public static final String URI = "http://geonigme.fr/step/";
+
+//	private Set<Enigma> enigmas;
 	private Hunt stepOfHunt;
-	private Float lat;
-	private Float lng;
-	private Integer id;
 	private String description;
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	public Integer getId(){
-		return id;
-	}
-	
-	@Iri("http://geonigme.fr/rdf/ontology#description")
+	private Position position;
+
+	@Iri(NS.GNGM + "description")
 	public String getDescription() {
 		return description;
 	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#description")
+	@Iri(NS.GNGM + "description")
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#enigma")
+	@Sparql(NS.PREFIX + "SELECT ?enigma { ?enigma gngm:enigmaOfStep $this }")
 	public Set<Enigma> getEnigmas() {
-		return enigmas;
+		return null;
 	}
+		
+//	@Iri(URIs.GNGM + "enigma")
+//	public Set<Enigma> getEnigmas() {
+//		return enigmas;
+//	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#enigma")
-	public void setEnigmas(Set<Enigma> enigmas) {
-		this.enigmas = enigmas;
-	}
+//	@Iri(URIs.GNGM + "enigma")
+//	public void setEnigmas(Set<Enigma> enigmas) {
+//		this.enigmas = enigmas;
+//	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#stepOfHunt")
+	@Iri(NS.GNGM + "stepOfHunt")
 	public Hunt getHunt() {
 		return stepOfHunt;
 	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#stepOfHunt")
+	@Iri(NS.GNGM + "stepOfHunt")
 	public void setHunt(Hunt stepOfHunt) {
 		this.stepOfHunt = stepOfHunt;
 	}
-	
 
-	@Iri("http://www.w3.org/2003/01/geo/wgs84_pos#lat")
-	public Float getLat() {
-		return lat;
+	@Iri(NS.GNGM + "position")
+	public Position getPosition() {
+		return position;
 	}
 
-	@Iri("http://www.w3.org/2003/01/geo/wgs84_pos#lat")
-	public void setLat(Float lat) {
-		this.lat = lat;
-
+	@Iri(NS.GNGM + "position")
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
-	@Iri("http://www.w3.org/2003/01/geo/wgs84_pos#long")
-	public Float getLong() {
-		return lng;
+	public String getId() {
+		return getResource().stringValue().replace(URI, "");
 	}
 
-	@Iri("http://www.w3.org/2003/01/geo/wgs84_pos#long")
-	public void setLong(Float lng) {
-		this.lng = lng;
+	@Override
+	public ObjectConnection getObjectConnection() {
+		return null;
+	}
+
+	@Override
+	public Resource getResource() {
+		return null;
 	}
 }

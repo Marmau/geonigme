@@ -2,42 +2,42 @@ package models;
 
 import org.openrdf.annotations.Iri;
 
-@Iri("http://geonigme.fr/rdf/ontology#Area")
+@Iri(NS.GNGM + "Area")
 public class Area {
 	private Point firstPoint;
 	private Point secondPoint;
 
-	@Iri("http://geonigme.fr/rdf/ontology#firstPoint")
+	@Iri(NS.GNGM + "firstPoint")
 	public Point getFirstPoint() {
 		return firstPoint;
 	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#firstPoint")
+	@Iri(NS.GNGM + "firstPoint")
 	public void setFirstPoint(Point firstPoint) {
 		this.firstPoint = firstPoint;
 	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#secondPoint")
+	@Iri(NS.GNGM + "secondPoint")
 	public Point getSecondPoint() {
 		return secondPoint;
 	}
 
-	@Iri("http://geonigme.fr/rdf/ontology#secondPoint")
+	@Iri(NS.GNGM + "secondPoint")
 	public void setSecondPoint(Point secondPoint) {
 		this.secondPoint = secondPoint;
 	}
-	
-	public static Area fromString(String string) {
+
+	public static Area createFrom(String string) {
 		Area result = new Area();
 		String[] stringPoints = string.split("\\|");
 
-		result.setFirstPoint(Point.fromString(stringPoints[0]));
-		result.setSecondPoint(Point.fromString(stringPoints[1]));
-		
+		result.setFirstPoint(Point.createFrom(stringPoints[0]));
+		result.setSecondPoint(Point.createFrom(stringPoints[1]));
+
 		return result;
 	}
-	
+
 	public String toTemplateString() {
-		return getFirstPoint().toTemplateString() + "|" + getSecondPoint().toTemplateString(); 
+		return getFirstPoint().toTemplateString() + "|" + getSecondPoint().toTemplateString();
 	}
 }

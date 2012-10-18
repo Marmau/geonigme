@@ -2,18 +2,20 @@ package models;
 
 import org.openrdf.annotations.Iri;
 
-@Iri("http://geonigme.fr/rdf/ontology#Answer")
+@Iri(NS.GNGM + "Answer")
 public class Answer {
 	
+	public static final String URI = "http://geonigme.fr/answer/";
+
 	private Enigma answerOfEnigma;
-	
-	@Iri("http://geonigme.fr/rdf/ontology#answerOfEnigma")
-	Enigma getAnswerOfEnigma() {
+
+	@Iri(NS.GNGM + "answerOfEnigma")
+	public Enigma getEnigma() {
 		return answerOfEnigma;
 	}
-	
-	@Iri("http://geonigme.fr/rdf/ontology#answerOfEnigma")
-	void setAnswerOfEnigma(Enigma answerOfEnigma) {
+
+	@Iri(NS.GNGM + "answerOfEnigma")
+	public void setEnigma(Enigma answerOfEnigma) {
 		this.answerOfEnigma = answerOfEnigma;
 	}
 

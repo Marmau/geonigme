@@ -1,22 +1,22 @@
 package models;
 
+import java.util.Set;
+
 import org.openrdf.annotations.Iri;
-import rdfs.subClassOf;
 
-@subClassOf({"http://geonigme.fr/rdf/ontology#Answer"})
-@Iri("http://geonigme.fr/rdf/ontology#TextAnswer")
+@Iri(NS.GNGM + "TextAnswer")
 public class TextAnswer extends Answer {
-	
-	private String text;
 
-	public String getText() {
-		return text;
+	private Set<String> labels;
+
+	@Iri("http://www.w3.org/2000/01/rdf-schema#label")
+	public Set<String> getLabels() {
+		return labels;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	@Iri("http://www.w3.org/2000/01/rdf-schema#label")
+	public void setLabels(Set<String> labels) {
+		this.labels = labels;
 	}
-	
-	
 
 }

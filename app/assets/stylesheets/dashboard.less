@@ -68,6 +68,10 @@ section.hunt {
 
 	a:hover {
 		text-decoration: none;
+
+		&.underline {
+			text-decoration: underline;
+		}
 	}
 
 	.hunt {
@@ -89,6 +93,16 @@ section.hunt {
 	}
 
 	.steps {
+		.step {
+			position: relative;
+
+			.update-link {
+				position: absolute;
+				top: -33px;
+				right: 0px;
+			}
+		}
+
 		.no-step {
 			color: @colorClearBlue;
 		}

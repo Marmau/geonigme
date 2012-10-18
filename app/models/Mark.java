@@ -1,19 +1,18 @@
 package models;
 
 import org.openrdf.annotations.Iri;
-import rdfs.subClassOf;
 
-@subClassOf({"http://www.w3.org/2000/01/rdf-schema#Resource"})
-@Iri("http://geonigme.fr/rdf/ontology#Mark")
+@Iri(NS.GNGM + "Mark")
 public class Mark {
 
 	private Float value;
-	
-	@Iri("http://geonigme.fr/rdf/ontology#value")
+
+	@Iri(NS.GNGM + "value")
 	Float getValue() {
 		return value;
 	}
-	@Iri("http://geonigme.fr/rdf/ontology#value")
+
+	@Iri(NS.GNGM + "value")
 	void setValue(Float value) {
 		this.value = value;
 	}

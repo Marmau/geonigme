@@ -123,6 +123,11 @@
 	rdfs:domain :Hunt ;
 	rdfs:range :Area .
 
+:position	
+	rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:isDefinedBy <http://geonigme.fr/rdf/ontology#> ;
+	rdfs:domain geo:SpatialThing ;
+	rdfs:range :Position .
 
 
 #################################################################

@@ -1,20 +1,32 @@
 package models;
 
-import gngm.Enigma;
-
 import org.openrdf.annotations.Iri;
 
-@Iri("http://geonigme.fr/rdf/ontology#Clue")
+@Iri(NS.GNGM + "Clue")
 public class Clue {
+
+	public static final String URI = "http://geonigme.fr/clue/";
 	
 	private Enigma clueOfEnigma;
-	
-	@Iri("http://geonigme.fr/rdf/ontology#clueOfEnigma")
-	Enigma getClueOfEnigma() {
+	private String description;
+
+	@Iri(NS.GNGM + "description")
+	public String getDescription() {
+		return description;
+	}
+
+	@Iri(NS.GNGM + "description")
+	public void setDescription(String label) {
+		this.description = label;
+	}
+
+	@Iri(NS.GNGM + "clueOfEnigma")
+	public Enigma getEnigma() {
 		return clueOfEnigma;
 	}
-	@Iri("http://geonigme.fr/rdf/ontology#clueOfEnigma")
-	void setClueOfEnigma(Enigma clueOfEnigma) {
+
+	@Iri(NS.GNGM + "clueOfEnigma")
+	public void setEnigma(Enigma clueOfEnigma) {
 		this.clueOfEnigma = clueOfEnigma;
 	}
 

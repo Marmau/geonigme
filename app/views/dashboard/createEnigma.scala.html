@@ -1,23 +1,23 @@
-@(formEnigma: Form[forms.Enigma])
+@(step: models.Step, formEnigma: Form[forms.Enigma])
 
 @import helpers._
 
 @mainDashboard("Nouvelle chasse", "enigma") {
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
-		<li><a href="#">Nom de la chasse</a></li>
+		<li><a href="#">@step.getHunt().getLabel()</a></li>
 		<li><a href="#">&Eacute;tape 1</a></li>
 		<li><a>Nouvelle énigme</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Enigma.submitCreateForm("1"), 
+			@helper.form(action = routes.Enigma.submitCreateForm(step.getId()), 
 				'id -> "create-enigma", 
 				'class -> "form-horizontal",
-				Symbol("data-area") -> "43.609513463116514,3.8740539550781246|43.61240319852854,3.878839015960693",
-				Symbol("data-start-position") -> "43.610,3.875",
-				Symbol("data-start-accuracy") -> "40") {
+				Symbol("data-area") -> step.getHunt().getArea().toTemplateString(),
+				Symbol("data-start-position") -> step.getPosition().toTemplateString(),
+				Symbol("data-start-accuracy") -> Float.toString(step.getPosition().getAccuracy())) {
 				<div class="control-group">
 					<label class="control-label" for="description-enigma">Enoncé de l'énigme</label>
 					<div class="controls">

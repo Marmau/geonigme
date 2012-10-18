@@ -36,8 +36,8 @@ public class Application extends Controller {
 		h.setLevel(3);
 		h.setPublished(false);
 		Step s = new Step();
-		s.setLat(3.443f);
-		h.addStep(s);
+		// s.setLat(3.443f);
+		// h.addStep(s);
 
 		ObjectConnection oc = Sesame.getObjectConnection();
 		oc.clear();
@@ -50,8 +50,7 @@ public class Application extends Controller {
 		return ok();
 	}
 
-	public static Result test2() throws RepositoryException,
-			QueryEvaluationException {
+	public static Result test2() throws RepositoryException, QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
 		Hunt h = oc.getObject(Hunt.class, "http://example.com/1");
@@ -60,7 +59,7 @@ public class Application extends Controller {
 		System.out.println(h.isPublished());
 		System.out.println(h.getCreatedAt());
 		for (Step s : h.getSteps()) {
-			System.out.println(s.getLat());
+			// System.out.println(s.getLat());
 		}
 
 		HashSet<org.openrdf.result.Result<Hunt>> h3 = (HashSet<org.openrdf.result.Result<Hunt>>) h.getHuntsWithLevel(3);
@@ -70,7 +69,7 @@ public class Application extends Controller {
 		System.out.println(h.isPublished());
 		System.out.println(h.getCreatedAt());
 		for (Step s : h.getSteps()) {
-			System.out.println(s.getLat());
+			// System.out.println(s.getLat());
 		}
 
 		return ok();

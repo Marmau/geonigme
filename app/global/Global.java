@@ -10,16 +10,14 @@ public class Global extends GlobalSettings {
 		super.onStart(app);
 
 		// Initialisation de Sésame
-		String sesameDir = app.configuration().getString(
-				"sesame.store.directory");
+		String sesameDir = app.configuration().getString("sesame.store.directory");
 
 		if (null != sesameDir) {
 			Sesame.initialize(sesameDir);
 		} else {
-			throw new RuntimeException(
-					"sesame.store.directory de application.conf doit être spécifié");
+			throw new RuntimeException("sesame.store.directory de application.conf doit être spécifié");
 		}
-		
+
 		initializeFormatters();
 	}
 
@@ -30,7 +28,7 @@ public class Global extends GlobalSettings {
 		// Extinction de Sésame
 		Sesame.shutdown();
 	}
-	
+
 	private void initializeFormatters() {
 
 	}

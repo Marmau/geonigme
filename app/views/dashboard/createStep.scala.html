@@ -1,18 +1,18 @@
-@(formStep: Form[forms.Step])
+@(hunt: models.Hunt, formStep: Form[forms.Step])
 
 @mainDashboard("Nouvelle chasse", "step") {
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
-		<li><a href="#">Nom de la chasse</a></li>
+		<li><a href="#">@hunt.getLabel()</a></li>
 		<li><a>Nouvelle étape</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Step.submitCreateForm("1"), 
+			@helper.form(action = routes.Step.submitCreateForm(hunt.getId()), 
 				'id -> "create-step", 
 				'class -> "form-horizontal", 
-				Symbol("data-area") -> "43.609513463116514,3.8740539550781246|43.61240319852854,3.878839015960693") {
+				Symbol("data-area") -> hunt.getArea().toTemplateString()) {
 				<blockquote>
 					Une étape regroupe un ensemble d'énigmes qui se déroule dans un périmètre géographique restreint. Le joueur sera guidé grâce à son smartphone vers la position de départ !
 				</blockquote>

@@ -31,19 +31,17 @@ public class Sesame {
 	 */
 	public static void initialize(String dir) {
 		if (null == dir) {
-			throw new InvalidParameterException(
-					"L'emplacement du répertoire d'enregistrement du store doit être spécifié.");
+			throw new InvalidParameterException("L'emplacement du répertoire d'enregistrement du store doit être spécifié.");
 		}
 
 		// Création d'un repertoire sur disque avec gestion de l'inférence
-		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(
-				new NativeStore(new File(dir))));
+		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new NativeStore(new File(dir))));
 
 		ObjectRepositoryFactory factory = new ObjectRepositoryFactory();
 		ObjectRepositoryConfig config = factory.getConfig();
-		
+
 		ObjectRepository or = null;
-		try {		
+		try {
 			or = factory.createRepository(config, r);
 			or.initialize();
 			Sesame.connection = or.getConnection();

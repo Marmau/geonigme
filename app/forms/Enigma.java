@@ -25,7 +25,7 @@ public class Enigma {
 
 		public String fileLink;
 	}
-	
+
 	public static class Answer {
 
 		public static Integer TextAnswer = 0;
@@ -39,7 +39,7 @@ public class Enigma {
 
 		public String position;
 
-		public Integer accuracy;
+		public Float accuracy;
 	}
 
 }

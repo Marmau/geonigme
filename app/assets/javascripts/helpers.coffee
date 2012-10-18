@@ -27,21 +27,21 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 
 	Helpers.drawStartStep = (map, start, accuracy) ->
 		circle = new L.Circle(start, accuracy, {
-			color: '#41c453',
+			color: '#f33b3b',
 			weight: 2,
 			opacity: 1
 			fill: true,
-			fillColor: '#41c453',
-			fillOpacity: 0.2
+			fillColor: '#f33b3b',
+			fillOpacity: 0.4
 		})
 
 		marker = new L.Circle(start, 4, {
-			color: '#41c453',
+			color: '#f33b3b',
 			weight: '2',
-			opacity: 1,
+			opacity: 0.8,
 			fill: true,
-			fillColor: '#41c453',
-			fillOpacity: 0.9
+			fillColor: '#f33b3b',
+			fillOpacity: 0.8
 		})
 
 		marker.bindPopup('Départ de l\'étape')

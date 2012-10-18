@@ -10,3 +10,4 @@ models.TextAnswer
 models.User
 models.Area
 models.Point
+models.Position
