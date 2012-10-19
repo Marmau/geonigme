@@ -29,7 +29,7 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 		circle = new L.Circle(start, accuracy, {
 			color: '#f33b3b',
 			weight: 2,
-			opacity: 1
+			opacity: 0.9,
 			fill: true,
 			fillColor: '#f33b3b',
 			fillOpacity: 0.4
@@ -37,7 +37,7 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 
 		marker = new L.Circle(start, 4, {
 			color: '#f33b3b',
-			weight: '2',
+			weight: 2,
 			opacity: 0.8,
 			fill: true,
 			fillColor: '#f33b3b',

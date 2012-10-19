@@ -1,11 +1,60 @@
 @(hunt: models.Hunt)
 
 @import helpers._
+@import models._
+
+@displayTextAnswers(labels: Set[String]) = @{
+	var result: String = ""
+	var iterator = labels.iterator()
+
+	result += iterator.next()
+	while (iterator.hasNext()) {
+		result += ", " + iterator.next()
+	}
+
+	result
+}
+
+@displayAnswer(answer: Answer) = {
+	@if(answer.isInstanceOf[TextAnswer]) {
+		<h3>Réponses valides</h3>
+		<div>@displayTextAnswers(answer.asInstanceOf[TextAnswer].getLabels())</div>
+	} else {
+		@if(answer.isInstanceOf[GeolocatedAnswer]) {
+			<h3>Réponse géolocalisée</h3>
+			<div>La position est indiquée sur la carte</div>
+		}
+	}
+}
+
+@displayClues(clues: List[Clue]) = {
+	@if(clues.isEmpty()) {
+		Aucun indice...
+	} else {
+		@for(clue <- clues) {
+			<div class="clue">
+				@if(clue.isInstanceOf[TextClue]) {
+					<h3><i class="icon-comment icon-white"></i> Indice @clue.getNumber()</h3>
+					<div>
+						@clue.getDescription()
+					</div>
+				} else {
+					@if(clue.isInstanceOf[FileClue]) {
+						<h3><i class="icon-file icon-white"></i> Indice @clue.getNumber()</h3>
+						<div>
+							<a target="_blank" href="@clue.asInstanceOf[FileClue].getFile()">Lien vers : @clue.getDescription()</a>
+						</div>
+					}
+				}
+			</div>
+		}
+	}
+}
 
 @mainDashboard("Voir la chasse", "show_hunt") {
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
-		<li><a>@hunt.getLabel() |<span class="small">Facile</span></a></li>
+		<li><a><span class="hunt-name">@hunt.getLabel()</span> |<span class="small">Facile</span></a></li>
 	</ul>
 } {
 	<div class="row-fluid">
@@ -15,9 +64,6 @@
 					@for(tag <- hunt.getTags()) {
 						<span class="tag"><i class="icon-tag icon-blue"></i>@tag.getName()</span>
 					}
-					<span class="tag"><i class="icon-tag icon-blue"></i>chouette</span>
-					<span class="tag"><i class="icon-tag icon-blue"></i>cool super</span>
-					<span class="tag"><i class="icon-tag icon-blue"></i>nulle</span>
 				</div>
 				<blockquote id="description-hunt">
 					@hunt.getDescription()
@@ -36,13 +82,13 @@
 				} else {
 					<div class="select" id="select-step">
 						<select>
-							@for((step, i) <- hunt.getSteps().zipWithIndex) {
-								<option value="@i">&Eacute;tape @i</option>
+							@for(step <- hunt.getSteps()) {
+								<option value="@step.getNumber()">&Eacute;tape @step.getNumber()</option>
 							}
 						</select>
 					</div>
-					@for((step, i) <- hunt.getSteps().zipWithIndex) {
-		 				<div class="step" id="step@i">
+					@for(step <- hunt.getSteps()) {
+		 				<div class="step" id="step@step.getNumber()">
 		 					<div class="update-link">
 								<a class="update-step pushable" href="#">Modifier</a>
 							</div>
@@ -57,48 +103,36 @@
 									@if(step.getEnigmas().isEmpty()) {
 										<a class="underline" href="@routes.Enigma.create(step.getId())" class="no-enigma">Aucune énigme... Créez-en une !</a>
 									} else {
-										@for((enigma, i) <- step.getEnigmas().zipWithIndex) {
-											<div class="accordion-group">
-												<div class="accordion-heading">
-													<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-enigmas" href="#collapse-enigma1">
-														&Eacute;nigme @i
-													</a>
-												</div>
-												<div id="collapse-enigma1" class="accordion-body collapse in">
-													<div class="accordion-inner">
-														<blockquote>
-															@enigma.getDescription()
-														</blockquote>
-														<div class="answer">
-															<h3>Réponses valides</h3>
-															<div>blabla, blabal</div>
+										@for(enigma <- step.getEnigmas()) {
+											@defining(enigma.getNumber()) { number =>
+												<div class="accordion-group enigma">
+													<div class="accordion-heading">
+														<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-enigmas" href="#collapse-enigma@number">
+															&Eacute;nigme @number
+														</a>
+													</div>
+													@if(number == 1) {
+														<div id="collapse-enigma@number" class="accordion-body in">
+													} else {
+														<div id="collapse-enigma@number" class="accordion-body collapse">
+													}
+														<div class="accordion-inner">
+															<blockquote>
+																@enigma.getDescription()
+															</blockquote>
+															<div class="answer">
+																@displayAnswer(enigma.getAnswer())
+															</div>
+															<div class="clues">
+																@displayClues(enigma.getClues())
+															</div>
 														</div>
-														<div class="clues">
-															@if(enigma.getClues().isEmpty()) {
-																Aucun indice...
-															} else {
-																@for((clue, i) <- enigma.getClues().zipWithIndex) {
-																	<div class="clue">
-																		<h3><i class="icon-comment icon-white"></i> Indice @i</h3>
-																		<div>
-																			blablablab lbal blab lablbl blab lbalbalbal blablbal
-																		</div>
-																	</div>
-																	<div class="clue">
-																		<h3><i class="icon-file icon-white"></i> Indice @i</h3>
-																		<div>
-																			Lien vers le fichier
-																		</div>
-																	</div>
-																}
-															}
+														<div class="actions">
+															<a href="#" class="action update-enigma">Modifier</a>
 														</div>
 													</div>
-													<div class="actions">
-														<a href="#" class="action update-enigma">Modifier</a>
-													</div>
 												</div>
-											</div>
+											}
 										}
 									}
 								</div>

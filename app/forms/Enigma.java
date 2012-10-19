@@ -17,7 +17,7 @@ public class Enigma {
 		public static final Integer TextClue = 0;
 		public static final Integer FileClue = 1;
 
-		public Integer type = TextClue;
+		public Integer type;
 
 		public String textDescription;
 
@@ -31,7 +31,7 @@ public class Enigma {
 		public static Integer TextAnswer = 0;
 		public static Integer GeolocatedAnswer = 1;
 
-		public Integer type = TextAnswer;
+		public Integer type;
 
 		public List<String> possibleTexts;
 

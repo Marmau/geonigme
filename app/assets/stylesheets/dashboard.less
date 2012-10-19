@@ -7,6 +7,14 @@ nav {
 		padding: 0px;
 		margin: 0px;
 		background: none;
+
+		.hunt-name {
+			text-overflow: ellipsis;
+			max-width: 250px;
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+		}
 	}
 }
 
@@ -137,32 +145,58 @@ section.hunt {
 			vertical-align: top;
 			margin-left: 5px;
 		}
-	}
 
-	.enigmas {
-		.actions {
-			text-align: right;
-			padding-bottom: 1px;
+		.step .enigmas {
+			color: @colorDarkBlue;	
 
-			.action, a {
+			a {
+				color: @colorDarkBlue;	
+			}
+
+			blockquote {
+				border-left: 5px solid @colorDarkBlue;
 				color: @colorDarkBlue;
-				font-weight: bold;
-				text-transform: uppercase;
-				margin-bottom: 5px;
+			}
 
-				&:hover {
-					border-bottom: 2px solid @colorDarkBlue;
+			.actions {
+				border-bottom: 1px solid @colorDarkBlue;
+				text-align: right;
+				padding-bottom: 1px;
+				margin-bottom: 0px;
+
+				.action, a {
+					color: @colorDarkBlue;
+					font-weight: bold;
+					text-transform: uppercase;
+					margin-bottom: 5px;
+
+					&:hover {
+						border-bottom: 2px solid @colorDarkBlue;
+					}
+
+					&.update-enigma {
+						margin-right: 5px;
+					}
 				}
+			}
 
-				&.update-enigma {
-					margin-right: 5px;
+			.enigma {
+				.clue {
+					a {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
 	}
+
+
 }
 
 #accordion-enigmas {
+	position: relative;
+	top: -1px;
+
 	.accordion-inner {
 		padding-bottom: 0px;
 
@@ -178,7 +212,7 @@ section.hunt {
 
             & + * {
                 padding-left: 20px;
-                color: @colorClearBlue;
+                color: @colorDarkBlue;
                 margin-bottom: 5px;
             }
         }

@@ -2,7 +2,9 @@ models.Hunt
 models.Step
 models.Answer
 models.Enigma
+models.Clue
 models.FileClue
+models.TextClue
 models.GeolocatedAnswer
 models.Mark
 models.Tag

@@ -34,11 +34,12 @@ public class Step extends Controller {
 		if (formStep.hasErrors()) {
 			return badRequest(views.html.dashboard.createStep.render(hunt, formStep));
 		} else {
-			models.Step s = formToStep(formStep.get());
-			s.setHunt(hunt);
+			models.Step step = formToStep(formStep.get());
+			step.setHunt(hunt);
+			step.setNumber(hunt.getSteps().size() + 1);
 
 			String sid = UUID.randomUUID().toString();
-			oc.addObject(models.Step.URI + sid, s);
+			oc.addObject(models.Step.URI + sid, step);
 
 			return redirect(routes.Hunt.show(hid));
 		}

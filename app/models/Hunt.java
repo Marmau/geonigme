@@ -1,6 +1,6 @@
 package models;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -26,7 +26,6 @@ public class Hunt implements RDFObject {
 	private User createdBy;
 	private boolean published;
 	private Set<Mark> marks;
-	// private Set<Step> steps;
 	private Set<Tag> tags;
 
 	private XMLGregorianCalendar createdAt;
@@ -113,30 +112,11 @@ public class Hunt implements RDFObject {
 		this.published = published;
 	}
 
-	// @Iri(URIs.GNGM + "step")
-	// public Set<Step> getSteps() {
-	// return steps;
-	// }
-
-	@Sparql(NS.PREFIX + "SELECT ?step { ?step gngm:stepOfHunt $this }")
-	public Set<Step> getSteps() {
+	@Sparql(NS.PREFIX +
+		"SELECT ?step { ?step gngm:stepOfHunt $this. ?step gngm:number ?number } ORDER BY ?number")
+	public List<Step> getSteps() {
 		return null;
 	}
-
-	// public void addStep(Step step) {
-	// Set<Step> currentSteps = getSteps();
-	// if (null == currentSteps) {
-	// currentSteps = new HashSet<Step>();
-	// }
-	//
-	// currentSteps.add(step);
-	// setSteps(currentSteps);
-	// }
-
-	// @Iri(URIs.GNGM + "step")
-	// public void setSteps(Set<Step> steps) {
-	// this.steps = steps;
-	// }
 
 	@Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag")
 	public Set<Tag> getTags() {
@@ -163,7 +143,8 @@ public class Hunt implements RDFObject {
 	// "ORDER BY ?date " +
 	// "LIMIT $number " +
 	// "OFFSET $offset ")
-	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByCreationDate(@Bind("number") Integer number, @Bind("offset") Integer offset) {
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByCreationDate(
+			@Bind("number") Integer number, @Bind("offset") Integer offset) {
 		return null;
 	}
 
@@ -181,7 +162,9 @@ public class Hunt implements RDFObject {
 	// "ORDER BY DESC($order) " +
 	// "LIMIT $number " +
 	// "OFFSET $offset")
-	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByParams(@Bind("order") String order, @Bind("number") Integer number, @Bind("offset") Integer offset, @Bind("published") Boolean published) {
+	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByParams(@Bind("order") String order,
+			@Bind("number") Integer number, @Bind("offset") Integer offset,
+			@Bind("published") Boolean published) {
 		return null;
 	}
 

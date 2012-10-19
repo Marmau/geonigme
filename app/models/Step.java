@@ -1,6 +1,6 @@
 package models;
 
-import java.util.Set;
+import java.util.List;
 
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
@@ -13,10 +13,20 @@ public class Step implements RDFObject {
 
 	public static final String URI = "http://geonigme.fr/step/";
 
-//	private Set<Enigma> enigmas;
 	private Hunt stepOfHunt;
 	private String description;
 	private Position position;
+	private Integer number;
+
+	@Iri(NS.GNGM + "number")
+	public Integer getNumber() {
+		return number;
+	}
+
+	@Iri(NS.GNGM + "number")
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
 
 	@Iri(NS.GNGM + "description")
 	public String getDescription() {
@@ -28,20 +38,11 @@ public class Step implements RDFObject {
 		this.description = description;
 	}
 
-	@Sparql(NS.PREFIX + "SELECT ?enigma { ?enigma gngm:enigmaOfStep $this }")
-	public Set<Enigma> getEnigmas() {
+	@Sparql(NS.PREFIX +
+		"SELECT ?enigma { ?enigma gngm:enigmaOfStep $this. ?enigma gngm:number ?number } ORDER BY ?number")
+	public List<Enigma> getEnigmas() {
 		return null;
 	}
-		
-//	@Iri(URIs.GNGM + "enigma")
-//	public Set<Enigma> getEnigmas() {
-//		return enigmas;
-//	}
-
-//	@Iri(URIs.GNGM + "enigma")
-//	public void setEnigmas(Set<Enigma> enigmas) {
-//		this.enigmas = enigmas;
-//	}
 
 	@Iri(NS.GNGM + "stepOfHunt")
 	public Hunt getHunt() {

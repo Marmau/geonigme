@@ -8,6 +8,7 @@ public class Clue {
 	public static final String URI = "http://geonigme.fr/clue/";
 	
 	private Enigma clueOfEnigma;
+	private Integer number;
 	private String description;
 
 	@Iri(NS.GNGM + "description")
@@ -29,5 +30,14 @@ public class Clue {
 	public void setEnigma(Enigma clueOfEnigma) {
 		this.clueOfEnigma = clueOfEnigma;
 	}
+	
+	@Iri(NS.GNGM + "number")
+	public Integer getNumber() {
+		return number;
+	}
 
+	@Iri(NS.GNGM + "number")
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
 }

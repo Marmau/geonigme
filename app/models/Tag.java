@@ -3,31 +3,22 @@ package models;
 import java.util.HashSet;
 import java.util.Set;
 import org.openrdf.annotations.Iri;
+import org.openrdf.annotations.Sparql;
 
 @Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag")
 public class Tag {
 
 	private String name;
-	private Set<Hunt> isTagOf;
 
 	/**
 	 * Indicates that the subject tag applies to the object resource. This does
 	 * not assert by who, when, or why the tagging occurred. For that
 	 * information, use a reified Tagging resource.
 	 */
-	@Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/isTagOf")
-	public Set<? extends Object> getIsTagOf() {
-		return isTagOf;
-	}
-
-	/**
-	 * Indicates that the subject tag applies to the object resource. This does
-	 * not assert by who, when, or why the tagging occurred. For that
-	 * information, use a reified Tagging resource.
-	 */
-	@Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/isTagOf")
-	public void setIsTagOf(Set<Hunt> isTagOf) {
-		this.isTagOf = isTagOf;
+	@Sparql(NS.PREFIX +
+			"SELECT ?tag { ?tag tags:isTagOf $this }")
+	public Set<Hunt> getHunts() {
+		return null;
 	}
 
 	/**
@@ -35,7 +26,7 @@ public class Tag {
 	 * because we cannot guarantee that tags have unique labels in a given
 	 * conceptual scheme. Or can we?
 	 */
-	@Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/name")
+	@Iri(NS.TAGS + "name")
 	public String getName() {
 		return name;
 	}
@@ -45,7 +36,7 @@ public class Tag {
 	 * because we cannot guarantee that tags have unique labels in a given
 	 * conceptual scheme. Or can we?
 	 */
-	@Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/name")
+	@Iri(NS.TAGS + "name")
 	public void setName(String name) {
 		this.name = name;
 	}

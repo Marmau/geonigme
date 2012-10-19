@@ -10,7 +10,6 @@ import global.Sesame;
 
 import models.Answer;
 import models.Clue;
-import models.Position;
 
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
@@ -26,11 +25,14 @@ public class Enigma extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
 		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
+		
+		formEnigma.fill(new forms.Enigma());
 
 		return ok(views.html.dashboard.createEnigma.render(step, formEnigma));
 	}
 
 	public static Result submitCreateForm(String sid) throws RepositoryException, QueryEvaluationException {
+		System.out.println("test");
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class).bindFromRequest();
 		ObjectConnection oc = Sesame.getObjectConnection();
 		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
@@ -40,21 +42,25 @@ public class Enigma extends Controller {
 		} else {
 			models.Enigma enigma = formToEnigma(formEnigma.get());
 			enigma.setStep(step);
+			enigma.setNumber(step.getEnigmas().size() + 1);
 			
 			String eid = UUID.randomUUID().toString();
 			oc.addObject(models.Enigma.URI + eid, enigma);
 			
-			Set<models.Clue> clues = formToClues(formEnigma.get());
-			for (models.Clue c: clues) {
-				c.setEnigma(enigma);
+			enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+			
+			for (models.Clue clue: formToClues(formEnigma.get())) {
+				clue.setEnigma(enigma);
 				String cid = UUID.randomUUID().toString();
-				oc.addObject(models.Clue.URI + cid, c);
+				oc.addObject(models.Clue.URI + cid, clue);
 			}
 			
 			models.Answer answer = formToAnswer(formEnigma.get());
 			answer.setEnigma(enigma);
 			String aid = UUID.randomUUID().toString();
 			oc.addObject(models.Answer.URI + aid, answer);
+			
+			oc.commit();
 
 			return redirect(routes.Hunt.show(step.getHunt().getId()));
 		}
@@ -81,21 +87,29 @@ public class Enigma extends Controller {
 
 	private static Set<Clue> formToClues(forms.Enigma form) {
 		Set<Clue> clues = new HashSet<Clue>();
+		if (form.clues == null) {
+			return clues;
+		}
+		
+		int index = 1;
 		for (forms.Enigma.Clue c: form.clues) {
 			if (c.type == forms.Enigma.Clue.TextClue) {
 				models.TextClue clue = new models.TextClue();
 				clue.setDescription(c.textDescription);
+				clue.setNumber(index);
 				clues.add(clue);
 			} else {
 				models.FileClue clue = new models.FileClue();
 				try {
 					clue.setFile(new URI(c.fileLink));
 					clue.setDescription(c.fileDescription);
+					clue.setNumber(index);
 					clues.add(clue);
 				} catch (URISyntaxException e) {
 					// Ne rien faire...
 				}
 			}
+			index++;
 		}
 		
 		return clues;
@@ -104,8 +118,6 @@ public class Enigma extends Controller {
 	private static models.Enigma formToEnigma(forms.Enigma form) {
 		models.Enigma e = new models.Enigma();
 		e.setDescription(form.description);
-
-		
 
 		return e;
 	}

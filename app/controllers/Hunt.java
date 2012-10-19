@@ -36,11 +36,11 @@ public class Hunt extends Controller {
 		if (formHunt.hasErrors()) {
 			return badRequest(views.html.dashboard.createHunt.render(formHunt));
 		} else {
-			models.Hunt h = formToHunt(formHunt.get());
+			models.Hunt hunt = formToHunt(formHunt.get());
 			ObjectConnection oc = Sesame.getObjectConnection();
 
 			String hid = UUID.randomUUID().toString();
-			oc.addObject(models.Hunt.URI + hid, h);
+			oc.addObject(models.Hunt.URI + hid, hunt);
 
 			return redirect(routes.Hunt.show(hid));
 		}
@@ -85,9 +85,6 @@ public class Hunt extends Controller {
 		h.setLabel(form.label);
 		h.setLevel(form.level);
 		h.setPublished(false);
-		for (Tag t : Tag.createFrom(form.tags)) {
-			System.out.println(t.getName());
-		}
 		h.setTags(Tag.createFrom(form.tags));
 		h.setArea(Area.createFrom(form.area));
 

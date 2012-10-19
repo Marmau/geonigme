@@ -5,7 +5,7 @@
 @mainDashboard("Nouvelle chasse", "enigma") {
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
-		<li><a href="#">@step.getHunt().getLabel()</a></li>
+		<li><a href="#"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
 		<li><a href="#">&Eacute;tape 1</a></li>
 		<li><a>Nouvelle énigme</a></li>
 	</ul>
@@ -32,7 +32,7 @@
 							<div class="btn active" data-selector=".text-answer-controls">Textuelle</div>
 							<div class="btn" data-selector=".geolocated-answer-controls">Géolocalisée</div>
 						</div>
-						<input type="hidden" name="@formEnigma("answer.type").name" value="@formEnigma("answer.type").value" />
+						<input type="hidden" name="@formEnigma("answer.type").name" value="@formEnigma("answer.type").valueOr("0")" />
 					</div>
 				</div>
 
@@ -149,7 +149,7 @@
 					<div class="control-group">
 						<label class="control-label" for="add-file-clue-link">Lien</label>
 						<div class="controls">
-							<input class="span12" type="text" data-bind="add-file-clue-link" id="add-file-clue-link" placeholder="http://...png" />
+							<input class="span12" type="text" data-bind="file-clue-link" id="add-file-clue-link" placeholder="http://...png" />
 							<p class="help-block">Lien vers l'image (*.png *.jpg) ou le son (*.mp3)</p>
 						</div>
 					</div>
