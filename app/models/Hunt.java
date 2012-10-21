@@ -29,6 +29,7 @@ public class Hunt implements RDFObject {
 	private Set<Tag> tags;
 
 	private XMLGregorianCalendar createdAt;
+	private XMLGregorianCalendar modifiedAt;
 	private String description;
 	private String label;
 
@@ -40,6 +41,16 @@ public class Hunt implements RDFObject {
 	@Iri(NS.GNGM + "createdAt")
 	public void setCreatedAt(XMLGregorianCalendar createdAt) {
 		this.createdAt = createdAt;
+	}
+	
+	@Iri(NS.GNGM + "modfiedAt")
+	public XMLGregorianCalendar getModifiedAt() {
+		return modifiedAt;
+	}
+
+	@Iri(NS.GNGM + "createdAt")
+	public void setModifiedAt(XMLGregorianCalendar modifiedAt) {
+		this.modifiedAt = modifiedAt;
 	}
 
 	@Iri("http://www.w3.org/2000/01/rdf-schema#label")
@@ -81,6 +92,17 @@ public class Hunt implements RDFObject {
 	public void setCreatedBy(User createdBy) {
 		this.createdBy = createdBy;
 	}
+	
+	public String getStringLevel() {
+		Integer level = getLevel();
+		if (level == 0) {
+			return "Facile";
+		} else if (level == 1) {
+			return "Intermédiaire";
+		} else {
+			return "Difficile";
+		}
+ 	}
 
 	@Iri(NS.GNGM + "level")
 	public Integer getLevel() {
@@ -115,6 +137,16 @@ public class Hunt implements RDFObject {
 	@Sparql(NS.PREFIX +
 		"SELECT ?step { ?step gngm:stepOfHunt $this. ?step gngm:number ?number } ORDER BY ?number")
 	public List<Step> getSteps() {
+		return null;
+	}
+	
+	@Sparql(NS.PREFIX + "SELECT ?enigma { " +
+				"?step gngm:stepOfHunt $this. " +
+				"?step gngm:number ?stepNumber. " +
+				"?enigma gngm:enigmaOfStep ?step. " +
+				"?enigma gngm:number ?enigmaNumber " +
+			"} ORDER BY ?stepNumber ?enigmaNumber")
+	public List<Enigma> getEnigmas() {
 		return null;
 	}
 

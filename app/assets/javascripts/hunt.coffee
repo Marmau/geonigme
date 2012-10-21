@@ -1,4 +1,4 @@
-require ['maps/base_map', 'helpers', 'fixed_map'], (BaseMap, Helpers) ->
+require ['maps/base_map', 'maps/helpers', 'fixed_map'], (BaseMap, Helpers) ->
 
 	# Choix du niveau
 	if '' == level = $('#level-hunt').val()

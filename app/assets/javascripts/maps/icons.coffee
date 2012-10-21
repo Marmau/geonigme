@@ -30,11 +30,18 @@ define ['leaflet'], ->
 		iconAnchor: [12, 41]
 	})
 
-	Icons.flagIcon = L.Icon.extend({
-		# iconUrl: Globals.markers['flag-green'],
-		# shadowUrl: null,
-		# iconSize: new L.Point(32, 32),
-		# iconAnchor: new L.Point(0, 32),
+	Icons.greenFlagIcon = L.icon({
+		iconUrl: '/assets/leaflet/images/green-flag.png',
+		shadowUrl: null,
+		iconSize: [32, 32],
+		iconAnchor: [4, 32]
+	})
+
+	Icons.redFlagIcon = L.icon({
+		iconUrl: '/assets/leaflet/images/red-flag.png',
+		shadowUrl: null,
+		iconSize: [32, 32],
+		iconAnchor: [4, 32]
 	})
 
 	return Icons

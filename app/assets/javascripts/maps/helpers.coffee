@@ -26,22 +26,18 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 		map.fitBounds(bounds)
 
 	Helpers.drawStartStep = (map, start, accuracy) ->
+		start = Helpers.stringPositionToLatLng(start)
 		circle = new L.Circle(start, accuracy, {
-			color: '#f33b3b',
+			color: '#41c453',
 			weight: 2,
-			opacity: 0.9,
+			opacity: 1,
 			fill: true,
-			fillColor: '#f33b3b',
+			fillColor: '#41c453',
 			fillOpacity: 0.4
 		})
 
-		marker = new L.Circle(start, 4, {
-			color: '#f33b3b',
-			weight: 2,
-			opacity: 0.8,
-			fill: true,
-			fillColor: '#f33b3b',
-			fillOpacity: 0.8
+		marker = new L.Marker(start, {
+			icon: Icons.greenFlagIcon,
 		})
 
 		marker.bindPopup('Départ de l\'étape')
@@ -56,22 +52,18 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 		}
 
 	Helpers.drawGeolocatedAnswer = (map, start, accuracy) ->
+		start = Helpers.stringPositionToLatLng(start)
 		circle = new L.Circle(start, accuracy, {
 			color: '#B94A48',
 			weight: 2,
-			opacity: 1
+			opacity: 1,
 			fill: true,
 			fillColor: '#B94A48',
 			fillOpacity: 0.2
 		})
 
-		marker = new L.Circle(start, 4, {
-			color: '#B94A48',
-			weight: '2',
-			opacity: 1,
-			fill: true,
-			fillColor: '#B94A48',
-			fillOpacity: 0.9
+		marker = new L.Marker(start, {
+			icon: Icons.redFlagIcon,
 		})
 
 		marker.bindPopup('Arrivée')

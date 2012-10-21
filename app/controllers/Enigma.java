@@ -32,7 +32,6 @@ public class Enigma extends Controller {
 	}
 
 	public static Result submitCreateForm(String sid) throws RepositoryException, QueryEvaluationException {
-		System.out.println("test");
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class).bindFromRequest();
 		ObjectConnection oc = Sesame.getObjectConnection();
 		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);

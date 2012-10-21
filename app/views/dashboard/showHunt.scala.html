@@ -22,14 +22,14 @@
 	} else {
 		@if(answer.isInstanceOf[GeolocatedAnswer]) {
 			<h3>Réponse géolocalisée</h3>
-			<div>La position est indiquée sur la carte</div>
+			<div>@answer.asInstanceOf[GeolocatedAnswer].getPosition().getPlace() : la position est indiquée sur la carte</div>
 		}
 	}
 }
 
 @displayClues(clues: List[Clue]) = {
 	@if(clues.isEmpty()) {
-		Aucun indice...
+		<h3>Aucun indice...</h3>
 	} else {
 		@for(clue <- clues) {
 			<div class="clue">
@@ -51,10 +51,26 @@
 	}
 }
 
+@displayDataAnswer(answer: Answer) = @{
+	var result = ""
+	if (answer.isInstanceOf[GeolocatedAnswer]) {
+		var ga = answer.asInstanceOf[GeolocatedAnswer]
+		result = " data-answer-position=" + ga.getPosition().toTemplateString() + " data-answer-accuracy=" + Float.toString(ga.getPosition().getAccuracy())
+	} 
+
+	result
+}
+
+@displayDataStep(step: Step) = @{
+	var result = " data-start-position=" + step.getPosition().toTemplateString() + " data-start-accuracy=" + Float.toString(step.getPosition().getAccuracy())
+
+	result
+}
+
 @mainDashboard("Voir la chasse", "show_hunt") {
 	<ul class="breadcrumb">
 		<li><a href="#">Tableau de bord</a></li>
-		<li><a><span class="hunt-name">@hunt.getLabel()</span> |<span class="small">Facile</span></a></li>
+		<li><a><span class="hunt-name">@hunt.getLabel()</span> |<span class="small">@hunt.getStringLevel()</span></a></li>
 	</ul>
 } {
 	<div class="row-fluid">
@@ -69,6 +85,7 @@
 					@hunt.getDescription()
 				</blockquote>
 				<div class="actions">
+					<a href="#" class="action">Jouer</a>
 					<a href="#" class="action">Modifier</a>
 					<a href="#" class="action">Publier</a>
 				</div>
@@ -88,7 +105,7 @@
 						</select>
 					</div>
 					@for(step <- hunt.getSteps()) {
-		 				<div class="step" id="step@step.getNumber()">
+		 				<div class="step" id="step@step.getNumber()" @displayDataStep(step)>
 		 					<div class="update-link">
 								<a class="update-step pushable" href="#">Modifier</a>
 							</div>
@@ -99,7 +116,7 @@
 								<div class="actions">
 									<a href="@routes.Enigma.create(step.getId())" class="action">Ajouter une énigme</a>
 								</div>
-								<div class="accordion" id="accordion-enigmas">
+								<div class="accordion accordion-enigmas" id="accordion@step.getNumber()-enigmas">
 									@if(step.getEnigmas().isEmpty()) {
 										<a class="underline" href="@routes.Enigma.create(step.getId())" class="no-enigma">Aucune énigme... Créez-en une !</a>
 									} else {
@@ -107,16 +124,12 @@
 											@defining(enigma.getNumber()) { number =>
 												<div class="accordion-group enigma">
 													<div class="accordion-heading">
-														<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-enigmas" href="#collapse-enigma@number">
+														<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion@step.getNumber()-enigmas" href="#collapse@step.getNumber()-enigma@number">
 															&Eacute;nigme @number
 														</a>
 													</div>
-													@if(number == 1) {
-														<div id="collapse-enigma@number" class="accordion-body in">
-													} else {
-														<div id="collapse-enigma@number" class="accordion-body collapse">
-													}
-														<div class="accordion-inner">
+													<div id="collapse@step.getNumber()-enigma@number" class="accordion-body collapse" @displayDataAnswer(enigma.getAnswer())>
+														<div class="accordion-inner ">
 															<blockquote>
 																@enigma.getDescription()
 															</blockquote>

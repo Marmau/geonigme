@@ -1,9 +1,8 @@
 package models;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
-import org.openrdf.annotations.Bind;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 
@@ -12,21 +11,16 @@ public class User {
 
 	public static final String URI = "http://geonigme.fr/user/";
 
-	private Set<Hunt> hunts;
 	private Date inscriptionDate;
 	private Date lastLoginTime;
 	private String login;
 	private String mail;
 	private String password;
 
-	@Iri(NS.GNGM + "creatorOf")
-	public Set<Hunt> getHunts() {
-		return hunts;
-	}
-
-	@Iri(NS.GNGM + "creatorOf")
-	public void setCreatorOf(Set<Hunt> hunts) {
-		this.hunts = hunts;
+	@Sparql(NS.PREFIX +
+		"SELECT ?hunt { ?hunt gngm:createdBy $this. ?hunt gngm:modifiedAt ?date } ORDER BY ?date")
+	public List<Hunt> getHunts() {
+		return null;
 	}
 
 	@Iri("http://schemas.talis.com/2005/user/schema#inscriptionDate")
@@ -79,7 +73,4 @@ public class User {
 		this.password = passwordSha1Hash;
 	}
 
-	@Sparql("INSERT { $user rdf:description $this}")
-	public void addUser(@Bind("user") String user) {
-	}
 }

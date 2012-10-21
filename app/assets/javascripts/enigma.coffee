@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'helpers', 'renumber', 'fixed_map'], (BaseMap, PositionAccuracy, Icon, Helpers) ->
+require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers', 'renumber', 'fixed_map'], (BaseMap, PositionAccuracy, Icon, Helpers) ->
 
 	container = $('#create-enigma')
 	formPosition = container.find('#position-answer')

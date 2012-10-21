@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'helpers', 'fixed_map'], (BaseMap, PositionAccuracy, Icon, Helpers) ->
+require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers', 'fixed_map'], (BaseMap, PositionAccuracy, Icon, Helpers) ->
 
 	container = $('#create-step')
 	formPosition = container.find('#position-step')

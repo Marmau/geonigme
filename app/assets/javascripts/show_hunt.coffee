@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/icons', 'helpers', 'fixed_map'], (BaseMap, Icons, Helpers) ->
+require ['maps/base_map', 'maps/icons', 'maps/helpers', 'fixed_map'], (BaseMap, Icons, Helpers) ->
 
 	map = new BaseMap $('#show-hunt-map')
 	
@@ -36,7 +36,7 @@ require ['maps/base_map', 'maps/icons', 'helpers', 'fixed_map'], (BaseMap, Icons
 	areaHunt.bindPopup('Zone de la chasse')
 	map.fitBounds(bounds)
 
-	accordionEnigmas = container.find('#accordion-enigmas')
+	accordionEnigmas = container.find('.accordion-enigmas')
 
 	accordionEnigmas.find('.accordion-body').on 'show', ->
 		displayGeolocatedAnswer($(this).data('answer-position'), $(this).data('answer-accuracy'))
@@ -46,12 +46,12 @@ require ['maps/base_map', 'maps/icons', 'helpers', 'fixed_map'], (BaseMap, Icons
 
 	container.find('#select-step select').change ->
 		accordionEnigmas.find('.accordion-body.in').collapse('hide')
-		$('#steps .step').hide();
+		container.find('.steps .step').hide();
 
-		stepElement = $('#steps #step' + $(this).val())
+		stepElement = container.find('.steps #step' + $(this).val())
 		stepElement.fadeIn('fast') 
 
 		displayGeolocatedAnswer(null, null)
 		displayStep(stepElement.data('start-position'), stepElement.data('start-accuracy'))
 
-	$('.select-step').trigger 'change'
+	$('#select-step select').trigger 'change'
