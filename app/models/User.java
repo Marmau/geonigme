@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.annotations.Bind;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
@@ -91,5 +90,4 @@ public class User implements RDFObject {
 	public Resource getResource() {
 		return null;
 	}
-
 }

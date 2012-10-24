@@ -1,4 +1,4 @@
-@(formConnection: Form[forms.Login], formRegistration: Form[forms.Register])
+@(formLogin: Form[forms.Login], formRegistration: Form[forms.Register])
 
 @mainHome("Connexion - Inscription") { 
     <ul class="menu">
@@ -40,15 +40,23 @@
                 <div><strong>Sinon, connectez-vous !</strong></div>
             </div>
             @helper.form(action = routes.User.submitLoginForm(), 'id -> "login-form") {
+                @if(formLogin.hasGlobalErrors()) {
+                    <div class="control-group error">
+                        @for(error <- formLogin.globalErrors()) {
+                            <p class="help-block">@error.message()</p>
+                        }
+                    </div>
+                }
                 <div>
                     <label class="uppercase focus" for="connection-input-login">Pseudonyme</label>
-                    <input name="@formConnection("login").name()" id="connection-input-login" type="text" class="span12" value="@formConnection("login").value()" autofocus />
+                    <input name="@formLogin("login").name()" id="connection-input-login" type="text" class="span12" value="@formLogin("login").value()" autofocus />
                 </div>
                 <div>
                     <label class="uppercase" for="connection-input-password">Mot de passe</label>
-                    <input name="@formConnection("password").name()" id="connection-input-password" type="password" class="span12" value="@formConnection("password").value()" />
+                    <input name="@formLogin("password").name()" id="connection-input-password" type="password" class="span12" value="@formLogin("password").value()" />
                 </div>
                 <button type="submit" class="btn pushable pull-right uppercase">Me connecter</button>
+
             }
             <p class="pagination-right">
                 <a href="#">J'ai oublié mon mot de passe</a>
