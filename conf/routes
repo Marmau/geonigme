@@ -4,7 +4,6 @@
 
 # Home page
 GET		/							controllers.Application.index()
-GET		/login						controllers.Application.login()
 GET		/hunt/reset					controllers.Application.reset()
 POST 	/contact-us					controllers.Application.submitContactForm()
 
@@ -46,11 +45,10 @@ POST	/step/:sid/enigma/create	controllers.Enigma.submitCreateForm(sid: String)
 #POST	/enigma/:eid/delete			controllers.Enigma.delete(eid: String)
 
 # User
+GET		/login						controllers.User.login()
 POST	/login						controllers.User.submitLoginForm()
-GET		/logout						controllers.User.logout()
 POST	/register					controllers.User.submitRegisterForm()
+GET		/logout						controllers.User.logout()
 
 # Manager
 GET		/dashboard					controllers.Manager.dashboard()
-GET		/login						controllers.Manager.login()
-GET		/register					controllers.Manager.register()

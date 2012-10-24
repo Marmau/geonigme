@@ -1,106 +1,119 @@
 package controllers;
 
+import forms.Login;
+import forms.Register;
 import global.Sesame;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+import models.NS;
+
+import org.apache.commons.codec.digest.DigestUtils;
+import org.openrdf.query.MalformedQueryException;
+import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.repository.object.ObjectQuery;
+import org.openrdf.result.NoResultException;
 
 import play.data.Form;
 import play.mvc.*;
 
 public class User extends Controller {
 
-	static String pattern = "([^A-Za-z0-9]+)";
-
-	public static Result submitLoginForm() {
-		Form<models.User> userForm = form(models.User.class);
-
-		models.User userResponse = userForm.bindFromRequest().get();
-		String mdp = userResponse.getPasswordSha1Hash();
-		String login = userResponse.getLoginName();
-
-		// Le modele user est à remplir avec les fonctions du userrepository
-		// (entre autre), il est utilisé pour le moment
-		models.User userRepo = new models.User();
-		// models.User user = userRepo.findOneBy(array("pseudo" => login));
-
-		// Vérifications
-		String errors = "";
-
-		if (userRepo == null || userRepo.getPasswordSha1Hash() != mdp)
-			errors += "<div id=\"error-pseudo\">Le pseudo et/ou le mot de passe sont incorrects.</div>";
-
-		if (!errors.isEmpty()) {
-			flash("errors", errors);
-			return ok(views.html.global.index.render());
-		} else {
-			userRepo.setLastLoginTime(new Date());
-			session("user", userRepo.getLoginName()); // id ?
-			return ok(views.html.dashboard.mainDashboard.render("test", "test", null, null));
-		}
-
-	}
-
+	static String userSessionKey = "user";
+	
 	public static Result logout() {
-		session().clear();
+		session().remove(userSessionKey);
+		
 		return ok(views.html.global.index.render());
 	}
 
-	public static Result submitRegisterForm() throws RepositoryException {
-		models.User userResponse = form(models.User.class).bindFromRequest().get();
-		System.out.println("test");
-		System.out.println(userResponse.getLoginName());
-		System.out.println(userResponse.getMail());
-
-		String mdp = "";
-		mdp = userResponse.getPasswordSha1Hash();
-		String login = "";
-		login = userResponse.getLoginName();
-		String mail = "";
-		mail = userResponse.getMail();
-
-		// Vérifications
-		String errors = "";
-
-		models.User userRepo = new models.User();
-		if (login.length() < 4)
-			errors += "<div id=\"error-pseudo\">Le pseudo doit contenir un mininum de 4 caractères.</div>";
-		else if (login.matches(pattern))
-			errors += "<div id=\"error-pseudo\">Le pseudo contient des caractères invalides: caractères supportés : A->Z, a->z, 0->9.</div>";
-		// else if(userRepo.findOneBy(array("pseudo" => $pseudo)))
-		// errors += "<div id=\"error-pseudo\">Ce pseudo existe déjà.</div>";
-		if (mdp.length() < 4)
-			errors += "<div id=\"error-pass\">Le mot de passe doit contenir un mininum de 4 caractères.</div>";
-		// else if (mdp.isn t valid)
-		// errors +=
-		// "<div id=\"error-pass\">Le mot de passe contient des caractères invalides: caractères supportés : A->Z, a->z, 0->9, À->ÿ, [espace], -.</div>";
-
-		if (mail.length() == 0)
-			errors += "<div id=\"error-mail\">L\'e-mail est un champ obligatoire.</div>";
-		// else if (mail.isn t valid)
-		// errors +=
-		// "<div id=\"error-mail\">L\'e-mail n\'est pas spécifié dans un format valide.</div>";
-
-		if (!errors.isEmpty()) {
-			flash("errors", errors);
-			return ok(views.html.global.index.render());
+	public static Result submitLoginForm() throws DatatypeConfigurationException, RepositoryException, QueryEvaluationException, MalformedQueryException {
+		Form<forms.Login> formLogin= form(forms.Login.class).bindFromRequest();
+		
+		if (formLogin.hasErrors()) {
+			return badRequest(views.html.global.login.render(formLogin, form(Register.class)));
 		} else {
-			userRepo.setMail(mail);
-			userRepo.setLoginName(login);
-			userRepo.setPasswordSha1Hash(mdp);
-			userRepo.setInscriptionDate(new Date());
-			userRepo.setLastLoginTime(new Date());
-
-			// gestion de la persistence
-			// v2
 			ObjectConnection oc = Sesame.getObjectConnection();
-			oc.addObject(models.User.URI + UUID.randomUUID().toString(), userRepo);
 
-			session("user", userRepo.getLoginName()); // id ?
-			return ok(views.html.dashboard.mainDashboard.render("test", "test", null, null));
+			forms.Login form = formLogin.get();
+
+			ObjectQuery query = oc.prepareObjectQuery(
+					NS.PREFIX +
+					"SELECT ?user { " +
+						"?user user:loginName $login. " +
+						"?user user:passwordSha1Hash $password " +
+					"}");
+			
+			query.setObject("login", form.login);
+			query.setObject("password", DigestUtils.sha256Hex(form.password));
+			
+			models.User user = null;
+			try {
+				user = query.evaluate(models.User.class).singleResult();				
+			} catch (NoResultException e) {
+				return badRequest(views.html.global.login.render(formLogin, form(Register.class)));
+			}
+			
+			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
+			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+			user.setLastLoginTime(now);
+			
+			oc.addObject(user.getResource(), user);
+			
+			session("user", user.getId());
+			
+			return redirect(routes.Manager.dashboard());
 		}
+	}
+	
+	public static Result submitRegisterForm() throws RepositoryException, DatatypeConfigurationException {
+		Form<forms.Register> formRegister= form(forms.Register.class).bindFromRequest();
+		
+		if (formRegister.hasErrors()) {
+			Form<Login> formLogin = form(Login.class);
+			return badRequest(views.html.global.login.render(formLogin, formRegister));
+		} else {
+			forms.Register form = formRegister.get();
+			models.User newUser = new models.User();
+			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
+			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+			newUser.setInscriptionDate(now);
+			newUser.setLastLoginTime(now);
+			newUser.setLoginName(form.pseudonym);
+			newUser.setMail(form.email);
+			newUser.setPasswordSha1Hash(DigestUtils.sha256Hex(form.password));
+			
+			ObjectConnection oc = Sesame.getObjectConnection();
+			
+			String uid = UUID.randomUUID().toString();
+			oc.addObject(models.User.URI + uid, newUser);
+			
+			session("user", uid);
+			
+			return redirect(routes.Manager.dashboard());
+		}
+	}
+	
+	
+	public static boolean isLogged() {
+		return session(userSessionKey) != null;
+	}
+
+	public static Result login() {
+		String user = session("user");
+		if (user != null)
+			return ok();// views.html.dashboard.mainDashboard.render());
+
+		Form<Login> formLogin = form(Login.class);
+		Form<Register> formRegister = form(Register.class);
+
+		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 }

@@ -89,8 +89,8 @@ public class Hunt extends Controller {
 		h.setArea(Area.createFrom(form.area));
 
 		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
-		XMLGregorianCalendar xgcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-		h.setCreatedAt(xgcal);
+		XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+		h.setCreatedAt(now);
 
 		return h;
 	}

@@ -3,7 +3,7 @@
 @mainHome("Connexion - Inscription") { 
     <ul class="menu">
         <li><a class="pushable" href="@routes.Application.index()">Découvrir</a></li>
-        <li class="selected"><a href="@routes.Application.login()">Se connecter</a></li>
+        <li class="selected"><a href="@routes.User.login()">Se connecter</a></li>
     </ul>
 } {
     <div class="row-fluid">
@@ -28,7 +28,7 @@
                 <div class="control-group">
                     <label class="control-label" for="registration-input-password">Mot de passe</label>
                     <div class="controls">
-                        <input name="@formRegistration("password").name()" id="registration-input-password" type="password" class="span12" value="@formRegistration("password").value()" />
+                        <input name="@formRegistration("password").name()" id="registration-input-password" type="password" class="span12" value="@formRegistration("password").value()" autocomplete="off" />
                     </div>
                 </div>
                 <button type="submit" class="btn pushable pull-right uppercase">M'inscrire</button>
