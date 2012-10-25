@@ -43,12 +43,12 @@ public class Hunt implements RDFObject {
 		this.createdAt = createdAt;
 	}
 	
-	@Iri(NS.GNGM + "modfiedAt")
+	@Iri(NS.GNGM + "modifiedAt")
 	public XMLGregorianCalendar getModifiedAt() {
 		return modifiedAt;
 	}
 
-	@Iri(NS.GNGM + "createdAt")
+	@Iri(NS.GNGM + "modifiedAt")
 	public void setModifiedAt(XMLGregorianCalendar modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
@@ -197,16 +197,6 @@ public class Hunt implements RDFObject {
 	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByParams(@Bind("order") String order,
 			@Bind("number") Integer number, @Bind("offset") Integer offset,
 			@Bind("published") Boolean published) {
-		return null;
-	}
-
-	// @Sparql("PREFIX rdf:" + RDF + "\n" +
-	// "PREFIX gngm:" + URIs.GNGM + "\n" +
-	// "SELECT ?s WHERE { " +
-	// "?s rdf:type <" + NS + "> . " +
-	// "?s gngm:createur <{$author}> " +
-	// "}")
-	public Set<org.openrdf.result.Result<Hunt>> getHuntsByAuthor(@Bind("author") String author) {
 		return null;
 	}
 

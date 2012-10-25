@@ -1,220 +1,289 @@
 @import "lib.less";
 
-nav {
-	font-size: 14px;
-	
-	.breadcrumb {
-		padding: 0px;
-		margin: 0px;
-		background: none;
-
-		.hunt-name {
-			text-overflow: ellipsis;
-			max-width: 250px;
-			display: inline-block;
-			white-space: nowrap;
-			overflow: hidden;
-		}
-	}
-}
-
-.map {
-	width: 100%;
-}
-
-#text-answers .text-answer {
-	margin-bottom: 10px;
-
-	&:nth-last-child(2) {
-		margin-bottom: 0px;
-	}
-
-	.btn.disabled {
-		opacity: 0;
-	}
-}
-
-#clues .clue {
-	background: @colorClearBlue;
-	text-transform: uppercase;
-	font-weight: bold;
-	padding-left: 10px;
-	margin-bottom: 5px;
-	color: white;
-	line-height: 30px;
-	vertical-align: middle;
-
-	.actions {
-		float: right;
-		padding-right: 10px;
-		.btn {
-			margin: 0px;
-			padding: 0px;
-		}
-	}
-}
-
-#tags-hunt {
-	color: @colorClearBlue;
-	margin-bottom: 5px;
-
-	.tag {
-		display: inline-block;
-		margin-right: 5px; 
-	}
-}
-
-section.hunt {
-	border-bottom: @colorOrange 1px solid;
-}
-
-#show-hunt {
-
- 	#select-step select {
-		width: 120px;
-	}
-
-	a:hover {
-		text-decoration: none;
-
-		&.underline {
-			text-decoration: underline;
-		}
-	}
-
-	.hunt {
-		.actions {
-			text-align: right;
-			padding-bottom: 1px;
-
-			.action, a {
-				color: @colorOrange;
-				font-weight: bold;
-				text-transform: uppercase;
-				margin-left: 10px;
-
-				&:hover {
-					border-bottom: 2px solid @colorOrange;
-				}
-			}				
-		}
-	}
-
-	.steps {
-		.step {
-			position: relative;
-
-			.update-link {
-				position: absolute;
-				top: -33px;
-				right: 0px;
-			}
-		}
-
-		.no-step {
-			color: @colorClearBlue;
-		}
-
-		blockquote {
-			border-left: 5px solid @colorClearBlue;
-			color: @colorClearBlue;
-		}
-
-		.actions {
-			padding-top: 2px;
-			margin-bottom: 10px;
-
-			.action.add-step {
-				color: @colorOrange;
-				font-weight: bold;
-				text-transform: uppercase;
-				margin-bottom: 5px;
-
-				&:hover {
-					border-top: 2px solid @colorOrange;
-				}
-			}
-		}
-
-		.update-step {
-			color: @colorClearBlue;
-			font-weight: bold;
-			text-transform: uppercase;
-			line-height: 24px;
-			display: inline-block;
-			vertical-align: top;
-			margin-left: 5px;
-		}
-
-		.step .enigmas {
-			color: @colorDarkBlue;	
-
-			a {
-				color: @colorDarkBlue;	
-			}
-
-			blockquote {
-				border-left: 5px solid @colorDarkBlue;
-				color: @colorDarkBlue;
-			}
-
-			.actions {
-				border-bottom: 1px solid @colorDarkBlue;
-				text-align: right;
-				padding-bottom: 1px;
-				margin-bottom: 0px;
-
-				.action, a {
-					color: @colorDarkBlue;
-					font-weight: bold;
-					text-transform: uppercase;
-					margin-bottom: 5px;
-
-					&:hover {
-						border-bottom: 2px solid @colorDarkBlue;
-					}
-
-					&.update-enigma {
-						margin-right: 5px;
-					}
-				}
-			}
-
-			.enigma {
-				.clue {
-					a {
-						text-decoration: underline;
-					}
-				}
-			}
-		}
-	}
-
-
-}
-
-.accordion-enigmas {
-	position: relative;
-	top: -1px;
-
-	.accordion-inner {
-		padding-bottom: 0px;
-
-        h3 {
-            background: @colorDarkBlue;
-            color: white;
-            text-transform: uppercase;
-            font-size: 13px;
+.dashboard {
+    nav {
+        font-size: 14px;
+        
+        .breadcrumb {
+            padding: 0px;
             margin: 0px;
-            padding: 2px 5px;
-            line-height: initial;
-            display: inline-block;
+            background: none;
 
-            & + * {
-                padding-left: 20px;
-                color: @colorDarkBlue;
-                margin-bottom: 5px;
+            .hunt-name {
+                text-overflow: ellipsis;
+                max-width: 250px;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
             }
         }
-	}
+    }
+
+    .map {
+        width: 100%;
+    }
+
+    #text-answers .text-answer {
+        margin-bottom: 10px;
+
+        &:nth-last-child(2) {
+            margin-bottom: 0px;
+        }
+
+        .btn.disabled {
+            opacity: 0;
+        }
+    }
+
+    #clues .clue {
+        background: @colorClearBlue;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding-left: 10px;
+        margin-bottom: 5px;
+        color: white;
+        line-height: 30px;
+        vertical-align: middle;
+
+        .actions {
+            float: right;
+            padding-right: 10px;
+            .btn {
+                margin: 0px;
+                padding: 0px;
+            }
+        }
+    }
+
+    #tags-hunt {
+        color: @colorClearBlue;
+
+        .tag {
+            display: inline-block;
+            margin-right: 5px; 
+        }
+    }
+
+    section.hunt {
+        border-bottom: @colorOrange 1px solid;
+    }
+
+    #show-hunt {
+
+        #select-step select {
+            width: 120px;
+        }
+
+        a:hover {
+            text-decoration: none;
+
+            &.underline {
+                text-decoration: underline;
+            }
+        }
+
+        .hunt {
+            .actions {
+                text-align: right;
+                padding-bottom: 1px;
+
+                .action, a {
+                    color: @colorOrange;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    margin-left: 10px;
+
+                    &:hover {
+                        border-bottom: 2px solid @colorOrange;
+                    }
+                }               
+            }
+        }
+
+        .steps {
+            .step {
+                position: relative;
+
+                .update-link {
+                    position: absolute;
+                    top: -33px;
+                    right: 0px;
+                }
+            }
+
+            .no-step {
+                color: @colorClearBlue;
+            }
+
+            blockquote {
+                border-left: 5px solid @colorClearBlue;
+                color: @colorClearBlue;
+            }
+
+            .actions {
+                padding-top: 2px;
+                margin-bottom: 10px;
+
+                .action.add-step {
+                    color: @colorOrange;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    margin-bottom: 5px;
+
+                    &:hover {
+                        border-top: 2px solid @colorOrange;
+                    }
+                }
+            }
+
+            .update-step {
+                color: @colorClearBlue;
+                font-weight: bold;
+                text-transform: uppercase;
+                line-height: 24px;
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 5px;
+            }
+
+            .step .enigmas {
+                color: @colorDarkBlue;  
+
+                a {
+                    color: @colorDarkBlue;  
+                }
+
+                blockquote {
+                    border-left: 5px solid @colorDarkBlue;
+                    color: @colorDarkBlue;
+                }
+
+                .actions {
+                    border-bottom: 1px solid @colorDarkBlue;
+                    text-align: right;
+                    padding-bottom: 1px;
+                    margin-bottom: 0px;
+
+                    .action, a {
+                        color: @colorDarkBlue;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        margin-bottom: 5px;
+
+                        &:hover {
+                            border-bottom: 2px solid @colorDarkBlue;
+                        }
+
+                        &.update-enigma {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+
+                .enigma {
+                    .clue {
+                        a {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .accordion-enigmas {
+        position: relative;
+        top: -1px;
+
+        .accordion-inner {
+            padding-bottom: 0px;
+
+            h3 {
+                background: @colorDarkBlue;
+                color: white;
+                text-transform: uppercase;
+                font-size: 13px;
+                margin: 0px;
+                padding: 2px 5px;
+                line-height: initial;
+                display: inline-block;
+
+                & + * {
+                    padding-left: 20px;
+                    color: @colorDarkBlue;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    .hunt-box {
+        background: @colorClearBlue;
+        font-size: 14px;
+
+        a {
+            color: @colorClearBlue;
+            text-decoration: none;
+            display: block;
+        }
+
+        .name {
+            text-align: right;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 21px;
+            overflow: hidden;
+
+            div {
+                margin-right: 5px;
+
+                span {
+                    padding: 2px 0px;
+                    .highlight(5px, white);
+                }
+            }
+        }
+
+        .numbers {
+            position: relative;
+            overflow: hidden;
+            margin-top: 8px;
+
+            .number {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .enigmas {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+            }
+
+            span {
+                background: white;
+                padding: 0px 2px;
+
+                &:not(.number) {
+                    padding-bottom: 2px;
+                }
+            }
+        }
+
+        .tags {
+            text-align: right;
+            overflow: hidden;
+            margin-top: 8px;
+
+            .tag {
+                background: white;
+                padding: 0px 2px;
+                margin: 0px 0px 1px 1px;
+                float: right
+            }
+        }
+    }
 }

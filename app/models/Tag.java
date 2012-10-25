@@ -43,12 +43,14 @@ public class Tag {
 
 	public static Set<Tag> createFrom(String string) {
 		Set<Tag> tags = new HashSet<Tag>();
-		for (String nameTag : string.split(",")) {
+		for (String tagName : string.split(",")) {
 			Tag tag = new Tag();
-			tag.setName(nameTag.trim());
-			tags.add(tag);
+			tag.setName(tagName.trim());
+			if (!tag.getName().equals("")) {
+				tags.add(tag);
+			}
 		}
-
+		
 		return tags;
 	}
 }

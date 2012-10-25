@@ -1,5 +1,7 @@
 @(formLogin: Form[forms.Login], formRegistration: Form[forms.Register])
 
+@import helpers._
+
 @mainHome("Connexion - Inscription") { 
     <ul class="menu">
         <li><a class="pushable" href="@routes.Application.index()">Découvrir</a></li>
@@ -13,10 +15,13 @@
                 <div>Inscrivez-vous !</div>
             </div>
             @helper.form(action = routes.User.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
-                <div class="control-group">
+                <div class="control-group @displayIfError(formRegistration("pseudonym"), "error")">
                     <label class="control-label" for="registration-input-pseudonym">Pseudonyme</label>
                     <div class="controls">
                         <input name="@formRegistration("pseudonym").name()" id="registration-input-pseudonym" type="text" class="span12" value="@formRegistration("pseudonym").value()" />
+                        @formRegistration("pseudonym").errors.map { error =>
+                            <p class="help-block error">@error.message</p>
+                        }
                     </div>
                 </div>
                 <div class="control-group">
@@ -43,7 +48,7 @@
                 @if(formLogin.hasGlobalErrors()) {
                     <div class="control-group error">
                         @for(error <- formLogin.globalErrors()) {
-                            <p class="help-block">@error.message()</p>
+                            <p class="help-block">@error.message</p>
                         }
                     </div>
                 }

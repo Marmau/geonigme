@@ -85,6 +85,21 @@ public class User extends Controller {
 	public static boolean isLogged() {
 		return session(userSessionKey) != null;
 	}
+	
+	public static models.User getLoggedUser() {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		String uid = session(userSessionKey);
+		
+		if (uid == null) {
+			return null;
+		}
+		
+		try {
+			return oc.getObject(models.User.class, models.User.URI + uid);
+		} catch (RepositoryException | QueryEvaluationException e) {
+			return null;
+		}
+	}
 
 	public static Result login() {
 		String user = session("user");

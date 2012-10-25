@@ -63,7 +63,50 @@ public class Constraints {
     }
     
     /**
-     * Defines a loginNotAlreadyUsed constraint
+     * Defines a TagWellFormed constraint
+     */
+    @Target({FIELD})
+    @Retention(RUNTIME)
+    @Constraint(validatedBy = TagWellFormedValidator.class)
+    @play.data.Form.Display(name="constraint.loginNotAlreadyUsed", attributes={})
+    public static @interface TagWellFormed {
+        String message() default TagWellFormedValidator.message;
+        Class<?>[] groups() default {};
+        Class<? extends Payload>[] payload() default {};
+    }
+    
+    /**
+     * Validator for <code>@LoginNotAlreadyUsed</code> fields.
+     */
+    public static class TagWellFormedValidator extends Validator<String> implements ConstraintValidator<TagWellFormed, String> {
+        
+        final static public String message = "error.tags";
+        
+        public TagWellFormedValidator() {}
+        
+        @Override
+        public void initialize(TagWellFormed constraintAnnotation) {
+        }
+        
+        @Override
+        public boolean isValid(String tags) {
+        	if (tags.trim().equals("")) {
+        		return true;
+        	}
+        	
+        	for (String nameTag : tags.split(",")) {
+        		nameTag = nameTag.trim();
+    			if (!nameTag.matches("\\w+") || nameTag.length() > 15) {
+    				return false;
+    			}
+    		}
+        	
+        	return true;
+        }
+    }
+    
+    /**
+     * Defines a True constraint
      */
     @Target({FIELD, METHOD})
     @Retention(RUNTIME)
