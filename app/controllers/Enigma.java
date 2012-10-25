@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.StringWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashSet;
@@ -12,8 +13,12 @@ import models.Answer;
 import models.Clue;
 
 import org.openrdf.query.QueryEvaluationException;
+import org.openrdf.query.QueryLanguage;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.rio.RDFHandler;
+import org.openrdf.rio.rdfxml.RDFXMLWriter;
+import org.openrdf.rio.turtle.TurtleWriter;
 
 import play.data.Form;
 import play.mvc.*;
@@ -120,6 +125,34 @@ public class Enigma extends Controller {
 
 		return e;
 	}
+	
+	public static Result showXML(String eid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			RDFXMLWriter writer = new RDFXMLWriter(str);
+			String queryString = "DESCRIBE <" + models.Enigma.URI + eid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
+	}
+	
+	public static Result showTurtle(String eid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			TurtleWriter writer = new TurtleWriter(str);
+			String queryString = "DESCRIBE <" + models.Enigma.URI + eid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
+	}
 
 	public static Result edit(String eid) {
 		return ok();
@@ -135,6 +168,62 @@ public class Enigma extends Controller {
 
 	public static Result submitUpdateForm(String eid) {
 		return ok();
+	}
+	
+	public static Result showClueXML(String cid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			RDFXMLWriter writer = new RDFXMLWriter(str);
+			String queryString = "DESCRIBE <" + models.Clue.URI + cid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
+	}
+	
+	public static Result showClueTurtle(String cid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			TurtleWriter writer = new TurtleWriter(str);
+			String queryString = "DESCRIBE <" + models.Clue.URI + cid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
+	}
+	
+	public static Result showAnswerXML(String aid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			RDFXMLWriter writer = new RDFXMLWriter(str);
+			String queryString = "DESCRIBE <" + models.Answer.URI + aid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
+	}
+	
+	public static Result showAnswerTurtle(String aid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			TurtleWriter writer = new TurtleWriter(str);
+			String queryString = "DESCRIBE <" + models.Answer.URI + aid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
 	}
 
 }
