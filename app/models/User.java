@@ -1,18 +1,22 @@
 package models;
 
-import java.util.Date;
 import java.util.List;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
+import org.openrdf.model.Resource;
+import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.repository.object.RDFObject;
 
-@Iri("http://schemas.talis.com/2005/user/schema#User")
-public class User {
+@Iri(NS.USER + "User")
+public class User implements RDFObject {
 
 	public static final String URI = "http://geonigme.fr/user/";
 
-	private Date inscriptionDate;
-	private Date lastLoginTime;
+	private XMLGregorianCalendar inscriptionDate;
+	private XMLGregorianCalendar lastLoginTime;
 	private String login;
 	private String mail;
 	private String password;
@@ -23,54 +27,67 @@ public class User {
 		return null;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#inscriptionDate")
-	public Date getInscriptionDate() {
+	@Iri(NS.USER + "inscriptionDate")
+	public XMLGregorianCalendar getInscriptionDate() {
 		return inscriptionDate;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#inscriptionDate")
-	public void setInscriptionDate(Date inscriptionDate) {
+	@Iri(NS.USER + "inscriptionDate")
+	public void setInscriptionDate(XMLGregorianCalendar inscriptionDate) {
 		this.inscriptionDate = inscriptionDate;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#lastLoginTime")
-	public Date getLastLoginTime() {
+	@Iri(NS.USER + "lastLoginTime")
+	public XMLGregorianCalendar getLastLoginTime() {
 		return lastLoginTime;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#lastLoginTime")
-	public void setLastLoginTime(Date lastLoginTime) {
+	@Iri(NS.USER + "lastLoginTime")
+	public void setLastLoginTime(XMLGregorianCalendar lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#loginName")
+	@Iri(NS.USER + "loginName")
 	public String getLoginName() {
 		return login;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#loginName")
+	@Iri(NS.USER + "loginName")
 	public void setLoginName(String loginName) {
 		this.login = loginName;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#mail")
+	@Iri(NS.USER + "mail")
 	public String getMail() {
 		return mail;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#mail")
+	@Iri(NS.USER + "mail")
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#passwordSha1Hash")
+	@Iri(NS.USER + "passwordSha1Hash")
 	public String getPasswordSha1Hash() {
 		return password;
 	}
 
-	@Iri("http://schemas.talis.com/2005/user/schema#passwordSha1Hash")
+	@Iri(NS.USER + "passwordSha1Hash")
 	public void setPasswordSha1Hash(String passwordSha1Hash) {
 		this.password = passwordSha1Hash;
 	}
+	
+	public String getId() {
+		return getResource().stringValue().replace(URI, "");
+	}
 
+	@Override
+	public ObjectConnection getObjectConnection() {
+		return null;
+	}
+
+	@Override
+	public Resource getResource() {
+		return null;
+	}
 }

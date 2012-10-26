@@ -4,7 +4,7 @@
 
 @mainDashboard("Nouvelle chasse", "hunt") {
 	<ul class="breadcrumb">
-		<li><a href="#">Tableau de bord</a></li>
+		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
 		<li><a>Nouvelle chasse</a></li>
 	</ul>
 } {
@@ -14,7 +14,7 @@
 				<div class="control-group @displayIfError(formHunt("label"), "error")">
 					<label class="control-label" for="name-hunt">Nom</label>
 					<div class="controls">
-						<input class="span12" type="text" id="name-hunt" name="@formHunt("label").name" placeholder="Nom de la chasse" value="@formHunt("label").value" />
+						<input class="span12" type="text" id="name-hunt" name="@formHunt("label").name" placeholder="Nom de la chasse" value="@formHunt("label").value" maxlength="50" />
 						@formHunt("label").errors.map { error =>
 					        <p class="help-block error">@error.message</p>
 					    }
@@ -32,10 +32,13 @@
 						<p class="help-block">Définissez la difficulté de votre chasse</p>
 					</div>
 				</div>
-				<div class="control-group">
+				<div class="control-group @displayIfError(formHunt("tags"), "error")">
 					<label class="control-label" for="tags-hunt">Tags</label>
 					<div class="controls">
-						<input class="span12" type="text" id="tags-hunt" name="@formHunt("tags").name" placeholder="centre ville, montpellier, pedestre" value="@formHunt("tags").value" />
+						<input class="span12" type="text" id="tags-hunt" name="@formHunt("tags").name" placeholder="centre ville, montpellier, pedestre" value="@formHunt("tags").value" maxlength="100" />
+						@formHunt("tags").errors.map { error =>
+					        <p class="help-block error">@error.message</p>
+					    }
 						<p class="help-block">Séparez les tags par une virgule</p>
 					</div>
 				</div>

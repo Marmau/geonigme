@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.GregorianCalendar;
 import java.util.UUID;
@@ -14,16 +13,11 @@ import global.Sesame;
 import models.Area;
 import models.Tag;
 
-import org.openrdf.model.URI;
 import org.openrdf.query.QueryLanguage;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
-import org.openrdf.rio.RDFHandler;
-import org.openrdf.rio.rdfxml.RDFXMLParser;
 import org.openrdf.rio.rdfxml.RDFXMLWriter;
 import org.openrdf.rio.turtle.TurtleWriter;
-
-import com.sun.jndi.toolkit.url.Uri;
 
 import play.data.Form;
 import play.mvc.*;
@@ -35,12 +29,20 @@ public class Hunt extends Controller {
 	}
 
 	public static Result create() {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class);
 
 		return ok(views.html.dashboard.createHunt.render(formHunt));
 	}
 
 	public static Result submitCreateForm() throws RepositoryException, DatatypeConfigurationException {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
 
 		if (formHunt.hasErrors()) {
@@ -56,23 +58,35 @@ public class Hunt extends Controller {
 		}
 	}
 
-	public static Result edit(String hid) {
-		return ok();
-	}
-
 	public static Result update(String hid) {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		return ok();
 	}
 
 	public static Result submitUpdateForm(String hid) {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		return ok();
 	}
 
 	public static Result delete(String hid) {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		return ok();
 	}
 
 	public static Result show(String hid) {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		ObjectConnection oc = Sesame.getObjectConnection();
 		
 		models.Hunt h = null;
@@ -114,6 +128,10 @@ public class Hunt extends Controller {
 	}
 
 	public static Result publish(String hid) {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		return ok();
 	}
 
@@ -125,10 +143,14 @@ public class Hunt extends Controller {
 		h.setPublished(false);
 		h.setTags(Tag.createFrom(form.tags));
 		h.setArea(Area.createFrom(form.area));
+		h.setCreatedBy(User.getLoggedUser());
+		
+		System.out.println(User.getLoggedUser());
 
 		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
-		XMLGregorianCalendar xgcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-		h.setCreatedAt(xgcal);
+		XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+		h.setCreatedAt(now);
+		h.setModifiedAt(now);
 
 		return h;
 	}
