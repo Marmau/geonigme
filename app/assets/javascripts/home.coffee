@@ -1,4 +1,4 @@
-require ['jquery', 'jquery_easing', 'camera'], ($) ->
+require ['jquery_easing', 'camera'],  ->
 	$('#camera-wrap').camera(
 		height: '350px',
 		fx: 'scrollLeft',

@@ -1,5 +1,7 @@
 package models;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.Set;
 import org.openrdf.annotations.Iri;
@@ -8,6 +10,8 @@ import org.openrdf.annotations.Sparql;
 @Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag")
 public class Tag {
 
+	public static final String URI = "http://geonigme.fr/tag/";
+			
 	private String name;
 
 	/**
@@ -38,7 +42,7 @@ public class Tag {
 	 */
 	@Iri(NS.TAGS + "name")
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.toLowerCase();
 	}
 
 	public static Set<Tag> createFrom(String string) {
@@ -52,5 +56,9 @@ public class Tag {
 		}
 		
 		return tags;
+	}
+	
+	public String urify() throws UnsupportedEncodingException {
+		return URLEncoder.encode(getName(), "UTF-8");
 	}
 }

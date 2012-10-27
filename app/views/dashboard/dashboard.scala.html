@@ -4,52 +4,49 @@
 @import models._
 
 
-@displayHunts(hunts: List[Hunt])(f: Hunt => Html)(g: () => Html) = @{
+@displayHunts(hunts: List[Hunt], nbPerLine: Integer)(f: Hunt => Html)(g: () => Html) = @{
 	var i:Int = 0
 	var result = ""
 	if (hunts.isEmpty) {
 		g()
 	} else {
 		for (hunt <- hunts) {
-			if(i % 3 == 0) {
-				result += "<div class=\"row-fluid\">"
-			}
-				
 			result += f(hunt)
 
 			i += 1
-			if(i % 3 == 0) {
-				result += "</div>"
-			}
 		}
 	}
 
 	new Html(result)
 }
 
-@mainDashboard("Voir la chasse") {
+@mainDashboard("Voir la chasse", "dashboard") {
 	<ul class="menu">
 	    <li class="selected"><a href="">Dashboard</a></li>
 	    <li><a class="pushable" href="@routes.Hunt.create()">Nouvelle chasse</a></li>
 	</ul>
 } {
-	@displayHunts(hunts) { hunt =>
-		<div class="span3 hunt-box pushable">
-			<a href="@routes.Hunt.show(hunt.getId())">
-				<div class="name"><div><span>@hunt.getLabel()</span></div></div>
-				<div class="numbers">
-					<div class="steps"><span class="number">@hunt.getSteps().size()</span><span> étapes</span></div>
-					<div class="enigmas"><span class="number">@hunt.getEnigmas().size()</span><span>énigmes</span></div>
-				</div>
-				<div class="tags">
-					@for(tag <- hunt.getTags()) {
-						<div class="tag">@tag.getName()</div>
-					}
-				</div>
-				<div>Modifiée le @hunt.getModifiedAt()</div>
-			</a>
+	@if(!hunts.isEmpty()) { 
+		<div id="container-hunt-box">
+		@for(hunt <- hunts) {
+			<div class="hunt-box">
+				<a class="pushable" href="@routes.Hunt.show(hunt.getId())">
+					<div class="name"><div><span>@hunt.getLabel()</span></div></div>
+					<div class="numbers">
+						<div class="steps"><span class="number">@hunt.getSteps().size()</span><span> étapes</span></div>
+						<div class="enigmas"><span class="number">@hunt.getEnigmas().size()</span><span>énigmes</span></div>
+					</div>
+					<div class="tags">
+						@for(tag <- hunt.getTags()) {
+							<div class="tag">@tag.getName()</div>
+						}
+					</div>
+					<div>Modifiée le @hunt.getModifiedAt()</div>
+				</a>
+			</div>
+		}
 		</div>
-	} { () =>
+	} else { 
 		<div class="span12">
 			<p>Vous n'avez créé aucune chasse... Créez en une !</p>
 		</div>

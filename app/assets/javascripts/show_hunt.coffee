@@ -11,7 +11,7 @@ require ['maps/base_map', 'maps/icons', 'maps/helpers', 'fixed_map'], (BaseMap, 
 			map.removeLayer(stepLayers.marker)
 		
 		if position and accuracy
-			stepLayers = Helpers.drawStartStep(map, position, accuracy)
+			stepLayers = Helpers.drawStartStep(map, Helpers.stringPositionToLatLng(position), accuracy)
 
 	displayGeolocatedAnswer = (position, accuracy) ->
 		if geolocatedAnswerLayers
@@ -19,7 +19,7 @@ require ['maps/base_map', 'maps/icons', 'maps/helpers', 'fixed_map'], (BaseMap, 
 			map.removeLayer(geolocatedAnswerLayers.marker)
 		
 		if position and accuracy
-			geolocatedAnswerLayers = Helpers.drawGeolocatedAnswer(map, position, accuracy)
+			geolocatedAnswerLayers = Helpers.drawGeolocatedAnswer(map, Helpers.stringPositionToLatLng(position), accuracy)
 
 
 	container = $('#show-hunt')

@@ -1,6 +1,9 @@
 package controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -12,11 +15,13 @@ import global.Sesame;
 import models.Area;
 import models.Tag;
 
+import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 
 import play.data.Form;
 import play.mvc.*;
+import play.templates.Hash;
 
 public class Hunt extends Controller {
 
@@ -34,7 +39,7 @@ public class Hunt extends Controller {
 		return ok(views.html.dashboard.createHunt.render(formHunt));
 	}
 
-	public static Result submitCreateForm() throws RepositoryException, DatatypeConfigurationException {
+	public static Result submitCreateForm() throws RepositoryException, DatatypeConfigurationException, UnsupportedEncodingException, QueryEvaluationException {
 		if (!User.isLogged()) {
 			return redirect(routes.Application.index());
 		}
@@ -46,7 +51,16 @@ public class Hunt extends Controller {
 		} else {
 			models.Hunt hunt = formToHunt(formHunt.get());
 			ObjectConnection oc = Sesame.getObjectConnection();
-
+			
+			Set<models.Tag> tags = formToTags(formHunt.get());
+			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
+			for (models.Tag tag: tags) {
+				System.out.println(models.Tag.URI + tag.urify());
+				oc.addObject(models.Tag.URI + tag.urify(), tag);
+				tagsWithURI.add(oc.getObject(models.Tag.class, models.Tag.URI + tag.urify()));
+			}
+			hunt.setTags(tagsWithURI);
+			
 			String hid = UUID.randomUUID().toString();
 			oc.addObject(models.Hunt.URI + hid, hunt);
 
@@ -109,7 +123,6 @@ public class Hunt extends Controller {
 		h.setLabel(form.label);
 		h.setLevel(form.level);
 		h.setPublished(false);
-		h.setTags(Tag.createFrom(form.tags));
 		h.setArea(Area.createFrom(form.area));
 		h.setCreatedBy(User.getLoggedUser());
 		
@@ -121,6 +134,10 @@ public class Hunt extends Controller {
 		h.setModifiedAt(now);
 
 		return h;
+	}
+	
+	private static Set<models.Tag> formToTags(forms.Hunt form) {
+		return Tag.createFrom(form.tags);
 	}
 
 }

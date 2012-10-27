@@ -26,7 +26,6 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 		map.fitBounds(bounds)
 
 	Helpers.drawStartStep = (map, start, accuracy) ->
-		start = Helpers.stringPositionToLatLng(start)
 		circle = new L.Circle(start, accuracy, {
 			color: '#41c453',
 			weight: 2,
@@ -52,7 +51,6 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 		}
 
 	Helpers.drawGeolocatedAnswer = (map, start, accuracy) ->
-		start = Helpers.stringPositionToLatLng(start)
 		circle = new L.Circle(start, accuracy, {
 			color: '#B94A48',
 			weight: 2,
