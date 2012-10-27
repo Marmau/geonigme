@@ -1,0 +1,1296 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+    xmlns:jardin="http://localhost/jardin#" > 
+  <rdf:Description rdf:about="http://localhost/jardin/47">
+    <geo:lat>43.629492</geo:lat>
+    <geo:long>3.873363</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Parc de l'Aiguelongue</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/72">
+    <geo:lat>43.638849</geo:lat>
+    <geo:long>3.873258</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Place Salvador Allende</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/33">
+    <geo:lat>43.620877</geo:lat>
+    <geo:long>3.899439</geo:long>
+    <jardin:nomQuartier>La Pompignane</jardin:nomQuartier>
+    <rdfs:label>Parc des Pastourelles</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/109">
+    <geo:lat>43.619629</geo:lat>
+    <geo:long>3.873297</geo:long>
+    <jardin:nomQuartier>Boutonnet</jardin:nomQuartier>
+    <rdfs:label>Place Henri Krasucki</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/86">
+    <geo:lat>43.602672</geo:lat>
+    <geo:long>3.850107</geo:long>
+    <jardin:nomQuartier>La Chamberte</jardin:nomQuartier>
+    <rdfs:label>Place des lilas</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/198">
+    <geo:lat>43.603957</geo:lat>
+    <geo:long>3.871904</geo:long>
+    <jardin:nomQuartier>Gambetta</jardin:nomQuartier>
+    <rdfs:label>Parc Georges Clemenceau</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/208">
+    <geo:lat>43.628059</geo:lat>
+    <geo:long>3.880913</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Place Rosa Parks</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/6">
+    <geo:lat>43.616157</geo:lat>
+    <geo:long>3.924472</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Mare écologique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/46">
+    <geo:lat>43.630881</geo:lat>
+    <geo:long>3.891686</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Domaine de Méric</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/73">
+    <geo:lat>43.613036</geo:lat>
+    <geo:long>3.859114</geo:long>
+    <jardin:nomQuartier>Les Arceaux</jardin:nomQuartier>
+    <rdfs:label>Place Gallot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/32">
+    <geo:lat>43.611295</geo:lat>
+    <geo:long>3.882121</geo:long>
+    <jardin:nomQuartier>Comédie</jardin:nomQuartier>
+    <rdfs:label>Jardin du Champ de Mars</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/209">
+    <geo:lat>43.613841</geo:lat>
+    <geo:long>3.908617</geo:long>
+    <jardin:nomQuartier>Millénaire</jardin:nomQuartier>
+    <rdfs:label>Esplanade Gabriel Michel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/199">
+    <geo:lat>43.628163</geo:lat>
+    <geo:long>3.873836</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Square des Cétoines</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/87">
+    <geo:lat>43.601172</geo:lat>
+    <geo:long>3.86812</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Place du 8 mai 1945</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/7">
+    <geo:lat>43.611306</geo:lat>
+    <geo:long>3.85212</geo:long>
+    <jardin:nomQuartier>Les Cévennes</jardin:nomQuartier>
+    <rdfs:label>Sous-bois Cité Astruc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/45">
+    <geo:lat>43.600904</geo:lat>
+    <geo:long>3.903623</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Parc Marianne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/74">
+    <geo:lat>43.581207</geo:lat>
+    <geo:long>3.877527</geo:long>
+    <jardin:nomQuartier>Près d'Arènes</jardin:nomQuartier>
+    <rdfs:label>Place de Tibériade</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/3">
+    <geo:lat>43.639565</geo:lat>
+    <geo:long>3.816795</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Lac des Garrigues</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/35">
+    <geo:lat>43.590843</geo:lat>
+    <geo:long>3.895816</geo:long>
+    <jardin:nomQuartier>Les Aiguerelles</jardin:nomQuartier>
+    <rdfs:label>Parc de la Rauze</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/107">
+    <geo:lat>43.64172</geo:lat>
+    <geo:long>3.818009</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Place Jacques Brel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/84">
+    <geo:lat>43.625876</geo:lat>
+    <geo:long>3.813751</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Place de la forêt noire</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/4">
+    <geo:lat>43.642402</geo:lat>
+    <geo:long>3.869227</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Bois de Montmaur</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/179">
+    <geo:lat>43.6103</geo:lat>
+    <geo:long>3.896096</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Placette Le Moulin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/44">
+    <geo:lat>43.631986</geo:lat>
+    <geo:long>3.82306</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Parc Chico Mendes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/119">
+    <geo:lat>43.622647</geo:lat>
+    <geo:long>3.816309</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Le petit Mail de la Mosson</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/85">
+    <geo:lat>43.60338</geo:lat>
+    <geo:long>3.867596</geo:long>
+    <jardin:nomQuartier>Figuerolles</jardin:nomQuartier>
+    <rdfs:label>Place Chaptal ilot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/34">
+    <geo:lat>43.596163</geo:lat>
+    <geo:long>3.869188</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Parc Tastavin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/108">
+    <geo:lat>43.603337</geo:lat>
+    <geo:long>3.898977</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Zac Richter</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/139">
+    <geo:lat>43.596745</geo:lat>
+    <geo:long>3.869017</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Aire de jeux Villeneuve d'Angoulême</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/159">
+    <geo:lat>43.596472</geo:lat>
+    <geo:long>3.890515</geo:long>
+    <jardin:nomQuartier>Les Aiguerelles</jardin:nomQuartier>
+    <rdfs:label>Square des Améthystes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/5">
+    <geo:lat>43.636674</geo:lat>
+    <geo:long>3.855334</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Réservoir Chêne-Colombière</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/75">
+    <geo:lat>43.60725</geo:lat>
+    <geo:long>3.878514</geo:long>
+    <jardin:nomQuartier>Comédie</jardin:nomQuartier>
+    <rdfs:label>Place Molière</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/178">
+    <geo:lat>43.597466</geo:lat>
+    <geo:long>3.87077</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Allée Bonafos</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/82">
+    <geo:lat>43.637332</geo:lat>
+    <geo:long>3.818474</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Place du Comté de Toulouse</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/118">
+    <geo:lat>43.624569</geo:lat>
+    <geo:long>3.814873</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Aire de jeux de Louisville</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/167">
+    <geo:lat>43.589113</geo:lat>
+    <geo:long>3.894632</geo:long>
+    <jardin:nomQuartier>Les Aiguerelles</jardin:nomQuartier>
+    <rdfs:label>Square Docteur Fourcade</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/105">
+    <geo:lat>43.585411</geo:lat>
+    <geo:long>3.857837</geo:long>
+    <jardin:nomQuartier>Croix d'Argent</jardin:nomQuartier>
+    <rdfs:label>Place Hersilie Tatius</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/1">
+    <geo:lat>43.631078</geo:lat>
+    <geo:long>3.817989</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Pinède Mosson</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/157">
+    <geo:lat>43.591797</geo:lat>
+    <geo:long>3.869679</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Square du Mas Drevon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/210">
+    <geo:lat>43.613681</geo:lat>
+    <geo:long>3.874881</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Square Louis Boffet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/43">
+    <geo:lat>43.607246</geo:lat>
+    <geo:long>3.895145</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Esplanade de l'Europe</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/128">
+    <geo:lat>43.628562</geo:lat>
+    <geo:long>3.879839</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Les Clolus 2</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/190">
+    <geo:lat>43.594786</geo:lat>
+    <geo:long>3.864194</geo:long>
+    <jardin:nomQuartier>Croix d'Argent</jardin:nomQuartier>
+    <rdfs:label>Square d'Arsonval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/23">
+    <geo:lat>43.615228</geo:lat>
+    <geo:long>3.925437</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Jardin didactique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/158">
+    <geo:lat>43.615952</geo:lat>
+    <geo:long>3.883848</geo:long>
+    <jardin:nomQuartier>Les Beaux Arts</jardin:nomQuartier>
+    <rdfs:label>Jardin des Beaux Arts -  MPT Chopin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/194">
+    <geo:lat>43.613315</geo:lat>
+    <geo:long>3.874981</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Espace de la petite Corraterie Saint-Germain</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/62">
+    <geo:lat>43.590242</geo:lat>
+    <geo:long>3.846421</geo:long>
+    <jardin:nomQuartier>Pas du Loup</jardin:nomQuartier>
+    <rdfs:label>Parc du Belvédère</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/180">
+    <geo:lat>43.614464</geo:lat>
+    <geo:long>3.822887</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Quai Louis Le Vau (place ANPE)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/117">
+    <geo:lat>43.613768</geo:lat>
+    <geo:long>3.830597</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Esplanade de Celleneuve</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/83">
+    <geo:lat>43.619849</geo:lat>
+    <geo:long>3.817676</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Place Schuman</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/166">
+    <geo:lat>43.617099</geo:lat>
+    <geo:long>3.878625</geo:long>
+    <jardin:nomQuartier>Les Beaux Arts</jardin:nomQuartier>
+    <rdfs:label>Square Charles Flahaut</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/106">
+    <geo:lat>43.61797</geo:lat>
+    <geo:long>3.866466</geo:long>
+    <jardin:nomQuartier>Boutonnet</jardin:nomQuartier>
+    <rdfs:label>Place Jules Rimet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/2">
+    <geo:lat>43.605293</geo:lat>
+    <geo:long>3.840223</geo:long>
+    <jardin:nomQuartier>La Chamberte</jardin:nomQuartier>
+    <rdfs:label>Petit bois de la Colline</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/156">
+    <geo:lat>43.584823</geo:lat>
+    <geo:long>3.856974</geo:long>
+    <jardin:nomQuartier>Croix d'Argent</jardin:nomQuartier>
+    <rdfs:label>Aire de jeux du Mas de Bagnères</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/127">
+    <geo:lat>43.629925</geo:lat>
+    <geo:long>3.880417</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Les Clolus 1</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/42">
+    <geo:lat>43.615381</geo:lat>
+    <geo:long>3.929567</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Parc du chÔteau de Grammont</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/191">
+    <geo:lat>43.591956</geo:lat>
+    <geo:long>3.854947</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Square du chai Molière</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/22">
+    <geo:lat>43.61521</geo:lat>
+    <geo:long>3.923833</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Galerie centrale (serre)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/63">
+    <geo:lat>43.611357</geo:lat>
+    <geo:long>3.877409</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Place du Marché aux fleurs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/195">
+    <geo:lat>43.618551</geo:lat>
+    <geo:long>3.878576</geo:long>
+    <jardin:nomQuartier>Les Beaux Arts</jardin:nomQuartier>
+    <rdfs:label>Square Camille Ernst (ex J-S Bach)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/181">
+    <geo:lat>43.612308</geo:lat>
+    <geo:long>3.875964</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Square de l'Intendance du Languedoc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/103">
+    <geo:lat>43.610469</geo:lat>
+    <geo:long>3.869098</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Place Flotte</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/80">
+    <geo:lat>43.631659</geo:lat>
+    <geo:long>3.818806</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Place du Centre de la Margelle</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/31">
+    <geo:lat>43.610497</geo:lat>
+    <geo:long>3.8809</geo:long>
+    <jardin:nomQuartier>Comédie</jardin:nomQuartier>
+    <rdfs:label>Esplanade Charles de Gaulle</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/116">
+    <geo:lat>43.593924</geo:lat>
+    <geo:long>3.883508</geo:long>
+    <jardin:nomQuartier>Saint-Martin</jardin:nomQuartier>
+    <rdfs:label>Mail Alain Bashung</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/70">
+    <geo:lat>43.608167</geo:lat>
+    <geo:long>3.876733</geo:long>
+    <jardin:nomQuartier>Comédie</jardin:nomQuartier>
+    <rdfs:label>Place St Côme</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/155">
+    <geo:lat>43.598044</geo:lat>
+    <geo:long>3.856008</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Square Saint-Berthomieu</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/140">
+    <geo:lat>43.629558</geo:lat>
+    <geo:long>3.87633</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Les Clolus 3</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/21">
+    <geo:lat>43.615616</geo:lat>
+    <geo:long>3.925366</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Collection de cannas</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/50">
+    <geo:lat>43.601835</geo:lat>
+    <geo:long>3.896685</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Parc Richter</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/41">
+    <geo:lat>43.594037</geo:lat>
+    <geo:long>3.839502</geo:long>
+    <jardin:nomQuartier>Pas du Loup</jardin:nomQuartier>
+    <rdfs:label>Parc de Bagatelle</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/192">
+    <geo:lat>43.609826</geo:lat>
+    <geo:long>3.881476</geo:long>
+    <jardin:nomQuartier>Comédie</jardin:nomQuartier>
+    <rdfs:label>Pavillon de l'Hôtel de Ville</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/60">
+    <geo:lat>43.597855</geo:lat>
+    <geo:long>3.830354</geo:long>
+    <jardin:nomQuartier>La Martelle</jardin:nomQuartier>
+    <rdfs:label>Parc de Font Colombe (ChÔteau Bon)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/102">
+    <geo:lat>43.604021</geo:lat>
+    <geo:long>3.89579</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Place Jean Bene</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/11">
+    <geo:lat>43.591283</geo:lat>
+    <geo:long>3.880196</geo:long>
+    <jardin:nomQuartier>Près d'Arènes</jardin:nomQuartier>
+    <rdfs:label>Berges du Lantissargues</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/196">
+    <geo:lat>43.623748</geo:lat>
+    <geo:long>3.843194</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Parc du Mas Vanneau</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/81">
+    <geo:lat>43.606483</geo:lat>
+    <geo:long>3.876036</geo:long>
+    <jardin:nomQuartier>Gambetta</jardin:nomQuartier>
+    <rdfs:label>Place Edouard Adam</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/168">
+    <geo:lat>43.596968</geo:lat>
+    <geo:long>3.834862</geo:long>
+    <jardin:nomQuartier>La Martelle</jardin:nomQuartier>
+    <rdfs:label>Parc Jacques Roseau</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/104">
+    <geo:lat>43.601639</geo:lat>
+    <geo:long>3.893734</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Place des Patriotes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/115">
+    <geo:lat>43.59201</geo:lat>
+    <geo:long>3.884906</geo:long>
+    <jardin:nomQuartier>Saint-Martin</jardin:nomQuartier>
+    <rdfs:label>Parc Saint-Martin (ancien évéché)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/71">
+    <geo:lat>43.605546</geo:lat>
+    <geo:long>3.891442</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Place Faulquier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/154">
+    <geo:lat>43.607685</geo:lat>
+    <geo:long>3.84896</geo:long>
+    <jardin:nomQuartier>La Chamberte</jardin:nomQuartier>
+    <rdfs:label>Square des renoncules</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/141">
+    <geo:lat>43.590497</geo:lat>
+    <geo:long>3.889716</geo:long>
+    <jardin:nomQuartier>Près d'Arènes</jardin:nomQuartier>
+    <rdfs:label>Square des Près d'Arènes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/129">
+    <geo:lat>43.600366</geo:lat>
+    <geo:long>3.853815</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Aire de jeux Clos des Orangers</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/51">
+    <geo:lat>43.608162</geo:lat>
+    <geo:long>3.907254</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Parc de la grande Lironde</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/20">
+    <geo:lat>43.61566</geo:lat>
+    <geo:long>3.924701</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Centre horticole R de Belleval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/193">
+    <geo:lat>43.611967</geo:lat>
+    <geo:long>3.908153</geo:long>
+    <jardin:nomQuartier>Millénaire</jardin:nomQuartier>
+    <rdfs:label>Square G.S. Blaise Pascal</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/40">
+    <geo:lat>43.617889</geo:lat>
+    <geo:long>3.831981</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Parc Bel juel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/30">
+    <geo:lat>43.624113</geo:lat>
+    <geo:long>3.872119</geo:long>
+    <jardin:nomQuartier>Boutonnet</jardin:nomQuartier>
+    <rdfs:label>Parc Sainte Odile</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/197">
+    <geo:lat>43.607234</geo:lat>
+    <geo:long>3.831971</geo:long>
+    <jardin:nomQuartier>La Martelle</jardin:nomQuartier>
+    <rdfs:label>Jardin des Amandiers</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/169">
+    <geo:lat>43.613442</geo:lat>
+    <geo:long>3.827612</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Square Louis Carles (ZAC la Fontaine)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/61">
+    <geo:lat>43.633079</geo:lat>
+    <geo:long>3.832323</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Parc Saint-Fiacre (ZAC Malbosc)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/10">
+    <geo:lat>43.636677</geo:lat>
+    <geo:long>3.815633</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Cannalette</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/183">
+    <geo:lat>43.596235</geo:lat>
+    <geo:long>3.87065</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Place Romain Rolland (Cardinal Verdier)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/112">
+    <geo:lat>43.608784</geo:lat>
+    <geo:long>3.876113</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Square Saint Roch</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/101">
+    <geo:lat>43.603115</geo:lat>
+    <geo:long>3.895071</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Place Louis et Marie Trégaro</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/12">
+    <geo:lat>43.642334</geo:lat>
+    <geo:long>3.875434</geo:long>
+    <jardin:nomQuartier>Aiguelongue</jardin:nomQuartier>
+    <rdfs:label>Parc zoologique de Lunaret</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/214">
+    <geo:lat>43.631277</geo:lat>
+    <geo:long>3.835841</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Square Angelo Bramante (ZAC Malbosc)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/173">
+    <geo:lat>43.592579</geo:lat>
+    <geo:long>3.857323</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Square des hibiscus</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/52">
+    <geo:lat>43.636634</geo:lat>
+    <geo:long>3.812045</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Square d' Ajaccio et extension</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/122">
+    <geo:lat>43.612008</geo:lat>
+    <geo:long>3.85835</geo:long>
+    <jardin:nomQuartier>Les Cévennes</jardin:nomQuartier>
+    <rdfs:label>Square Boussinesq</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/26">
+    <geo:lat>43.627859</geo:lat>
+    <geo:long>3.816142</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Parc du Mas de la Paillade</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/142">
+    <geo:lat>43.587137</geo:lat>
+    <geo:long>3.863873</geo:long>
+    <jardin:nomQuartier>Croix d'Argent</jardin:nomQuartier>
+    <rdfs:label>Parc de la Croix d'Argent</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/153">
+    <geo:lat>43.607319</geo:lat>
+    <geo:long>3.864089</geo:long>
+    <jardin:nomQuartier>Figuerolles</jardin:nomQuartier>
+    <rdfs:label>Square Abbé Coursindel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/132">
+    <geo:lat>43.590841</geo:lat>
+    <geo:long>3.868212</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Parc des Sylvains</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/91">
+    <geo:lat>43.616367</geo:lat>
+    <geo:long>3.836464</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Place Guillaume Apollinaire</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/163">
+    <geo:lat>43.624003</geo:lat>
+    <geo:long>3.876857</geo:long>
+    <jardin:nomQuartier>Boutonnet</jardin:nomQuartier>
+    <rdfs:label>Square rue des Loutres</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/95">
+    <geo:lat>43.610248</geo:lat>
+    <geo:long>3.874221</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Abords Eglise Sainte-Anne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/66">
+    <geo:lat>43.642541</geo:lat>
+    <geo:long>3.818956</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Place d'Italie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/113">
+    <geo:lat>43.605465</geo:lat>
+    <geo:long>3.879922</geo:long>
+    <jardin:nomQuartier>Gares</jardin:nomQuartier>
+    <rdfs:label>Square Planchon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/13">
+    <geo:lat>43.631347</geo:lat>
+    <geo:long>3.838546</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Boisement du ChÔteau d'O</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/100">
+    <geo:lat>43.60209</geo:lat>
+    <geo:long>3.900889</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Place Ernest Granier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/123">
+    <geo:lat>43.611974</geo:lat>
+    <geo:long>3.860921</geo:long>
+    <jardin:nomQuartier>Les Arceaux</jardin:nomQuartier>
+    <rdfs:label>Square des Arceaux</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/27">
+    <geo:lat>43.622331</geo:lat>
+    <geo:long>3.888533</geo:long>
+    <jardin:nomQuartier>Les Beaux Arts</jardin:nomQuartier>
+    <rdfs:label>Parc Edith Piaf</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/215">
+    <geo:lat>43.614981</geo:lat>
+    <geo:long>3.875765</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Square Théophraste Renaudot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/182">
+    <geo:lat>43.605882</geo:lat>
+    <geo:long>3.89016</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Espaces verts Rabelais</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/172">
+    <geo:lat>43.633926</geo:lat>
+    <geo:long>3.856302</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Parc Rachel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/53">
+    <geo:lat>43.620402</geo:lat>
+    <geo:long>3.907373</geo:long>
+    <jardin:nomQuartier>Millénaire</jardin:nomQuartier>
+    <rdfs:label>Domaine de la Pompignane</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/152">
+    <geo:lat>43.617131</geo:lat>
+    <geo:long>3.837444</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Square des Trolles (Petit Bard)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/143">
+    <geo:lat>43.624711</geo:lat>
+    <geo:long>3.816554</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Grand Mail</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/90">
+    <geo:lat>43.630112</geo:lat>
+    <geo:long>3.870196</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Place de la Voie Domitienne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/162">
+    <geo:lat>43.638901</geo:lat>
+    <geo:long>3.868067</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Aire de jeux Vert-bois</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/133">
+    <geo:lat>43.598426</geo:lat>
+    <geo:long>3.891126</geo:long>
+    <jardin:nomQuartier>Les Aiguerelles</jardin:nomQuartier>
+    <rdfs:label>Parc des Aiguerelles</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/94">
+    <geo:lat>43.607531</geo:lat>
+    <geo:long>3.89147</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Place de Thessalie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/200">
+    <geo:lat>43.615627</geo:lat>
+    <geo:long>3.913285</geo:long>
+    <jardin:nomQuartier>Millénaire</jardin:nomQuartier>
+    <rdfs:label>Square André Gabriel Vedel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/67">
+    <geo:lat>43.614473</geo:lat>
+    <geo:long>3.828788</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Place Renaudel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/114">
+    <geo:lat>43.614029</geo:lat>
+    <geo:long>3.873772</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Square de la Tour des pins</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/110">
+    <geo:lat>43.622186</geo:lat>
+    <geo:long>3.842988</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Place de l'Adret</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/14">
+    <geo:lat>43.613423</geo:lat>
+    <geo:long>3.870261</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Jardin de la Reine</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/202">
+    <geo:lat>43.60754</geo:lat>
+    <geo:long>3.887021</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Square Adamantios Korais</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/185">
+    <geo:lat>43.613524</geo:lat>
+    <geo:long>3.878492</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Plan Cavaillé Coll</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/171">
+    <geo:lat>43.59859</geo:lat>
+    <geo:long>3.832395</geo:long>
+    <jardin:nomQuartier>La Martelle</jardin:nomQuartier>
+    <rdfs:label>Parc du Mas Prunet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/24">
+    <geo:lat>43.593698</geo:lat>
+    <geo:long>3.901647</geo:long>
+    <jardin:nomQuartier>Les Aiguerelles</jardin:nomQuartier>
+    <rdfs:label>Abords stade Ernest Granier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/124">
+    <geo:lat>43.606091</geo:lat>
+    <geo:long>3.86159</geo:long>
+    <jardin:nomQuartier>Figuerolles</jardin:nomQuartier>
+    <rdfs:label>Square Figuerolles</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/144">
+    <geo:lat>43.598183</geo:lat>
+    <geo:long>3.838762</geo:long>
+    <jardin:nomQuartier>La Martelle</jardin:nomQuartier>
+    <rdfs:label>Mail du Mas de Perrette</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/151">
+    <geo:lat>43.616273</geo:lat>
+    <geo:long>3.833718</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Square des Prunelliers</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/125">
+    <geo:lat>43.633592</geo:lat>
+    <geo:long>3.859193</geo:long>
+    <jardin:nomQuartier>Hôpitaux-Facultés</jardin:nomQuartier>
+    <rdfs:label>Square des Brusses</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/54">
+    <geo:lat>43.630595</geo:lat>
+    <geo:long>3.829475</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Parc Malbosc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/211">
+    <geo:lat>43.605965</geo:lat>
+    <geo:long>3.878754</geo:long>
+    <jardin:nomQuartier>Gares</jardin:nomQuartier>
+    <rdfs:label>Parc Emmanuel Roblès (Jardin Hôtel Montcalm)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/165">
+    <geo:lat>43.623366</geo:lat>
+    <geo:long>3.876339</geo:long>
+    <jardin:nomQuartier>Boutonnet</jardin:nomQuartier>
+    <rdfs:label>Square rue des Castors</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/64">
+    <geo:lat>43.610703</geo:lat>
+    <geo:long>3.876709</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Fontaine Préfecture</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/201">
+    <geo:lat>43.626373</geo:lat>
+    <geo:long>3.841274</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Parc Mas de Neuville</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/130">
+    <geo:lat>43.621771</geo:lat>
+    <geo:long>3.81633</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Pelouse Pic Saint-Loup</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/93">
+    <geo:lat>43.60763</geo:lat>
+    <geo:long>3.889316</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Place de Marathon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/170">
+    <geo:lat>43.613782</geo:lat>
+    <geo:long>3.881369</geo:long>
+    <jardin:nomQuartier>Les Beaux Arts</jardin:nomQuartier>
+    <rdfs:label>Jardin archéologique des potiers</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/15">
+    <geo:lat>43.618455</geo:lat>
+    <geo:long>3.931998</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Plaine de Rock</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/203">
+    <geo:lat>43.61544</geo:lat>
+    <geo:long>3.828848</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Accompagnements Jardins du Séminaire</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/184">
+    <geo:lat>43.595247</geo:lat>
+    <geo:long>3.845951</geo:long>
+    <jardin:nomQuartier>Pas du Loup</jardin:nomQuartier>
+    <rdfs:label>Esplanade Pierre Paraf</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/111">
+    <geo:lat>43.595596</geo:lat>
+    <geo:long>3.885068</geo:long>
+    <jardin:nomQuartier>Saint-Martin</jardin:nomQuartier>
+    <rdfs:label>Jardin de la Pépinière</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/213">
+    <geo:lat>43.609282</geo:lat>
+    <geo:long>3.873973</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Aire de jeux rue Vien</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/25">
+    <geo:lat>43.602185</geo:lat>
+    <geo:long>3.819509</geo:long>
+    <jardin:nomQuartier>La Martelle</jardin:nomQuartier>
+    <rdfs:label>Aire de Bionne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/145">
+    <geo:lat>43.61134</geo:lat>
+    <geo:long>3.868029</geo:long>
+    <jardin:nomQuartier>Les Arceaux</jardin:nomQuartier>
+    <rdfs:label>Terrasse des Arceaux</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/150">
+    <geo:lat>43.620647</geo:lat>
+    <geo:long>3.847238</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Square Jouanique (Cévennes)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/212">
+    <geo:lat>43.620735</geo:lat>
+    <geo:long>3.850352</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Aire de jeux des Papyrus</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/126">
+    <geo:lat>43.59752</geo:lat>
+    <geo:long>3.885449</geo:long>
+    <jardin:nomQuartier>Saint-Martin</jardin:nomQuartier>
+    <rdfs:label>Square Hildevert</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/55">
+    <geo:lat>43.613149</geo:lat>
+    <geo:long>3.831804</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Parc Dioscoride</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/65">
+    <geo:lat>43.616474</geo:lat>
+    <geo:long>3.880409</geo:long>
+    <jardin:nomQuartier>Les Beaux Arts</jardin:nomQuartier>
+    <rdfs:label>Place Emile Combes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/131">
+    <geo:lat>43.600751</geo:lat>
+    <geo:long>3.846976</geo:long>
+    <jardin:nomQuartier>Pas du Loup</jardin:nomQuartier>
+    <rdfs:label>Parc Enclava del lop</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/92">
+    <geo:lat>43.591873</geo:lat>
+    <geo:long>3.857383</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Place du Vigan</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/164">
+    <geo:lat>43.599892</geo:lat>
+    <geo:long>3.860248</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Square de Diane</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/177">
+    <geo:lat>43.596661</geo:lat>
+    <geo:long>3.869822</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Square Albert Camus</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/147">
+    <geo:lat>43.626244</geo:lat>
+    <geo:long>3.874127</geo:long>
+    <jardin:nomQuartier>Boutonnet</jardin:nomQuartier>
+    <rdfs:label>Square rue des scarabées</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/76">
+    <geo:lat>43.627558</geo:lat>
+    <geo:long>3.817076</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Place du marché</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/16">
+    <geo:lat>43.615126</geo:lat>
+    <geo:long>3.930694</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Centre aéré</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/204">
+    <geo:lat>43.613456</geo:lat>
+    <geo:long>3.823083</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Parc Edouard André</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/137">
+    <geo:lat>43.64037</geo:lat>
+    <geo:long>3.858357</geo:long>
+    <jardin:nomQuartier>Plan des 4 Seigneurs</jardin:nomQuartier>
+    <rdfs:label>Square Jean Baumel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/187">
+    <geo:lat>43.616111</geo:lat>
+    <geo:long>3.83854</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Square Joseph Delteil</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/99">
+    <geo:lat>43.612263</geo:lat>
+    <geo:long>3.870536</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Place Mirouze</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/36">
+    <geo:lat>43.638472</geo:lat>
+    <geo:long>3.812892</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Parc Georges Brassens</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/56">
+    <geo:lat>43.616982</geo:lat>
+    <geo:long>3.844979</geo:long>
+    <jardin:nomQuartier>Les Cévennes</jardin:nomQuartier>
+    <rdfs:label>Parc Bartolomé de Las Casas</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/146">
+    <geo:lat>43.604191</geo:lat>
+    <geo:long>3.889181</geo:long>
+    <jardin:nomQuartier>Gares</jardin:nomQuartier>
+    <rdfs:label>Square Jean Monnet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/148">
+    <geo:lat>43.620867</geo:lat>
+    <geo:long>3.815369</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Square de la piscine Mosson</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/176">
+    <geo:lat>43.613855</geo:lat>
+    <geo:long>3.875396</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Square de la Providence</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/77">
+    <geo:lat>43.607365</geo:lat>
+    <geo:long>3.885213</geo:long>
+    <jardin:nomQuartier>Gares</jardin:nomQuartier>
+    <rdfs:label>Place de l'Olympie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/17">
+    <geo:lat>43.617431</geo:lat>
+    <geo:long>3.818447</geo:long>
+    <jardin:nomQuartier>La Mosson</jardin:nomQuartier>
+    <rdfs:label>Espace Mosson</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/186">
+    <geo:lat>43.60863</geo:lat>
+    <geo:long>3.889692</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Place de Sparte</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/205">
+    <geo:lat>43.643719</geo:lat>
+    <geo:long>3.817835</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Square du chÔteau d'eau de Massane</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/138">
+    <geo:lat>43.611698</geo:lat>
+    <geo:long>3.874458</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Jardin de la Canourgue</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/98">
+    <geo:lat>43.610226</geo:lat>
+    <geo:long>3.879197</geo:long>
+    <jardin:nomQuartier>Comédie</jardin:nomQuartier>
+    <rdfs:label>Ilot Jacques Coeur</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/37">
+    <geo:lat>43.616328</geo:lat>
+    <geo:long>3.92686</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Prairies Grammont</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/57">
+    <geo:lat>43.607349</geo:lat>
+    <geo:long>3.909887</geo:long>
+    <jardin:nomQuartier>Port Marianne</jardin:nomQuartier>
+    <rdfs:label>Jardins de la Lironde</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/18">
+    <geo:lat>43.619666</geo:lat>
+    <geo:long>3.900464</geo:long>
+    <jardin:nomQuartier>La Pompignane</jardin:nomQuartier>
+    <rdfs:label>Boulodrome Pompignane</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/175">
+    <geo:lat>43.594247</geo:lat>
+    <geo:long>3.877923</geo:long>
+    <jardin:nomQuartier>Près d'Arènes</jardin:nomQuartier>
+    <rdfs:label>Square Fabre de Morlhon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/78">
+    <geo:lat>43.60818</geo:lat>
+    <geo:long>3.889736</geo:long>
+    <jardin:nomQuartier>Antigone</jardin:nomQuartier>
+    <rdfs:label>Place du Millénaire</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/120">
+    <geo:lat>43.610359</geo:lat>
+    <geo:long>3.834625</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Square Pierre Causse</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/8">
+    <geo:lat>43.615543</geo:lat>
+    <geo:long>3.933162</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Bois de la Chaumière</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/149">
+    <geo:lat>43.611996</geo:lat>
+    <geo:long>3.835096</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Square des Escarcelliers</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/206">
+    <geo:lat>43.640933</geo:lat>
+    <geo:long>3.81284</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Square du Soleil Levant</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/88">
+    <geo:lat>43.613041</geo:lat>
+    <geo:long>3.875836</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Plan de L'Université</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/97">
+    <geo:lat>43.613464</geo:lat>
+    <geo:long>3.825901</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Place Franèois Mansart</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/189">
+    <geo:lat>43.610562</geo:lat>
+    <geo:long>3.901878</geo:long>
+    <jardin:nomQuartier>Millénaire</jardin:nomQuartier>
+    <rdfs:label>Parc du Mas de Costebelle</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/28">
+    <geo:lat>43.607575</geo:lat>
+    <geo:long>3.860914</geo:long>
+    <jardin:nomQuartier>Figuerolles</jardin:nomQuartier>
+    <rdfs:label>Parc de la Guirlande</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/161">
+    <geo:lat>43.613288</geo:lat>
+    <geo:long>3.880707</geo:long>
+    <jardin:nomQuartier>Les Beaux Arts</jardin:nomQuartier>
+    <rdfs:label>Jardin Hôtel de Sully</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/134">
+    <geo:lat>43.617316</geo:lat>
+    <geo:long>3.863218</geo:long>
+    <jardin:nomQuartier>Boutonnet</jardin:nomQuartier>
+    <rdfs:label>Parc Magnol</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/68">
+    <geo:lat>43.639768</geo:lat>
+    <geo:long>3.820465</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Place du Rouergue</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/38">
+    <geo:lat>43.611213</geo:lat>
+    <geo:long>3.869672</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Promenade du Peyrou</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/48">
+    <geo:lat>43.63097</geo:lat>
+    <geo:long>3.81884</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Allée Gaby Hobt (Promenade pinède)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/58">
+    <geo:lat>43.601288</geo:lat>
+    <geo:long>3.876158</geo:long>
+    <jardin:nomQuartier>Gambetta</jardin:nomQuartier>
+    <rdfs:label>Parc René Dumont</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/19">
+    <geo:lat>43.597282</geo:lat>
+    <geo:long>3.838377</geo:long>
+    <jardin:nomQuartier>La Martelle</jardin:nomQuartier>
+    <rdfs:label>Abords tennis Montpellier-Village</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/174">
+    <geo:lat>43.597413</geo:lat>
+    <geo:long>3.856554</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Square Bernard Chely</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/79">
+    <geo:lat>43.613377</geo:lat>
+    <geo:long>3.878092</geo:long>
+    <jardin:nomQuartier>Centre historique</jardin:nomQuartier>
+    <rdfs:label>Plan de l'olivier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/121">
+    <geo:lat>43.608241</geo:lat>
+    <geo:long>3.840116</geo:long>
+    <jardin:nomQuartier>La Chamberte</jardin:nomQuartier>
+    <rdfs:label>Square Franèois Dezeuze</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/9">
+    <geo:lat>43.618535</geo:lat>
+    <geo:long>3.926789</geo:long>
+    <jardin:nomQuartier>Grammont</jardin:nomQuartier>
+    <rdfs:label>Parcours de santé</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/89">
+    <geo:lat>43.602986</geo:lat>
+    <geo:long>3.880238</geo:long>
+    <jardin:nomQuartier>Gares</jardin:nomQuartier>
+    <rdfs:label>Place de Strasbourg</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/188">
+    <geo:lat>43.59333</geo:lat>
+    <geo:long>3.878603</geo:long>
+    <jardin:nomQuartier>Près d'Arènes</jardin:nomQuartier>
+    <rdfs:label>Square Ferdinand de Lesseps</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/207">
+    <geo:lat>43.595719</geo:lat>
+    <geo:long>3.849923</geo:long>
+    <jardin:nomQuartier>Estanove</jardin:nomQuartier>
+    <rdfs:label>Square bd Paul Valéry</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/136">
+    <geo:lat>43.625207</geo:lat>
+    <geo:long>3.844682</geo:long>
+    <jardin:nomQuartier>Alco</jardin:nomQuartier>
+    <rdfs:label>Square des Terres Blanches</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/29">
+    <geo:lat>43.618053</geo:lat>
+    <geo:long>3.894417</geo:long>
+    <jardin:nomQuartier>Les Aubes</jardin:nomQuartier>
+    <rdfs:label>Parc Rimbaud</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/69">
+    <geo:lat>43.638391</geo:lat>
+    <geo:long>3.823776</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Place du Minervois</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/96">
+    <geo:lat>43.605317</geo:lat>
+    <geo:long>3.884079</geo:long>
+    <jardin:nomQuartier>Gares</jardin:nomQuartier>
+    <rdfs:label>Square Franèois Jaumes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/135">
+    <geo:lat>43.616023</geo:lat>
+    <geo:long>3.828678</geo:long>
+    <jardin:nomQuartier>Celleneuve</jardin:nomQuartier>
+    <rdfs:label>Parc Azéma</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/49">
+    <geo:lat>43.641358</geo:lat>
+    <geo:long>3.817654</geo:long>
+    <jardin:nomQuartier>Les Hauts de Massane</jardin:nomQuartier>
+    <rdfs:label>Parc la Carriera</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/160">
+    <geo:lat>43.600263</geo:lat>
+    <geo:long>3.867575</geo:long>
+    <jardin:nomQuartier>Lemasson</jardin:nomQuartier>
+    <rdfs:label>Square Saint-Cléophas</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/59">
+    <geo:lat>43.581873</geo:lat>
+    <geo:long>3.852835</geo:long>
+    <jardin:nomQuartier>Croix d'Argent</jardin:nomQuartier>
+    <rdfs:label>Parc du Mas de Nouguier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/39">
+    <geo:lat>43.610862</geo:lat>
+    <geo:long>3.857879</geo:long>
+    <jardin:nomQuartier>Les Arceaux</jardin:nomQuartier>
+    <rdfs:label>Square Maquis Bir-hakeim</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

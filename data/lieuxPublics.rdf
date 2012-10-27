@@ -1,0 +1,888 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:lieuxPublics="http://localhost/lieuxPublics#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" > 
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/5">
+    <geo:lat>43.616585</geo:lat>
+    <geo:long>3.826823</geo:long>
+    <lieuxPublics:nomQuartier>Celleneuve</lieuxPublics:nomQuartier>
+    <rdfs:label>Cimetiêre de Celleneuve</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/13">
+    <geo:lat>43.610109</geo:lat>
+    <geo:long>3.865934</geo:long>
+    <lieuxPublics:nomQuartier>Les Arceaux</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Sophie-Lagrêze (ex Draparnaud)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/52">
+    <geo:lat>43.626274</geo:lat>
+    <geo:long>3.864525</geo:long>
+    <lieuxPublics:nomQuartier>Hôpitaux-Facultés</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Charlie Chaplin (Jeu de Mail)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/33">
+    <geo:lat>43.596552</geo:lat>
+    <geo:long>3.891378</geo:long>
+    <lieuxPublics:nomQuartier>Les Aiguerelles</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. Boris Vian</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/108">
+    <geo:lat>43.627449</geo:lat>
+    <geo:long>3.818248</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Léopold Sedar Senghor (Bologne)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/73">
+    <geo:lat>43.592493</geo:lat>
+    <geo:long>3.868865</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Bertie Albrecht (Mas Drevon)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/118">
+    <geo:lat>43.592883</geo:lat>
+    <geo:long>3.89675</geo:long>
+    <lieuxPublics:nomQuartier>Les Aiguerelles</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jean Mace (la Rauze)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/47">
+    <geo:lat>43.628034</geo:lat>
+    <geo:long>3.818286</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle James Joyce (Bologne)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/67">
+    <geo:lat>43.5994</geo:lat>
+    <geo:long>3.854306</geo:long>
+    <lieuxPublics:nomQuartier>Estanove</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Marceline Desbordes-Valmore (Estanove)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/138">
+    <geo:lat>43.616941</geo:lat>
+    <geo:long>3.874224</geo:long>
+    <lieuxPublics:nomQuartier>Boutonnet</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Condorcet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/93">
+    <geo:lat>43.604058</geo:lat>
+    <geo:long>3.907611</geo:long>
+    <lieuxPublics:nomQuartier>Port Marianne</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Michel de l'Hospital</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/88">
+    <geo:lat>43.604317</geo:lat>
+    <geo:long>3.875554</geo:long>
+    <lieuxPublics:nomQuartier>Gambetta</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Anatole France</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/140">
+    <geo:lat>43.603619</geo:lat>
+    <geo:long>3.881172</geo:long>
+    <lieuxPublics:nomQuartier>Gares</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Paul Bert</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/128">
+    <geo:lat>43.61886</geo:lat>
+    <geo:long>3.891608</geo:long>
+    <lieuxPublics:nomQuartier>Les Aubes</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jean Moulin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/53">
+    <geo:lat>43.636179</geo:lat>
+    <geo:long>3.873777</geo:long>
+    <lieuxPublics:nomQuartier>Aiguelongue</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Mêre Théresa (Vert-Bois)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/4">
+    <geo:lat>43.626207</geo:lat>
+    <geo:long>3.890286</geo:long>
+    <lieuxPublics:nomQuartier>Aiguelongue</lieuxPublics:nomQuartier>
+    <rdfs:label>Cimetiêre Saint-Lazare</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/86">
+    <geo:lat>43.604834</geo:lat>
+    <geo:long>3.886898</geo:long>
+    <lieuxPublics:nomQuartier>Gares</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Florian</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/110">
+    <geo:lat>43.619415</geo:lat>
+    <geo:long>3.84216</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Julie Daubié (ex  Cevennes)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/107">
+    <geo:lat>43.611072</geo:lat>
+    <geo:long>3.853948</geo:long>
+    <lieuxPublics:nomQuartier>Les Cévennes</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Paul Langevin (cité Astruc)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/34">
+    <geo:lat>43.622353</geo:lat>
+    <geo:long>3.841471</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. Fanfone Guillerme</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/14">
+    <geo:lat>43.594924</geo:lat>
+    <geo:long>3.88444</geo:long>
+    <lieuxPublics:nomQuartier>Saint-Martin</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Thérêse Sentis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/117">
+    <geo:lat>43.599336</geo:lat>
+    <geo:long>3.854721</geo:long>
+    <lieuxPublics:nomQuartier>Estanove</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Winston Churchill (Estanove)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/72">
+    <geo:lat>43.600164</geo:lat>
+    <geo:long>3.86864</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Alphonse Daudet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/100">
+    <geo:lat>43.63948</geo:lat>
+    <geo:long>3.81195</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Marc Bloch (les Tours)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/49">
+    <geo:lat>43.641181</geo:lat>
+    <geo:long>3.856925</geo:long>
+    <lieuxPublics:nomQuartier>Plan des 4 Seigneurs</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Agrippa d'Aubigné (Calmette)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/48">
+    <geo:lat>43.626207</geo:lat>
+    <geo:long>3.879647</geo:long>
+    <lieuxPublics:nomQuartier>Aiguelongue</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Luis de Camoens (Aiguelongue)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/120">
+    <geo:lat>43.591695</geo:lat>
+    <geo:long>3.886959</geo:long>
+    <lieuxPublics:nomQuartier>Saint-Martin</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Diderot (Prês d'Arênes)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/68">
+    <geo:lat>43.592644</geo:lat>
+    <geo:long>3.896481</geo:long>
+    <lieuxPublics:nomQuartier>Les Aiguerelles</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Paul Eluard (la Rauze)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/92">
+    <geo:lat>43.623008</geo:lat>
+    <geo:long>3.84099</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Victor Duruy (Emile Combes)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/147">
+    <geo:lat>43.623298</geo:lat>
+    <geo:long>3.840586</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Emile Combes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/137">
+    <geo:lat>43.610034</geo:lat>
+    <geo:long>3.868341</geo:long>
+    <lieuxPublics:nomQuartier>Centre historique</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Auguste Comte</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/87">
+    <geo:lat>43.60415</geo:lat>
+    <geo:long>3.881915</geo:long>
+    <lieuxPublics:nomQuartier>Gares</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Louis Figuier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/127">
+    <geo:lat>43.642183</geo:lat>
+    <geo:long>3.856313</geo:long>
+    <lieuxPublics:nomQuartier>Plan des 4 Seigneurs</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Dr Calmette</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/29">
+    <geo:lat>43.60134</geo:lat>
+    <geo:long>3.85017</geo:long>
+    <lieuxPublics:nomQuartier>La Chamberte</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. Marcel Pagnol Abords</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/130">
+    <geo:lat>43.618517</geo:lat>
+    <geo:long>3.897946</geo:long>
+    <lieuxPublics:nomQuartier>La Pompignane</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jean Zay (Le Lez)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/54">
+    <geo:lat>43.617074</geo:lat>
+    <geo:long>3.862038</geo:long>
+    <lieuxPublics:nomQuartier>Boutonnet</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Mozart ( ex Assas)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/15">
+    <geo:lat>43.621846</geo:lat>
+    <geo:long>3.888713</geo:long>
+    <lieuxPublics:nomQuartier>Les Beaux Arts</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche des boutons d'or</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/111">
+    <geo:lat>43.623457</geo:lat>
+    <geo:long>3.817881</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Simon Bolivar (Barcelone)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/106">
+    <geo:lat>43.603927</geo:lat>
+    <geo:long>3.845185</geo:long>
+    <lieuxPublics:nomQuartier>La Chamberte</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Sun Yat Sen (Chamberte 2)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/35">
+    <geo:lat>43.597913</geo:lat>
+    <geo:long>3.838844</geo:long>
+    <lieuxPublics:nomQuartier>La Martelle</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. Saint-Exupéry</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/7">
+    <geo:lat>43.61056</geo:lat>
+    <geo:long>3.879006</geo:long>
+    <lieuxPublics:nomQuartier>Comédie</lieuxPublics:nomQuartier>
+    <rdfs:label>Maison d'enfants</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/85">
+    <geo:lat>43.6132</geo:lat>
+    <geo:long>3.8775</geo:long>
+    <lieuxPublics:nomQuartier>Centre historique</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Planchon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/64">
+    <geo:lat>43.616698</geo:lat>
+    <geo:long>3.845936</geo:long>
+    <lieuxPublics:nomQuartier>Les Cévennes</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Rudyard Kipling (les Pins)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/75">
+    <geo:lat>43.584645</geo:lat>
+    <geo:long>3.856396</geo:long>
+    <lieuxPublics:nomQuartier>Croix d'Argent</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle L. Van Beethoven (Mas de Bagnêres)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/45">
+    <geo:lat>43.619899</geo:lat>
+    <geo:long>3.841919</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Madeleine Bres (ex  Cévennes)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/76">
+    <geo:lat>43.595078</geo:lat>
+    <geo:long>3.871176</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Robert Surcouf (Lantissargues)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/146">
+    <geo:lat>43.611973</geo:lat>
+    <geo:long>3.9074</geo:long>
+    <lieuxPublics:nomQuartier>Millénaire</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Blaise Pascal</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/65">
+    <geo:lat>43.606119</geo:lat>
+    <geo:long>3.862153</geo:long>
+    <lieuxPublics:nomQuartier>Figuerolles</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Docteur Roux</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/95">
+    <geo:lat>43.604117</geo:lat>
+    <geo:long>3.89428</geo:long>
+    <lieuxPublics:nomQuartier>Port Marianne</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jean Jaurês</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/55">
+    <geo:lat>43.642591</geo:lat>
+    <geo:long>3.815489</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Prévert</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/131">
+    <geo:lat>43.625994</geo:lat>
+    <geo:long>3.879941</geo:long>
+    <lieuxPublics:nomQuartier>Aiguelongue</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Sigmund Freud (Aiguelongue)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/126">
+    <geo:lat>43.617319</geo:lat>
+    <geo:long>3.839696</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Louis Amstrong (ex Petit Bard)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/16">
+    <geo:lat>43.617017</geo:lat>
+    <geo:long>3.828576</geo:long>
+    <lieuxPublics:nomQuartier>Celleneuve</lieuxPublics:nomQuartier>
+    <rdfs:label>Halte-garderie les chats bottés</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/84">
+    <geo:lat>43.612283</geo:lat>
+    <geo:long>3.875373</geo:long>
+    <lieuxPublics:nomQuartier>Centre historique</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Jean Mace</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/112">
+    <geo:lat>43.612491</geo:lat>
+    <geo:long>3.831347</geo:long>
+    <lieuxPublics:nomQuartier>Celleneuve</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Léo Mallet (ex Moliêre)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/6">
+    <geo:lat>43.614347</geo:lat>
+    <geo:long>3.879474</geo:long>
+    <lieuxPublics:nomQuartier>Les Beaux Arts</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche des sept nains</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/36">
+    <geo:lat>43.608612</geo:lat>
+    <geo:long>3.865496</geo:long>
+    <lieuxPublics:nomQuartier>Les Arceaux</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. Joseph Ricome</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/105">
+    <geo:lat>43.613298</geo:lat>
+    <geo:long>3.891868</geo:long>
+    <lieuxPublics:nomQuartier>Antigone</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jean Mermoz</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/46">
+    <geo:lat>43.6409</geo:lat>
+    <geo:long>3.817592</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Picasso</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/74">
+    <geo:lat>43.594243</geo:lat>
+    <geo:long>3.865846</geo:long>
+    <lieuxPublics:nomQuartier>Croix d'Argent</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Marcel Pagnol</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/145">
+    <geo:lat>43.615804</geo:lat>
+    <geo:long>3.83892</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Joseph Delteil</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/119">
+    <geo:lat>43.597447</geo:lat>
+    <geo:long>3.882179</geo:long>
+    <lieuxPublics:nomQuartier>Saint-Martin</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jacques Brel Cité Mion 1 &amp;2</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/139">
+    <geo:lat>43.616837</geo:lat>
+    <geo:long>3.861998</geo:long>
+    <lieuxPublics:nomQuartier>Boutonnet</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Berthe Morizot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/94">
+    <geo:lat>43.604226</geo:lat>
+    <geo:long>3.893793</geo:long>
+    <lieuxPublics:nomQuartier>Port Marianne</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Geneviêve De Gaulle Antonisio</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/66">
+    <geo:lat>43.600636</geo:lat>
+    <geo:long>3.845714</geo:long>
+    <lieuxPublics:nomQuartier>Pas du Loup</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Lily-Boulanger (Pas du Loup)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/56">
+    <geo:lat>43.628101</geo:lat>
+    <geo:long>3.820409</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle André Boulloche (Bari)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/132">
+    <geo:lat>43.626728</geo:lat>
+    <geo:long>3.86414</geo:long>
+    <lieuxPublics:nomQuartier>Hôpitaux-Facultés</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Eugêne Pottier (Jeu de Mail 1)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/125">
+    <geo:lat>43.608852</geo:lat>
+    <geo:long>3.888337</geo:long>
+    <lieuxPublics:nomQuartier>Antigone</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Péricles (Antigone)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/43">
+    <geo:lat>43.604028</geo:lat>
+    <geo:long>3.844934</geo:long>
+    <lieuxPublics:nomQuartier>La Chamberte</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Maria Calas (Chamberte)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/144">
+    <geo:lat>43.588219</geo:lat>
+    <geo:long>3.86524</geo:long>
+    <lieuxPublics:nomQuartier>Croix d'Argent</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Ronsard (Villeneuve d'Angoulème)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/98">
+    <geo:lat>43.638146</geo:lat>
+    <geo:long>3.819312</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Galilée (Troubadours)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/114">
+    <geo:lat>43.61686</geo:lat>
+    <geo:long>3.845702</geo:long>
+    <lieuxPublics:nomQuartier>Les Cévennes</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Charles Baudelaire (les Pins)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/104">
+    <geo:lat>43.609927</geo:lat>
+    <geo:long>3.89809</geo:long>
+    <lieuxPublics:nomQuartier>La Pompignane</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Painlevé</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/83">
+    <geo:lat>43.609232</geo:lat>
+    <geo:long>3.873515</geo:long>
+    <lieuxPublics:nomQuartier>Centre historique</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Pasteur</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/78">
+    <geo:lat>43.61109</geo:lat>
+    <geo:long>3.85365</geo:long>
+    <lieuxPublics:nomQuartier>Les Cévennes</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Goethe (Cité Astruc)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/17">
+    <geo:lat>43.644806</geo:lat>
+    <geo:long>3.870219</geo:long>
+    <lieuxPublics:nomQuartier>Hôpitaux-Facultés</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Agropolis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/12">
+    <geo:lat>43.596373</geo:lat>
+    <geo:long>3.870014</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Blanche Neige</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/1">
+    <geo:lat>43.629033</geo:lat>
+    <geo:long>3.827986</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Jardins Familaux de Malbosc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/133">
+    <geo:lat>43.597028</geo:lat>
+    <geo:long>3.892036</geo:long>
+    <lieuxPublics:nomQuartier>Les Aiguerelles</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Charles Dickens (Aiguerelles)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/57">
+    <geo:lat>43.638136</geo:lat>
+    <geo:long>3.81976</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Averroes (Troubadours)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/62">
+    <geo:lat>43.624213</geo:lat>
+    <geo:long>3.814305</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Martin Luther King Louisville)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/123">
+    <geo:lat>43.595477</geo:lat>
+    <geo:long>3.87062</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Georges Simenon (Lantissargues)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/97">
+    <geo:lat>43.624976</geo:lat>
+    <geo:long>3.815066</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Louisville</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/26">
+    <geo:lat>43.617337</geo:lat>
+    <geo:long>3.878646</geo:long>
+    <lieuxPublics:nomQuartier>Les Beaux Arts</lieuxPublics:nomQuartier>
+    <rdfs:label>Crêche Pinocchio</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/22">
+    <geo:lat>43.588921</geo:lat>
+    <geo:long>3.864359</geo:long>
+    <lieuxPublics:nomQuartier>Croix d'Argent</lieuxPublics:nomQuartier>
+    <rdfs:label>Halte-garderie Villeneuve d'Angoulème</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/42">
+    <geo:lat>43.623105</geo:lat>
+    <geo:long>3.818424</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Pablo Neruda (Barcelone)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/9">
+    <geo:lat>43.607301</geo:lat>
+    <geo:long>3.884735</geo:long>
+    <lieuxPublics:nomQuartier>Gares</lieuxPublics:nomQuartier>
+    <rdfs:label>Crêche Antigone</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/20">
+    <geo:lat>43.601453</geo:lat>
+    <geo:long>3.849531</geo:long>
+    <lieuxPublics:nomQuartier>La Chamberte</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Franêoise Dolto</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/18">
+    <geo:lat>43.603379</geo:lat>
+    <geo:long>3.880624</geo:long>
+    <lieuxPublics:nomQuartier>Gares</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Edelweiss</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/143">
+    <geo:lat>43.599927</geo:lat>
+    <geo:long>3.869071</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Marie Curie</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/44">
+    <geo:lat>43.617753</geo:lat>
+    <geo:long>3.839383</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Genevieve Bon (ex Petit Bard)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/124">
+    <geo:lat>43.603888</geo:lat>
+    <geo:long>3.845419</geo:long>
+    <lieuxPublics:nomQuartier>La Chamberte</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Dante Alighiéri  (Chamberte 1)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/113">
+    <geo:lat>43.608501</geo:lat>
+    <geo:long>3.836876</geo:long>
+    <lieuxPublics:nomQuartier>La Martelle</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire B. Spinosa (la Martelle)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/103">
+    <geo:lat>43.60769</geo:lat>
+    <geo:long>3.87096</geo:long>
+    <lieuxPublics:nomQuartier>Gambetta</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Gambetta</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/82">
+    <geo:lat>43.611221</geo:lat>
+    <geo:long>3.865973</geo:long>
+    <lieuxPublics:nomQuartier>Les Arceaux</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Chaptal</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/77">
+    <geo:lat>43.615617</geo:lat>
+    <geo:long>3.878357</geo:long>
+    <lieuxPublics:nomQuartier>Les Beaux Arts</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Jean-de-la-Fontaine</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/39">
+    <geo:lat>43.609189</geo:lat>
+    <geo:long>3.835384</geo:long>
+    <lieuxPublics:nomQuartier>La Martelle</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. André Chamson</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/11">
+    <geo:lat>43.62212</geo:lat>
+    <geo:long>3.842024</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Galinetta (ex Cévennes)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/58">
+    <geo:lat>43.627388</geo:lat>
+    <geo:long>3.820245</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Vincent Van Gogh (Oxford)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/134">
+    <geo:lat>43.609326</geo:lat>
+    <geo:long>3.873706</geo:long>
+    <lieuxPublics:nomQuartier>Centre historique</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Lamartine</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/63">
+    <geo:lat>43.608595</geo:lat>
+    <geo:long>3.83653</geo:long>
+    <lieuxPublics:nomQuartier>La Martelle</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Jeanne Deroin (la Martelle)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/96">
+    <geo:lat>43.624982</geo:lat>
+    <geo:long>3.813554</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Heidelberg</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/25">
+    <geo:lat>43.601958</geo:lat>
+    <geo:long>3.915803</geo:long>
+    <lieuxPublics:nomQuartier>Port Marianne</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Robin des bois Halte garderie Mowgli</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/8">
+    <geo:lat>43.628632</geo:lat>
+    <geo:long>3.817198</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Louise Guiraud</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/21">
+    <geo:lat>43.618367</geo:lat>
+    <geo:long>3.881851</geo:long>
+    <lieuxPublics:nomQuartier>Les Beaux Arts</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche Léonice Pouzin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/116">
+    <geo:lat>43.600419</geo:lat>
+    <geo:long>3.845828</geo:long>
+    <lieuxPublics:nomQuartier>Pas du Loup</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Victor Schoelcher (Pas du Loup)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/71">
+    <geo:lat>43.588454</geo:lat>
+    <geo:long>3.864502</geo:long>
+    <lieuxPublics:nomQuartier>Croix d'Argent</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Aliénor d'Aquitaine (Villeneuve d'Angoulème)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/142">
+    <geo:lat>43.600002</geo:lat>
+    <geo:long>3.868933</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Ferdinand Buisson</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/19">
+    <geo:lat>43.596167</geo:lat>
+    <geo:long>3.869776</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Halte-garderie Mary Poppins</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/90">
+    <geo:lat>43.605149</geo:lat>
+    <geo:long>3.857453</geo:long>
+    <lieuxPublics:nomQuartier>Figuerolles</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Calendreta dau ClapÓs</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/81">
+    <geo:lat>43.607711</geo:lat>
+    <geo:long>3.871678</geo:long>
+    <lieuxPublics:nomQuartier>Gambetta</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Franêis Garnier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/135">
+    <geo:lat>43.605026</geo:lat>
+    <geo:long>3.871966</geo:long>
+    <lieuxPublics:nomQuartier>Gambetta</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Sévigné</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/3">
+    <geo:lat>43.617457</geo:lat>
+    <geo:long>3.935855</geo:long>
+    <lieuxPublics:nomQuartier>Grammont</lieuxPublics:nomQuartier>
+    <rdfs:label>Cimetiêre Saint-Etienne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/102">
+    <geo:lat>43.62737</geo:lat>
+    <geo:long>3.821175</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire F. D. Roosevelt (Oxford)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/59">
+    <geo:lat>43.639474</geo:lat>
+    <geo:long>3.812937</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Copernic (les Tours)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/10">
+    <geo:lat>43.627989</geo:lat>
+    <geo:long>3.877874</geo:long>
+    <lieuxPublics:nomQuartier>Aiguelongue</lieuxPublics:nomQuartier>
+    <rdfs:label>Halte garderie de l'Aiguelongue Picho Nanet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/60">
+    <geo:lat>43.624986</geo:lat>
+    <geo:long>3.814324</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Cervantês (Heidelberg)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/38">
+    <geo:lat>43.592785</geo:lat>
+    <geo:long>3.871106</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Boisement rue Ripoll Lemasson</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/30">
+    <geo:lat>43.611866</geo:lat>
+    <geo:long>3.85561</geo:long>
+    <lieuxPublics:nomQuartier>Les Cévennes</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. cité Astruc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/40">
+    <geo:lat>43.60564</geo:lat>
+    <geo:long>3.859186</geo:long>
+    <lieuxPublics:nomQuartier>Figuerolles</lieuxPublics:nomQuartier>
+    <rdfs:label>MPT Franêois de Malherbe</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/69">
+    <geo:lat>43.597443</geo:lat>
+    <geo:long>3.882471</geo:long>
+    <lieuxPublics:nomQuartier>Saint-Martin</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Simone Signoret       (Cité Mion)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/24">
+    <geo:lat>43.605646</geo:lat>
+    <geo:long>3.858637</geo:long>
+    <lieuxPublics:nomQuartier>Figuerolles</lieuxPublics:nomQuartier>
+    <rdfs:label>Halte-garderie Les Farfadets</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/28">
+    <geo:lat>43.618731</geo:lat>
+    <geo:long>3.893909</geo:long>
+    <lieuxPublics:nomQuartier>Les Aubes</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. Georges Sand</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/121">
+    <geo:lat>43.592629</geo:lat>
+    <geo:long>3.868605</geo:long>
+    <lieuxPublics:nomQuartier>Lemasson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Garibaldi (Mas Drevon)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/50">
+    <geo:lat>43.618634</geo:lat>
+    <geo:long>3.897671</geo:long>
+    <lieuxPublics:nomQuartier>La Pompignane</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Sergue´ Prokofiev (Le Lez)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/141">
+    <geo:lat>43.614295</geo:lat>
+    <geo:long>3.879718</geo:long>
+    <lieuxPublics:nomQuartier>Les Beaux Arts</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Louis Blanc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/70">
+    <geo:lat>43.592123</geo:lat>
+    <geo:long>3.887348</geo:long>
+    <lieuxPublics:nomQuartier>Saint-Martin</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Jean Cocteau (Prês d'Arênes)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/99">
+    <geo:lat>43.640584</geo:lat>
+    <geo:long>3.819643</geo:long>
+    <lieuxPublics:nomQuartier>Les Hauts de Massane</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Ushiro Kurosawa (les Ménestrels)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/115">
+    <geo:lat>43.605133</geo:lat>
+    <geo:long>3.857873</geo:long>
+    <lieuxPublics:nomQuartier>Figuerolles</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Frédéric Bazille</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/89">
+    <geo:lat>43.597017</geo:lat>
+    <geo:long>3.839643</geo:long>
+    <lieuxPublics:nomQuartier>Pas du Loup</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Hélêne Boucher ( Alain Savary)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/32">
+    <geo:lat>43.616175</geo:lat>
+    <geo:long>3.840585</geo:long>
+    <lieuxPublics:nomQuartier>Alco</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. petit bard Pergola</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/79">
+    <geo:lat>43.610782</geo:lat>
+    <geo:long>3.897832</geo:long>
+    <lieuxPublics:nomQuartier>La Pompignane</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Louise Michel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/136">
+    <geo:lat>43.611215</geo:lat>
+    <geo:long>3.866183</geo:long>
+    <lieuxPublics:nomQuartier>Les Arceaux</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jeanne d'Arc</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/91">
+    <geo:lat>43.61206</geo:lat>
+    <geo:long>3.907307</geo:long>
+    <lieuxPublics:nomQuartier>Millénaire</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Sarah Bernhardt (Blaise Pascal)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/80">
+    <geo:lat>43.597197</geo:lat>
+    <geo:long>3.892339</geo:long>
+    <lieuxPublics:nomQuartier>Les Aiguerelles</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Anne Franck  (Aiguerelles)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/61">
+    <geo:lat>43.613778</geo:lat>
+    <geo:long>3.827892</geo:long>
+    <lieuxPublics:nomQuartier>Celleneuve</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Pape Carpentier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/129">
+    <geo:lat>43.636365</geo:lat>
+    <geo:long>3.87396</geo:long>
+    <lieuxPublics:nomQuartier>Aiguelongue</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Jules Ferry (Vert-Bois)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/101">
+    <geo:lat>43.628104</geo:lat>
+    <geo:long>3.821292</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Virginia Woolf ( Barri)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/2">
+    <geo:lat>43.609429</geo:lat>
+    <geo:long>3.936522</geo:long>
+    <lieuxPublics:nomQuartier>Millénaire</lieuxPublics:nomQuartier>
+    <rdfs:label>Jardins Familiaux Les Grands Grês</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/31">
+    <geo:lat>43.626247</geo:lat>
+    <geo:long>3.882443</geo:long>
+    <lieuxPublics:nomQuartier>Aiguelongue</lieuxPublics:nomQuartier>
+    <rdfs:label>M.P.T. Albert Dubout</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/37">
+    <geo:lat>43.596561</geo:lat>
+    <geo:long>3.865455</geo:long>
+    <lieuxPublics:nomQuartier>Croix d'Argent</lieuxPublics:nomQuartier>
+    <rdfs:label>Médiathêque Victor Hugo</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/109">
+    <geo:lat>43.624379</geo:lat>
+    <geo:long>3.818363</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Antoine Balard (Salamanque)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/23">
+    <geo:lat>43.624988</geo:lat>
+    <geo:long>3.876517</geo:long>
+    <lieuxPublics:nomQuartier>Boutonnet</lieuxPublics:nomQuartier>
+    <rdfs:label>Crèche 'Le petit Prince de Boutonnet'</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/27">
+    <geo:lat>43.635733</geo:lat>
+    <geo:long>3.830474</geo:long>
+    <lieuxPublics:nomQuartier>Hôpitaux-Facultés</lieuxPublics:nomQuartier>
+    <rdfs:label>Crêche la Petite Sirêne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/41">
+    <geo:lat>43.623983</geo:lat>
+    <geo:long>3.817949</geo:long>
+    <lieuxPublics:nomQuartier>La Mosson</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Madeleine Renaud (Salamanque)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/51">
+    <geo:lat>43.618785</geo:lat>
+    <geo:long>3.890904</geo:long>
+    <lieuxPublics:nomQuartier>Les Aubes</lieuxPublics:nomQuartier>
+    <rdfs:label>Maternelle Ingrid-Bergman (Jean Moulin)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/lieuxPublics/122">
+    <geo:lat>43.595295</geo:lat>
+    <geo:long>3.86396</geo:long>
+    <lieuxPublics:nomQuartier>Croix d'Argent</lieuxPublics:nomQuartier>
+    <rdfs:label>Primaire Voltaire 1 et 2</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

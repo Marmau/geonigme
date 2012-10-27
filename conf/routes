@@ -70,3 +70,8 @@ GET		/logout						controllers.User.logout()
 
 # Manager
 GET		/dashboard					controllers.Manager.dashboard()
+
+# Map
+GET		/poi/arbres					controllers.Map.getMapArbres()
+GET		/poi/lieuxPublics			controllers.Map.getMapLieuxPublic()
+GET		/poi/fontaines				controllers.Map.getMapFontaines()
