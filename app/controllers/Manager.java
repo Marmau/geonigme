@@ -10,6 +10,10 @@ import play.mvc.*;
 public class Manager extends Controller {
 
 	public static Result dashboard() throws RepositoryException, QueryEvaluationException {
+		if (!User.isLogged()) {
+			return redirect(routes.Application.index());
+		}
+		
 		models.User user = User.getLoggedUser();
 		List<models.Hunt> hunts = user.getHunts();
 

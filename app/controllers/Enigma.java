@@ -3,7 +3,9 @@ package controllers;
 import java.io.StringWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -88,8 +90,8 @@ public class Enigma extends Controller {
 		return answer;
 	}
 
-	private static Set<Clue> formToClues(forms.Enigma form) {
-		Set<Clue> clues = new HashSet<Clue>();
+	private static List<Clue> formToClues(forms.Enigma form) {
+		List<Clue> clues = new ArrayList<Clue>();
 		if (form.clues == null) {
 			return clues;
 		}

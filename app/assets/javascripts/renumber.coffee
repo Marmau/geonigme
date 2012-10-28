@@ -1,4 +1,4 @@
-require ['jquery'], ($) ->
+require [], ->
 	$.fn.renumber = (selector) -> 
 		$(this).each (i) ->
 			$(this).find(selector).each (j) ->

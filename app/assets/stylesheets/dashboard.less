@@ -219,70 +219,93 @@
         }
     }
 
-    .hunt-box {
-        background: @colorClearBlue;
-        font-size: 14px;
+    #container-hunt-box {
+        .hunt-box {
+            opacity: 0;
 
-        a {
-            color: @colorClearBlue;
-            text-decoration: none;
-            display: block;
-        }
+            float: left;
+            width: 24%;
+            margin-bottom: 10px;
+            
+            a {
+                background: @colorClearBlue;
+                font-size: 14px;
+                color: @colorClearBlue;
+                text-decoration: none;
+                display: block;
 
-        .name {
-            text-align: right;
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 21px;
-            overflow: hidden;
+                &:hover {
+                    background: white;
+                    border: 1px @colorClearBlue solid;
+                    color: white;
 
-            div {
-                margin-right: 5px;
+                    .name div span {
+                        .highlight(5px, @colorClearBlue);
+                    }
 
-                span {
-                    padding: 2px 0px;
-                    .highlight(5px, white);
+                    .numbers span, .tags .tag {
+                        background: @colorClearBlue;
+                    }
                 }
-            }
-        }
 
-        .numbers {
-            position: relative;
-            overflow: hidden;
-            margin-top: 8px;
+                .name {
+                    text-align: right;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    font-weight: bold;
+                    line-height: 21px;
+                    overflow: hidden;
+                    margin-left: 25%;
 
-            .number {
-                font-size: 24px;
-                font-weight: bold;
-            }
+                    div {
+                        margin-right: 5px;
 
-            .enigmas {
-                position: absolute;
-                right: 0px;
-                top: 0px;
-            }
-
-            span {
-                background: white;
-                padding: 0px 2px;
-
-                &:not(.number) {
-                    padding-bottom: 2px;
+                        span {
+                            padding: 2px 0px;
+                            .highlight(5px, white);
+                        }
+                    }
                 }
-            }
-        }
 
-        .tags {
-            text-align: right;
-            overflow: hidden;
-            margin-top: 8px;
+                .numbers {
+                    position: relative;
+                    overflow: hidden;
+                    margin-top: 8px;
 
-            .tag {
-                background: white;
-                padding: 0px 2px;
-                margin: 0px 0px 1px 1px;
-                float: right
+                    .number {
+                        font-size: 24px;
+                        font-weight: bold;
+                    }
+
+                    .enigmas {
+                        position: absolute;
+                        right: 0px;
+                        top: 0px;
+                    }
+
+                    span {
+                        background: white;
+                        padding: 0px 2px;
+
+                        &:not(.number) {
+                            padding-bottom: 2px;
+                        }
+                    }
+                }
+
+                .tags {
+                    text-align: right;
+                    overflow: hidden;
+                    margin-top: 8px;
+                    margin-left: 25%;
+
+                    .tag {
+                        background: white;
+                        padding: 0px 2px;
+                        margin: 0px 0px 1px 1px;
+                        float: right
+                    }
+                }
             }
         }
     }

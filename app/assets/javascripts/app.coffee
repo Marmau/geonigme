@@ -6,6 +6,7 @@ requirejs.config({
 		jquery_easing: 'jquery.easing-1.3',
 		bootstrap: 'bootstrap',
 		camera: 'camera.min',
+		masonry: 'jquery.masonry.min',
 		autosize: 'jquery.autosize-min',
 		leaflet: '../leaflet/leaflet-src',
 	}
