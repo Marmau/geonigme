@@ -1,18 +1,19 @@
-@(hunt: models.Hunt, formStep: Form[forms.Step])
+@(step: models.Step, formStep: Form[forms.Step])
 
-@mainDashboard("Nouvelle étape", "step") {
+@mainDashboard("Modifier une étape", "step") {
 	<ul class="breadcrumb">
 		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
-		<li><a href="#"><span class="hunt-name">@hunt.getLabel()</span></a></li>
-		<li><a>Nouvelle étape</a></li>
+		<li><a href="#"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
+		<li><a href="#">&Eacute;tape @step.getNumber()</a></li>
+		<li><a>Modifier l'étape</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Step.submitCreateForm(hunt.getId()), 
+			@helper.form(action = routes.Step.submitUpdateForm(step.getId()), 
 				'id -> "create-step", 
 				'class -> "form-horizontal", 
-				Symbol("data-area") -> hunt.getArea().toTemplateString()) {
+				Symbol("data-area") -> step.getHunt().getArea().toTemplateString()) {
 				<blockquote>
 					Une étape regroupe un ensemble d'énigmes qui se déroule dans un périmètre géographique restreint. Le joueur sera guidé grâce à son smartphone vers la position de départ !
 				</blockquote>
@@ -41,6 +42,7 @@
 					</div>
 				</div>
 				<div class="form-actions">
+					<a class="btn pushable" href="@routes.Hunt.show(step.getHunt().getId())">Annuler</a>
 					<button type="submit" name="submit-step" class="btn pushable">Enregistrer</button>
 				</div>
 			}

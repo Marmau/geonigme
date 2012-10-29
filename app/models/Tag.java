@@ -58,7 +58,12 @@ public class Tag {
 		return tags;
 	}
 	
-	public String urify() throws UnsupportedEncodingException {
-		return URLEncoder.encode(getName(), "UTF-8");
+	public String urify() {
+		try {
+			return URLEncoder.encode(getName(), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

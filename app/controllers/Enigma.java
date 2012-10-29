@@ -61,9 +61,94 @@ public class Enigma extends Controller {
 			String aid = UUID.randomUUID().toString();
 			oc.addObject(models.Answer.URI + aid, answer);
 			
-			oc.commit();
-
 			return redirect(routes.Hunt.show(step.getHunt().getId()));
+		}
+	}
+
+	public static Result delete(String eid) {
+		return ok();
+	}
+
+	public static Result update(String eid) throws RepositoryException,	QueryEvaluationException {
+		ObjectConnection oc = Sesame.getObjectConnection();
+
+		models.Enigma enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+		
+		forms.Enigma formEnigma = new forms.Enigma();
+		formEnigma.description = enigma.getDescription();
+		formEnigma.answer = new forms.Enigma.Answer();
+		if (enigma.getAnswer() instanceof models.GeolocatedAnswer) {
+			models.GeolocatedAnswer a = (models.GeolocatedAnswer)enigma.getAnswer();
+			formEnigma.answer.type = forms.Enigma.Answer.GeolocatedAnswer;
+			formEnigma.answer.accuracy = a.getPosition().getAccuracy();
+			formEnigma.answer.labelPosition = a.getPosition().getPlace();
+			formEnigma.answer.position = a.getPosition().toTemplateString();
+		} else if (enigma.getAnswer() instanceof models.TextAnswer) {
+			models.TextAnswer a = (models.TextAnswer)enigma.getAnswer();
+			formEnigma.answer.type = forms.Enigma.Answer.TextAnswer;
+			formEnigma.answer.possibleTexts = new ArrayList<String>(a.getLabels());
+		} else {
+			throw new RuntimeException("Erreur dans la réponse");
+		}
+				
+		formEnigma.clues = new ArrayList<forms.Enigma.Clue>();
+		for (models.Clue clue: enigma.getClues()) {
+			forms.Enigma.Clue formClue = new forms.Enigma.Clue();
+			if (clue instanceof models.FileClue) {
+				models.FileClue c = (models.FileClue)clue;
+				formClue.type = forms.Enigma.Clue.FileClue;
+				formClue.fileDescription = c.getDescription();
+				formClue.fileLink = c.getFile().toString();
+			} else if (clue instanceof models.TextClue) {
+				models.TextClue c = (models.TextClue)clue;
+				formClue.type = forms.Enigma.Clue.TextClue;
+				formClue.textDescription = c.getDescription();
+			} else {
+				throw new RuntimeException("Erreur dans l'indice");
+			}
+			formEnigma.clues.add(formClue);
+		}
+
+		return ok(views.html.dashboard.updateEnigma.render(enigma, form(forms.Enigma.class).fill(formEnigma)));
+	}
+
+	public static Result submitUpdateForm(String eid) throws RepositoryException, QueryEvaluationException {
+		Form<forms.Enigma> formEnigma = form(forms.Enigma.class).bindFromRequest();
+		ObjectConnection oc = Sesame.getObjectConnection();
+		models.Enigma enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+
+		if (formEnigma.hasErrors()) {
+			return badRequest(views.html.dashboard.updateEnigma.render(enigma, formEnigma));
+		} else {
+			fillEnigma(enigma, formEnigma.get());
+			
+			oc.addObject(models.Enigma.URI + eid, enigma);
+			
+			enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+			
+			// Suppression des anciens indices
+			for (models.Clue oldClue: enigma.getClues()) {
+				oldClue.reset();
+				oc.removeDesignation(oldClue, models.Clue.class);
+			}
+			
+			for (models.Clue clue: formToClues(formEnigma.get())) {
+				clue.setEnigma(enigma);
+				String cid = UUID.randomUUID().toString();
+				oc.addObject(models.Clue.URI + cid, clue);
+			}
+			
+			// Suppression de l'ancienne réponse
+			models.Answer oldAnswer = enigma.getAnswer();
+			oldAnswer.reset();
+			oc.removeDesignation(oldAnswer, models.Answer.class);
+			
+			models.Answer answer = formToAnswer(formEnigma.get());
+			answer.setEnigma(enigma);
+			String aid = UUID.randomUUID().toString();
+			oc.addObject(models.Answer.URI + aid, answer);
+			
+			return redirect(routes.Hunt.show(enigma.getStep().getHunt().getId()));
 		}
 	}
 
@@ -118,25 +203,12 @@ public class Enigma extends Controller {
 
 	private static models.Enigma formToEnigma(forms.Enigma form) {
 		models.Enigma e = new models.Enigma();
-		e.setDescription(form.description);
+		fillEnigma(e, form);
 
 		return e;
 	}
-
-	public static Result edit(String eid) {
-		return ok();
+	
+	private static void fillEnigma(models.Enigma enigma, forms.Enigma form) {
+		enigma.setDescription(form.description);
 	}
-
-	public static Result delete(String eid) {
-		return ok();
-	}
-
-	public static Result update(String eid) {
-		return ok();
-	}
-
-	public static Result submitUpdateForm(String eid) {
-		return ok();
-	}
-
 }

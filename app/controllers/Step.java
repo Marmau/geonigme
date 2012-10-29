@@ -45,31 +45,48 @@ public class Step extends Controller {
 		}
 	}
 
-	public static Result edit(String sid) {
-		return ok();
-	}
+	public static Result update(String sid) throws RepositoryException,	QueryEvaluationException {
+		ObjectConnection oc = Sesame.getObjectConnection();
 
-	public static Result update(String sid) {
-		return ok();
+		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
+		
+		forms.Step formStep = new forms.Step();
+		formStep.description = step.getDescription();
+		formStep.accuracy = step.getPosition().getAccuracy();
+		formStep.position = step.getPosition().toTemplateString();
+
+		return ok(views.html.dashboard.updateStep.render(step, form(forms.Step.class).fill(formStep)));
+	}
+	
+	public static Result submitUpdateForm(String sid) throws RepositoryException, QueryEvaluationException {
+		Form<forms.Step> formStep = form(forms.Step.class).bindFromRequest();
+		ObjectConnection oc = Sesame.getObjectConnection();
+		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
+
+		if (formStep.hasErrors()) {
+			return badRequest(views.html.dashboard.updateStep.render(step, formStep));
+		} else {
+			fillStep(step, formStep.get());
+
+			oc.addObject(models.Step.URI + sid, step);
+
+			return redirect(routes.Hunt.show(step.getHunt().getId()));
+		}
 	}
 
 	public static Result delete(String sid) {
 		return ok();
 	}
 
-	public static Result createEnigma(String sid) {
-		return ok();
-	}
-
-	public static Result submitUpdateForm(String sid) {
-		return ok();
-	}
-
-	private static models.Step formToStep(forms.Step form) throws DatatypeConfigurationException {
+	private static models.Step formToStep(forms.Step form) {
 		models.Step s = new models.Step();
-		s.setDescription(form.description);
-		s.setPosition(Position.createFrom(form.position, form.accuracy));
+		fillStep(s, form);
 
 		return s;
+	}
+	
+	private static void fillStep(models.Step step, forms.Step form) {
+		step.setDescription(form.description);
+		step.setPosition(Position.createFrom(form.position, form.accuracy));
 	}
 }

@@ -40,4 +40,10 @@ public class Clue {
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
+	
+	public void reset() {
+		this.setDescription(null);
+		this.setEnigma(null);
+		this.setNumber(null);
+	}
 }

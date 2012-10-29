@@ -17,4 +17,10 @@ public class FileClue extends Clue {
 	public void setFile(URI file) {
 		this.file = file;
 	}
+	
+	@Override
+	public void reset() {
+		super.reset();
+		this.setFile(null);
+	}
 }

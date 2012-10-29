@@ -1,27 +1,28 @@
-@(step: models.Step, formEnigma: Form[forms.Enigma])
+@(enigma: models.Enigma, formEnigma: Form[forms.Enigma])
 
 @import helpers._
 
-@mainDashboard("Nouvelle énigme", "enigma") {
+@mainDashboard("Modifier une énigme", "enigma") {
 	<ul class="breadcrumb">
 		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
-		<li><a href="#"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
-		<li><a href="#">&Eacute;tape @step.getNumber()</a></li>
-		<li><a>Nouvelle énigme</a></li>
+		<li><a href="#"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
+		<li><a href="#">&Eacute;tape @enigma.getStep().getNumber()</a></li>
+		<li><a href="#">&Eacute;nigme @enigma.getNumber()</a></li>
+		<li><a>Modifier l'énigme</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Enigma.submitCreateForm(step.getId()), 
+			@helper.form(action = routes.Enigma.submitUpdateForm(enigma.getId()), 
 				'id -> "create-enigma", 
 				'class -> "form-horizontal",
-				Symbol("data-area") -> step.getHunt().getArea().toTemplateString(),
-				Symbol("data-start-position") -> step.getPosition().toTemplateString(),
-				Symbol("data-start-accuracy") -> Float.toString(step.getPosition().getAccuracy())) {
+				Symbol("data-area") -> enigma.getStep().getHunt().getArea().toTemplateString(),
+				Symbol("data-start-position") -> enigma.getStep().getPosition().toTemplateString(),
+				Symbol("data-start-accuracy") -> Float.toString(enigma.getStep().getPosition().getAccuracy())) {
 				<div class="control-group">
 					<label class="control-label" for="description-enigma">Enoncé de l'énigme</label>
 					<div class="controls">
-						<textarea class="span12" id="description-enigma" name="@formEnigma("description").name" value="@formEnigma("description").value"></textarea>
+						<textarea class="span12" id="description-enigma" name="@formEnigma("description").name">@formEnigma("description").value</textarea>
 						<p class="help-block">Soyez imaginatif !</p>
 					</div>
 				</div>
@@ -100,6 +101,7 @@
 					</div>
 				</div>
 				<div class="form-actions">
+					<a class="btn pushable" href="@routes.Hunt.show(enigma.getStep().getHunt().getId())">Annuler</a>
 					<button type="submit" name="submit-enigma" class="pushable btn">Enregistrer</button>
 				</div>
 			}

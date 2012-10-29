@@ -19,4 +19,9 @@ public class TextAnswer extends Answer {
 		this.labels = labels;
 	}
 
+	@Override
+	public void reset() {
+		super.reset();
+		this.setLabels(null);
+	}
 }

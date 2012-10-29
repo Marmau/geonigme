@@ -16,5 +16,10 @@ public class GeolocatedAnswer extends Answer {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-
+	
+	@Override
+	public void reset() {
+		super.reset();
+		this.setPosition(null);
+	}
 }

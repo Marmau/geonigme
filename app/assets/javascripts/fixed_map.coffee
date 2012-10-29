@@ -1,5 +1,5 @@
 # Affiche la map de façon optimale
-require [] ->
+require [], ->
 
 	marginTop = 20
 

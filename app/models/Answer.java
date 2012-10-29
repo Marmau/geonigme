@@ -18,5 +18,8 @@ public class Answer {
 	public void setEnigma(Enigma answerOfEnigma) {
 		this.answerOfEnigma = answerOfEnigma;
 	}
-
+	
+	public void reset() {
+		this.setEnigma(null);
+	}
 }

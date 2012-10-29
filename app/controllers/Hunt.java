@@ -1,8 +1,8 @@
 package controllers;
 
-import java.io.UnsupportedEncodingException;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
@@ -21,7 +21,6 @@ import org.openrdf.repository.object.ObjectConnection;
 
 import play.data.Form;
 import play.mvc.*;
-import play.templates.Hash;
 
 public class Hunt extends Controller {
 
@@ -39,7 +38,7 @@ public class Hunt extends Controller {
 		return ok(views.html.dashboard.createHunt.render(formHunt));
 	}
 
-	public static Result submitCreateForm() throws RepositoryException, DatatypeConfigurationException, UnsupportedEncodingException, QueryEvaluationException {
+	public static Result submitCreateForm() throws RepositoryException, DatatypeConfigurationException, QueryEvaluationException {
 		if (!User.isLogged()) {
 			return redirect(routes.Application.index());
 		}
@@ -55,7 +54,6 @@ public class Hunt extends Controller {
 			Set<models.Tag> tags = formToTags(formHunt.get());
 			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
 			for (models.Tag tag: tags) {
-				System.out.println(models.Tag.URI + tag.urify());
 				oc.addObject(models.Tag.URI + tag.urify(), tag);
 				tagsWithURI.add(oc.getObject(models.Tag.class, models.Tag.URI + tag.urify()));
 			}
@@ -68,20 +66,68 @@ public class Hunt extends Controller {
 		}
 	}
 
-	public static Result update(String hid) {
+	public static Result update(String hid) throws RepositoryException,	QueryEvaluationException {
 		if (!User.isLogged()) {
 			return redirect(routes.Application.index());
 		}
 		
-		return ok();
+		ObjectConnection oc = Sesame.getObjectConnection();
+		models.Hunt hunt = oc.getObject(models.Hunt.class, models.Hunt.URI + hid);
+		
+		if (!User.getLoggedUser().equals(hunt.getCreatedBy())) {
+			return forbidden();
+		}
+		
+		forms.Hunt formHunt = new forms.Hunt();
+		formHunt.label = hunt.getLabel();
+		formHunt.description = hunt.getDescription();
+		formHunt.level = hunt.getLevel();
+		formHunt.area = hunt.getArea().toTemplateString();
+		
+		Iterator<models.Tag> it = hunt.getTags().iterator();
+		if (it.hasNext()) {
+			models.Tag firstTag = it.next();
+			formHunt.tags = firstTag.getName();
+			
+			while (it.hasNext()) {
+				formHunt.tags += ", " + it.next().getName();
+			}
+		}
+
+		return ok(views.html.dashboard.updateHunt.render(hunt, form(forms.Hunt.class).fill(formHunt)));
 	}
 
-	public static Result submitUpdateForm(String hid) {
+	public static Result submitUpdateForm(String hid) throws RepositoryException, QueryEvaluationException {
 		if (!User.isLogged()) {
 			return redirect(routes.Application.index());
 		}
 		
-		return ok();
+		ObjectConnection oc = Sesame.getObjectConnection();
+		models.Hunt hunt = oc.getObject(models.Hunt.class, models.Hunt.URI + hid);
+
+		if (!User.getLoggedUser().equals(hunt.getCreatedBy())) {
+			return forbidden();
+		}
+
+		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
+
+		if (formHunt.hasErrors()) {
+			return badRequest(views.html.dashboard.createHunt.render(formHunt));
+		} else {
+			fillHunt(hunt, formHunt.get());
+			
+			Set<models.Tag> tags = formToTags(formHunt.get());
+			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
+			for (models.Tag tag: tags) {
+				oc.addObject(models.Tag.URI + tag.urify(), tag);
+				tagsWithURI.add(oc.getObject(models.Tag.class, models.Tag.URI + tag.urify()));
+			}
+			hunt.setTags(tagsWithURI);
+			
+			oc.addObject(models.Hunt.URI + hid, hunt);
+
+			return redirect(routes.Hunt.show(hid));
+		}
 	}
 
 	public static Result delete(String hid) {
@@ -105,6 +151,11 @@ public class Hunt extends Controller {
 		} catch (Exception e) {
 			return notFound();
 		}
+		
+
+		if (!User.getLoggedUser().equals(h.getCreatedBy())) {
+			return forbidden();
+		}
 
 		return ok(views.html.dashboard.showHunt.render(h));
 	}
@@ -117,23 +168,30 @@ public class Hunt extends Controller {
 		return ok();
 	}
 
-	private static models.Hunt formToHunt(forms.Hunt form) throws DatatypeConfigurationException {
+	private static models.Hunt formToHunt(forms.Hunt form) {
 		models.Hunt h = new models.Hunt();
-		h.setDescription(form.description);
-		h.setLabel(form.label);
-		h.setLevel(form.level);
-		h.setPublished(false);
-		h.setArea(Area.createFrom(form.area));
-		h.setCreatedBy(User.getLoggedUser());
-		
-		System.out.println(User.getLoggedUser());
-
-		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
-		XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-		h.setCreatedAt(now);
-		h.setModifiedAt(now);
+		fillHunt(h, form);
 
 		return h;
+	}
+	
+	private static void fillHunt(models.Hunt hunt, forms.Hunt form) {
+		hunt.setDescription(form.description);
+		hunt.setLabel(form.label);
+		hunt.setLevel(form.level);
+		hunt.setPublished(false);
+		hunt.setArea(Area.createFrom(form.area));
+		hunt.setCreatedBy(User.getLoggedUser());
+		
+		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
+
+		try {
+			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+			hunt.setCreatedAt(now);
+			hunt.setModifiedAt(now);
+		} catch (DatatypeConfigurationException e) {
+		}
+
 	}
 	
 	private static Set<models.Tag> formToTags(forms.Hunt form) {

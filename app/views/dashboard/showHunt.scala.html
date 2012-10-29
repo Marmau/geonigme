@@ -86,7 +86,7 @@
 				</blockquote>
 				<div class="actions">
 					<a href="#" class="action">Jouer</a>
-					<a href="#" class="action">Modifier</a>
+					<a href="@routes.Hunt.update(hunt.getId())" class="action">Modifier</a>
 					<a href="#" class="action">Publier</a>
 				</div>
 			</section>
@@ -107,7 +107,7 @@
 					@for(step <- hunt.getSteps()) {
 		 				<div class="step" id="step@step.getNumber()" @displayDataStep(step)>
 		 					<div class="update-link">
-								<a class="update-step pushable" href="#">Modifier</a>
+								<a class="update-step pushable" href="@routes.Step.update(step.getId())">Modifier</a>
 							</div>
 							<blockquote>
 								@step.getDescription()
@@ -141,7 +141,7 @@
 															</div>
 														</div>
 														<div class="actions">
-															<a href="#" class="action update-enigma">Modifier</a>
+															<a href="@routes.Enigma.update(enigma.getId())" class="action update-enigma">Modifier</a>
 														</div>
 													</div>
 												</div>
