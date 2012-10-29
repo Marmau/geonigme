@@ -19,8 +19,7 @@ import org.openrdf.query.QueryEvaluationException;
 
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
-import org.openrdf.rio.rdfxml.RDFXMLWriter;
-import org.openrdf.rio.turtle.TurtleWriter;
+import org.openrdf.rio.RDFWriter;
 
 import play.data.Form;
 import play.mvc.*;
@@ -118,31 +117,17 @@ public class User extends Controller {
 		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 	
-	public static Result showXML(String uid) {
+	public static Result showRDF(String uid, String format) {
 		ObjectConnection oc = Sesame.getObjectConnection();
-		StringWriter str = new StringWriter();
+		StringWriter strw = new StringWriter();
 		try {
-			RDFXMLWriter writer = new RDFXMLWriter(str);
+			RDFWriter writer = Sesame.getWriter(strw, format);
 			String queryString = "DESCRIBE <" + models.User.URI + uid + ">";
 			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
 		} catch (Exception e) {
-			System.out.println("Exception : " + e);
+			e.printStackTrace();
 			return notFound();
 		}
-		return ok(str.toString());
-	}
-	
-	public static Result showTurtle(String uid) {
-		ObjectConnection oc = Sesame.getObjectConnection();
-		StringWriter str = new StringWriter();
-		try {
-			TurtleWriter writer = new TurtleWriter(str);
-			String queryString = "DESCRIBE <" + models.User.URI + uid + ">";
-			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
-		} catch (Exception e) {
-			System.out.println("Exception : " + e);
-			return notFound();
-		}
-		return ok(str.toString());
+		return ok(strw.toString());
 	}
 }

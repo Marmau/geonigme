@@ -3,11 +3,11 @@ define ['jquery', 'leaflet'], ($) ->
 		constructor: (element) ->
 			super element[0]
 			@layersControls = new L.Control.Layers();
-    		@map.addControl(@layersControls);
+			@map.addControl(@layersControls);
 
-		    @groups = {
-		      'Arbres': new L.LayerGroup(),
-		      'Fontaines': new L.LayerGroup(),
-		      'Jardins': new L.LayerGroup(),
-		      'Lieux Publics': new L.LayerGroup(),
-		    };
+			@groups = {
+			  'Arbres': new L.LayerGroup(),
+			  'Fontaines': new L.LayerGroup(),
+			  'Jardins': new L.LayerGroup(),
+			  'Lieux Publics': new L.LayerGroup(),
+			};

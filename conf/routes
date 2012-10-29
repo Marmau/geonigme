@@ -19,8 +19,7 @@ GET		/hunt/:hid/update			controllers.Hunt.update(hid: String)
 POST	/hunt/:hid/update			controllers.Hunt.submitUpdateForm(hid: String)
 #POST	/hunt/:hid/delete			controllers.Hunt.delete(hid: String)
 #POST	/hunt/:hid/publish			controllers.Hunt.publish(hid: String)
-GET		/hunt/:hid/xml				controllers.Hunt.showXML(hid: String)
-GET		/hunt/:hid/turtle			controllers.Hunt.showTurtle(hid: String)
+GET		/hunt/:hid/:format			controllers.Hunt.showRDF(hid: String, format: String)
 
 # Step
 GET		/hunt/:hid/step/create		controllers.Step.create(hid: String)
@@ -28,8 +27,7 @@ POST	/hunt/:hid/step/create		controllers.Step.submitCreateForm(hid: String)
 GET		/step/:sid/update			controllers.Step.update(sid: String)
 POST	/step/:sid/update			controllers.Step.submitUpdateForm(sid: String)
 #POST	/step/:sid/delete			controllers.Step.delete(sid: String)
-GET		/step/:sid/xml				controllers.Step.showXML(sid: String)
-GET		/step/:sid/turtle			controllers.Step.showTurtle(sid: String)
+GET		/step/:sid/:format			controllers.Step.showRDF(sid: String, format: String)
 
 # Enigma
 GET		/step/:sid/enigma/create	controllers.Enigma.create(sid: String)
@@ -37,24 +35,20 @@ POST	/step/:sid/enigma/create	controllers.Enigma.submitCreateForm(sid: String)
 GET		/enigma/:eid/update			controllers.Enigma.update(eid: String)
 POST	/enigma/:eid/update			controllers.Enigma.submitUpdateForm(eid: String)
 #POST	/enigma/:eid/delete			controllers.Enigma.delete(eid: String)
-GET		/enigma/:eid/xml			controllers.Enigma.showXML(eid: String)
-GET		/enigma/:eid/turtle			controllers.Enigma.showTurtle(eid: String)
+GET		/enigma/:eid/:format		controllers.Enigma.showRDF(eid: String, format: String)
 
 # Clue
-GET		/clue/:cid/xml				controllers.Enigma.showClueXML(cid: String)
-GET		/clue/:cid/turtle			controllers.Enigma.showClueTurtle(cid: String)
+GET		/clue/:cid/:format			controllers.Enigma.showClueRDF(cid: String, format: String)
 
 # Answer
-GET		/answer/:aid/xml			controllers.Enigma.showAnswerXML(aid: String)
-GET		/answer/:aid/turtle			controllers.Enigma.showAnswerTurtle(aid: String)
+GET		/answer/:aid/:format		controllers.Enigma.showAnswerRDF(aid: String, format: String)
 
 # User
 GET		/logout						controllers.User.logout()
 GET		/login						controllers.User.login()
 POST	/login						controllers.User.submitLoginForm()
 POST	/register					controllers.User.submitRegisterForm()
-GET		/user/:uid/xml				controllers.User.showXML(uid: String)
-GET		/user/:uid/turtle			controllers.User.showTurtle(uid: String)
+GET		/user/:uid/:format			controllers.User.showRDF(uid: String, format: String)
 
 # Manager
 GET		/dashboard					controllers.Manager.dashboard()

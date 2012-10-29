@@ -1,6 +1,7 @@
 package global;
 
 import java.io.File;
+import java.io.StringWriter;
 import java.security.InvalidParameterException;
 
 import org.openrdf.repository.Repository;
@@ -11,6 +12,9 @@ import org.openrdf.repository.object.ObjectRepository;
 import org.openrdf.repository.object.config.ObjectRepositoryConfig;
 import org.openrdf.repository.object.config.ObjectRepositoryFactory;
 import org.openrdf.repository.sail.SailRepository;
+import org.openrdf.rio.RDFWriter;
+import org.openrdf.rio.rdfxml.RDFXMLWriter;
+import org.openrdf.rio.turtle.TurtleWriter;
 import org.openrdf.sail.inferencer.fc.ForwardChainingRDFSInferencer;
 import org.openrdf.sail.nativerdf.NativeStore;
 
@@ -67,5 +71,15 @@ public class Sesame {
 
 	public static ObjectConnection getObjectConnection() {
 		return connection;
+	}
+	
+	public static RDFWriter getWriter(StringWriter strw, String format) {
+		if (format.equals("xml")) {
+			return new RDFXMLWriter(strw);
+		} else if (format.equals("turtle")) {
+			return new TurtleWriter(strw);
+		} else {
+			throw new InvalidParameterException("Format RDF non pris en compte ou incorrect.");
+		}
 	}
 }

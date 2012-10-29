@@ -136,6 +136,7 @@ public class Hunt implements RDFObject {
 
 	@Sparql(NS.PREFIX +
 		"SELECT ?step { ?step gngm:stepOfHunt $this. ?step gngm:number ?number } ORDER BY ?number")
+	@Iri(NS.GNGM + "step")
 	public List<Step> getSteps() {
 		return null;
 	}
