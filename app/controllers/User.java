@@ -4,6 +4,9 @@ import forms.Login;
 import forms.Register;
 import global.Sesame;
 
+import java.io.StringWriter;
+
+import org.openrdf.query.QueryLanguage;
 import java.util.GregorianCalendar;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -13,8 +16,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
+
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.rio.rdfxml.RDFXMLWriter;
+import org.openrdf.rio.turtle.TurtleWriter;
 
 import play.data.Form;
 import play.mvc.*;
@@ -110,5 +116,33 @@ public class User extends Controller {
 		Form<Register> formRegister = form(Register.class);
 
 		return ok(views.html.global.login.render(formLogin, formRegister));
+	}
+	
+	public static Result showXML(String uid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			RDFXMLWriter writer = new RDFXMLWriter(str);
+			String queryString = "DESCRIBE <" + models.User.URI + uid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
+	}
+	
+	public static Result showTurtle(String uid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			TurtleWriter writer = new TurtleWriter(str);
+			String queryString = "DESCRIBE <" + models.User.URI + uid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
 	}
 }

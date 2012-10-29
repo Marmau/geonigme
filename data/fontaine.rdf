@@ -1,0 +1,294 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:fontaine="http://localhost/fontaine#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" > 
+  <rdf:Description rdf:about="http://localhost/jardin/47">
+    <geo:lat>43.6135</geo:lat>
+    <geo:long>3.82308</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Parc Edouard André</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/18">
+    <geo:lat>43.6055</geo:lat>
+    <geo:long>3.87992</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square Planchon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/45">
+    <geo:lat>43.6031</geo:lat>
+    <geo:long>3.89507</geo:long>
+    <fontaine:categorie>Place</fontaine:categorie>
+    <rdfs:label>Place Louis et Marie Trégaro</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/31">
+    <geo:lat>43.6064</geo:lat>
+    <geo:long>3.87725</geo:long>
+    <fontaine:categorie>Ab.bat</fontaine:categorie>
+    <rdfs:label>Tour de la Babotte</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/14">
+    <geo:lat>43.5962</geo:lat>
+    <geo:long>3.86919</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc Tastavin</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/8">
+    <geo:lat>43.6181</geo:lat>
+    <geo:long>3.89442</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc Rimbaud</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/12">
+    <geo:lat>43.6113</geo:lat>
+    <geo:long>3.88212</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Jardin du Champ de Mars</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/3">
+    <geo:lat>43.5985</geo:lat>
+    <geo:long>3.84423</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Esplanade Paul Valéry</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/1">
+    <geo:lat>43.615</geo:lat>
+    <geo:long>3.87576</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square Théophraste Renaudot</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/24">
+    <geo:lat>43.612</geo:lat>
+    <geo:long>3.86092</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square des Arceaux</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/35">
+    <geo:lat>43.5918</geo:lat>
+    <geo:long>3.86968</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square du Mas Drevon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/16">
+    <geo:lat>43.5956</geo:lat>
+    <geo:long>3.88507</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Jardin de la Pépinière</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/33">
+    <geo:lat>43.6042</geo:lat>
+    <geo:long>3.88918</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square Jean Monnet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/28">
+    <geo:lat>43.6112</geo:lat>
+    <geo:long>3.86967</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Promenade du Peyrou</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/43">
+    <geo:lat>43.6157</geo:lat>
+    <geo:long>3.9247</geo:long>
+    <fontaine:categorie>Divers</fontaine:categorie>
+    <rdfs:label>Centre horticole R de Belleval</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/26">
+    <geo:lat>43.6162</geo:lat>
+    <geo:long>3.92447</geo:long>
+    <fontaine:categorie>Bois</fontaine:categorie>
+    <rdfs:label>Mare écologique</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/21">
+    <geo:lat>43.5939</geo:lat>
+    <geo:long>3.88351</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Mail Alain Bashung</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/36">
+    <geo:lat>43.6155</geo:lat>
+    <geo:long>3.93316</geo:long>
+    <fontaine:categorie>Bois</fontaine:categorie>
+    <rdfs:label>Bois de la Chaumière</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/23">
+    <geo:lat>43.612</geo:lat>
+    <geo:long>3.85835</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square Boussinesq</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/41">
+    <geo:lat>43.5942</geo:lat>
+    <geo:long>3.87792</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square Fabre de Morlhon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/38">
+    <geo:lat>43.6166</geo:lat>
+    <geo:long>3.82682</geo:long>
+    <fontaine:categorie>Cimeti</fontaine:categorie>
+    <rdfs:label>Cimetière de Celleneuve</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/4">
+    <geo:lat>43.6053</geo:lat>
+    <geo:long>3.84022</geo:long>
+    <fontaine:categorie>Bois</fontaine:categorie>
+    <rdfs:label>Petit bois de la Colline</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/48">
+    <geo:lat>43.6131</geo:lat>
+    <geo:long>3.8318</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc Dioscoride</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/6">
+    <geo:lat>43.6223</geo:lat>
+    <geo:long>3.88853</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc Edith Piaf</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/11">
+    <geo:lat>43.6105</geo:lat>
+    <geo:long>3.8809</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Esplanade Charles de Gaulle</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/44">
+    <geo:lat>43.6161</geo:lat>
+    <geo:long>3.83854</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square Joseph Delteil</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/19">
+    <geo:lat>43.614</geo:lat>
+    <geo:long>3.87377</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square de la Tour des pins</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/13">
+    <geo:lat>43.6209</geo:lat>
+    <geo:long>3.89944</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc des Pastourelles</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/46">
+    <geo:lat>43.6016</geo:lat>
+    <geo:long>3.89373</geo:long>
+    <fontaine:categorie>Place</fontaine:categorie>
+    <rdfs:label>Place des Patriotes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/15">
+    <geo:lat>43.5908</geo:lat>
+    <geo:long>3.89582</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc de la Rauze</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/9">
+    <geo:lat>43.6424</geo:lat>
+    <geo:long>3.86923</geo:long>
+    <fontaine:categorie>Bois</fontaine:categorie>
+    <rdfs:label>Bois de Montmaur</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/17">
+    <geo:lat>43.6175</geo:lat>
+    <geo:long>3.93586</geo:long>
+    <fontaine:categorie>Cimeti</fontaine:categorie>
+    <rdfs:label>Cimetière Saint-Etienne</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/2">
+    <geo:lat>43.5902</geo:lat>
+    <geo:long>3.84642</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc du Belvédère</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/32">
+    <geo:lat>43.6053</geo:lat>
+    <geo:long>3.87487</geo:long>
+    <fontaine:categorie>Jard.</fontaine:categorie>
+    <rdfs:label>Jardinière Saint-Denis</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/25">
+    <geo:lat>43.5984</geo:lat>
+    <geo:long>3.89113</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Parc des Aiguerelles</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/34">
+    <geo:lat>43.6134</geo:lat>
+    <geo:long>3.87809</geo:long>
+    <fontaine:categorie>Place</fontaine:categorie>
+    <rdfs:label>Plan de l'olivier</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/27">
+    <geo:lat>43.6173</geo:lat>
+    <geo:long>3.86322</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Parc Magnol</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/29">
+    <geo:lat>43.5967</geo:lat>
+    <geo:long>3.86902</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Aire de jeux Villeneuve d'Angoulême</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/42">
+    <geo:lat>43.6138</geo:lat>
+    <geo:long>3.90862</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Esplanade Gabriel Michel</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/37">
+    <geo:lat>43.6154</geo:lat>
+    <geo:long>3.92957</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc du château de Grammont</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/20">
+    <geo:lat>43.592</geo:lat>
+    <geo:long>3.88491</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Parc Saint-Martin (ancien évéché)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/40">
+    <geo:lat>43.6076</geo:lat>
+    <geo:long>3.88932</geo:long>
+    <fontaine:categorie>Place</fontaine:categorie>
+    <rdfs:label>Place de Marathon</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/22">
+    <geo:lat>43.6138</geo:lat>
+    <geo:long>3.8306</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Esplanade de Celleneuve</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/30">
+    <geo:lat>43.5905</geo:lat>
+    <geo:long>3.88972</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square des Près d'Arènes</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/5">
+    <geo:lat>43.6279</geo:lat>
+    <geo:long>3.81614</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc du Mas de la Paillade</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/39">
+    <geo:lat>43.6171</geo:lat>
+    <geo:long>3.87863</geo:long>
+    <fontaine:categorie>Square</fontaine:categorie>
+    <rdfs:label>Square Charles Flahaut</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/7">
+    <geo:lat>43.6076</geo:lat>
+    <geo:long>3.86091</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc de la Guirlande</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost/jardin/10">
+    <geo:lat>43.6241</geo:lat>
+    <geo:long>3.87212</geo:long>
+    <fontaine:categorie>Parc</fontaine:categorie>
+    <rdfs:label>Parc Sainte Odile</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>

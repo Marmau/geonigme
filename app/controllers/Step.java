@@ -2,15 +2,18 @@ package controllers;
 
 import global.Sesame;
 
+import java.io.StringWriter;
 import java.util.UUID;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
-import models.Position;
-
 import org.openrdf.query.QueryEvaluationException;
+import org.openrdf.query.QueryLanguage;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.rio.rdfxml.RDFXMLWriter;
+import org.openrdf.rio.turtle.TurtleWriter;
+
 
 import play.data.Form;
 import play.mvc.*;
@@ -43,6 +46,34 @@ public class Step extends Controller {
 
 			return redirect(routes.Hunt.show(hid));
 		}
+	}
+	
+	public static Result showXML(String sid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			RDFXMLWriter writer = new RDFXMLWriter(str);
+			String queryString = "DESCRIBE <" + models.Step.URI + sid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
+	}
+	
+	public static Result showTurtle(String sid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter str = new StringWriter();
+		try {
+			TurtleWriter writer = new TurtleWriter(str);
+			String queryString = "DESCRIBE <" + models.Step.URI + sid + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+			return notFound();
+		}
+		return ok(str.toString());
 	}
 
 	public static Result update(String sid) throws RepositoryException,	QueryEvaluationException {
@@ -87,6 +118,6 @@ public class Step extends Controller {
 	
 	private static void fillStep(models.Step step, forms.Step form) {
 		step.setDescription(form.description);
-		step.setPosition(Position.createFrom(form.position, form.accuracy));
+		step.setPosition(models.Position.createFrom(form.position, form.accuracy));
 	}
 }
