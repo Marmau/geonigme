@@ -1,0 +1,77 @@
+@import "lib.less";
+
+.game {
+
+	.container-fluid {
+		margin-top: 15px;
+	}
+
+	ul {
+		text-transform: uppercase;
+		margin: 0px;
+		list-style: none;
+
+		li {
+			&:first-child a {
+				border-top: solid 1px @colorClearBlue;
+			}
+			
+			a {
+				display: block;
+				padding: 10px 0px;
+				border-bottom: solid 1px @colorClearBlue;
+				color: @colorClearBlue;
+				font-weight: bold;
+				text-decoration: none;
+				
+				&:active {
+					text-decoration: none;
+					background: @colorClearBlue;
+					color: white;
+				}
+			}
+		}
+	}
+
+	h1 {
+		color: @colorGreen;
+		.hunt-name {
+			font-size: 24px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		.level {
+			font-size: 18px;
+			text-transform: lowercase;
+			font-weight: normal;
+		}
+	}
+
+	.tag {
+		color: @colorClearBlue;
+	}
+
+	#presentation-game-hunt {
+		height: 100px;
+	}
+
+	.actions {
+		text-align: right;
+		padding: 20px 0px;
+	}
+
+	.btn {
+		padding: 5px 50px;
+
+		&:hover {
+			background: white;
+			color: @colorClearBlue;
+		}
+
+		&:active {
+			background: @colorClearBlue;
+			color: white;
+		}
+	}
+}

@@ -22,7 +22,7 @@ public class User implements RDFObject {
 	private String password;
 
 	@Sparql(NS.PREFIX +
-		"SELECT ?hunt { ?hunt gngm:createdBy $this. ?hunt gngm:modifiedAt ?date } ORDER BY ?date")
+		"SELECT ?hunt { ?hunt gngm:createdBy $this. ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date)")
 	public List<Hunt> getHunts() {
 		return null;
 	}

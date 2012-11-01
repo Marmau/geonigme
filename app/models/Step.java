@@ -37,6 +37,17 @@ public class Step implements RDFObject {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@Sparql(NS.PREFIX + "SELECT ?step { " +
+			"$this gngm:stepOfHunt ?hunt. " +
+			"$this gngm:number ?number. " +
+			"?step gngm:stepOfHunt ?hunt. " +
+			"?step gngm:number ?nextNumber." +
+			"FILTER (?number + 1 = ?nextNumber)" +
+		"}")
+	public Step getNextStep() {
+		return null;
+	}
 
 	@Sparql(NS.PREFIX +
 		"SELECT ?enigma { ?enigma gngm:enigmaOfStep $this. ?enigma gngm:number ?number } ORDER BY ?number")

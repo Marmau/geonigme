@@ -8,63 +8,70 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>Géonigme - @title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/camera.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.min.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script data-main="@routes.Assets.at("javascripts/app")" src="@routes.Assets.at("javascripts/require.min.js")" type="text/javascript" data-start="@start"></script>
-    </head>
-    <body class="home">
-		<header>
-			<div class="background container"></div>
-		</header>
-        <div class="container">
-            <div class="row-fluid">
-        		<nav>
-        			@nav
-        		</nav>
-            </div>
-            <section data-role="page">
-            	@content
-            </section>
-        </div>
-        <footer>
-            <div class="background container">
-                <div class="row-fluid informations">
-                    <div class="span4">
-                        <h1><strong>Qui</strong> sommes-nous ?</h1>
-                        <p>
-                            <strong>Géonigme</strong> a été créé par un groupe d'étudiants à la faculté des sciences
-                            de Montpellier dans le cadre d'un projet d'études portant sur le web de données 
-                            (web sémantique, open data, etc.).
-                        </p>
-                    </div>
-                    <div class="span4">
-                        <h1><strong>Partenaires</strong></h1>
-                    </div>
-                    <div class="span4">
-                        <h1><strong>Contactez</strong>-nous</h1>
-                        @helper.form(action = routes.Application.submitContactForm(), 'id -> "contact-form") {
-                            <div>
-                                <input name="@contactForm("email").name()" type="text" placeholder="@@votre adresse courriel" class="span12" value="@contactForm("email").value()" />
-                            </div>
-                            <div>
-                                <textarea name="@contactForm("content").name()" placeholder="votre message..." class="span12">@contactForm("email").value()</textarea>
-                            </div>
-                            <button type="submit" class="pushable pull-right uppercase">Envoyer</button>
-                        }
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2012
-                </div>
-            </div>
-        </footer>
-    </body>
+	<head>
+		<title>Géonigme - @title</title>
+		 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		@*<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.mobile-1.2.0.min.css")">*@
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/camera.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.min.css")">
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+		@*<script src="@routes.Assets.at("javascripts/jquery-1.8.2.min.js")" type="text/javascript"></script>*@
+		@*<script src="@routes.Assets.at("javascripts/jquery.mobile-1.2.0.min.js")" type="text/javascript"></script>*@
+		@*<script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>*@
+
+		<script data-main="@routes.Assets.at("javascripts/app")" src="@routes.Assets.at("javascripts/require.min.js")" type="text/javascript" data-start="@start"></script>
+	</head>
+	<body class="home">
+		<div data-role="page">
+			<header data-role="header">
+				<div class="background container"></div>
+			</header>
+			<div class="container" data-role="content">
+				<div class="row-fluid">
+					<nav>
+						@nav
+					</nav>
+				</div>
+				@content
+			</div>
+			<footer data-role="footer">
+				<div class="background container">
+					<div class="row-fluid informations">
+						<div class="span4">
+							<h1><strong>Qui</strong> sommes-nous ?</h1>
+							<p>
+								<strong>Géonigme</strong> a été créé par un groupe d'étudiants à la faculté des sciences
+								de Montpellier dans le cadre d'un projet d'études portant sur le web de données 
+								(web sémantique, open data, etc.).
+							</p>
+						</div>
+						<div class="span4">
+							<h1><strong>Partenaires</strong></h1>
+						</div>
+						<div class="span4">
+							<h1><strong>Contactez</strong>-nous</h1>
+							@helper.form(action = routes.Application.submitContactForm(), 'id -> "contact-form") {
+								<div>
+									<input name="@contactForm("email").name()" type="text" placeholder="@@votre adresse courriel" class="span12" value="@contactForm("email").value()" />
+								</div>
+								<div>
+									<textarea name="@contactForm("content").name()" placeholder="votre message..." class="span12">@contactForm("email").value()</textarea>
+								</div>
+								<button type="submit" class="pushable pull-right uppercase">Envoyer</button>
+							}
+						</div>
+					</div>
+					<div class="row-fluid">
+						<p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2012
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>
 
 }

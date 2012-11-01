@@ -2,8 +2,8 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 	
 	Helpers = {}
 	
-	Helpers.stringPositionToLatLng = (stringArea) ->
-		coords = stringArea.split(',')
+	Helpers.stringPositionToLatLng = (stringPosition) ->
+		coords = stringPosition.split(',')
 		return new L.LatLng(coords[0], coords[1])
 
 

@@ -1,0 +1,12 @@
+@(hunts: List[models.Hunt])
+
+@import helpers._
+@import models._
+
+@mainGame("Jouer", "") {
+	<ul data-role="listview">
+	@for(hunt <- hunts) {
+		<li><a href="@routes.Game.playHunt(hunt.getId())">@hunt.getLabel()</a></li>
+	}
+	</ul>
+}

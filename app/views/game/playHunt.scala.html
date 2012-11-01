@@ -1,0 +1,24 @@
+@(hunt: models.Hunt)
+
+@import helpers._
+@import models._
+
+@mainGame("Jouer", "game") {
+	<h1><span class="hunt-name">@hunt.getLabel()</span> |<span class="level">@hunt.getStringLevel()</span></h1>
+
+	<div class="tags">
+		@for(tag <- hunt.getTags()) {
+			<span class="tag"><i class="icon-tag icon-blue"></i>@tag.getName()</span>
+		}
+	</div>
+
+	<blockquote>
+		@hunt.getDescription()
+	</blockquote>
+
+	<div data-area-hunt="@hunt.getArea().toTemplateString()" class="map" id="presentation-game-hunt"></div>
+
+	<div class="actions">
+		<a href="@routes.Game.go(hunt.getId())" class="btn">Jouer</a>
+	</div>
+}

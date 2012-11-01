@@ -10,6 +10,11 @@ POST 	/contact-us					controllers.Application.submitContactForm()
 # Map static resources from the /public folder to the /assets URL path
 GET		/assets/*file				controllers.Assets.at(path="/public", file)
 
+# Game
+GET 	/play						controllers.Game.home()
+GET		/play/:hid					controllers.Game.playHunt(hid: String)
+GET		/play/:hid/go				controllers.Game.go(hid: String)
+GET		/play/:hid/go/next			controllers.Game.goNext(hid: String)
 
 # Hunt
 GET		/hunt/:hid/show				controllers.Hunt.show(hid: String)
@@ -54,6 +59,7 @@ GET		/user/:uid/:format			controllers.User.showRDF(uid: String, format: String)
 GET		/dashboard					controllers.Manager.dashboard()
 
 # Map
-GET		/poi/arbres					controllers.Map.getMapArbres()
-GET		/poi/lieuxPublics			controllers.Map.getMapLieuxPublic()
-GET		/poi/fontaines				controllers.Map.getMapFontaines()
+GET		/poi/trees					controllers.Map.getTreesMontpellierJSON()
+GET		/poi/publicplaces			controllers.Map.getPublicPlacesMontpellierJSON()
+GET		/poi/fountains				controllers.Map.getFoutainsMontpellierJSON()
+GET		/routing					controllers.Map.routing()

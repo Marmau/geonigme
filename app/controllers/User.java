@@ -53,7 +53,7 @@ public class User extends Controller {
 			
 			oc.addObject(user.getResource(), user);
 			
-			session("user", user.getId());
+			session(userSessionKey, user.getId());
 			
 			return redirect(routes.Manager.dashboard());
 		}
@@ -80,7 +80,7 @@ public class User extends Controller {
 			String uid = newUser.getLoginName().toLowerCase();
 			oc.addObject(models.User.URI + uid, newUser);
 			
-			session("user", uid);
+			session(userSessionKey, uid);
 			
 			return redirect(routes.Manager.dashboard());
 		}
@@ -107,9 +107,9 @@ public class User extends Controller {
 	}
 
 	public static Result login() {
-		String user = session("user");
-		if (user != null)
-			return ok();// views.html.dashboard.mainDashboard.render());
+		if (isLogged()) {
+			return redirect(routes.Manager.dashboard());
+		}
 
 		Form<Login> formLogin = form(Login.class);
 		Form<Register> formRegister = form(Register.class);

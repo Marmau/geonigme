@@ -41,6 +41,17 @@ public class Enigma implements RDFObject {
 	public Answer getAnswer() {
 		return null;
 	}
+	
+	@Sparql(NS.PREFIX + "SELECT ?enigma { " +
+				"$this gngm:enigmaOfStep ?step. " +
+				"$this gngm:number ?number. " +
+				"?enigma gngm:enigmaOfStep ?step. " +
+				"?enigma gngm:number ?nextNumber." +
+				"FILTER (?number + 1 = ?nextNumber)" +
+			"}")
+	public Enigma getNextEnigma() {
+		return null;
+	}
 
 	@Sparql(NS.PREFIX +
 		"SELECT ?clue { ?clue gngm:clueOfEnigma $this. ?clue gngm:number ?number } ORDER BY ?number")

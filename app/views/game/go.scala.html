@@ -1,0 +1,10 @@
+@(step: models.Step)
+
+
+@import helpers._
+@import models._
+
+@mainGame("Jouer", "go") {
+
+	<div class="map" id="go-map" data-target="@step.getPosition().toTemplateString()" data-target-accuracy="@step.getPosition().getAccuracy()" data-ws="@routes.Map.routing()"></div>
+}
