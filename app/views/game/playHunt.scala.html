@@ -4,7 +4,12 @@
 @import models._
 
 @mainGame("Jouer", "game") {
-	<h1><span class="hunt-name">@hunt.getLabel()</span> |<span class="level">@hunt.getStringLevel()</span></h1>
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="@routes.Game.home()">Liste des chasses</a></li>
+			<li><a><span class="hunt-name">@hunt.getLabel()</span></a></li>
+		</ul>
+	</nav>
 
 	<div class="tags">
 		@for(tag <- hunt.getTags()) {

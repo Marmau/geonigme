@@ -5,6 +5,46 @@
 @import models._
 
 @mainGame("Jouer", "go") {
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="@routes.Game.home()">Liste des chasses</a></li>
+			<li><a href="@routes.Game.playHunt(step.getHunt.getId())"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
+			<li><a>&Eacute;tape @step.getNumber()</a></li>
+		</ul>
+	</nav>
+
+	<blockquote>
+		@step.getDescription()
+	</blockquote>
+	<div id="follow">
+		<p>Pour démarrer la première énigme, vous devez vous rendre au point indiqué sur la carte. Vous pouvez suivre l'itinéraire suivant :</p>
+
+		<ul class="list-view itinerary">
+			<li>Calcul de l'itinéraire en cours...</li>
+		</ul>
+
+		<div class="template hide">
+			<div class="pedestrian">
+				<img alt="walk" src="@routes.Assets.at("images/pedestrian.png")" /> Marcher jusqu'à l'arrêt <strong>__stop__</strong> de la <strong>Ligne __line__</strong> du __type__
+			</div>
+
+			<div class="bus">
+				<img alt="bus" src="@routes.Assets.at("images/bus.png")" /> Prendre le bus de la <strong>Ligne __line__</strong> en direction de <strong>__target__</strong>
+			</div>
+
+			<div class="tram">
+				<img alt="tram" src="@routes.Assets.at("images/tram.png")" /> Prendre le tram de la <strong>Ligne __line__</strong> en direction de <strong>__target__</strong>
+			</div>
+
+			<div class="exit">
+				<img alt="exit" src="@routes.Assets.at("images/exit.png")" /> Descendre à l'arrêt <strong>__stop__</strong>
+			</div>
+
+			<div class="target">
+				<img alt="target" src="@routes.Assets.at("images/target.png")" /> Dirigez-vous jusqu'au point d'arrivée
+			</div>
+		</div>
+	</div>
 
 	<div class="map" id="go-map" data-target="@step.getPosition().toTemplateString()" data-target-accuracy="@step.getPosition().getAccuracy()" data-ws="@routes.Map.routing()"></div>
 }

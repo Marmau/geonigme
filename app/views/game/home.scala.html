@@ -4,7 +4,14 @@
 @import models._
 
 @mainGame("Jouer", "") {
-	<ul data-role="listview">
+	<nav>
+		<ul class="menu">
+			<li class="selected"><a href="">Liste des chasses</a></li>
+			<li><a class="pushable" href="@routes.Manager.dashboard()">Tableau de bord</a></li>
+		</ul>
+	</nav>
+
+	<ul data-role="listview" class="list-view">
 	@for(hunt <- hunts) {
 		<li><a href="@routes.Game.playHunt(hunt.getId())">@hunt.getLabel()</a></li>
 	}

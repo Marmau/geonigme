@@ -353,6 +353,19 @@ nav {
     ul.breadcrumb {
         overflow: hidden;
 
+        padding: 0px;
+        margin: 0px;
+        background: none;
+        font-size: 14px;
+
+        .hunt-name {
+            text-overflow: ellipsis;
+            max-width: 250px;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
         li {
             text-shadow: none;
             font-weight: bold;
@@ -381,6 +394,7 @@ nav {
                 text-decoration: none;
                 padding: 4px 0px 4px 25px;
                 background: @colorGreen;
+                .border-radius(0);
                 position: relative;
                 display: block;
                 float: left;

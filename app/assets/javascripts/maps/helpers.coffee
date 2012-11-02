@@ -73,6 +73,20 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 		return {
 			'circle': circle,
 			'marker': marker 
-		}		
+		}	
+
+	Helpers.getCurrentPosition = (callback) ->
+		if (navigator.geolocation)
+			navigator.geolocation.getCurrentPosition((position)-> 
+				callback(new L.LatLng(position.coords.latitude, position.coords.longitude))
+			, (error) ->
+				callback(null)
+			, {
+				enableHighAccuracy: true,
+				timeout: 15000,
+				maximumAge: 0
+			})
+
+	
 
 	return Helpers

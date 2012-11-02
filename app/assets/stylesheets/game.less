@@ -6,20 +6,26 @@
 		margin-top: 15px;
 	}
 
-	ul {
+	ul.breadcrumb {
+		font-size: 18px;
+	}
+
+	ul.list-view  {
 		text-transform: uppercase;
 		margin: 0px;
 		list-style: none;
+		color: @colorClearBlue;
 
 		li {
-			&:first-child a {
+			border-bottom: solid 1px @colorClearBlue;
+			
+			&:first-child {
 				border-top: solid 1px @colorClearBlue;
 			}
 			
 			a {
 				display: block;
 				padding: 10px 0px;
-				border-bottom: solid 1px @colorClearBlue;
 				color: @colorClearBlue;
 				font-weight: bold;
 				text-decoration: none;
@@ -29,6 +35,24 @@
 					background: @colorClearBlue;
 					color: white;
 				}
+			}
+		}
+	}
+
+	p {
+		color: @colorClearBlue;
+	}
+
+	.list-view.itinerary {
+		text-transform: none;
+		margin-bottom: 15px;
+
+		li {
+			line-height: 32px;
+			vertical-align: top;
+
+			img {
+				margin-right: 5px;
 			}
 		}
 	}
