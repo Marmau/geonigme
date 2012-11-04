@@ -1,6 +1,6 @@
-require ['maps/base_map', 'maps/icons', 'maps/helpers', 'fixed_map'], (BaseMap, Icons, Helpers) ->
+require ['maps/poi_map', 'maps/icons', 'maps/helpers', 'fixed_map'], (PoiMap, Icons, Helpers) ->
 
-	map = new BaseMap $('#show-hunt-map')
+	map = new PoiMap $('#show-hunt-map')
 	
 	stepLayers = null
 	geolocatedAnswerLayers = null

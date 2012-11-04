@@ -3,12 +3,12 @@ define ['jquery', 'maps/helpers', 'maps/icons', 'leaflet'], ($, Helpers, Icons) 
 		constructor: (@map, @formPosition, @formAccuracy) ->
 			@markerCenter = new L.Marker(new L.LatLng(43.64, 3.93), {
 				draggable: true,
-				icon: Icons.blueIcon
+				icon: Icons.greenIcon
 			})
 
 			@markerRadius = new L.Marker(new L.LatLng(43.635, 3.928), {
 				draggable: true,
-				icon: Icons.smallBlackIcon
+				icon: Icons.greenPoint
 			})
 
 			@circleArea = new L.Circle(@markerCenter.getLatLng(), @markerCenter.getLatLng().distanceTo(@markerRadius.getLatLng()))

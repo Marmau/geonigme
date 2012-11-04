@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers', 'fixed_map'], (BaseMap, PositionAccuracy, Icon, Helpers) ->
+require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers', 'fixed_map'], (PoiMap, PositionAccuracy, Icon, Helpers) ->
 
 	container = $('#create-step')
 	formPosition = container.find('#position-step')
@@ -6,7 +6,7 @@ require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers'
 	formAccuracy = container.find('#accuracy-step')
 
 	# Initialisation de la map
-	map = new BaseMap $('#step-map')
+	map = new PoiMap $('#step-map')
 	pa = new PositionAccuracy map, formPosition, formAccuracy
 
 	formPosition.change ->

@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/helpers', 'fixed_map'], (BaseMap, Helpers) ->
+require ['maps/poi_map', 'maps/helpers', 'maps/icons', 'fixed_map'], (PoiMap, Helpers, Icons) ->
 
 	# Choix du niveau
 	if '' == level = $('#level-hunt').val()
@@ -17,7 +17,7 @@ require ['maps/base_map', 'maps/helpers', 'fixed_map'], (BaseMap, Helpers) ->
 	formAreaDisplay = container.find('#area-hunt-display')
 	
 	# Initialisation de la map
-	map = new BaseMap $('#hunt-map')
+	map = new PoiMap $('#hunt-map')
 
 	# Layers
 	rectangleArea = null
@@ -32,7 +32,8 @@ require ['maps/base_map', 'maps/helpers', 'fixed_map'], (BaseMap, Helpers) ->
 	map.fitBounds(bounds);
 
 	optionsMarker = {
-		draggable: true
+		draggable: true,
+		icon: Icons.blueIcon
 	}
 
 	drawRectangleAreaAndWriteBounds = ->

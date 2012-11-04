@@ -1,0 +1,1012 @@
+<rdf:RDF xmlns:arbre="http://localhost/arbre#"
+    xmlns:log="http://www.w3.org/2000/10/swap/log#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+
+    <rdf:Description rdf:about="http://localhost/arbre/1">
+        <arbre:codeEssence>35</arbre:codeEssence>
+        <rdfs:comment>C'est un arbuste ou un petit arbre à écorce foncée généralement de petite taille dans la nature (il atteint en moyenne 5 mètres). Ici il dépasse les 10 mètres.</rdfs:comment>
+        <arbre:dossier>676</arbre:dossier>
+        <arbre:langueDoc>Agast. Viulounié</arbre:langueDoc>
+        <arbre:libDossier>Parc de la grande Lironde</arbre:libDossier>
+        <arbre:nomLatin>Acer monspessulanum</arbre:nomLatin>
+        <arbre:nomUsuel>Erable de Montpellier</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Port Marianne</arbre:secteur>
+        <geo:lat>43.6085</geo:lat>
+        <geo:long>3.90905</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/10">
+        <arbre:codeEssence>127</arbre:codeEssence>
+        <rdfs:comment>Originaire d' Asie occidentale. Il a étè introduit et cultivé pour l'élevage des vers à soie.</rdfs:comment>
+        <arbre:dossier>500</arbre:dossier>
+        <arbre:langueDoc>Aubre d'òr. Amourié</arbre:langueDoc>
+        <arbre:libDossier>Abords bureaux Espaces Verts</arbre:libDossier>
+        <arbre:nomLatin>Morus nigra</arbre:nomLatin>
+        <arbre:nomUsuel>Mûrier noir</arbre:nomUsuel>
+        <arbre:rarete>6</arbre:rarete>
+        <arbre:secteur>Magasin</arbre:secteur>
+        <geo:lat>43.6173</geo:lat>
+        <geo:long>3.92475</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/11">
+        <arbre:codeEssence>40</arbre:codeEssence>
+        <rdfs:comment>Le nom de ce genre rend hommage à Pierre Auguste Broussonet.(1761-1807).botaniste français qui fut le premier à introduire des pieds femelles de muçrie à papier de Chine à la fin du 18e siecle.</rdfs:comment>
+        <arbre:dossier>464</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parking Joffre</arbre:libDossier>
+        <arbre:nomLatin>Broussonetia papyrifera</arbre:nomLatin>
+        <arbre:nomUsuel>Mûrier à papier</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Antigone</arbre:secteur>
+        <geo:lat>43.6129</geo:lat>
+        <geo:long>3.88598</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/12">
+        <arbre:codeEssence>97</arbre:codeEssence>
+        <rdfs:comment>Le cèdre du Liban est arbre conifere à feuilles persistantes qui pousse jusqu'à 40 mètres de hauteur sujet marquant le paysage dans ce beau parc.</rdfs:comment>
+        <arbre:dossier>310</arbre:dossier>
+        <arbre:langueDoc>Lo cèdre</arbre:langueDoc>
+        <arbre:libDossier>Parc du château de Grammont</arbre:libDossier>
+        <arbre:nomLatin>Cedrus libani</arbre:nomLatin>
+        <arbre:nomUsuel>Cèdre du Liban</arbre:nomUsuel>
+        <arbre:rarete>2</arbre:rarete>
+        <arbre:secteur>Grammont</arbre:secteur>
+        <geo:lat>43.6155</geo:lat>
+        <geo:long>3.92963</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/13">
+        <arbre:codeEssence>61</arbre:codeEssence>
+        <rdfs:comment>Le chêne vet est arbre un arbre à feuillage persistant de la famille des Fagacées présent sous forme de bois clairs et garrigues.</rdfs:comment>
+        <arbre:dossier>310</arbre:dossier>
+        <arbre:langueDoc>Euse. Garric</arbre:langueDoc>
+        <arbre:libDossier>Parc du château de Grammont</arbre:libDossier>
+        <arbre:nomLatin>Quercus ilex</arbre:nomLatin>
+        <arbre:nomUsuel>Chêne vert</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Grammont</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Quercus_ilex"/>
+        <geo:lat>43.6147</geo:lat>
+        <geo:long>3.92968</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/14">
+        <arbre:codeEssence>182</arbre:codeEssence>
+        <rdfs:comment>Cet arbre est considéré comme un espèce menacée.Il pousse à des altitudes comprises entre 1250 et 2800m.</rdfs:comment>
+        <arbre:dossier>310</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc du château de Grammont</arbre:libDossier>
+        <arbre:nomLatin>Cupressus cashmeriana</arbre:nomLatin>
+        <arbre:nomUsuel>Cyprès du cachemire</arbre:nomUsuel>
+        <arbre:rarete>8</arbre:rarete>
+        <arbre:secteur>Grammont</arbre:secteur>
+        <geo:lat>43.6157</geo:lat>
+        <geo:long>3.92887</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/15">
+        <arbre:codeEssence>2</arbre:codeEssence>
+        <rdfs:comment>Ce micocoulier. malgrès sa vitesse de croissance assez lente forme  un très bel arbre d'ombrage très prèsent dans certaines régions du sud de la France. Arbre de grande taille.</rdfs:comment>
+        <arbre:dossier>300</arbre:dossier>
+        <arbre:langueDoc>Falabreguièr. Fanabregol</arbre:langueDoc>
+        <arbre:libDossier>Jardin des Beaux Arts -  MPT C</arbre:libDossier>
+        <arbre:nomLatin>Celtis Australis</arbre:nomLatin>
+        <arbre:nomUsuel>Micocoulier de Provence</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Verdanson</arbre:secteur>
+        <geo:lat>43.616</geo:lat>
+        <geo:long>3.88379</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/16">
+        <arbre:codeEssence>57</arbre:codeEssence>
+        <rdfs:comment>Le cyprès chauve ou cyprès de Louisiane originaire du sud -est des Etats-Unis.C'est une espèce remarquable par son adptation aux milieux humides.</rdfs:comment>
+        <arbre:dossier>233</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Berges Mosson (nord)</arbre:libDossier>
+        <arbre:nomLatin>Taxodium distichum</arbre:nomLatin>
+        <arbre:nomUsuel>Cyprès chauve</arbre:nomUsuel>
+        <arbre:rarete>4</arbre:rarete>
+        <arbre:secteur>Mosson</arbre:secteur>
+        <geo:lat>43.6203</geo:lat>
+        <geo:long>3.81306</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/17">
+        <arbre:codeEssence>41</arbre:codeEssence>
+        <rdfs:comment>L'Olivier est un arbre de la famille des Oléacées cultivé dans les régions de climat méditerranéen pour son fruit olive.qui donne une huile recherchée.</rdfs:comment>
+        <arbre:dossier>136</arbre:dossier>
+        <arbre:langueDoc>Oliu. Oulivié</arbre:langueDoc>
+        <arbre:libDossier>Tour de la Babotte</arbre:libDossier>
+        <arbre:nomLatin>Olea europea</arbre:nomLatin>
+        <arbre:nomUsuel>Olivier d'Europe</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6064</geo:lat>
+        <geo:long>3.87713</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/18">
+        <arbre:codeEssence>58</arbre:codeEssence>
+        <rdfs:comment>Le Sequoia à feuilles d'if ou sequoia toujours vert (sequoia sempervirens) est un conifaire originaire de Californie.</rdfs:comment>
+        <arbre:dossier>127</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Square de la tour des pins</arbre:libDossier>
+        <arbre:nomLatin>Sequoia sempervirens</arbre:nomLatin>
+        <arbre:nomUsuel>Sequoia toujours vert</arbre:nomUsuel>
+        <arbre:rarete>4</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6141</geo:lat>
+        <geo:long>3.8738</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/19">
+        <arbre:codeEssence>84</arbre:codeEssence>
+        <rdfs:comment>Palmier bleu du Mexique.palmier métallique rare et peu connu.de croissance lente la teinte partculière du feuillage et très attractive.</rdfs:comment>
+        <arbre:dossier>114</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Pelouse des remparts</arbre:libDossier>
+        <arbre:nomLatin>Erythea armata</arbre:nomLatin>
+        <arbre:nomUsuel>Palmier bleu</arbre:nomUsuel>
+        <arbre:rarete>3</arbre:rarete>
+        <arbre:secteur>Antigone</arbre:secteur>
+        <geo:lat>43.6107</geo:lat>
+        <geo:long>3.88487</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/2">
+        <arbre:codeEssence>60</arbre:codeEssence>
+        <rdfs:comment>Arbre à feuillage caduc des régions tempérées de l'hemisphère nord. Son nom vient du latin pubescens : à poils courts et mous (face inférieure des feuilles et jeunes rameaux). C'est une adaptation de l'arbre à la sécheresse.arbre de très grande taill</rdfs:comment>
+        <arbre:dossier>676</arbre:dossier>
+        <arbre:langueDoc>Chaine. Blacas</arbre:langueDoc>
+        <arbre:libDossier>Parc de la grande Lironde</arbre:libDossier>
+        <arbre:nomLatin>Quercus pubescens</arbre:nomLatin>
+        <arbre:nomUsuel>Chêne pubescent</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Port Marianne</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Chêne_pubescent"/>
+        <geo:lat>43.6084</geo:lat>
+        <geo:long>3.90873</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/20">
+        <arbre:codeEssence>174</arbre:codeEssence>
+        <rdfs:comment>Le dattier des Canaries.très planté.est un des plus masjestueux palmiers à stipe massif.avec de longues et abondantes feuilles pennées.Sa rapidité de croissance et sa facilité de culture expliquent son succès.</rdfs:comment>
+        <arbre:dossier>114</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Pelouse des remparts</arbre:libDossier>
+        <arbre:nomLatin>Phoenix canariensis</arbre:nomLatin>
+        <arbre:nomUsuel>Palmier des Canaries</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Antigone</arbre:secteur>
+        <geo:lat>43.6107</geo:lat>
+        <geo:long>3.88533</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/21">
+        <arbre:codeEssence>181</arbre:codeEssence>
+        <rdfs:comment>Jubaea chilensis. appelé également cocotier du Chili.est le plus gros des palmiers.Son stipe atteint parfois 5 mètre de circonférence au sol.C'est un palmier à la croissance lente à l'âge juvénile puis s'accélerant à partir de la quinzième année .</rdfs:comment>
+        <arbre:dossier>102</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Carrefour de l'aéroport</arbre:libDossier>
+        <arbre:nomLatin>Jubaea chilensis</arbre:nomLatin>
+        <arbre:nomUsuel>Jubea. Palma de miel</arbre:nomUsuel>
+        <arbre:rarete>2</arbre:rarete>
+        <arbre:secteur>Antigone</arbre:secteur>
+        <geo:lat>43.6091</geo:lat>
+        <geo:long>3.89549</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/22">
+        <arbre:codeEssence>1</arbre:codeEssence>
+        <rdfs:comment>Le platane est très fréquent en Europe.où il est planté dans les parcs.le long des routes du fait de sa grande résistance à la pollution. Ici en port libre marque le paysage.</rdfs:comment>
+        <arbre:dossier>96</arbre:dossier>
+        <arbre:langueDoc>Platano</arbre:langueDoc>
+        <arbre:libDossier>Place Albert 1er</arbre:libDossier>
+        <arbre:nomLatin>Platanus acerifolia</arbre:nomLatin>
+        <arbre:nomUsuel>Platane</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Verdanson</arbre:secteur>
+        <geo:lat>43.6156</geo:lat>
+        <geo:long>3.87434</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/23">
+        <arbre:codeEssence>157</arbre:codeEssence>
+        <rdfs:comment>L'arbre est originaire d' Amérique du Nord.Rare sur la ville il ne supporte pas les grands froids.</rdfs:comment>
+        <arbre:dossier>79</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Jardin de la Canourgue</arbre:libDossier>
+        <arbre:nomLatin>Celtis occidentalis</arbre:nomLatin>
+        <arbre:nomUsuel>Micocoulier de Virginie</arbre:nomUsuel>
+        <arbre:rarete>5</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6119</geo:lat>
+        <geo:long>3.87436</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/24">
+        <arbre:codeEssence>9</arbre:codeEssence>
+        <rdfs:comment>le melia est une espèce d'arbre à feuillage caduc originaire d'Inde.du sud de la Chine et d'Australie.elle est parfois confondue avec le margousier.</rdfs:comment>
+        <arbre:dossier>77</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Place Pétrarque</arbre:libDossier>
+        <arbre:nomLatin>Melia azedarach</arbre:nomLatin>
+        <arbre:nomUsuel>Lilas des Indes</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6107</geo:lat>
+        <geo:long>3.87828</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/25">
+        <arbre:codeEssence>10</arbre:codeEssence>
+        <rdfs:comment>Sa répartition géographique est essentiellement autour des côtes méditerranéennes.et plus principalement en Algérie et en Espagne.</rdfs:comment>
+        <arbre:dossier>72</arbre:dossier>
+        <arbre:langueDoc>Pin blanc</arbre:langueDoc>
+        <arbre:libDossier>Prairies Grammont</arbre:libDossier>
+        <arbre:nomLatin>Pinus halepensis</arbre:nomLatin>
+        <arbre:nomUsuel>Pin d'Alep</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Grammont</arbre:secteur>
+        <geo:lat>43.6175</geo:lat>
+        <geo:long>3.92638</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/26">
+        <arbre:codeEssence>105</arbre:codeEssence>
+        <rdfs:comment>L'ecorce de l'arbousier de Grèce revêt au printemps de vives couleurs rouges.puis avec les chaleurs estivales se dénude peu à peu.des fragments rectangulaires se détachent.se dessèchent et s'enroulent.laissant apparaître la jeune ecorce. Ce spécimmen</rdfs:comment>
+        <arbre:dossier>67</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc Magnol</arbre:libDossier>
+        <arbre:nomLatin>Arbutus andrachne</arbre:nomLatin>
+        <arbre:nomUsuel>Arbousier de Grèce</arbre:nomUsuel>
+        <arbre:rarete>4</arbre:rarete>
+        <arbre:secteur>Verdanson</arbre:secteur>
+        <geo:lat>43.6176</geo:lat>
+        <geo:long>3.86333</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/27">
+        <arbre:codeEssence>43</arbre:codeEssence>
+        <rdfs:comment>Abies pinsapo est un grand conifère de croissance lente au feuillage sombre originaire des régions montagneuses du sud de l'Espagne et du Maroc. entre 1000 et 1900 mètre d'altitude.</rdfs:comment>
+        <arbre:dossier>65</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc des Aiguerelles</arbre:libDossier>
+        <arbre:nomLatin>Abies pinsapo</arbre:nomLatin>
+        <arbre:nomUsuel>Sapin d'Espagne</arbre:nomUsuel>
+        <arbre:rarete>4</arbre:rarete>
+        <arbre:secteur>Prés d'Arènes</arbre:secteur>
+        <geo:lat>43.5984</geo:lat>
+        <geo:long>3.8911</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/28">
+        <arbre:codeEssence>98</arbre:codeEssence>
+        <rdfs:comment>Les cèdres sont de grands arbres.les cèdres peuvent vivre plus de 1000ans.Ilsont reconnus pour leur croissance rapide. Arbre de grande taille.</rdfs:comment>
+        <arbre:dossier>20</arbre:dossier>
+        <arbre:langueDoc>Lo cedre</arbre:langueDoc>
+        <arbre:libDossier>Parc des Pastourelles</arbre:libDossier>
+        <arbre:nomLatin>Cedrus Atlantica</arbre:nomLatin>
+        <arbre:nomUsuel>Cèdre de l'Atlas</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Port Marianne</arbre:secteur>
+        <geo:lat>43.6209</geo:lat>
+        <geo:long>3.8993</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/29">
+        <arbre:codeEssence>179</arbre:codeEssence>
+        <rdfs:comment>Le pin Napoleon (Pinus Bungeana)est un arbre de la famille des pnacées originaire de Chine.Il peut mesurer jusqu'à 15 métres.</rdfs:comment>
+        <arbre:dossier>29</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Square de la Tour des pins</arbre:libDossier>
+        <arbre:nomLatin>Pinus bungeana</arbre:nomLatin>
+        <arbre:nomUsuel>Pin Napoleon</arbre:nomUsuel>
+        <arbre:rarete>6</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6138</geo:lat>
+        <geo:long>3.87355</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/3">
+        <arbre:codeEssence>183</arbre:codeEssence>
+        <rdfs:comment>Phillyrea (ou filaria). est un genre de plantes de la famille des Oleaceae. Ce sont des filaires des plantes généralement de garrigue.</rdfs:comment>
+        <arbre:dossier>629</arbre:dossier>
+        <arbre:langueDoc>Alaverd. Aure. Taradèu. O</arbre:langueDoc>
+        <arbre:libDossier>Parc zoologique de Lunaret</arbre:libDossier>
+        <arbre:nomLatin>Filaria</arbre:nomLatin>
+        <arbre:nomUsuel>Filaire</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hôpitaux-Facultés</arbre:secteur>
+        <geo:lat>43.6425</geo:lat>
+        <geo:long>3.87862</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/30">
+        <arbre:codeEssence>18</arbre:codeEssence>
+        <rdfs:comment>(Arbres aux quarante écus).Origine Chine.Cest la plus ancienne famille d'arbres connue.Elle existait déjà une quarntaine de million d'années avant l'apparition des dinosaures.</rdfs:comment>
+        <arbre:dossier>29</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Square de la Tour des pins</arbre:libDossier>
+        <arbre:nomLatin>Ginkgo biloba</arbre:nomLatin>
+        <arbre:nomUsuel>Arbre aux quarante écus</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Ginkgo_biloba"/>
+        <geo:lat>43.6141</geo:lat>
+        <geo:long>3.87407</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/31">
+        <arbre:codeEssence>180</arbre:codeEssence>
+        <rdfs:comment>Origine Géographique:Chine.Climat tropical à tempérè.Il suporte des gelée de l'ordre de -8°c.</rdfs:comment>
+        <arbre:dossier>29</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Square de la Tour des pins</arbre:libDossier>
+        <arbre:nomLatin>Sterculia platanifolia</arbre:nomLatin>
+        <arbre:nomUsuel>Sterculier à feuilles de Platane</arbre:nomUsuel>
+        <arbre:rarete>5</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6142</geo:lat>
+        <geo:long>3.87378</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/32">
+        <arbre:codeEssence>32</arbre:codeEssence>
+        <rdfs:comment>Cupressus Sempervirens.encore appelé cyprès toujours vert(origine Asie).Cet arbre est planté en haut de la tour. Planté en haut de la Tour.</rdfs:comment>
+        <arbre:dossier>29</arbre:dossier>
+        <arbre:langueDoc>Ciprièr. Ciprès</arbre:langueDoc>
+        <arbre:libDossier>Square de la Tour des pins</arbre:libDossier>
+        <arbre:nomLatin>Cupressus sempervirens</arbre:nomLatin>
+        <arbre:nomUsuel>Cyprès de Provence</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6139</geo:lat>
+        <geo:long>3.87353</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/33">
+        <arbre:codeEssence>6</arbre:codeEssence>
+        <rdfs:comment>Février d'Amérique arbre au port 2tale.courronne iréguliere ouverte.large.longs rameaux souples.</rdfs:comment>
+        <arbre:dossier>28</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Square Planchon</arbre:libDossier>
+        <arbre:nomLatin>Gleditsia triacanthos</arbre:nomLatin>
+        <arbre:nomUsuel>Févier d'Amérique</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Févier_d'Amérique"/>
+        <geo:lat>43.6061</geo:lat>
+        <geo:long>3.87987</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/34">
+        <arbre:codeEssence>244</arbre:codeEssence>
+        <rdfs:comment>Origine Australie rare dans la région.</rdfs:comment>
+        <arbre:dossier>28</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Square Planchon</arbre:libDossier>
+        <arbre:nomLatin>Sterculier acerifolia</arbre:nomLatin>
+        <arbre:nomUsuel>Copalme d'Orient</arbre:nomUsuel>
+        <arbre:rarete>6</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6055</geo:lat>
+        <geo:long>3.87969</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/35">
+        <arbre:codeEssence>111</arbre:codeEssence>
+        <rdfs:comment>L' eucalyptus Gunnii fait partie des espèce de gommier les plus utilisées sous nos climats.Son feuillage glauque à reflets bleutés.de forme très arrondie en fait toute sa beauté.</rdfs:comment>
+        <arbre:dossier>23</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Jardin de la Pépinière</arbre:libDossier>
+        <arbre:nomLatin>Eucalyptus gunnii</arbre:nomLatin>
+        <arbre:nomUsuel>Gommier à cidre</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Prés d'Arènes</arbre:secteur>
+        <geo:lat>43.5952</geo:lat>
+        <geo:long>3.88512</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/36">
+        <arbre:codeEssence>98</arbre:codeEssence>
+        <rdfs:comment>Arbre de grande taille.</rdfs:comment>
+        <arbre:dossier>20</arbre:dossier>
+        <arbre:langueDoc>Lo cedre</arbre:langueDoc>
+        <arbre:libDossier>Parc des Pastourelles</arbre:libDossier>
+        <arbre:nomLatin>Cedrus Atlantica</arbre:nomLatin>
+        <arbre:nomUsuel>Cèdre de l'Atlas</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Port Marianne</arbre:secteur>
+        <geo:lat>43.6207</geo:lat>
+        <geo:long>3.89938</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/37">
+        <arbre:codeEssence>2</arbre:codeEssence>
+        <rdfs:comment>Ce micocoulier.malgré sa vitesse de croissance assez lente.forme un très bel arbre très présent dans certaines régions du sud de la France.</rdfs:comment>
+        <arbre:dossier>19</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>square Robles</arbre:libDossier>
+        <arbre:nomLatin>Celtis australis</arbre:nomLatin>
+        <arbre:nomUsuel>Micocoulier de Provence</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.606</geo:lat>
+        <geo:long>3.8787</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/38">
+        <arbre:codeEssence>42</arbre:codeEssence>
+        <rdfs:comment>Cet arbre à la cime ovale touffue.ses jolies feuilles vert foncées un peu cordiformes à la base et ses fruits si partculiers qui ressemblent à des oranges (non comestibles.Tres vieux sujet.</rdfs:comment>
+        <arbre:dossier>19</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Jardin du Champ de Mars</arbre:libDossier>
+        <arbre:nomLatin>Maclura pomifera</arbre:nomLatin>
+        <arbre:nomUsuel>Oranger des Osages</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6115</geo:lat>
+        <geo:long>3.88249</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/39">
+        <arbre:codeEssence>1</arbre:codeEssence>
+        <rdfs:comment>Arbre d'ornement:plusieur espèces sont plantées comme arbre d'ornement urbain et d'alignement le long des rues.Ce sont des arbres qui supportent bien les condition de vie du milieu urbain.sujet en port libre.</rdfs:comment>
+        <arbre:dossier>19</arbre:dossier>
+        <arbre:langueDoc>Platano.la platana</arbre:langueDoc>
+        <arbre:libDossier>Jardin du Champ de Mars</arbre:libDossier>
+        <arbre:nomLatin>Platanus acerifolia</arbre:nomLatin>
+        <arbre:nomUsuel>platane</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6117</geo:lat>
+        <geo:long>3.88252</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/4">
+        <arbre:codeEssence>2</arbre:codeEssence>
+        <rdfs:comment>Très grand micocoulier au centre de la place. marquant fortement le paysage.</rdfs:comment>
+        <arbre:dossier>553</arbre:dossier>
+        <arbre:langueDoc>Falabreguièr</arbre:langueDoc>
+        <arbre:libDossier>Place Leroy Beaulieu</arbre:libDossier>
+        <arbre:nomLatin>Celtis australis</arbre:nomLatin>
+        <arbre:nomUsuel>Micocoulier de Provence</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Peyrou</arbre:secteur>
+        <geo:lat>43.6093</geo:lat>
+        <geo:long>3.8668</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/40">
+        <arbre:codeEssence>68</arbre:codeEssence>
+        <rdfs:comment>Originaire d'Extrême-Orient il est également connu sous le nom de" pin des Bouddhistes".C'est un arbre à croissance lente et rare dans la région.</rdfs:comment>
+        <arbre:dossier>19</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Jardin du Champ de Mars</arbre:libDossier>
+        <arbre:nomLatin>Podocarpus macrophyllus</arbre:nomLatin>
+        <arbre:nomUsuel>Podocarpus</arbre:nomUsuel>
+        <arbre:rarete>8</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6104</geo:lat>
+        <geo:long>3.88258</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/41">
+        <arbre:codeEssence>67</arbre:codeEssence>
+        <rdfs:comment>Le peuplier noir est  un arbre pouvant atteindre une hauteur de 30 métres et dont la longévité est de l'ordre de 400 ans pour les spécimens les plus âgés.</rdfs:comment>
+        <arbre:dossier>19</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Jardin du Champ de Mars</arbre:libDossier>
+        <arbre:nomLatin>Populus nigra 'Italica'</arbre:nomLatin>
+        <arbre:nomUsuel>Peuplier d'Italie</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6109</geo:lat>
+        <geo:long>3.88234</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/42">
+        <arbre:codeEssence>53</arbre:codeEssence>
+        <rdfs:comment>Tilleul à grandes feuilles.Cet espèce des régions tempérées d'Europe.souvent planté comme arbre d'alignement. Beau sujet.</rdfs:comment>
+        <arbre:dossier>14</arbre:dossier>
+        <arbre:langueDoc>Tilh</arbre:langueDoc>
+        <arbre:libDossier>Parc Rimbaud</arbre:libDossier>
+        <arbre:nomLatin>Tilia Platyphyllos</arbre:nomLatin>
+        <arbre:nomUsuel>Tilleul à grandes feuilles</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Verdanson</arbre:secteur>
+        <geo:lat>43.6179</geo:lat>
+        <geo:long>3.89381</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/43">
+        <arbre:codeEssence>58</arbre:codeEssence>
+        <rdfs:comment>Son nom vient du chef indien Sequoyah (v. 1770-1843).inventeur de l'alphabet Cherokee.les séquoias à feuilles d'if peuvent mesurer plus de 100mètres de hauteur pour  un diamètre approchant 8 mètres.Surement le plus gros arbre de la ville.</rdfs:comment>
+        <arbre:dossier>9</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc du Mas de la Paillade</arbre:libDossier>
+        <arbre:nomLatin>Sequoia sempervirens</arbre:nomLatin>
+        <arbre:nomUsuel>Séquoia toujours vert</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hauts de Massane</arbre:secteur>
+        <geo:lat>43.6276</geo:lat>
+        <geo:long>3.81448</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/44">
+        <arbre:codeEssence>152</arbre:codeEssence>
+        <rdfs:comment>Le genre Acer compte environ 115 espèces d'arbres et d'arbustes répandues dans les régions tempérées et froides de l'hémisphère boréal .surtout en Asie et Amérique du Nord.feuillage exceptionnel.</rdfs:comment>
+        <arbre:dossier>9</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc du Mas de la Paillade</arbre:libDossier>
+        <arbre:nomLatin>Acer platanoidesShwedler</arbre:nomLatin>
+        <arbre:nomUsuel>Erable pourpre</arbre:nomUsuel>
+        <arbre:rarete>6</arbre:rarete>
+        <arbre:secteur>Hauts de Massane</arbre:secteur>
+        <geo:lat>43.6279</geo:lat>
+        <geo:long>3.81607</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/45">
+        <arbre:codeEssence>12</arbre:codeEssence>
+        <rdfs:comment>Le tulipier de Virginie est un arbre feuillu de la famille des magnoliacées.L'arbre a étè introduit en Europe en1663 et il est depuis courant dans les parc du continent.Le plus vieux sujet de la ville.</rdfs:comment>
+        <arbre:dossier>9</arbre:dossier>
+        <arbre:langueDoc>Tulipié</arbre:langueDoc>
+        <arbre:libDossier>Parc du Mas de la Paillade</arbre:libDossier>
+        <arbre:nomLatin>Liriodendron tulipifera</arbre:nomLatin>
+        <arbre:nomUsuel>Tulipier de Virginie</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hauts de Massane</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Liriodendron_tulipifera"/>
+        <geo:lat>43.6276</geo:lat>
+        <geo:long>3.81575</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/46">
+        <arbre:codeEssence>32</arbre:codeEssence>
+        <rdfs:comment>Cyprès commun.encore appelé cyprès toujours vert.C'est un arbre originaire d'Asie.mais il est acclimaté dans tout l'hémisphère nord et plus particulièrement autour du bassin méditerranéen.Vieux et beau sujet.</rdfs:comment>
+        <arbre:dossier>2</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc Azèma</arbre:libDossier>
+        <arbre:nomLatin>cyprès simperviren</arbre:nomLatin>
+        <arbre:nomUsuel>cyprès vert de Provence</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Mosson</arbre:secteur>
+        <geo:lat>43.6166</geo:lat>
+        <geo:long>3.82882</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/47">
+        <arbre:codeEssence>48</arbre:codeEssence>
+        <rdfs:comment>On l'appelle aussi Orme du Caucase.On trouve cet orme dans le Caucase et le nord de l'Iran.il n'est pas sensible à la graphiose (maladie)qui a ravagé les Ormes dans toute l'Europe.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier></arbre:libDossier>
+        <arbre:nomLatin>Zelkova carpinifolia</arbre:nomLatin>
+        <arbre:nomUsuel>Orme de Sibérie</arbre:nomUsuel>
+        <arbre:rarete>6</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6127</geo:lat>
+        <geo:long>3.87518</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/48">
+        <arbre:codeEssence>185</arbre:codeEssence>
+        <rdfs:comment>C'est un arbre à l'écorce brun orangé.aux feuilles caduques pennées et aux fleurs blanches.Le cormier est un arbre de plus en plus rare.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>Aiprouèr</arbre:langueDoc>
+        <arbre:libDossier></arbre:libDossier>
+        <arbre:nomLatin>Sorbus domestica</arbre:nomLatin>
+        <arbre:nomUsuel>Cormier</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Cévennes</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Cormier"/>
+        <geo:lat>43.6134</geo:lat>
+        <geo:long>3.84956</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/49">
+        <arbre:codeEssence>105</arbre:codeEssence>
+        <rdfs:comment>l'écorce de l'arbousier de Gréce revêtau printemps de vives couleurs rouges.puis avec les chaleurs estivales.se dénude peu à peu.des fragments retangulaires se détachent.se dessèchent et s'enroulent.laissant apparaître la jeune écorce. On trouve peu</rdfs:comment>
+        <arbre:dossier>530</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Domaine de Méric</arbre:libDossier>
+        <arbre:nomLatin>Arbutus andrachne</arbre:nomLatin>
+        <arbre:nomUsuel>Arbousier de Grèce</arbre:nomUsuel>
+        <arbre:rarete>6</arbre:rarete>
+        <arbre:secteur>Hôpitaux-Facultés</arbre:secteur>
+        <geo:lat>43.6319</geo:lat>
+        <geo:long>3.89208</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/5">
+        <arbre:codeEssence>81</arbre:codeEssence>
+        <rdfs:comment>Le frêne à fleurs est un arbre de petite taille. Sa floraison blanche lui confère une beauté remarquable au printemps. Sujet particulièrement ancien .</rdfs:comment>
+        <arbre:dossier>531</arbre:dossier>
+        <arbre:langueDoc>Fraissa</arbre:langueDoc>
+        <arbre:libDossier>Parc du Mas Prunet</arbre:libDossier>
+        <arbre:nomLatin>Fraxinus ornus</arbre:nomLatin>
+        <arbre:nomUsuel>Frêne à fleurs</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Cévennes</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Fraxinus_ornus"/>
+        <geo:lat>43.5984</geo:lat>
+        <geo:long>3.8327</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/50">
+        <arbre:codeEssence>0</arbre:codeEssence>
+        <rdfs:comment>Originaire du nord-est de l'Amérique du nord. Tronc noueux et irrégulier très beau sujet.</rdfs:comment>
+        <arbre:dossier>1025</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc de Font Colombe</arbre:libDossier>
+        <arbre:nomLatin>Thuya occidentalis</arbre:nomLatin>
+        <arbre:nomUsuel>thuya du Canada ou cèdre blanc</arbre:nomUsuel>
+        <arbre:rarete>6</arbre:rarete>
+        <arbre:secteur>Cevennes</arbre:secteur>
+        <geo:lat>43.5973</geo:lat>
+        <geo:long>3.83146</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/51">
+        <arbre:codeEssence>7</arbre:codeEssence>
+        <rdfs:comment>Le pin parasol est un arbre caractéristique des régions méditerraanéennes.reconnaissable à son port évoquant un parasol déployé.Sa graine.le pignon est souvent utilisée en pâtisserie.Très beau sujet dans un parc magnifique.</rdfs:comment>
+        <arbre:dossier>1025</arbre:dossier>
+        <arbre:langueDoc>Pin pinhièr.pincàs</arbre:langueDoc>
+        <arbre:libDossier>Parc de Font Colombe</arbre:libDossier>
+        <arbre:nomLatin>Pinus pinea</arbre:nomLatin>
+        <arbre:nomUsuel>Pin pignon</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Cevenne</arbre:secteur>
+        <geo:lat>43.5971</geo:lat>
+        <geo:long>3.831</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/52">
+        <arbre:codeEssence>32</arbre:codeEssence>
+        <rdfs:comment>Cyprès commun.Cet arbre et originaire d'Asie.mais il est acclimaté dans tout l'hémisphère nord et plus particulièrement autour du bassin mèditerranéen.Très beau sujet.</rdfs:comment>
+        <arbre:dossier>1025</arbre:dossier>
+        <arbre:langueDoc>Autciprès.cyprièr.cipres.s</arbre:langueDoc>
+        <arbre:libDossier>Parc de Font Colombe</arbre:libDossier>
+        <arbre:nomLatin>Cupressus simpervirens</arbre:nomLatin>
+        <arbre:nomUsuel>Cyprès de Provence</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Cevennes</arbre:secteur>
+        <geo:lat>43.5976</geo:lat>
+        <geo:long>3.83191</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/53">
+        <arbre:codeEssence>57</arbre:codeEssence>
+        <rdfs:comment>Le cyprès chauve .qui est l'arbre emblème de Lousiane et une espèce remarquable par son adaptation aux milieux humides.arbre marquant le paysage.</rdfs:comment>
+        <arbre:dossier>1025</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Parc de Font Colombe</arbre:libDossier>
+        <arbre:nomLatin>Taxodichum distichum</arbre:nomLatin>
+        <arbre:nomUsuel>Cyprès chauve</arbre:nomUsuel>
+        <arbre:rarete>2</arbre:rarete>
+        <arbre:secteur>Cevennes</arbre:secteur>
+        <geo:lat>43.5978</geo:lat>
+        <geo:long>3.83066</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/54">
+        <arbre:codeEssence>98</arbre:codeEssence>
+        <rdfs:comment>Les cèdres sont de grands arbres.les cèdres peuvent vivre plus de 1000 ans.Ils sont reconnus pour leur croissance rapide. On trouve peu de sujet de cette taille.</rdfs:comment>
+        <arbre:dossier>1025</arbre:dossier>
+        <arbre:langueDoc>Cèdre</arbre:langueDoc>
+        <arbre:libDossier>Paec de Font Colombe</arbre:libDossier>
+        <arbre:nomLatin>Cedrus atlantica</arbre:nomLatin>
+        <arbre:nomUsuel>Cèdre de l'Atlas</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Cevennes</arbre:secteur>
+        <geo:lat>43.5979</geo:lat>
+        <geo:long>3.82939</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/55">
+        <arbre:codeEssence>1</arbre:codeEssence>
+        <rdfs:comment>Le platane est très fréquent en Europe. où il est planté dans les parcs.le long des routes du fait de sa grande résistance à la pollution.Ici en port libre.</rdfs:comment>
+        <arbre:dossier>1025</arbre:dossier>
+        <arbre:langueDoc>Platana.Platanièr</arbre:langueDoc>
+        <arbre:libDossier>Parc de Font Colombe</arbre:libDossier>
+        <arbre:nomLatin>Platanus acerifolia</arbre:nomLatin>
+        <arbre:nomUsuel>Platane</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Cevennes</arbre:secteur>
+        <geo:lat>43.5981</geo:lat>
+        <geo:long>3.82904</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/56">
+        <arbre:codeEssence>38</arbre:codeEssence>
+        <rdfs:comment>L'if est un arbre qui peut atteindre 20m de haut mais la plupart des individus sont généralement plus petits.La forme est variable avec une cime irrégulière et un tronc court et noueux.</rdfs:comment>
+        <arbre:dossier>1025</arbre:dossier>
+        <arbre:langueDoc>Tueis</arbre:langueDoc>
+        <arbre:libDossier>Parc de Font Colombe</arbre:libDossier>
+        <arbre:nomLatin>Taxus Baccata</arbre:nomLatin>
+        <arbre:nomUsuel>if commun</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Cevenne</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/If_commun"/>
+        <geo:lat>43.5974</geo:lat>
+        <geo:long>3.83146</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/57">
+        <arbre:codeEssence>98</arbre:codeEssence>
+        <rdfs:comment>Les cèdres sont de grands arbres.Les cèdres peuvent vivre plus de 1000 ans et sont reconnus pour leur croissance rapide.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>cèdre</arbre:langueDoc>
+        <arbre:libDossier>Mas Nougier</arbre:libDossier>
+        <arbre:nomLatin>Cèdre atlantica</arbre:nomLatin>
+        <arbre:nomUsuel>cèdre de l'Atlas</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Croix d'Argent</arbre:secteur>
+        <geo:lat>43.5824</geo:lat>
+        <geo:long>3.85407</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/58">
+        <arbre:codeEssence>7</arbre:codeEssence>
+        <rdfs:comment>Le pin parasol est un arbre caractéristique des régions méditerranéennes.reconnaisable à son port évoquant un parasol déployé.Sa graine. le pignon est souvent utilisée en pâtisserie.Abre marquant le paysage.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>Pin pinhièr.pincàs</arbre:langueDoc>
+        <arbre:libDossier>Mas Nougier</arbre:libDossier>
+        <arbre:nomLatin>Pinus pinea</arbre:nomLatin>
+        <arbre:nomUsuel>Pin pignon</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Croix d'Argent</arbre:secteur>
+        <geo:lat>43.5824</geo:lat>
+        <geo:long>3.8543</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/59">
+        <arbre:codeEssence>98</arbre:codeEssence>
+        <rdfs:comment>Le chêne liège est un arbre exploité pour son ecorce qui fournit le liège.Il peut vivre 150 à 200 ans et atteindre 20 à 25 mètre de haut.Sujet rare sur la ville.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Mas Nouguier</arbre:libDossier>
+        <arbre:nomLatin>Quercus suber L</arbre:nomLatin>
+        <arbre:nomUsuel>Chêne liège</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Croix d'Argent</arbre:secteur>
+        <geo:lat>43.5825</geo:lat>
+        <geo:long>3.85442</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/6">
+        <arbre:codeEssence>186</arbre:codeEssence>
+        <rdfs:comment>Il peut vivre 150 à 200 ans et atteindre 20 à 25 m de Haut. Arbre rare sur la ville. Il fait parti du jardin à l'anglaise du parc de Méric.</rdfs:comment>
+        <arbre:dossier>530</arbre:dossier>
+        <arbre:langueDoc>Siure</arbre:langueDoc>
+        <arbre:libDossier>Domaine de Méric</arbre:libDossier>
+        <arbre:nomLatin>Quercus suber</arbre:nomLatin>
+        <arbre:nomUsuel>Chêne liège</arbre:nomUsuel>
+        <arbre:rarete>4</arbre:rarete>
+        <arbre:secteur>Hôpitaux-Facultés</arbre:secteur>
+        <geo:lat>43.632</geo:lat>
+        <geo:long>3.89094</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/60">
+        <arbre:codeEssence>7</arbre:codeEssence>
+        <rdfs:comment>Le pin parasol est un arbre caractéristique des régions méditerranéennes.reconnaissable à son port évoquant un parasol déployé.sa graine. le pignon est souvent utilisé en pâtisserie. Ce spécimen est particulièrement ancien.</rdfs:comment>
+        <arbre:dossier>280</arbre:dossier>
+        <arbre:langueDoc>Pin pinhièr.pincàs</arbre:langueDoc>
+        <arbre:libDossier>Parc de Bagatelle</arbre:libDossier>
+        <arbre:nomLatin>Pinus pinea</arbre:nomLatin>
+        <arbre:nomUsuel>pin pignon</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Croix d'Argent</arbre:secteur>
+        <geo:lat>43.5938</geo:lat>
+        <geo:long>3.83994</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/61">
+        <arbre:codeEssence>98</arbre:codeEssence>
+        <rdfs:comment>Les cèdre sont des arbres de grandes tailles.ils peuvent vivre plus de 1000 ans .ils sont reconnus pour leur croissance rapide. On trouve peu de sujet de cette taille.</rdfs:comment>
+        <arbre:dossier>280</arbre:dossier>
+        <arbre:langueDoc>Cèdre</arbre:langueDoc>
+        <arbre:libDossier>parc Bgatelle</arbre:libDossier>
+        <arbre:nomLatin>Cedrus atlantica</arbre:nomLatin>
+        <arbre:nomUsuel>cèdre de l'Atlas</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Croix d'Argent</arbre:secteur>
+        <geo:lat>43.5939</geo:lat>
+        <geo:long>3.83948</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/62">
+        <arbre:codeEssence>7</arbre:codeEssence>
+        <rdfs:comment></rdfs:comment>
+        <arbre:dossier>1014</arbre:dossier>
+        <arbre:langueDoc>Pin pinhièr.pincàs</arbre:langueDoc>
+        <arbre:libDossier>Parc clemenceau</arbre:libDossier>
+        <arbre:nomLatin>Pinus pinea</arbre:nomLatin>
+        <arbre:nomUsuel>Pin pignon</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Peyrou</arbre:secteur>
+        <geo:lat>43.6041</geo:lat>
+        <geo:long>3.87173</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/63">
+        <arbre:codeEssence>32</arbre:codeEssence>
+        <rdfs:comment>Cyprès commun.c'est un arbre originaire d'Asie.mais il est acclimaté dans tout l'hémisphère nord et plus particulièrement autour du bassin méditerranéen.Très vieux sujet.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>Autciprès.ciprièr.ciprès.s</arbre:langueDoc>
+        <arbre:libDossier>Square de la Libération</arbre:libDossier>
+        <arbre:nomLatin>Cupressus Sempervirens</arbre:nomLatin>
+        <arbre:nomUsuel>cyprès vert de Provence</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Peyrou</arbre:secteur>
+        <geo:lat>43.6106</geo:lat>
+        <geo:long>3.85775</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/64">
+        <arbre:codeEssence>7</arbre:codeEssence>
+        <rdfs:comment>Le pin parasol est un arbre caractéristique des régions méditeranéennes.reconnaissable à sont port évoquant un parasol déployé.Sa graine. le pignon est souvent utiliséee en pâtisserie. très beau sujet.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>pin pinhièr.pincas</arbre:langueDoc>
+        <arbre:libDossier>square de la Libération</arbre:libDossier>
+        <arbre:nomLatin>Pinus pinea</arbre:nomLatin>
+        <arbre:nomUsuel>Pin pignon</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Peyrou</arbre:secteur>
+        <geo:lat>43.6107</geo:lat>
+        <geo:long>3.8578</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/65">
+        <arbre:codeEssence>25</arbre:codeEssence>
+        <rdfs:comment>Cet arbre de climats tempérés et tropicaux.préfère un sol acide.age et taille rares pour la région. On trouve peu de sujet de cette taille.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>Manholièr</arbre:langueDoc>
+        <arbre:libDossier>Berges du Lez base de canoë</arbre:libDossier>
+        <arbre:nomLatin>Magniolia grandiflora</arbre:nomLatin>
+        <arbre:nomUsuel>magniolia</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hôpitaux Facultés</arbre:secteur>
+        <geo:lat>43.6485</geo:lat>
+        <geo:long>3.8774</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/66">
+        <arbre:codeEssence>98</arbre:codeEssence>
+        <rdfs:comment>les cèdres sont de grands arbres.Ils peuvent vivre plus de 1000 ans.Ils sont reconnus pour leur croissance rapide.Beau sujet dans un cadre magnifique.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>cèdre</arbre:langueDoc>
+        <arbre:libDossier>Berges du Lez base de canoë</arbre:libDossier>
+        <arbre:nomLatin>Cèdre atlantica</arbre:nomLatin>
+        <arbre:nomUsuel>Cèdre de lAtlas</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hôpitaux Facultés</arbre:secteur>
+        <geo:lat>43.6484</geo:lat>
+        <geo:long>3.87771</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/67">
+        <arbre:codeEssence>1</arbre:codeEssence>
+        <rdfs:comment>Abre d'ornement:plusieurs espèces sont plantées comme arbre d'ornement urbain et d'alignement le long des rues.Ici ceplatane enport libre est magnifique.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>Platana.platanièr</arbre:langueDoc>
+        <arbre:libDossier>Berges du Lez base de canoë</arbre:libDossier>
+        <arbre:nomLatin>platanus hybrida</arbre:nomLatin>
+        <arbre:nomUsuel>platane</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hôpitaux facultés</arbre:secteur>
+        <geo:lat>43.6488</geo:lat>
+        <geo:long>3.87717</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/68">
+        <arbre:codeEssence>60</arbre:codeEssence>
+        <rdfs:comment>Le chêne pubescens est une espèce d'arbre à feuillage caduc des régions tempéèes de l'hemisphère nord. Arbre remarquable  de par sa taille.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc>Rore.blacàs.chaine</arbre:langueDoc>
+        <arbre:libDossier>berges du Lel base canoë</arbre:libDossier>
+        <arbre:nomLatin>Quercus Pubescens</arbre:nomLatin>
+        <arbre:nomUsuel>Chêne pubescent</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hôpitaux facultés</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Chêne_pubescent"/>
+        <geo:lat>43.6491</geo:lat>
+        <geo:long>3.87743</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/69">
+        <arbre:codeEssence>0</arbre:codeEssence>
+        <rdfs:comment>Grevillea robusta.communément appelé le chêne soyeux d' australie.Sa floraison jaune orangé et magnifique.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier></arbre:libDossier>
+        <arbre:nomLatin>Grevillea robusta</arbre:nomLatin>
+        <arbre:nomUsuel>Grevillea</arbre:nomUsuel>
+        <arbre:rarete>8</arbre:rarete>
+        <arbre:secteur>Grammont serres</arbre:secteur>
+        <geo:lat>43.6152</geo:lat>
+        <geo:long>3.92577</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/7">
+        <arbre:codeEssence>47</arbre:codeEssence>
+        <rdfs:comment>Un arbuste épineux originaire de Chine et répandu dans les régions méditerranéennes. le fruit.  la jujube est comestible. Ce spécimen est particulièrement ancien.</rdfs:comment>
+        <arbre:dossier>530</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Domaine de Méric</arbre:libDossier>
+        <arbre:nomLatin>Zizyphus jujuba</arbre:nomLatin>
+        <arbre:nomUsuel>Jujubier</arbre:nomUsuel>
+        <arbre:rarete>4</arbre:rarete>
+        <arbre:secteur>Hôpitaux-Facultés</arbre:secteur>
+        <geo:lat>43.6309</geo:lat>
+        <geo:long>3.89148</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/70">
+        <arbre:codeEssence>0</arbre:codeEssence>
+        <rdfs:comment>L'eucalyptus gunnii fait partie des espèces de Gommier les plus utilisées sous nos climats.Son feuillage glauque à reflets bleutés.de forme très arrondie en fait toute sa beauté.</rdfs:comment>
+        <arbre:dossier>0</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier></arbre:libDossier>
+        <arbre:nomLatin>Eucalyptus gunnii</arbre:nomLatin>
+        <arbre:nomUsuel>Eucalyptus</arbre:nomUsuel>
+        <arbre:rarete>5</arbre:rarete>
+        <arbre:secteur>Grammont serres</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Eucalyptus"/>
+        <geo:lat>43.6154</geo:lat>
+        <geo:long>3.92501</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/71">
+        <arbre:codeEssence>25</arbre:codeEssence>
+        <rdfs:comment>Arbre de climats tempérés et tropicaux.il préferé un sol acide.Arbre d'age important.</rdfs:comment>
+        <arbre:dossier>83</arbre:dossier>
+        <arbre:langueDoc>Magnoulia</arbre:langueDoc>
+        <arbre:libDossier>Promenade du Peyrou</arbre:libDossier>
+        <arbre:nomLatin>Magnolia grandifolia</arbre:nomLatin>
+        <arbre:nomUsuel>Magnolia à grandes fleurs</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Peyrou</arbre:secteur>
+        <owl:sameAs rdf:resource="http://fr.dbpedia.org/resource/Magnolia_à_grandes_fleurs"/>
+        <geo:lat>43.6111</geo:lat>
+        <geo:long>3.87107</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/8">
+        <arbre:codeEssence>97</arbre:codeEssence>
+        <rdfs:comment>Conifère à feuilles persistantes qui pousse jusqu'à 40 m de Hauteur. C'est l'emblème nationnal du Liban. On trouve peu de sujets de cette taille.</rdfs:comment>
+        <arbre:dossier>530</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Domaine de Méric</arbre:libDossier>
+        <arbre:nomLatin>Cedrus libani</arbre:nomLatin>
+        <arbre:nomUsuel>Cèdre du Liban</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Hôpitaux-Facultés</arbre:secteur>
+        <geo:lat>43.6315</geo:lat>
+        <geo:long>3.89046</geo:long>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://localhost/arbre/9">
+        <arbre:codeEssence>76</arbre:codeEssence>
+        <rdfs:comment>Originaire d'Asie mineure. cet arbre élégant au port pyramidal trône sur la grande pelouse du jardin dessiné par Edouard André. En Orient. on en extrayait un lait de beauté.</rdfs:comment>
+        <arbre:dossier>529</arbre:dossier>
+        <arbre:langueDoc></arbre:langueDoc>
+        <arbre:libDossier>Jardin du champ de Mars</arbre:libDossier>
+        <arbre:nomLatin>Liquidambar orientalis</arbre:nomLatin>
+        <arbre:nomUsuel>Copalme d'Orient</arbre:nomUsuel>
+        <arbre:rarete>0</arbre:rarete>
+        <arbre:secteur>Ecusson</arbre:secteur>
+        <geo:lat>43.6111</geo:lat>
+        <geo:long>3.88183</geo:long>
+    </rdf:Description>
+</rdf:RDF>
+

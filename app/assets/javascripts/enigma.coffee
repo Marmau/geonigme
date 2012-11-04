@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers', 'renumber', 'fixed_map'], (BaseMap, PositionAccuracy, Icon, Helpers) ->
+require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers', 'renumber', 'fixed_map'], (PoiMap, PositionAccuracy, Icon, Helpers) ->
 
 	container = $('#create-enigma')
 	formPosition = container.find('#position-answer')
@@ -9,7 +9,7 @@ require ['maps/base_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers'
 
 	### Gestion de la map ###
 	# Initialisation de la map
-	map = new BaseMap $('#enigma-map')
+	map = new PoiMap $('#enigma-map')
 	pa = new PositionAccuracy map, formPosition, formAccuracy
 
 	formPosition.change ->
