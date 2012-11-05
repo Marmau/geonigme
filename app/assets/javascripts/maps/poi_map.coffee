@@ -12,6 +12,9 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 			@treesOverlay = new L.LayerGroup()
 			@layersControls.addOverlay(@treesOverlay, 'Arbres')
 
+			@greenSpacesOverlay = new L.LayerGroup()
+			@layersControls.addOverlay(@greenSpacesOverlay, 'Espaces verts')
+
 			@fountainsOverlay = new L.LayerGroup()
 			@layersControls.addOverlay(@fountainsOverlay, 'Fontaines')
 
@@ -52,6 +55,32 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 						if feature.properties['owl:sameAs']
 							popupContent += '<p><a target="_blank" href="' + feature.properties['owl:sameAs'].replace('http://fr.dbpedia.org/resource/', 'http://fr.wikipedia.org/wiki/') + '">Lien vers la page Wikipédia</a></p>';
 
+						layer.bindPopup(popupContent)
+
+						if feature.properties and feature.properties.style and layer.setStyle
+							layer.setStyle(feature.properties.style)
+				})))
+
+			$.get(element.data('ws-green-spaces'), (data) =>
+				@greenSpacesOverlay.addLayer(new L.GeoJSON(data, {
+					pointToLayer: (feature, position) ->
+						return new L.Marker(position, {
+							icon: Icons.greenIcon
+						})
+					
+					onEachFeature: (feature, layer) ->
+						popupContent = '<h5>' + feature.properties['espaceVert:nom'] + '</h5>'
+						popupContent += '<p>'
+						if feature.properties['espaceVert:nombrePelouses'] > 0
+							popupContent += feature.properties['espaceVert:nombrePelouses'] + ' pelouse(s)<br />'
+						if feature.properties['espaceVert:nombreFleurs'] > 0
+							popupContent += feature.properties['espaceVert:nombreFleurs'] + ' fleur(s)<br />'
+						if feature.properties['espaceVert:nombreArbustes'] > 0
+							popupContent += feature.properties['espaceVert:nombreArbustes'] + ' arbuste(s)<br />'
+						if feature.properties['espaceVert:nombreJeux'] > 0
+							popupContent += feature.properties['espaceVert:nombreJeux'] + ' jeu(x)<br />'
+
+						popupContent += '</p>'
 						layer.bindPopup(popupContent)
 
 						if feature.properties and feature.properties.style and layer.setStyle

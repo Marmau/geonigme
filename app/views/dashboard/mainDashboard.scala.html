@@ -1,6 +1,7 @@
 @(title: String, start: String = "")(nav: Html)(content: Html)
 
 @import _root_.forms._
+@import controllers._
 
 <!DOCTYPE html>
 
@@ -23,6 +24,14 @@
 		<div data-role="page">
 			<header data-role="header">
 				<div class="background"></div>
+				<div class="btn-group user-menu">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">@User.getLoggedUser().getLoginName()<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<a href="@routes.Game.home()">Jouer</a>
+						<a href="@routes.Manager.dashboard()">Tableau de bord</a>
+						<a href="@routes.User.logout()">Déconnexion</a>
+					</ul>
+				</div>
 			</header>
 			<div data-role="content" class="container-fluid">
 				<div class="row-fluid">

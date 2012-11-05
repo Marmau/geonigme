@@ -11,8 +11,7 @@ import java.util.List;
 
 import javax.xml.parsers.*;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.w3c.dom.*;
 
@@ -34,237 +33,11 @@ public class Map extends Controller{
 		return ok(result.get().asJson());
 	}
 	
-	public static Result getTreesMontpellierJSON() throws JsonGenerationException, JsonMappingException, IOException {
-		String path = "./data/arbresinter.rdf";
+	public static JsonNode rdfXmlToGeoJson(File file) {
 		Element rootRdf = null;
 		HashMap<String, Object> geoJSONResult = null;
 		try {
-			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(path)).getDocumentElement();			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if (rootRdf == null) {
-			throw new RuntimeException();
-		}
-		
-		geoJSONResult = new HashMap<String, Object>();
-		List<Object> contentTab = new ArrayList<Object>();			
-		geoJSONResult.put("type", "FeatureCollection");
-		NodeList nodeRdf = rootRdf.getElementsByTagName("rdf:Description");
-		
-		for (int i = 0; i < nodeRdf.getLength() ; ++i) {
-			LinkedHashMap<Object, Object> geoFeatureDescriptionMap = new LinkedHashMap<Object, Object>();
-			String coordList[] = new String[2];
-			LinkedHashMap<Object, Object> propertiesMap = new LinkedHashMap<Object, Object>();
-			LinkedHashMap<Object, Object> featuresMap = new LinkedHashMap<Object, Object>();
-			
-			// Meta données					
-			featuresMap.put("type", "Feature");
-			featuresMap.put("id", i);
-			
-			// Données géo 
-			geoFeatureDescriptionMap.put("type", "Point");
-			NodeList coordsRdf = nodeRdf.item(i).getChildNodes();
-			for (int j = 0 ; j < coordsRdf.getLength() ; ++j) {
-				if (coordsRdf.item(j).getNodeName() == "geo:long") {
-					coordList[0] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() == "geo:lat") {
-					coordList[1] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() != "#text"){
-					// Propriétés
-					if (coordsRdf.item(j).getTextContent().length() > 0) {
-						propertiesMap.put(coordsRdf.item(j).getNodeName(), coordsRdf.item(j).getTextContent());
-					} else {
-						propertiesMap.put(coordsRdf.item(j).getNodeName(), ((Element)coordsRdf.item(j)).getAttribute("rdf:resource"));
-					}
-				}
-			}
-			
-			geoFeatureDescriptionMap.put("coordinates", coordList);
-			featuresMap.put("geometry", geoFeatureDescriptionMap);
-			featuresMap.put("properties", propertiesMap);
-			contentTab.add(featuresMap);	
-			geoJSONResult.put("features", contentTab);
-		}
-		
-		ObjectMapper mapper = new ObjectMapper();
-
-		return ok(mapper.valueToTree(geoJSONResult));
-	}
-	
-	public static Result getGardensMontpellierJSON() throws JsonGenerationException, JsonMappingException, IOException {
-		String path = "./data/jardins.rdf";
-		Element rootRdf = null;
-		HashMap<String, Object> geoJSONResult = null;
-		try {
-			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(path)).getDocumentElement();			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if (rootRdf == null) {
-			throw new RuntimeException();
-		}
-		
-		geoJSONResult = new HashMap<String, Object>();
-		List<Object> contentTab = new ArrayList<Object>();			
-		geoJSONResult.put("type", "FeatureCollection");
-		NodeList nodeRdf = rootRdf.getElementsByTagName("rdf:Description");
-		
-		for (int i = 0; i < nodeRdf.getLength() ; ++i) {
-			LinkedHashMap<Object, Object> geoFeatureDescriptionMap = new LinkedHashMap<Object, Object>();
-			String coordList[] = new String[2];
-			LinkedHashMap<Object, Object> propertiesMap = new LinkedHashMap<Object, Object>();
-			LinkedHashMap<Object, Object> featuresMap = new LinkedHashMap<Object, Object>();
-			
-			// Meta données					
-			featuresMap.put("type", "Feature");
-			featuresMap.put("id", i);
-			
-			// Données géo 
-			geoFeatureDescriptionMap.put("type", "Point");
-			NodeList coordsRdf = nodeRdf.item(i).getChildNodes();
-			for (int j = 0 ; j < coordsRdf.getLength() ; ++j) {
-				if (coordsRdf.item(j).getNodeName() == "geo:long") {
-					coordList[0] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() == "geo:lat") {
-					coordList[1] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() != "#text"){
-					// Propriétés
-					propertiesMap.put(coordsRdf.item(j).getNodeName(), coordsRdf.item(j).getTextContent());
-				}
-			}
-			
-			geoFeatureDescriptionMap.put("coordinates", coordList);
-			featuresMap.put("geometry", geoFeatureDescriptionMap);
-			featuresMap.put("properties", propertiesMap);
-			contentTab.add(featuresMap);	
-			geoJSONResult.put("features", contentTab);
-		}
-		
-		ObjectMapper mapper = new ObjectMapper();
-
-		return ok(mapper.valueToTree(geoJSONResult));
-	}
-
-	public static Result getPublicPlacesMontpellierJSON() {
-		String path = "./data/lieuxPublics.rdf";
-		Element rootRdf = null;
-		HashMap<String, Object> geoJSONResult = null;
-		try {
-			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(path)).getDocumentElement();			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if (rootRdf == null) {
-			throw new RuntimeException();
-		}
-		
-		geoJSONResult = new HashMap<String, Object>();
-		List<Object> contentTab = new ArrayList<Object>();			
-		geoJSONResult.put("type", "FeatureCollection");
-		NodeList nodeRdf = rootRdf.getElementsByTagName("rdf:Description");
-		
-		for (int i = 0; i < nodeRdf.getLength() ; ++i) {
-			LinkedHashMap<Object, Object> geoFeatureDescriptionMap = new LinkedHashMap<Object, Object>();
-			String coordList[] = new String[2];
-			LinkedHashMap<Object, Object> propertiesMap = new LinkedHashMap<Object, Object>();
-			LinkedHashMap<Object, Object> featuresMap = new LinkedHashMap<Object, Object>();
-			
-			// Meta données					
-			featuresMap.put("type", "Feature");
-			featuresMap.put("id", i);
-			
-			// Données géo 
-			geoFeatureDescriptionMap.put("type", "Point");
-			NodeList coordsRdf = nodeRdf.item(i).getChildNodes();
-			for (int j = 0 ; j < coordsRdf.getLength() ; ++j) {
-				if (coordsRdf.item(j).getNodeName() == "geo:long") {
-					coordList[0] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() == "geo:lat") {
-					coordList[1] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() != "#text"){
-					// Propriétés
-					propertiesMap.put(coordsRdf.item(j).getNodeName(), coordsRdf.item(j).getTextContent());
-				}
-			}
-			
-			geoFeatureDescriptionMap.put("coordinates", coordList);
-			featuresMap.put("geometry", geoFeatureDescriptionMap);
-			featuresMap.put("properties", propertiesMap);
-			contentTab.add(featuresMap);	
-			geoJSONResult.put("features", contentTab);
-		}
-		
-		ObjectMapper mapper = new ObjectMapper();
-
-		return ok(mapper.valueToTree(geoJSONResult));
-	}
-	
-	
-	public static Result getFoutainsMontpellierJSON() {
-		String path = "./data/fontaines.rdf";
-		Element rootRdf = null;
-		HashMap<String, Object> geoJSONResult = null;
-		try {
-			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(path)).getDocumentElement();			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if (rootRdf == null) {
-			throw new RuntimeException();
-		}
-		
-		geoJSONResult = new HashMap<String, Object>();
-		List<Object> contentTab = new ArrayList<Object>();			
-		geoJSONResult.put("type", "FeatureCollection");
-		NodeList nodeRdf = rootRdf.getElementsByTagName("rdf:Description");
-		
-		for (int i = 0; i < nodeRdf.getLength() ; ++i) {
-			LinkedHashMap<Object, Object> geoFeatureDescriptionMap = new LinkedHashMap<Object, Object>();
-			String coordList[] = new String[2];
-			LinkedHashMap<Object, Object> propertiesMap = new LinkedHashMap<Object, Object>();
-			LinkedHashMap<Object, Object> featuresMap = new LinkedHashMap<Object, Object>();
-			
-			// Meta données					
-			featuresMap.put("type", "Feature");
-			featuresMap.put("id", i);
-			
-			// Données géo 
-			geoFeatureDescriptionMap.put("type", "Point");
-			NodeList coordsRdf = nodeRdf.item(i).getChildNodes();
-			for (int j = 0 ; j < coordsRdf.getLength() ; ++j) {
-				if (coordsRdf.item(j).getNodeName() == "geo:long") {
-					coordList[0] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() == "geo:lat") {
-					coordList[1] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() != "#text"){
-					// Propriétés
-					propertiesMap.put(coordsRdf.item(j).getNodeName(), coordsRdf.item(j).getTextContent());
-				}
-			}
-			
-			geoFeatureDescriptionMap.put("coordinates", coordList);
-			featuresMap.put("geometry", geoFeatureDescriptionMap);
-			featuresMap.put("properties", propertiesMap);
-			contentTab.add(featuresMap);	
-			geoJSONResult.put("features", contentTab);
-		}
-		
-		ObjectMapper mapper = new ObjectMapper();
-
-		return ok(mapper.valueToTree(geoJSONResult));
-	}
-	
-	public static Result getMonumentsMontpellierJSON() {
-		String path = "./data/dbpedia-monuments.rdf";
-		Element rootRdf = null;
-		HashMap<String, Object> geoJSONResult = null;
-		try {
-			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(path)).getDocumentElement();			
+			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file).getDocumentElement();			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -313,9 +86,44 @@ public class Map extends Controller{
 			geoJSONResult.put("features", contentTab);
 		}
 		
-		ObjectMapper mapper = new ObjectMapper();
+		return new ObjectMapper().valueToTree(geoJSONResult);
+	}
+	
+	public static Result getTreesMontpellierJSON() {
+		String path = "./data/arbresinter.rdf";
+		
+		return ok(rdfXmlToGeoJson(new File(path)));
+	}
+	
+	public static Result getGardensMontpellierJSON() {
+		String path = "./data/jardins.rdf";
+		
+		return ok(rdfXmlToGeoJson(new File(path)));
+	}
 
-		return ok(mapper.valueToTree(geoJSONResult));
+	public static Result getPublicPlacesMontpellierJSON() {
+		String path = "./data/lieuxPublics.rdf";
+
+		return ok(rdfXmlToGeoJson(new File(path)));
+	}
+	
+	
+	public static Result getFoutainsMontpellierJSON() {
+		String path = "./data/fontaines.rdf";
+
+		return ok(rdfXmlToGeoJson(new File(path)));
+	}
+	
+	public static Result getGreenSpacesMontpellierJSON() {
+		String path = "./data/espacesVerts.rdf";
+
+		return ok(rdfXmlToGeoJson(new File(path)));
+	}
+	
+	public static Result getMonumentsMontpellierJSON() {
+		String path = "./data/dbpedia-monuments.rdf";
+
+		return ok(rdfXmlToGeoJson(new File(path)));
 	}
 	
 	
