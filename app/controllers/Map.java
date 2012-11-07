@@ -30,7 +30,7 @@ public class Map extends Controller{
 			.get();
 		
 		
-		return ok(result.get().asJson());
+		return ok(result.get((long) 1000000).asJson());
 	}
 	
 	public static JsonNode rdfXmlToGeoJson(File file) {
