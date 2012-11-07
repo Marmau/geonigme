@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Silk>
+  <Prefixes>
+    <Prefix id="rdf" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" />
+    <Prefix id="rdfs" namespace="http://www.w3.org/2000/01/rdf-schema#" />
+    <Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#" />
+	<Prefix id="geo" namespace="http://www.w3.org/2003/01/geo/wgs84_pos#"/>
+  </Prefixes>
+
+  <DataSources>
+	<DataSource id="espaceVert" type="file">
+		<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\espacesVerts.rdf" />
+		<Param name="format" value="RDF/XML" />
+	</DataSource>
+
+	<DataSource id="arbre" type="file">
+		<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\arbres.rdf" />
+		<Param name="format" value="RDF/XML" />
+	</DataSource>
+  </DataSources>
+
+  <Interlinks>
+    <Interlink id="geointerlink">
+      <LinkType>owl:sameAs</LinkType>
+
+      <SourceDataset dataSource="espaceVert" var="a">
+      </SourceDataset>
+
+      <TargetDataset dataSource="arbre" var="b">
+      </TargetDataset>
+
+      <LinkageRule>
+	    <Aggregate type="average"> <!-- Lat + long -->
+		  <!--<Compare metric="jaro" threshold="0.1">-->
+		  <!--<Compare metric="equality">-->
+		  
+		  <!--<Param name="num1" path="?a/geo:lat" />
+			<Param name="num2" path="?b/geo:lat" />-->
+		  
+		  <!--<Compare metric="levenshteinDistance" threshold="2.0">
+		  Input path="?a/geo:lat"/>
+		  	<Input path="?b/geo:lat"/>-->
+		  <Compare metric="num">
+		  	<Input path="?a/geo:lat"/>
+		  	<Input path="?b/geo:lat"/>
+		  </Compare>
+
+		  <Compare metric="num">
+		  	<Input path="?a/geo:long"/>
+		  	<Input path="?b/geo:long"/>
+		  </Compare>
+		
+        </Aggregate>
+      </LinkageRule>
+
+      <Filter threshold="0.999" />
+	  <!-- Plus c'est proche de 1, plus c'est exact -->
+
+     <Outputs>
+		<Output maxConfidence="0.999" type="file" >
+			<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\verify_links.xml"/>
+			<Param name="format" value="alignment"/>
+        </Output>
+        <Output minConfidence="0.999" type="file">
+			<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\accepted_links.xml"/>
+			<Param name="format" value="alignment"/>
+        </Output>
+
+		<Output type="file" minConfidence="0.999">
+			<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\accept_links.nt"/>
+			<Param name="format" value="ntriples"/>
+		</Output>
+	</Outputs>
+    </Interlink>
+  </Interlinks>
+</Silk>
+

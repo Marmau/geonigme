@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<rdf:RDF xmlns='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'
+    xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
+    xmlns:align='http://knowledgeweb.semanticweb.org/heterogeneity/alignment#'>
+<Alignment>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Eucalyptus"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/70"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Chêne_pubescent"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/68"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Chêne_pubescent"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/2"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Fraxinus_ornus"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/5"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Ginkgo_biloba"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/30"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Quercus_ilex"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/13"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/If_commun"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/56"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Févier_d'Amérique"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/33"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Cormier"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/48"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Magnolia_à_grandes_fleurs"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/71"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+<map>
+      <Cell>
+          <entity1 rdf:resource="http://fr.dbpedia.org/resource/Liriodendron_tulipifera"></entity1>
+          <entity2 rdf:resource="http://localhost/arbre/45"></entity2>
+        <relation>
+          =
+        </relation>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#float">
+          Some(1.0)
+        </measure>
+      </Cell>
+    </map>
+</Alignment>
+</rdf:RDF>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Silk>
+  <Prefixes>
+    <Prefix id="rdf" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" />
+    <Prefix id="rdfs" namespace="http://www.w3.org/2000/01/rdf-schema#" />
+    <Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#" />
+	<Prefix id="arbre" namespace="http://localhost/arbre#"/>
+  </Prefixes>
+
+  <DataSources>
+	<DataSource id="dbpedia" type="file">
+		<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\dbpedia-arbres.rdf" />
+		<Param name="format" value="RDF/XML" />
+	</DataSource>
+
+	<DataSource id="arbre" type="file">
+		<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\arbres.rdf" />
+		<Param name="format" value="RDF/XML" />
+	</DataSource>
+  </DataSources>
+
+  <Interlinks>
+    <Interlink id="name">
+      <LinkType>owl:sameAs</LinkType>
+
+      <SourceDataset dataSource="dbpedia" var="a">
+      </SourceDataset>
+
+      <TargetDataset dataSource="arbre" var="b">
+      </TargetDataset>
+
+      <LinkageRule>
+	    <Aggregate type="max">
+		<Compare metric="jaro">
+              <TransformInput function="lowerCase">
+                <Input path="?a/rdfs:label" />
+              </TransformInput>
+			  <TransformInput function="lowerCase">
+                <Input path="?b/arbre:nomLatin" />
+				</TransformInput>
+        </Compare>
+				<Compare metric="jaro">
+              <TransformInput function="lowerCase">
+                <Input path="?a/rdfs:label" />
+              </TransformInput>
+			  <TransformInput function="lowerCase">
+                <Input path="?b/arbre:nomUsuel" />
+				</TransformInput>
+        </Compare>
+        </Aggregate>
+      </LinkageRule>
+
+      <Filter />
+	  <!-- Plus c'est proche de 1, plus c'est exact -->
+
+     <Outputs>
+		<Output maxConfidence="1" type="file" >
+			<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\verify_links-dbpedia.xml"/>
+			<Param name="format" value="alignment"/>
+        </Output>
+        <Output minConfidence="1" type="file">
+			<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\accepted_links-dbpedia.xml"/>
+			<Param name="format" value="alignment"/>
+        </Output>
+
+		<Output type="file" minConfidence="1">
+			<Param name="file" value="C:\wamp\www\ConvertRDF\silk_2.5.3\accept_links-dbpedia.nt"/>
+			<Param name="format" value="ntriples"/>
+		</Output>
+	</Outputs>
+    </Interlink>
+  </Interlinks>
+</Silk>
+
