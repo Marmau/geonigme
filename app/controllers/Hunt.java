@@ -177,6 +177,23 @@ public class Hunt extends Controller {
 		
 		return ok(strw.toString());
 	}
+	
+	public static Result showTagRDF(String name, String format) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		StringWriter strw = new StringWriter();
+		try {
+			RDFWriter writer = Sesame.getWriter(strw, format);
+			Tag t = new Tag();
+			t.setName(name);
+			String queryString = "DESCRIBE <" + models.Tag.URI + t.urify() + ">";
+			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return notFound();
+		}
+		
+		return ok(strw.toString());
+	}
 
 	public static Result publish(String hid) {
 		if (!User.isLogged()) {

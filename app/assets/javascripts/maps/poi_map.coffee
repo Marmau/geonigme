@@ -80,6 +80,15 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 						if feature.properties['espaceVert:nombreJeux'] > 0
 							popupContent += feature.properties['espaceVert:nombreJeux'] + ' jeu(x)<br />'
 
+						vegetables = feature.properties['espaceVert:vegetal']
+						if vegetables
+							popupContent += '<br /><strong>Végétaux</strong><br />'
+							if vegetables.length
+								for vegetable in vegetables
+									popupContent += vegetable + '<br />'
+							else
+								popupContent += vegetables + '<br />'
+
 						popupContent += '</p>'
 						layer.bindPopup(popupContent)
 

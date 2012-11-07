@@ -9,6 +9,7 @@ import org.openrdf.annotations.Bind;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
+import org.openrdf.query.GraphQueryResult;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
 
@@ -16,10 +17,6 @@ import org.openrdf.repository.object.RDFObject;
 public class Hunt implements RDFObject {
 
 	public static final String URI = "http://geonigme.fr/hunt/";
-
-	public static final String RDF = "<http://www.w3.org/1999/02/22-rdf-syntax-ns#>";
-	public static final String RDFS = "<http://www.w3.org/2000/01/rdf-schema#>";
-	public static final String GNGM = "<http://geonigme.fr/rdf/ontology#>";
 
 	private Integer level;
 	private Area area;
@@ -53,12 +50,12 @@ public class Hunt implements RDFObject {
 		this.modifiedAt = modifiedAt;
 	}
 
-	@Iri("http://www.w3.org/2000/01/rdf-schema#label")
+	@Iri(NS.RDFS + "label")
 	public String getLabel() {
 		return label;
 	}
 
-	@Iri("http://www.w3.org/2000/01/rdf-schema#label")
+	@Iri(NS.RDFS + "label")
 	public void setLabel(String label) {
 		this.label = label;
 	}
@@ -136,7 +133,6 @@ public class Hunt implements RDFObject {
 
 	@Sparql(NS.PREFIX +
 		"SELECT ?step { ?step gngm:stepOfHunt $this. ?step gngm:number ?number } ORDER BY ?number")
-	@Iri(NS.GNGM + "step")
 	public List<Step> getSteps() {
 		return null;
 	}
@@ -151,12 +147,12 @@ public class Hunt implements RDFObject {
 		return null;
 	}
 
-	@Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag")
+	@Iri(NS.TAGS + "taggedWithTag")
 	public Set<Tag> getTags() {
 		return tags;
 	}
 
-	@Iri("http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag")
+	@Iri(NS.TAGS + "taggedWithTag")
 	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
 	}
@@ -200,6 +196,12 @@ public class Hunt implements RDFObject {
 			@Bind("published") Boolean published) {
 		return null;
 	}
+	
+//	@Sparql(NS.PREFIX + "CONSTRUCT {" +
+//			"$this 
+//	public GraphQueryResult getGraph() {
+//		return null;
+//	}
 
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");

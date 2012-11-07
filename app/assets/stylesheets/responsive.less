@@ -1,5 +1,35 @@
-@media (max-width: 979px) and (min-width: 768px) {
+@media (max-width: 979px) {
 	header .background {
 		width: 100%;
+	}
+	
+	.home footer {
+	    .background {
+	        width: 100%;
+	        margin-left: 0px;
+        	left: 0px;
+	    }
+	}
+}
+
+@media (max-width: 768px) {
+	header, footer {
+		margin-right: -20px;
+		margin-left: -20px;
+
+		.background {
+			margin: 0px;
+		}
+	}
+
+	footer > div {
+		padding: 0px 20px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	#content {
+		width: auto;
+		padding: 0px 20px;
 	}
 }

@@ -11,6 +11,7 @@
         margin: auto;
         height: 180px;
         background: url(/assets/images/header.png) no-repeat;
+        overflow: hidden;
     }
 }
 
@@ -152,11 +153,18 @@
     margin-top: 15px;
     background-color: @colorGreen;
     color: white;
+    position: relative;
+    overflow: hidden;
 
     .background {
         margin: auto;
         height: 442px;
         background: url(/assets/images/footer.png) no-repeat;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        margin-left: -470px;
+        left: 50%;
     }
 
     h1 {

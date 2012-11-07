@@ -33,6 +33,7 @@ public class Map extends Controller{
 		return ok(result.get((long) 1000000).asJson());
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static JsonNode rdfXmlToGeoJson(File file) {
 		Element rootRdf = null;
 		HashMap<String, Object> geoJSONResult = null;
@@ -63,18 +64,31 @@ public class Map extends Controller{
 			
 			// Données géo 
 			geoFeatureDescriptionMap.put("type", "Point");
-			NodeList coordsRdf = nodeRdf.item(i).getChildNodes();
-			for (int j = 0 ; j < coordsRdf.getLength() ; ++j) {
-				if (coordsRdf.item(j).getNodeName() == "geo:long" || coordsRdf.item(j).getNodeName() == "prop-fr:longitude") {
-					coordList[0] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() == "geo:lat"  || coordsRdf.item(j).getNodeName() == "prop-fr:latitude") {
-					coordList[1] = coordsRdf.item(j).getTextContent();
-				} else if (coordsRdf.item(j).getNodeName() != "#text"){
+			NodeList subjectsRdf = nodeRdf.item(i).getChildNodes();
+			for (int j = 0 ; j < subjectsRdf.getLength() ; ++j) {
+				if (subjectsRdf.item(j).getNodeName() == "geo:long" || subjectsRdf.item(j).getNodeName() == "prop-fr:longitude") {
+					coordList[0] = subjectsRdf.item(j).getTextContent();
+				} else if (subjectsRdf.item(j).getNodeName() == "geo:lat"  || subjectsRdf.item(j).getNodeName() == "prop-fr:latitude") {
+					coordList[1] = subjectsRdf.item(j).getTextContent();
+				} else if (subjectsRdf.item(j).getNodeName() != "#text"){
 					// Propriétés
-					if (coordsRdf.item(j).getTextContent().length() > 0) {
-						propertiesMap.put(coordsRdf.item(j).getNodeName(), coordsRdf.item(j).getTextContent());
+					if (subjectsRdf.item(j).getTextContent().length() > 0) {
+						String key = subjectsRdf.item(j).getNodeName();
+						if (propertiesMap.containsKey(key)) {
+							Object o = propertiesMap.get(key);
+							if (o instanceof List<?>) {
+								((List<Object>)o).add(subjectsRdf.item(j).getTextContent());
+							} else {
+								List<Object> list = new ArrayList<Object>();
+								list.add(o);
+								list.add(subjectsRdf.item(j).getTextContent());
+								propertiesMap.put(key, list);
+							}
+						} else {							
+							propertiesMap.put(subjectsRdf.item(j).getNodeName(), subjectsRdf.item(j).getTextContent());
+						}
 					} else {
-						propertiesMap.put(coordsRdf.item(j).getNodeName(), ((Element)coordsRdf.item(j)).getAttribute("rdf:resource"));
+						propertiesMap.put(subjectsRdf.item(j).getNodeName(), ((Element)subjectsRdf.item(j)).getAttribute("rdf:resource"));
 					}
 				}
 			}

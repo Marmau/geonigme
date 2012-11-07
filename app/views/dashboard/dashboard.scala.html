@@ -22,8 +22,9 @@
 
 @mainDashboard("Tableau de bord", "dashboard") {
 	<ul class="menu">
-		<li class="selected"><a href="">Dashboard</a></li>
+		<li class="selected"><a href="">Tableau de bord</a></li>
 		<li><a class="pushable" href="@routes.Hunt.create()">Nouvelle chasse</a></li>
+		<li><a class="pushable" href="@routes.Game.home()">Jouer</a></li>
 	</ul>
 } {
 	@if(!hunts.isEmpty()) { 

@@ -10,6 +10,10 @@ POST 	/contact-us					controllers.Application.submitContactForm()
 # Map static resources from the /public folder to the /assets URL path
 GET		/assets/*file				controllers.Assets.at(path="/public", file)
 
+# RDF
+GET		/rdf/ontology				controllers.RDF.ontology()
+GET 	/test/:hid/:format			controllers.RDF.hunt(hid: String, format: String)
+
 # Game
 GET 	/play						controllers.Game.home()
 GET		/play/:hid					controllers.Game.playHunt(hid: String)
@@ -25,6 +29,9 @@ POST	/hunt/:hid/update			controllers.Hunt.submitUpdateForm(hid: String)
 #POST	/hunt/:hid/delete			controllers.Hunt.delete(hid: String)
 #POST	/hunt/:hid/publish			controllers.Hunt.publish(hid: String)
 GET		/hunt/:hid/:format			controllers.Hunt.showRDF(hid: String, format: String)
+
+#Tag
+GET		/tag/:name/:format			controllers.Hunt.showTagRDF(name: String, format: String)
 
 # Step
 GET		/hunt/:hid/step/create		controllers.Step.create(hid: String)
