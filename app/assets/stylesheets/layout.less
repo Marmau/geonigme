@@ -253,8 +253,8 @@ label {
             display: block;
             width: 0px;
             height: 0px;
-            border-top: 25px solid transparent;
-            border-bottom: 25px solid transparent;
+            border-top: 25px solid rgba(255, 255, 255, 0);
+            border-bottom: 25px solid rgba(255, 255, 255, 0);
             border-left: 15px solid @colorGreen;
             position: absolute;
             top: 50%;
@@ -406,11 +406,12 @@ nav {
 
     ul.breadcrumb {
         overflow: hidden;
-
+        height: 28px;
         padding: 0px;
         margin: 0px;
         background: none;
         font-size: 14px;
+        .border-radius(0);
 
         .hunt-name {
             text-overflow: ellipsis;
@@ -452,14 +453,15 @@ nav {
                 position: relative;
                 display: block;
                 float: left;
+                outline: none;
 
                 &:after {
                     content: "";
                     display: block;
                     width: 0px;
                     height: 0px;
-                    border-top: 25px solid transparent;
-                    border-bottom: 25px solid transparent;
+                    border-top: 25px solid rgba(255, 255, 255, 0);
+                    border-bottom: 25px solid rgba(255, 255, 255, 0);
                     border-left: 15px solid @colorGreen;
                     position: absolute;
                     top: 50%;
@@ -473,8 +475,8 @@ nav {
                     display: block;
                     width: 0px;
                     height: 0px;
-                    border-top: 25px solid transparent;
-                    border-bottom: 25px solid transparent;
+                    border-top: 25px solid rgba(255, 255, 255, 0);
+                    border-bottom: 25px solid rgba(255, 255, 255, 0);
                     border-left: 15px solid white;
                     position: absolute;
                     top: 50%;
