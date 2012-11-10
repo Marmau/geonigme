@@ -88,7 +88,7 @@ public class User extends Controller {
 	
 	
 	public static boolean isLogged() {
-		return session(userSessionKey) != null;
+		return getLoggedUser() != null;
 	}
 	
 	public static models.User getLoggedUser() {
