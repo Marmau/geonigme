@@ -1,0 +1,14 @@
+---
+applications:
+  dist/geonigme-1.0-SNAPSHOT.zip:
+    name: geonigme
+    framework:
+      name: play
+      info:
+        mem: 256M
+        description: Play Framework Application
+        exec: 
+    infra: eu-aws
+    url: ${name}.${target-base}
+    mem: 1G
+    instances: 1

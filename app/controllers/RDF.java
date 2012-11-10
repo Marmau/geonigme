@@ -1,19 +1,14 @@
 package controllers;
 
-
-import global.Sesame;
-
-import java.io.File;
-import java.io.StringWriter;
 import java.util.Map.Entry;
 
 import org.openrdf.model.Statement;
 import org.openrdf.query.GraphQueryResult;
 import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.rio.RDFHandlerException;
 import org.openrdf.rio.RDFWriter;
 
+import play.Play;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -55,6 +50,6 @@ public class RDF extends Controller {
 	public static Result ontology() {
 		 response().setContentType("text/turtle");
 		 
-		 return ok(new File("./data/ontology.ttl"));
+		 return ok(Play.application().resourceAsStream("public/rdf/ontology.ttl"));
 	}
 }

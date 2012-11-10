@@ -1,8 +1,11 @@
 package controllers;
 
 
+import global.Global;
+
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +18,7 @@ import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.w3c.dom.*;
 
+import play.Play;
 import play.libs.F.Promise;
 import play.libs.WS;
 import play.libs.WS.Response;
@@ -34,11 +38,11 @@ public class Map extends Controller{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static JsonNode rdfXmlToGeoJson(File file) {
+	public static JsonNode rdfXmlToGeoJson(InputStream stream) {
 		Element rootRdf = null;
 		HashMap<String, Object> geoJSONResult = null;
 		try {
-			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file).getDocumentElement();			
+			rootRdf =  DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(stream).getDocumentElement();			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -104,40 +108,40 @@ public class Map extends Controller{
 	}
 	
 	public static Result getTreesMontpellierJSON() {
-		String path = "./data/arbresinter.rdf";
-		
-		return ok(rdfXmlToGeoJson(new File(path)));
+		String path = "public/rdf/arbresinter.rdf";
+
+		return ok(rdfXmlToGeoJson(Play.application().resourceAsStream(path)));
 	}
 	
 	public static Result getGardensMontpellierJSON() {
-		String path = "./data/jardins.rdf";
+		String path = "public/rdf/jardins.rdf";
 		
-		return ok(rdfXmlToGeoJson(new File(path)));
+		return ok(rdfXmlToGeoJson(Play.application().resourceAsStream(path)));
 	}
 
 	public static Result getPublicPlacesMontpellierJSON() {
-		String path = "./data/lieuxPublics.rdf";
+		String path = "public/rdf/lieuxPublics.rdf";
 
-		return ok(rdfXmlToGeoJson(new File(path)));
+		return ok(rdfXmlToGeoJson(Play.application().resourceAsStream(path)));
 	}
 	
 	
 	public static Result getFoutainsMontpellierJSON() {
-		String path = "./data/fontaines.rdf";
+		String path = "public/rdf/fontaines.rdf";
 
-		return ok(rdfXmlToGeoJson(new File(path)));
+		return ok(rdfXmlToGeoJson(Play.application().resourceAsStream(path)));
 	}
 	
 	public static Result getGreenSpacesMontpellierJSON() {
-		String path = "./data/espacesVerts.rdf";
+		String path = "public/rdf/espacesVerts.rdf";
 
-		return ok(rdfXmlToGeoJson(new File(path)));
+		return ok(rdfXmlToGeoJson(Play.application().resourceAsStream(path)));
 	}
 	
 	public static Result getMonumentsMontpellierJSON() {
-		String path = "./data/dbpedia-monuments.rdf";
-
-		return ok(rdfXmlToGeoJson(new File(path)));
+		String path = "public/rdf/dbpedia-monuments.rdf";
+		
+		return ok(rdfXmlToGeoJson(Play.application().resourceAsStream(path)));
 	}
 	
 	
