@@ -73,3 +73,6 @@ GET		/poi/gardens				controllers.Map.getGardensMontpellierJSON()
 GET 	/poi/greenspaces			controllers.Map.getGreenSpacesMontpellierJSON()
 GET 	/poi/monuments				controllers.Map.getMonumentsMontpellierJSON()
 GET		/routing					controllers.Map.routing()
+
+# User
+GET		/adm/users					controllers.AdmUsers.logout()

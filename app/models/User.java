@@ -1,13 +1,22 @@
 package models;
 
+import global.Sesame;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
+import org.openrdf.query.MalformedQueryException;
+import org.openrdf.query.QueryEvaluationException;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.repository.object.ObjectQuery;
 import org.openrdf.repository.object.RDFObject;
 
 @Iri(NS.USER + "User")
@@ -89,5 +98,21 @@ public class User implements RDFObject {
 	@Override
 	public Resource getResource() {
 		return null;
+	}
+	
+	public static List<User> getAll() {
+		return getAll("loginName");
+	}
+	public static List<User> getAll(String orderBy) {
+		List<User> users = new ArrayList<User>();
+		try {
+			ObjectConnection oc = Sesame.getObjectConnection();
+			ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX + 
+				"SELECT ?user WHERE { ?user gngm:"+orderBy+" ?orderBy } ORDER BY ASC(?orderBy)");
+			users = query.evaluate(User.class).asList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return users;
 	}
 }
