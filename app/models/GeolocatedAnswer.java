@@ -22,4 +22,14 @@ public class GeolocatedAnswer extends Answer {
 		super.reset();
 		this.setPosition(null);
 	}
+	
+	@Override
+	public boolean isCorrect(String answer) {
+		Point p = Point.createFrom(answer);
+		if (p == null) {
+			return false;
+		}
+		
+		return p.in(getPosition());
+	}
 }

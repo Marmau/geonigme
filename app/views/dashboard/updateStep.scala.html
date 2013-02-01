@@ -1,6 +1,6 @@
 @(step: models.Step, formStep: Form[forms.Step])
 
-@mainDashboard("Modifier une étape", "step") {
+@mainDashboard("Modifier une étape", "dashboard/step") {
 	<ul class="breadcrumb">
 		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
 		<li><a href="#"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>

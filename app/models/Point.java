@@ -39,13 +39,37 @@ public class Point {
 	}
 
 	public static Point createFrom(String point) {
-		Point result = new Point();
-		result.fillFrom(point);
+		try {
+			Point result = new Point();
+			result.fillFrom(point);
 
-		return result;
+			return result;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public float distanceTo(Point p) {
+		double earthRadius = 3958.75;
+		double dLat = Math.toRadians(p.getLat() - getLat());
+		double dLng = Math.toRadians(p.getLng() - getLng());
+		
+		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(getLat()))
+				* Math.cos(Math.toRadians(p.getLat())) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+		
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		double distance = earthRadius * c;
+
+		int meterConversion = 1609;
+
+		return new Float(distance * meterConversion).floatValue();
 	}
 
 	public String toTemplateString() {
 		return Float.toString(getLat()) + "," + Float.toString(getLng());
+	}
+
+	public boolean in(Position position) {
+		return position.distanceTo(this) < position.getAccuracy();
 	}
 }

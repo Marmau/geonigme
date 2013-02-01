@@ -27,14 +27,15 @@ import play.mvc.*;
 public class User extends Controller {
 
 	static String userSessionKey = "user";
-	
+
 	public static Result logout() {
 		session().remove(userSessionKey);
-		
+
 		return redirect(routes.Application.index());
 	}
 
-	public static Result submitLoginForm() throws DatatypeConfigurationException, RepositoryException, QueryEvaluationException, MalformedQueryException {
+	public static Result submitLoginForm() throws DatatypeConfigurationException, RepositoryException,
+			QueryEvaluationException, MalformedQueryException {
 		Form<forms.Login> formLogin = form(forms.Login.class).bindFromRequest();
 
 		if (formLogin.hasErrors()) {
@@ -43,30 +44,31 @@ public class User extends Controller {
 			ObjectConnection oc = Sesame.getObjectConnection();
 
 			forms.Login form = formLogin.get();
-			
+
 			String uid = form.login.toLowerCase();
 			models.User user = oc.getObject(models.User.class, models.User.URI + uid);
-			
+
 			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
 			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+
 			user.setLastLoginTime(now);
-			
+
 			oc.addObject(user.getResource(), user);
-			
+
 			session(userSessionKey, user.getId());
-			
+
 			return redirect(routes.Manager.dashboard());
 		}
 	}
-	
+
 	public static Result submitRegisterForm() throws RepositoryException, DatatypeConfigurationException {
-		Form<forms.Register> formRegister= form(forms.Register.class).bindFromRequest();
-		
+		Form<forms.Register> formRegister = form(forms.Register.class).bindFromRequest();
+
 		if (formRegister.hasErrors()) {
 			return badRequest(views.html.global.login.render(form(Login.class), formRegister));
 		} else {
 			ObjectConnection oc = Sesame.getObjectConnection();
-			
+
 			forms.Register form = formRegister.get();
 			models.User newUser = new models.User();
 			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
@@ -79,26 +81,25 @@ public class User extends Controller {
 
 			String uid = newUser.getLoginName().toLowerCase();
 			oc.addObject(models.User.URI + uid, newUser);
-			
+
 			session(userSessionKey, uid);
-			
+
 			return redirect(routes.Manager.dashboard());
 		}
 	}
-	
-	
+
 	public static boolean isLogged() {
 		return getLoggedUser() != null;
 	}
-	
+
 	public static models.User getLoggedUser() {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		String uid = session(userSessionKey);
-		
+
 		if (uid == null) {
 			return null;
 		}
-		
+
 		try {
 			return oc.getObject(models.User.class, models.User.URI + uid);
 		} catch (RepositoryException | QueryEvaluationException e) {
@@ -116,7 +117,7 @@ public class User extends Controller {
 
 		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
-	
+
 	public static Result showRDF(String uid, String format) {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		StringWriter strw = new StringWriter();

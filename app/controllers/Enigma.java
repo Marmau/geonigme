@@ -1,5 +1,7 @@
 package controllers;
 
+import global.Sesame;
+
 import java.io.StringWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,8 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-
-import global.Sesame;
 
 import models.Answer;
 import models.Clue;
@@ -21,7 +21,8 @@ import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.rio.RDFWriter;
 
 import play.data.Form;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 public class Enigma extends Controller {
 

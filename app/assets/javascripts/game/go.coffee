@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers, Icons) ->
+require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers, Icons) ->
 
 	containerMap = $('#go-map')
 	containerMap.height(containerMap.width() / 2)
@@ -76,9 +76,12 @@ require ['maps/base_map', 'maps/helpers', 'maps/icons', 'leaflet'], (BaseMap, He
 			writeTransport(data.routes)
 
 
-	Helpers.getCurrentPosition (startPosition) ->
-		if not startPosition
+	# Calcule l'itineraire en fonction de la position actuelle
+	Helpers.getCurrentPosition (position) ->
+		if not position
 			return
+
+		startPosition = new L.LatLng(position.coords.latitude, position.coords.longitude)
 
 		targetPosition = Helpers.stringPositionToLatLng(containerMap.data('target'))
 		targetAccuracy = containerMap.data('target-accuracy')
@@ -104,3 +107,29 @@ require ['maps/base_map', 'maps/helpers', 'maps/icons', 'leaflet'], (BaseMap, He
 
 		drawTransport(startPosition, targetPosition)
 
+	# Surveille la position de l'utilisateur pour lui proposer de nouvelles actions
+	watchId = Helpers.watchPosition (position) ->
+		if not position
+			return
+
+		targetPosition = Helpers.stringPositionToLatLng(containerMap.data('target'))
+		targetAccuracy = containerMap.data('target-accuracy')
+		currentPosition = new L.LatLng(position.coords.latitude, position.coords.longitude)
+
+		if targetPosition.distanceTo(currentPosition) < targetAccuracy
+			$('#im-there').hide()
+			$('#info-not-here').hide()
+			$('#play-step-disabled').hide()
+			$('#play-step').css('display', 'inline-block')
+		else
+			$('#im-there').show()
+			$('#play-step-disabled').show()
+			$('#play-step').hide()
+
+	$('#im-there').click ->
+		if confirm('Êtes-vous sûr de vous ?') 
+			Helpers.clearWatchPosition()
+			$('#im-there').hide()
+			$('#info-not-here').hide()
+			$('#play-step-disabled').hide()
+			$('#play-step').css('display', 'inline-block')

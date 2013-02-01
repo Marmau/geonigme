@@ -61,6 +61,10 @@ textarea {
 
 .actions {
     overflow: hidden;
+
+    * {
+        margin-bottom: 3px;
+    }
 }
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
@@ -154,36 +158,38 @@ input[type="text"], textarea {
     text-shadow: none;
     text-transform: uppercase;
 
-    &.inverse {
-        background: @colorClearBlue;
-        color: white;
-    }
-
-    &:hover, &.active {
-        color: white;
-        background: @colorClearBlue;
-    }
-
-    &:active, &:focus, &.active{
-        .box-shadow(none);
-        background: @colorClearBlue;
-        color: white;
-    }
-
-    &.btn-danger {
-        color: @colorRed;
-        border-color: @colorRed;
+    &:not(.disabled) {
+        &.inverse {
+            background: @colorClearBlue;
+            color: white;
+        }
 
         &:hover, &.active {
-            background: @colorRed;
+            color: white;
+            background: @colorClearBlue;
+        }
+
+        &:active, &:focus, &.active {
+            .box-shadow(none);
+            background: @colorClearBlue;
             color: white;
         }
 
-        &:active, &:focus, &.active{
-            background: @colorRed;
-            color: white;
+        &.btn-danger {
+            color: @colorRed;
+            border-color: @colorRed;
+
+            &:hover, &.active {
+                background: @colorRed;
+                color: white;
+            }
+
+            &:active, &:focus, &.active{
+                background: @colorRed;
+                color: white;
+            }
         }
-    }
+    }   
 }
 
 .form-actions {

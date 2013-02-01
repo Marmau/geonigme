@@ -1,5 +1,8 @@
 package models;
 
+import global.Levenshtein;
+import global.StringUtils;
+
 import java.util.Set;
 
 import org.openrdf.annotations.Iri;
@@ -23,5 +26,20 @@ public class TextAnswer extends Answer {
 	public void reset() {
 		super.reset();
 		this.setLabels(null);
+	}
+
+	@Override
+	public boolean isCorrect(String answer) {
+		answer = StringUtils.removeAccents(answer).toLowerCase();
+		
+		for (String label : getLabels()) {
+			label = StringUtils.removeAccents(label).toLowerCase();
+
+			if (Levenshtein.computeLevenshteinDistance(answer, label) < label.length() / 4) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

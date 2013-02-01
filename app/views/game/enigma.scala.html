@@ -1,9 +1,75 @@
-@(enigma: models.Enigma)
+@(enigma: models.Enigma, clues: List[models.Clue])
 
 
 @import helpers._
 @import models._
 
-@mainGame("Jouer", "game") {
-	Go enigme!!
+
+@createCheckAnswerButton(answer: Answer) = {
+	@if(answer.isInstanceOf[TextAnswer]) {
+		<button class="btn" id="check-answer" data-type-answer="text">Vérifiez votre réponse</button>
+	} else {
+		<button class="btn" id="check-answer" data-type-answer="geolocated">Vérifiez votre réponse</button>
+	}
+}
+
+@mainGame("Jouer", "game/enigma") {
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="@routes.Game.home()">Liste des chasses</a></li>
+			<li><a href="@routes.Game.playHunt(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
+			<li><a href="@routes.Game.playHunt(enigma.getStep().getId())">&Eacute;tape @enigma.getStep().getNumber()</a></li>
+			<li><a>&Eacute;nigme @enigma.getNumber()</a></li>
+		</ul>
+	</nav>
+
+	<div class="row-fluid">
+		<div class="span12">
+			<blockquote>
+				@enigma.getDescription()
+			</blockquote>
+
+			<div class="form-horizontal" data-check-action="@routes.Game.checkAnswer()" id="form-check-answer">
+				@if(enigma.getAnswer().isInstanceOf[models.TextAnswer]) {
+					<div class="control-group">
+						<label class="control-label" for="answer-text">Votre réponse</label>
+						<div class="controls">
+							<input class="span12" type="text" id="answer-text" name="text" value="" />
+						</div>
+					</div>
+				} else {
+					<blockquote>Vous devez vous rendre à l'emplacement que vous indique l'énigme. Une fois que vous pensez être au bon endroit, vérifiez votre réponse !</blockquote>
+				}
+				
+				<div class="actions">
+					@createCheckAnswerButton(enigma.getAnswer())
+				</div>
+
+				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
+					@for(clue <- clues) {
+						<li class="clue">@clue.getDescription()</li>
+					}
+				</ul>
+
+				<div id="template-clue" class="hide">
+					<li class="clue">__description__</li>
+				</div>
+
+				@if(clues.isEmpty()) {
+					<p id="no-clues">Vous n'avez pas affiché d'indices pour le moment</p>
+				}
+
+				@if(clues.size() < enigma.getClues().size()) {
+					<button id="next-clue" class="btn" data-next-clue="@routes.Game.nextClue()">Afficher un nouvel indice</button>
+				}
+
+				<div class="actions">
+					<button id="skip-enigma" data-url="@routes.Game.skipEnigma()" class="btn btn-danger">Passer</button>
+					<p id="info-pass" class="danger">Vous n'arrivez pas à résoudre l'énigme ? Passez...</p>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
 }

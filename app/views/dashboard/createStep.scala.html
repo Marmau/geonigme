@@ -1,6 +1,6 @@
 @(hunt: models.Hunt, formStep: Form[forms.Step])
 
-@mainDashboard("Nouvelle étape", "step") {
+@mainDashboard("Nouvelle étape", "dashboard/step") {
 	<ul class="breadcrumb">
 		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
 		<li><a href="#"><span class="hunt-name">@hunt.getLabel()</span></a></li>

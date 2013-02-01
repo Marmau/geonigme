@@ -1,0 +1,1243 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+rdf:type a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:range rdfs:Class ;
+	rdfs:subPropertyOf rdf:type .
+
+rdf:Property a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdf:Property , rdfs:Resource .
+
+rdf:subject a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:Statement ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdf:subject .
+
+rdf:predicate a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:Statement ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdf:predicate .
+
+rdf:object a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:Statement ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdf:object .
+
+rdf:first a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:List ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdf:first .
+
+rdf:rest a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:List ;
+	rdfs:range rdf:List ;
+	rdfs:subPropertyOf rdf:rest .
+
+rdf:value a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdf:value .
+
+rdf:nil a rdf:List , rdfs:Resource .
+
+rdf:List a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdf:List , rdfs:Resource .
+
+rdfs:domain a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:Property ;
+	rdfs:range rdfs:Class ;
+	rdfs:subPropertyOf rdfs:domain .
+
+rdfs:Resource a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource .
+
+rdfs:range a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:Property ;
+	rdfs:range rdfs:Class ;
+	rdfs:subPropertyOf rdfs:range .
+
+rdfs:subPropertyOf a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdf:Property ;
+	rdfs:range rdf:Property ;
+	rdfs:subPropertyOf rdfs:subPropertyOf .
+
+rdfs:subClassOf a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Class ;
+	rdfs:range rdfs:Class ;
+	rdfs:subPropertyOf rdfs:subClassOf .
+
+rdfs:Class a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdfs:Class .
+
+rdf:Statement a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdf:Statement .
+
+rdfs:member a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdfs:member .
+
+rdfs:seeAlso a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdfs:seeAlso .
+
+rdfs:isDefinedBy a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:range rdfs:Resource ;
+	rdfs:subPropertyOf rdfs:seeAlso , rdfs:isDefinedBy .
+
+rdfs:comment a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:range rdfs:Literal ;
+	rdfs:subPropertyOf rdfs:comment .
+
+rdfs:label a rdf:Property , rdfs:Resource ;
+	rdfs:domain rdfs:Resource ;
+	rdfs:range rdfs:Literal ;
+	rdfs:subPropertyOf rdfs:label .
+
+rdfs:Literal a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdfs:Literal .
+
+rdf:Alt a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdf:Alt , rdfs:Container .
+
+rdfs:Container a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdfs:Container .
+
+rdf:Bag a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdfs:Container , rdf:Bag .
+
+rdf:Seq a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdfs:Container , rdf:Seq .
+
+rdfs:ContainerMembershipProperty a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdf:Property , rdfs:Resource , rdfs:ContainerMembershipProperty .
+
+rdf:XMLLiteral a rdfs:Resource , rdfs:Class , rdfs:Datatype ;
+	rdfs:subClassOf rdfs:Resource , rdfs:Literal , rdf:XMLLiteral .
+
+rdfs:Datatype a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , rdfs:Class , rdfs:Datatype .
+
+<http://geonigme.fr/user/zivesleretour> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-14T22:31:02.743Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "zivesLeRetour" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "oOo@yopmail.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-14T22:23:23.931Z"^^xsd:dateTime .
+
+<http://schemas.talis.com/2005/user/schema#User> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> .
+
+<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://schemas.talis.com/2005/user/schema#passwordSha1Hash> .
+
+<http://schemas.talis.com/2005/user/schema#lastLoginTime> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://schemas.talis.com/2005/user/schema#lastLoginTime> .
+
+<http://schemas.talis.com/2005/user/schema#loginName> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://schemas.talis.com/2005/user/schema#loginName> .
+
+<http://schemas.talis.com/2005/user/schema#mail> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://schemas.talis.com/2005/user/schema#mail> .
+
+<http://schemas.talis.com/2005/user/schema#inscriptionDate> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://schemas.talis.com/2005/user/schema#inscriptionDate> .
+
+<http://geonigme.fr/tag/idees> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "idees" .
+
+<http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> .
+
+<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> .
+
+<http://geonigme.fr/tag/sans> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "sans" .
+
+<http://geonigme.fr/tag/chasse> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "chasse" .
+
+<http://geonigme.fr/hunt/9739d113-70fa-4584-83de-942e58f87509> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "je pourrie la base" ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> <http://geonigme.fr/tag/idees> , <http://geonigme.fr/tag/sans> , <http://geonigme.fr/tag/chasse> ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-14T22:24:15.620Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> "une chasse sans intéret" ;
+	<http://geonigme.fr/rdf/ontology#level> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx1 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-14T22:24:15.620Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/zivesleretour> .
+
+<http://geonigme.fr/rdf/ontology#Hunt> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> .
+
+<http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> .
+
+<http://geonigme.fr/rdf/ontology#modifiedAt> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#modifiedAt> .
+
+<http://geonigme.fr/rdf/ontology#description> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#description> .
+
+<http://geonigme.fr/rdf/ontology#level> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#level> .
+
+_:node17gbn4pjsx1 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx2 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx3 .
+
+<http://geonigme.fr/rdf/ontology#Area> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> .
+
+_:node17gbn4pjsx2 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.6"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.851"^^xsd:float .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#Point> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://www.w3.org/2003/01/geo/wgs84_pos#lat> .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://www.w3.org/2003/01/geo/wgs84_pos#long> .
+
+<http://geonigme.fr/rdf/ontology#firstPoint> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#firstPoint> .
+
+_:node17gbn4pjsx3 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.622"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.896"^^xsd:float .
+
+<http://geonigme.fr/rdf/ontology#secondPoint> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#secondPoint> .
+
+<http://geonigme.fr/rdf/ontology#area> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#area> .
+
+<http://geonigme.fr/rdf/ontology#createdAt> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#createdAt> .
+
+<http://geonigme.fr/rdf/ontology#createdBy> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#createdBy> .
+
+<http://geonigme.fr/step/f6b74c04-5aea-469f-9e2a-a66794abaf86> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Ca n'a pas changé :D" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx4 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/9739d113-70fa-4584-83de-942e58f87509> .
+
+<http://geonigme.fr/rdf/ontology#Step> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> .
+
+<http://geonigme.fr/rdf/ontology#number> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#number> .
+
+_:node17gbn4pjsx4 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.611"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8735"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "1214.0"^^xsd:float .
+
+<http://geonigme.fr/rdf/ontology#Position> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> .
+
+<http://geonigme.fr/rdf/ontology#accuracy> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#accuracy> .
+
+<http://geonigme.fr/rdf/ontology#position> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#position> .
+
+<http://geonigme.fr/rdf/ontology#stepOfHunt> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#stepOfHunt> .
+
+<http://geonigme.fr/enigma/66347a0e-3f2b-4db6-b32c-87c85a98f37f> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Blabla j'ai vraiment pas d'imagination" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/f6b74c04-5aea-469f-9e2a-a66794abaf86> .
+
+<http://geonigme.fr/rdf/ontology#Enigma> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> .
+
+<http://geonigme.fr/rdf/ontology#enigmaOfStep> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#enigmaOfStep> .
+
+<http://geonigme.fr/clue/9acdfc6a-fe6b-4c74-8eb8-6a555eb86ab6> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "comme ya pas d’énoncé ya pas de réponses" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/66347a0e-3f2b-4db6-b32c-87c85a98f37f> .
+
+<http://geonigme.fr/rdf/ontology#TextClue> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> .
+
+<http://geonigme.fr/rdf/ontology#clueOfEnigma> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#clueOfEnigma> .
+
+<http://geonigme.fr/answer/50b29f61-f627-47b4-b965-b487a98905ef> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx5 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/66347a0e-3f2b-4db6-b32c-87c85a98f37f> .
+
+<http://geonigme.fr/rdf/ontology#GeolocatedAnswer> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> .
+
+<http://geonigme.fr/rdf/ontology#answerOfEnigma> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#answerOfEnigma> .
+
+_:node17gbn4pjsx5 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.611"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8735"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "153.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "" .
+
+<http://geonigme.fr/rdf/ontology#place> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#place> .
+
+<http://geonigme.fr/user/lapinette> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "24fd0c3ee6c08f52871084f595400a46186284b3493256330f71460d6708b4fc" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-24T13:20:19.332Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "Lapinette" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "audr.schneider@gmail.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-22T16:25:51.861Z"^^xsd:dateTime .
+
+<http://geonigme.fr/hunt/ea8c8243-687a-43fc-ae3c-b605831312c7> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "La place de la Comédie " ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-22T16:27:29.003Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> "Une petite chasse qui vous fera (re)découvrir le centre pièton de Montpellier : la place de la Comédie !" ;
+	<http://geonigme.fr/rdf/ontology#level> "0"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx6 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-22T16:27:29.003Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/lapinette> .
+
+_:node17gbn4pjsx6 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx7 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx8 .
+
+_:node17gbn4pjsx7 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.606827"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8774872"^^xsd:float .
+
+_:node17gbn4pjsx8 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.610165"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8826585"^^xsd:float .
+
+<http://geonigme.fr/step/fa4d967a-b826-4538-88f5-0f66694525f2> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Départ de la chasse" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx9 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/ea8c8243-687a-43fc-ae3c-b605831312c7> .
+
+_:node17gbn4pjsx9 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.607697"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.879"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "29.0"^^xsd:float .
+
+<http://geonigme.fr/enigma/80bfd853-1fdb-4946-b1c2-f6fdded171e0> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "\"Beurre doux extra fin : goûté et approuvé par le petit chaperon rouge !\"" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/fa4d967a-b826-4538-88f5-0f66694525f2> .
+
+<http://geonigme.fr/clue/13b587e1-b7e2-43ff-9c06-783c6fd463ba> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> .
+
+<http://geonigme.fr/clue/c7e65558-0759-4f49-8deb-e8b8e14dc8c5> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> .
+
+<http://geonigme.fr/answer/c5dfb096-f788-4753-b674-fab2b99bceb4> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextAnswer> .
+
+<http://geonigme.fr/rdf/ontology#TextAnswer> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextAnswer> .
+
+<http://geonigme.fr/clue/cec74e44-298a-4e5f-a2bc-3b1502612966> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> .
+
+<http://geonigme.fr/answer/c9241c33-6da0-44ae-96c5-f124a191440e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextAnswer> .
+
+<http://geonigme.fr/clue/3bcaad9b-5953-4767-bae5-c55be1415272> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Lafayette est mon copain !" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/80bfd853-1fdb-4946-b1c2-f6fdded171e0> .
+
+<http://geonigme.fr/clue/e70689a5-eff3-4b0a-a01c-e97c9414f01f> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Je me cache derrière les chevaux !" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/80bfd853-1fdb-4946-b1c2-f6fdded171e0> .
+
+<http://geonigme.fr/clue/a1a618b9-9d45-4f04-89e4-07f310c1d6b6> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "N'oubliez pas ma carte de fidélité ! ;) " ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/80bfd853-1fdb-4946-b1c2-f6fdded171e0> .
+
+<http://geonigme.fr/answer/66c5db0a-fa0a-4037-8ea8-72b6800cc62f> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextAnswer> ;
+	rdfs:label "Monoprix" , "Monop" ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/80bfd853-1fdb-4946-b1c2-f6fdded171e0> .
+
+<http://geonigme.fr/user/gribouhi> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "4c3e8c14365c095af1be3fdcd173bdce3e10bacda51f688ec3d54e7f172f768b" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-22T16:51:03.703Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "gribouhi" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "marc.maury@gmail.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-22T16:51:03.703Z"^^xsd:dateTime .
+
+<http://geonigme.fr/enigma/3fc52f4b-71c2-489c-a5fd-6a5f2c763f44> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Un petit creux ? En mer !" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/fa4d967a-b826-4538-88f5-0f66694525f2> .
+
+<http://geonigme.fr/clue/1c62b2a9-a8f5-4804-9da7-51da76b31b49> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#FileClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Drapeau japonais" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/3fc52f4b-71c2-489c-a5fd-6a5f2c763f44> ;
+	<http://geonigme.fr/rdf/ontology#file> "http://drapeaux.hallwallpaper.fr/images/drapeau_japon/7.jpg"^^xsd:anyURI .
+
+<http://geonigme.fr/rdf/ontology#FileClue> a rdfs:Resource , rdfs:Class ;
+	rdfs:subClassOf rdfs:Resource , <http://geonigme.fr/rdf/ontology#FileClue> .
+
+<http://geonigme.fr/rdf/ontology#file> a rdf:Property , rdfs:Resource ;
+	rdfs:subPropertyOf <http://geonigme.fr/rdf/ontology#file> .
+
+<http://geonigme.fr/answer/e78b1a02-1128-432f-8896-5c1d2b133205> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx10 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/3fc52f4b-71c2-489c-a5fd-6a5f2c763f44> .
+
+_:node17gbn4pjsx10 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.607174"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8805718"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Sushi boat" .
+
+<http://geonigme.fr/user/hugobosscool26> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "451a8c42f5999cb4023ed50e8ec7c7e96785ee16d3d5c03f927ce8a21454b8de" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-23T17:01:05.696Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "hugobosscool26" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "hugobosscool26@msn.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-23T17:01:05.696Z"^^xsd:dateTime .
+
+<http://geonigme.fr/user/cartman34> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "3063b8c0cdca71af578dcd6942990ba148830a07be3aaf88d52db7f242360150" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-24T09:49:56.908Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "Cartman34" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "cartman34@cartman34.fr" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-23T21:43:34.306Z"^^xsd:dateTime .
+
+<http://geonigme.fr/tag/montpellier> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "montpellier" .
+
+<http://geonigme.fr/tag/test> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "test" .
+
+<http://geonigme.fr/hunt/2a357ebd-b652-476f-8766-a1db44c7a6b9> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "La grande chasse du centre ville !" ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> <http://geonigme.fr/tag/montpellier> , <http://geonigme.fr/tag/louis+blanc> , <http://geonigme.fr/tag/restaurant> , <http://geonigme.fr/tag/centre> ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-24T10:21:55.132Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> "Visitez les différents quartiers du centre ville et goûtez à la cuisine locale." ;
+	<http://geonigme.fr/rdf/ontology#level> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx30 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-24T10:21:55.132Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/cartman34> .
+
+_:node17gbn4pjsx11 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx12 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx13 .
+
+_:node17gbn4pjsx12 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.6"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.851"^^xsd:float .
+
+_:node17gbn4pjsx13 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.622"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.896"^^xsd:float .
+
+<http://geonigme.fr/step/e1da1dcd-583d-43b4-b6d6-074a90fdd948> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Restaus and Co" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx14 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/2a357ebd-b652-476f-8766-a1db44c7a6b9> .
+
+_:node17gbn4pjsx14 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.609"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8741612"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "153.0"^^xsd:float .
+
+<http://geonigme.fr/enigma/677208f3-81d7-4de1-808b-f1c999b1e074> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Le restaurant pour les \"amoureux\" de la pizza." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/e1da1dcd-583d-43b4-b6d6-074a90fdd948> .
+
+<http://geonigme.fr/clue/cc651d93-3b5e-40b6-8ffc-49dfd5dca421> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "C'est un saint !" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/677208f3-81d7-4de1-808b-f1c999b1e074> .
+
+<http://geonigme.fr/clue/3581e317-7649-4320-aa88-3f8dc4d3a12e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Ils font des pizzas !" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/677208f3-81d7-4de1-808b-f1c999b1e074> .
+
+<http://geonigme.fr/answer/5bea8f24-e29e-4122-8cd3-4c8963eb1571> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx15 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/677208f3-81d7-4de1-808b-f1c999b1e074> .
+
+_:node17gbn4pjsx15 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.608383"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8738017"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Pizza Valentino" .
+
+<http://geonigme.fr/enigma/946d4359-ca90-40dc-b9ea-6ed19301e7cc> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Ce n'est pas mon frère mais on y boit du bon café." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/e1da1dcd-583d-43b4-b6d6-074a90fdd948> .
+
+<http://geonigme.fr/clue/6c04f797-b9b5-4ed6-95fd-7403ba4e1f66> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Oui oui, j'ai une soeur." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/946d4359-ca90-40dc-b9ea-6ed19301e7cc> .
+
+<http://geonigme.fr/answer/e735c5ab-06f3-4d59-8b25-26693787310e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx16 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/946d4359-ca90-40dc-b9ea-6ed19301e7cc> .
+
+_:node17gbn4pjsx16 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.60916"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8757758"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Sister's café" .
+
+<http://geonigme.fr/enigma/1f934f50-5fe2-4ad3-a483-07077298c649> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "On l'appelle aussi le \"jaune\" !" ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/e1da1dcd-583d-43b4-b6d6-074a90fdd948> .
+
+<http://geonigme.fr/clue/b9711c9d-3646-4ec7-9fcb-300003cb835d> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "On l'aime frais." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/1f934f50-5fe2-4ad3-a483-07077298c649> .
+
+<http://geonigme.fr/clue/d8964e66-d03f-47a2-b0fd-63de3ff49ff3> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Et pourtant y'a une église pas loin." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/1f934f50-5fe2-4ad3-a483-07077298c649> .
+
+<http://geonigme.fr/answer/606ef9e4-3fec-4592-8f9c-912a0c2dd36b> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx17 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/1f934f50-5fe2-4ad3-a483-07077298c649> .
+
+_:node17gbn4pjsx17 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.610012"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.873818"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Le Pastis" .
+
+<http://geonigme.fr/enigma/e6f4ca95-fba9-4c52-9b6f-96969c109163> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Pour le coup, elle, on l'aime bien rouge." ;
+	<http://geonigme.fr/rdf/ontology#number> "4"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/e1da1dcd-583d-43b4-b6d6-074a90fdd948> .
+
+<http://geonigme.fr/clue/87acfdab-4be1-4dd9-a58d-29ec9e5beacd> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "C'est un légume...et un restaurant." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/e6f4ca95-fba9-4c52-9b6f-96969c109163> .
+
+<http://geonigme.fr/answer/0635049e-1da5-453c-a7a2-20c5840f0d74> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx18 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/e6f4ca95-fba9-4c52-9b6f-96969c109163> .
+
+_:node17gbn4pjsx18 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.60806"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8748424"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "La Tomate" .
+
+<http://geonigme.fr/enigma/05787344-a69f-4c69-b6d5-f4a9bc98f13e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "A toute période de l'année, on peut y boire un coup." ;
+	<http://geonigme.fr/rdf/ontology#number> "5"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/e1da1dcd-583d-43b4-b6d6-074a90fdd948> .
+
+<http://geonigme.fr/clue/5929a301-2cbc-4cc0-afc2-4cbea3b7cd53> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Il y a 4 de ces périodes par an." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/05787344-a69f-4c69-b6d5-f4a9bc98f13e> .
+
+<http://geonigme.fr/clue/fb2b7e3e-2110-4caf-8f5d-c4979a554588> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Il est plus proche du tram que les précédentes énigmes..." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/05787344-a69f-4c69-b6d5-f4a9bc98f13e> .
+
+<http://geonigme.fr/answer/a11136c7-d21a-41bd-9267-dbbb7319932e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx19 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/05787344-a69f-4c69-b6d5-f4a9bc98f13e> .
+
+_:node17gbn4pjsx19 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.608494"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8729596"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Bar des 4 saisons" .
+
+_:node17gbn4pjsx20 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx21 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx22 .
+
+_:node17gbn4pjsx21 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.604572"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.870449"^^xsd:float .
+
+_:node17gbn4pjsx22 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61663"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8864136"^^xsd:float .
+
+_:node17gbn4pjsx23 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx24 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx25 .
+
+_:node17gbn4pjsx24 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.604572"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.870449"^^xsd:float .
+
+_:node17gbn4pjsx25 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61663"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8864136"^^xsd:float .
+
+<http://geonigme.fr/step/fc6980af-aaa0-4bf5-bc47-c6648ca97aa4> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Le quartier Louis Blanc du centre de Montpellier" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx26 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/2a357ebd-b652-476f-8766-a1db44c7a6b9> .
+
+_:node17gbn4pjsx26 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.614307"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8776107"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "150.0"^^xsd:float .
+
+<http://geonigme.fr/enigma/609a8889-ff0e-412b-a03d-8607a9d6d472> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "C'est une grande porte, elle n'est plus toute jeune mais elle est justement un symbole de l'histoire de Montpellier." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/fc6980af-aaa0-4bf5-bc47-c6648ca97aa4> .
+
+<http://geonigme.fr/clue/196cc0ad-94a3-4348-a86a-ffb4b6206265> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Un café à proximité porte son nom." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/609a8889-ff0e-412b-a03d-8607a9d6d472> .
+
+<http://geonigme.fr/answer/e7810472-25d6-4e21-bcce-88280176d338> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx27 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/609a8889-ff0e-412b-a03d-8607a9d6d472> .
+
+_:node17gbn4pjsx27 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.614704"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8774602"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "La Vieille Porte" .
+
+<http://geonigme.fr/enigma/a2d7f6e5-5ec2-4127-ab48-0d3231db02cf> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Les artistes y font leur comédie." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/fc6980af-aaa0-4bf5-bc47-c6648ca97aa4> .
+
+<http://geonigme.fr/clue/c6b645ba-60f1-4572-a1a8-99b6713cb7ef> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Quand ils montent sur scène, c'est pour entendre notre rire." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/a2d7f6e5-5ec2-4127-ab48-0d3231db02cf> .
+
+<http://geonigme.fr/clue/e8dc01c7-ad74-482a-830e-2b0888d2283e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Dans une petite rue derrière, il y a un parc." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/a2d7f6e5-5ec2-4127-ab48-0d3231db02cf> .
+
+<http://geonigme.fr/answer/8b6798db-2ac3-47e5-886a-d625ddd1f45e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx28 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/a2d7f6e5-5ec2-4127-ab48-0d3231db02cf> .
+
+_:node17gbn4pjsx28 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.6137"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8786352"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Théâtre La Cicrane" .
+
+<http://geonigme.fr/enigma/a8ec1469-f107-4b09-ba2a-0ea985b5644b> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "On y étudie le droit et la politique." ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/fc6980af-aaa0-4bf5-bc47-c6648ca97aa4> .
+
+<http://geonigme.fr/clue/7dd8963c-2970-4632-baf9-5f46965b5ce7> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "L'entrée semble être à l'est." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/a8ec1469-f107-4b09-ba2a-0ea985b5644b> .
+
+<http://geonigme.fr/answer/b3dd6087-0cf7-4518-b39a-9ef6507de0f2> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx29 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/a8ec1469-f107-4b09-ba2a-0ea985b5644b> .
+
+_:node17gbn4pjsx29 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61397"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8772404"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "10.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "La Faculté de Droit et de Sciences Politiques" .
+
+_:node17gbn4pjsx30 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx31 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx32 .
+
+_:node17gbn4pjsx31 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.604572"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.870449"^^xsd:float .
+
+_:node17gbn4pjsx32 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61663"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8864136"^^xsd:float .
+
+<http://geonigme.fr/tag/louis+blanc> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "louis blanc" .
+
+<http://geonigme.fr/tag/restaurant> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "restaurant" .
+
+<http://geonigme.fr/tag/centre> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "centre" .
+
+<http://geonigme.fr/user/gaétan> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "40015672ad4650043556ecfe7d2962cca2d4dae3998f7f2e08893b0afcfe0183" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-24T11:16:32.108Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "Gaétan" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "lam.gaetan@gmail.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-24T11:16:32.108Z"^^xsd:dateTime .
+
+<http://geonigme.fr/enigma/1e84a860-516f-47f1-875b-0c9e674f5b1b> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Test sur chrome" ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/fa4d967a-b826-4538-88f5-0f66694525f2> .
+
+<http://geonigme.fr/clue/721e9871-5cc3-4ddc-8be9-45320c3588a0> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Test" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/1e84a860-516f-47f1-875b-0c9e674f5b1b> .
+
+<http://geonigme.fr/answer/8f3e266e-c3a6-4078-9ad7-502d72d9df5a> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextAnswer> ;
+	rdfs:label "test" ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/1e84a860-516f-47f1-875b-0c9e674f5b1b> .
+
+<http://geonigme.fr/user/lolo> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "db76cf32ca37fccf324369de861dad0ece796fbc9f65d84241cbfea71a1a928b" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-24T21:56:42.407Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "lolo" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "laurent34azerty@hotmail.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-24T21:56:42.407Z"^^xsd:dateTime .
+
+<http://geonigme.fr/tag/centre+ville> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "centre ville" .
+
+<http://geonigme.fr/hunt/b0bb3d6f-e4df-4b3a-987c-f5405065e6c3> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "test" ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> <http://geonigme.fr/tag/centre+ville> ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-24T21:57:39.750Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> "c'est juste pour voir comment ca marche" ;
+	<http://geonigme.fr/rdf/ontology#level> "0"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx33 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-24T21:57:39.750Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/lolo> .
+
+_:node17gbn4pjsx33 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx34 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx35 .
+
+_:node17gbn4pjsx34 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.59817"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.847618"^^xsd:float .
+
+_:node17gbn4pjsx35 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.623276"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.9006615"^^xsd:float .
+
+<http://geonigme.fr/step/d1286bb5-fcc1-47c4-9f6b-41b72249a686> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "dcsc" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx36 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/b0bb3d6f-e4df-4b3a-987c-f5405065e6c3> .
+
+_:node17gbn4pjsx36 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61072"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8741398"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "69.0"^^xsd:float .
+
+<http://geonigme.fr/user/jeremie34> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "5ff8ffe0575ac643530bef9efc8254c3dbac2be8de8d639cc654f8310e2afd7e" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-29T14:46:07.295Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "jeremie34" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "valentin.jeremie@gmail.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-25T15:24:13.360Z"^^xsd:dateTime .
+
+<http://geonigme.fr/tag/histoire> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "histoire" .
+
+<http://geonigme.fr/hunt/1a8cab22-544c-4395-a9e8-e33b28a3c86b> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "Montpellier Historique" ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> <http://geonigme.fr/tag/histoire> ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-26T11:41:54.071Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> """Partez à la découverte de certains lieux historiques du centre ville. Période du XIII au XVIII siècle.
+(Zone Nord Écusson)""" ;
+	<http://geonigme.fr/rdf/ontology#level> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx51 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-26T11:41:54.071Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/jeremie34> .
+
+_:node17gbn4pjsx37 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx38 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx39 .
+
+_:node17gbn4pjsx38 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.60656"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.861909"^^xsd:float .
+
+_:node17gbn4pjsx39 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61523"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.88371"^^xsd:float .
+
+<http://geonigme.fr/step/89a0cfd8-d79e-4218-ade1-691107c05c36> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rejoignez le centre historique pour débuter." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx41 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/1a8cab22-544c-4395-a9e8-e33b28a3c86b> .
+
+_:node17gbn4pjsx40 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.610893"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8728094"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "811.0"^^xsd:float .
+
+_:node17gbn4pjsx41 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.610893"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8728094"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "811.0"^^xsd:float .
+
+<http://geonigme.fr/enigma/0bc379c3-15b2-4e05-8fe2-f63a38126f6f> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rejoignez l’ancien site de l’église du monastère Saint Benoit" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/89a0cfd8-d79e-4218-ade1-691107c05c36> .
+
+<http://geonigme.fr/clue/a82089ca-34d2-45d9-930f-d8ff104e34e9> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Deux tours en clocher trône sur la façade" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/0bc379c3-15b2-4e05-8fe2-f63a38126f6f> .
+
+<http://geonigme.fr/answer/2699ecca-6836-4283-b0a8-af4eedcd4a4e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx42 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/0bc379c3-15b2-4e05-8fe2-f63a38126f6f> .
+
+_:node17gbn4pjsx42 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61322"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8741398"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "69.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Cathédrale Saint Pierre" .
+
+<http://geonigme.fr/enigma/b671105f-bb85-4126-9e03-9d13032608e7> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Le Pape Nicolas IV leurs donna le statut officiel d’université en 1289" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/89a0cfd8-d79e-4218-ade1-691107c05c36> .
+
+<http://geonigme.fr/answer/0cbe0ec8-1732-401f-9581-94004f4f9527> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextAnswer> ;
+	rdfs:label "université de médecine" , "faculté de droit" , "faculté de médecine" , "université de droit" , "université de médecine et de droit" ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/b671105f-bb85-4126-9e03-9d13032608e7> .
+
+<http://geonigme.fr/enigma/76785817-0291-4929-8551-4a1ec1c7495a> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rendez-vous à la création qui bénéficia en 1593 à l’université de médecine." ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/89a0cfd8-d79e-4218-ade1-691107c05c36> .
+
+<http://geonigme.fr/clue/f3b04815-bfcf-456c-be7b-2a8f6e418f3c> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "guérir par les plantes" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/76785817-0291-4929-8551-4a1ec1c7495a> .
+
+<http://geonigme.fr/clue/6ee37d4a-7deb-4b7c-b600-41833dd27117> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "premier jardin de la sorte en France" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/76785817-0291-4929-8551-4a1ec1c7495a> .
+
+<http://geonigme.fr/answer/6149c351-4725-4f77-a2b1-75ac5b2f6a26> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx43 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/76785817-0291-4929-8551-4a1ec1c7495a> .
+
+_:node17gbn4pjsx43 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.613865"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8719296"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "169.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Jardin des plantes" .
+
+<http://geonigme.fr/enigma/9984a1ad-5660-44ab-9c4c-3abec4755d3d> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Il achemine l’eau depuis Saint Clément de Rivière pour alimenter les jardins de la Ville." ;
+	<http://geonigme.fr/rdf/ontology#number> "4"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/89a0cfd8-d79e-4218-ade1-691107c05c36> .
+
+<http://geonigme.fr/clue/08689046-82ed-4798-bb5a-129724ad90c4> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "inauguré le 7 décembre 1765" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/9984a1ad-5660-44ab-9c4c-3abec4755d3d> .
+
+<http://geonigme.fr/clue/2ca637f9-3af9-4e5c-a777-0148c1a8bab3> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "réalisé par Clapier et Henri Pitot" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/9984a1ad-5660-44ab-9c4c-3abec4755d3d> .
+
+<http://geonigme.fr/answer/f5a72300-010a-4615-b0e4-a00334d17c3d> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextAnswer> ;
+	rdfs:label "arceaux" , "les arceaux" , "Aqueduc des arceaux" ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/9984a1ad-5660-44ab-9c4c-3abec4755d3d> .
+
+<http://geonigme.fr/enigma/8b319aad-74b4-4363-85e4-32913188d0df> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rendez-vous dans un lieu aménagé par le père puis détruit et réaménagé par le fils." ;
+	<http://geonigme.fr/rdf/ontology#number> "5"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/89a0cfd8-d79e-4218-ade1-691107c05c36> .
+
+<http://geonigme.fr/clue/8e45c7a5-57ff-4664-9ea6-500825d95102> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> .
+
+<http://geonigme.fr/clue/cd294968-3920-4a6c-bd13-485bfd113017> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> .
+
+<http://geonigme.fr/clue/64d6a057-2b9c-4414-b9f5-c92493613646> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> .
+
+<http://geonigme.fr/answer/87b95c60-1037-4ebb-97dc-191e9fe3d2f3> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> .
+
+_:node17gbn4pjsx44 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.6113"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8701272"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "178.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Promenade du Peyrou " .
+
+_:node17gbn4pjsx45 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx46 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx47 .
+
+_:node17gbn4pjsx46 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.60656"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.861909"^^xsd:float .
+
+_:node17gbn4pjsx47 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61523"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.88371"^^xsd:float .
+
+<http://geonigme.fr/user/bob> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "b0f5aa907a53d1a8db93bcd63a7017bb0ecdf75dfa28f91d821db9e03198459e" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-26T01:12:01.132Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "Bob" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "dreadslock@hotmail.fr" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-26T01:12:01.132Z"^^xsd:dateTime .
+
+<http://geonigme.fr/hunt/a8f00197-250e-4c05-b89d-d7a3f0c847fb> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "Par curiosité..." ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-26T01:30:10.108Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> "Pour voir ce que c'est." ;
+	<http://geonigme.fr/rdf/ontology#level> "0"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx48 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-26T01:30:10.108Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/bob> .
+
+_:node17gbn4pjsx48 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx49 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx50 .
+
+_:node17gbn4pjsx49 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.605194"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8715649"^^xsd:float .
+
+_:node17gbn4pjsx50 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.614826"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8828945"^^xsd:float .
+
+_:node17gbn4pjsx51 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx52 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx53 .
+
+_:node17gbn4pjsx52 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.60656"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.861909"^^xsd:float .
+
+_:node17gbn4pjsx53 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61523"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.88371"^^xsd:float .
+
+<http://geonigme.fr/tag/parc> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "parc" .
+
+<http://geonigme.fr/tag/jardin> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "jardin" .
+
+<http://geonigme.fr/hunt/be3ee13e-aabc-4cf8-8a0a-8c922f955dce> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "Parcs & Jardins" ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> <http://geonigme.fr/tag/parc> , <http://geonigme.fr/tag/jardin> ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-26T13:31:47.650Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> "Partez à la découverte des parcs et jardins du centre ville au quartier Hôpitaux-Facultés. (Attention cette découverte implique des distances de transport importantes, particulièrement pour l'étape 2, prévoir un moyen de locomotion en plus du tramway)." ;
+	<http://geonigme.fr/rdf/ontology#level> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx67 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-26T13:31:47.650Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/jeremie34> .
+
+_:node17gbn4pjsx54 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx55 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx56 .
+
+_:node17gbn4pjsx55 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.600906"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8656425"^^xsd:float .
+
+_:node17gbn4pjsx56 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.646263"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.9003181"^^xsd:float .
+
+<http://geonigme.fr/step/3ba7c59f-2140-41fb-827c-9413e156eb4d> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rendez-vous place de la Comédie pour débuter cette première étape (1/2)." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx62 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/be3ee13e-aabc-4cf8-8a0a-8c922f955dce> .
+
+_:node17gbn4pjsx57 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.608604"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8798904"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "98.0"^^xsd:float .
+
+<http://geonigme.fr/answer/e5e0cc2d-eac4-4361-9427-2a33c1eb9482> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx58 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/8b319aad-74b4-4363-85e4-32913188d0df> .
+
+_:node17gbn4pjsx58 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.6113"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8701272"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "178.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Promenade du Peyrou " .
+
+<http://geonigme.fr/enigma/45d00a47-bd8e-4794-b499-24f5e0187f2e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rendez-vous au parc qui rend hommage à l’homme ayant grandement participé à la lutte contre le phylloxera." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/3ba7c59f-2140-41fb-827c-9413e156eb4d> .
+
+<http://geonigme.fr/clue/62323ff0-4cfa-4c45-b9e3-f7cfe70bf5ea> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Accueille la statue de Jules Émile Planchon" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/45d00a47-bd8e-4794-b499-24f5e0187f2e> .
+
+<http://geonigme.fr/clue/aed35863-4ef2-4c99-84ae-4dc9ebf398e9> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#FileClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Un ilot de calcaire recouvert de mousse  trône au centre" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/45d00a47-bd8e-4794-b499-24f5e0187f2e> ;
+	<http://geonigme.fr/rdf/ontology#file> "http://commons.wikimedia.org/wiki/File:Montpellier_-_66.jpg"^^xsd:anyURI .
+
+<http://geonigme.fr/clue/6d2113c1-e881-4322-ae57-46b14a106a56> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Face à la gare de Montpellier." ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/45d00a47-bd8e-4794-b499-24f5e0187f2e> .
+
+<http://geonigme.fr/answer/996971a1-d709-430d-986f-55d0f8212195> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx59 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/45d00a47-bd8e-4794-b499-24f5e0187f2e> .
+
+_:node17gbn4pjsx59 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.605595"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.880003"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "52.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Square Planchon" .
+
+<http://geonigme.fr/enigma/13886346-5ca4-426c-a10f-d08c2502f69d> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rejoignez le jardin dessiné par Edouard André ouvert en 1900." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/3ba7c59f-2140-41fb-827c-9413e156eb4d> .
+
+<http://geonigme.fr/clue/d440accd-6cee-40be-bac8-13382e8a06f5> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "En plein centre ville" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/13886346-5ca4-426c-a10f-d08c2502f69d> .
+
+<http://geonigme.fr/clue/9eedc34e-3b24-4bb4-851b-e9805e615c0d> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Son nom fait référence à un dieu romain" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/13886346-5ca4-426c-a10f-d08c2502f69d> .
+
+<http://geonigme.fr/answer/6593cdc1-55ad-4373-9e49-da09dbb105dd> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx60 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/13886346-5ca4-426c-a10f-d08c2502f69d> .
+
+_:node17gbn4pjsx60 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61098"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8821006"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "149.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Jardin du champ de Mars" .
+
+<http://geonigme.fr/enigma/c6880bfb-0028-4ee4-a380-395b9e8d20bd> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rendez-vous à la création qui bénéficia en 1593 à l’université de médecine." ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/3ba7c59f-2140-41fb-827c-9413e156eb4d> .
+
+<http://geonigme.fr/clue/fd9a01d6-be80-4540-9525-3fb05459ed54> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Guérir par les plantes" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/c6880bfb-0028-4ee4-a380-395b9e8d20bd> .
+
+<http://geonigme.fr/clue/08211b9a-6385-4404-8591-35dbcf724be4> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Premier jardin de la sorte en France" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/c6880bfb-0028-4ee4-a380-395b9e8d20bd> .
+
+<http://geonigme.fr/answer/76efcb91-99a6-4326-aac9-5f5d5dcd4da8> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx61 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/c6880bfb-0028-4ee4-a380-395b9e8d20bd> .
+
+_:node17gbn4pjsx61 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.61413"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.872037"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "177.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "" .
+
+_:node17gbn4pjsx62 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.608604"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8798904"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "98.0"^^xsd:float .
+
+<http://geonigme.fr/step/7efaa884-4244-4c0c-9f4b-a7ab40677a3c> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Depuis le jardin des plantes, rejoignez l’arrêt de tram Albert 1er, puis prenez le tram 1, direction Mosson, jusqu'à l’arrêt Boutonnet pour entamer l'étape 2 (2/2) de la découverte des parcs et jardins." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx63 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/be3ee13e-aabc-4cf8-8a0a-8c922f955dce> .
+
+_:node17gbn4pjsx63 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.622585"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.868271"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "109.0"^^xsd:float .
+
+<http://geonigme.fr/enigma/cf630266-42e9-4e73-accb-d2c85e9ad408> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rejoignez l’ancien parc du château Boutonnet." ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/7efaa884-4244-4c0c-9f4b-a7ab40677a3c> .
+
+<http://geonigme.fr/clue/46d5eb46-3ebc-400d-85e4-cdeba8f40c6e> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Porte le nom d’une sainte" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/cf630266-42e9-4e73-accb-d2c85e9ad408> .
+
+<http://geonigme.fr/clue/d8fd447e-d23e-40a7-9645-907dbcd80a1b> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Face à la cité universitaire Boutonnet" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/cf630266-42e9-4e73-accb-d2c85e9ad408> .
+
+<http://geonigme.fr/answer/f1c4e9b2-22a5-40dc-9377-241334691f6f> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx64 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/cf630266-42e9-4e73-accb-d2c85e9ad408> .
+
+_:node17gbn4pjsx64 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.623936"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8722622"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "99.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Parc Sainte Odile" .
+
+<http://geonigme.fr/enigma/1ab77c40-8b32-44cb-9c40-953ea7af69d2> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rejoignez l’ancienne résidence de Frédéric Bazille." ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/7efaa884-4244-4c0c-9f4b-a7ab40677a3c> .
+
+<http://geonigme.fr/clue/382c7ec6-2168-4499-b294-94e686a6c080> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "12 ha le long du Lez" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/1ab77c40-8b32-44cb-9c40-953ea7af69d2> .
+
+<http://geonigme.fr/answer/4e91d7fc-273f-4e32-aed5-24174ab9a3b2> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx65 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/1ab77c40-8b32-44cb-9c40-953ea7af69d2> .
+
+_:node17gbn4pjsx65 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.630936"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8919067"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "302.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Domaine de Méric" .
+
+<http://geonigme.fr/enigma/76a45ced-0059-48fa-8ed4-bcefce02d451> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Rejoignez un lieu légué à la Ville par Henri Lunaret en 1910." ;
+	<http://geonigme.fr/rdf/ontology#number> "3"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/7efaa884-4244-4c0c-9f4b-a7ab40677a3c> .
+
+<http://geonigme.fr/clue/02e7ae3c-86b6-4f67-8e08-d43b2f272987> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Point de rencontre des coureurs" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/76a45ced-0059-48fa-8ed4-bcefce02d451> .
+
+<http://geonigme.fr/clue/efbd2ffd-404d-4f29-a679-87700e9b1aae> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#TextClue> ;
+	<http://geonigme.fr/rdf/ontology#description> "Il fait face au zoo du Lunaret" ;
+	<http://geonigme.fr/rdf/ontology#number> "2"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#clueOfEnigma> <http://geonigme.fr/enigma/76a45ced-0059-48fa-8ed4-bcefce02d451> .
+
+<http://geonigme.fr/answer/a1502f02-32c8-4239-882e-02937167b895> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx66 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/76a45ced-0059-48fa-8ed4-bcefce02d451> .
+
+_:node17gbn4pjsx66 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.641464"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8690114"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "413.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "Bois de Montmaur" .
+
+_:node17gbn4pjsx67 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx68 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx69 .
+
+_:node17gbn4pjsx68 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.600906"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8656425"^^xsd:float .
+
+_:node17gbn4pjsx69 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.646263"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.9003181"^^xsd:float .
+
+<http://geonigme.fr/user/jmb> a rdfs:Resource , <http://schemas.talis.com/2005/user/schema#User> ;
+	<http://schemas.talis.com/2005/user/schema#passwordSha1Hash> "61e62784d4dd69832e985d24ef577d3c5cf36d92a5da7bd449a815bf30a2569c" ;
+	<http://schemas.talis.com/2005/user/schema#lastLoginTime> "2013-01-28T10:50:37.210Z"^^xsd:dateTime ;
+	<http://schemas.talis.com/2005/user/schema#loginName> "Jmb" ;
+	<http://schemas.talis.com/2005/user/schema#mail> "Jmbourgogne@gmail.com" ;
+	<http://schemas.talis.com/2005/user/schema#inscriptionDate> "2013-01-28T10:50:37.210Z"^^xsd:dateTime .
+
+<http://geonigme.fr/tag/zoo> a rdfs:Resource , <http://www.holygoat.co.uk/owl/redwood/0.1/tags/Tag> ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/name> "zoo" .
+
+<http://geonigme.fr/hunt/6eb747f0-35e5-4525-a269-d0270c72c7e6> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Hunt> ;
+	rdfs:label "Test Zoo" ;
+	<http://www.holygoat.co.uk/owl/redwood/0.1/tags/taggedWithTag> <http://geonigme.fr/tag/zoo> ;
+	<http://geonigme.fr/rdf/ontology#modifiedAt> "2013-01-29T14:24:51.686Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#description> "Rejoignez le Zoo de Montpellier pour débuter." ;
+	<http://geonigme.fr/rdf/ontology#level> "0"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#area> _:node17gbn4pjsx70 ;
+	<http://geonigme.fr/rdf/ontology#createdAt> "2013-01-29T14:24:51.686Z"^^xsd:dateTime ;
+	<http://geonigme.fr/rdf/ontology#createdBy> <http://geonigme.fr/user/jeremie34> .
+
+_:node17gbn4pjsx70 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Area> ;
+	<http://geonigme.fr/rdf/ontology#firstPoint> _:node17gbn4pjsx71 ;
+	<http://geonigme.fr/rdf/ontology#secondPoint> _:node17gbn4pjsx72 .
+
+_:node17gbn4pjsx71 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.63682"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.860836"^^xsd:float .
+
+_:node17gbn4pjsx72 a rdfs:Resource , <http://www.w3.org/2003/01/geo/wgs84_pos#Point> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.648003"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8911343"^^xsd:float .
+
+<http://geonigme.fr/step/18e3ed55-64ee-48fc-91a5-0462118daa2d> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Step> ;
+	<http://geonigme.fr/rdf/ontology#description> "Allez au Zoo de Montpellier" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx73 ;
+	<http://geonigme.fr/rdf/ontology#stepOfHunt> <http://geonigme.fr/hunt/6eb747f0-35e5-4525-a269-d0270c72c7e6> .
+
+_:node17gbn4pjsx73 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.64241"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8759851"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "1320.0"^^xsd:float .
+
+<http://geonigme.fr/enigma/fce2fd05-5824-49e5-90e7-efd978b07091> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Enigma> ;
+	<http://geonigme.fr/rdf/ontology#description> "Où sont les giraffes" ;
+	<http://geonigme.fr/rdf/ontology#number> "1"^^xsd:int ;
+	<http://geonigme.fr/rdf/ontology#enigmaOfStep> <http://geonigme.fr/step/18e3ed55-64ee-48fc-91a5-0462118daa2d> .
+
+<http://geonigme.fr/answer/d2a1bc64-af36-440c-a855-a165a07e6277> a rdfs:Resource , <http://geonigme.fr/rdf/ontology#GeolocatedAnswer> ;
+	<http://geonigme.fr/rdf/ontology#position> _:node17gbn4pjsx74 ;
+	<http://geonigme.fr/rdf/ontology#answerOfEnigma> <http://geonigme.fr/enigma/fce2fd05-5824-49e5-90e7-efd978b07091> .
+
+_:node17gbn4pjsx74 a rdfs:Resource , <http://geonigme.fr/rdf/ontology#Position> ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#lat> "43.64262"^^xsd:float ;
+	<http://www.w3.org/2003/01/geo/wgs84_pos#long> "3.8781524"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#accuracy> "178.0"^^xsd:float ;
+	<http://geonigme.fr/rdf/ontology#place> "" .

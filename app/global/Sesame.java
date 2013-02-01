@@ -40,7 +40,7 @@ public class Sesame {
 
 		// Création d'un repertoire sur disque avec gestion de l'inférence
 		Repository r = new SailRepository(new ForwardChainingRDFSInferencer(new NativeStore(new File(dir))));
-
+		
 		ObjectRepositoryFactory factory = new ObjectRepositoryFactory();
 		ObjectRepositoryConfig config = factory.getConfig();
 

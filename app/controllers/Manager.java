@@ -18,7 +18,6 @@ public class Manager extends Controller {
 		List<models.Hunt> hunts = user.getHunts();
 
 		return ok(views.html.dashboard.dashboard.render(hunts));
-
 	}
 
 }

@@ -4,6 +4,13 @@
 @import helpers._
 @import models._
 
-@mainGame("Jouer", "game") {
-	Finish!!
+@mainGame("Jouer", "game/game") {
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="@routes.Game.home()">Liste des chasses</a></li>
+			<li><a><span class="hunt-name">@hunt.getLabel()</span></a></li>
+		</ul>
+	</nav>
+	
+	<p>Bravo, vous avez terminé la chasse aux trésors ! Vous pouvez d'ores et déjà en commencer une autre !</p>
 }
