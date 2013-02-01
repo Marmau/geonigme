@@ -80,24 +80,6 @@ public class RDF extends Controller {
 		return ok(strw.toString());
 	}
 
-	public static Result hunt(String hid, String format) {
-		// ObjectConnection oc = Sesame.getObjectConnection();
-		//
-		// StringWriter strw = new StringWriter();
-		// try {
-		// GraphQueryResult gqr = oc.getObject(models.Hunt.class,
-		// models.Hunt.URI + hid).getGraph();
-		// RDFWriter writer = Sesame.getWriter(strw, format);
-		// writeRDF(writer, gqr);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// return notFound();
-		// }
-		//
-		// return ok(strw.toString());
-		return null;
-	}
-
 	public static Result ontology() {
 		response().setContentType("text/turtle");
 

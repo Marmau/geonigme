@@ -11,10 +11,9 @@ GET		/assets/*file				controllers.Assets.at(path="/public", file)
 
 # RDF
 GET		/rdf/ontology				controllers.RDF.ontology()
-GET 	/test/:hid/:format			controllers.RDF.hunt(hid: String, format: String)
-GET 	/dump						controllers.RDF.dump()
-GET		/reset						controllers.RDF.reset()
-GET		/restore					controllers.RDF.restore()
+GET 	/rdf/dump					controllers.RDF.dump()
+GET		/rdf/reset					controllers.RDF.reset()
+GET		/rdf/restore				controllers.RDF.restore()
 
 
 # Game
