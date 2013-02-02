@@ -2,9 +2,14 @@ package forms;
 
 import java.util.List;
 
+import forms.Constraints.AuthenticationToken;
+
 import play.data.validation.Constraints.Required;
 
 public class Enigma {
+	@AuthenticationToken
+	public String token;
+	
 	@Required(message = "Vous devez spécifier un énoncé à votre énigme.")
 	public String description;
 

@@ -27,10 +27,6 @@ import play.mvc.*;
 
 public class Hunt extends Controller {
 
-	public static Result reset() {
-		return ok();
-	}
-
 	public static Result create() {
 		if (!User.isLogged()) {
 			return redirect(routes.Application.index());

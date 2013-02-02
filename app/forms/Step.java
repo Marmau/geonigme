@@ -1,9 +1,13 @@
 package forms;
 
+import forms.Constraints.AuthenticationToken;
 import play.data.validation.Constraints.Required;
 
 public class Step {
 
+	@AuthenticationToken
+	public String token;
+	
 	public String description;
 
 	@Required

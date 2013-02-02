@@ -1,5 +1,6 @@
 package forms;
 
+import global.AuthenticationTokenGenerator;
 import global.Sesame;
 
 import java.lang.annotation.*;
@@ -14,7 +15,9 @@ import javax.validation.Payload;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 
+import play.api.libs.Crypto;
 import play.data.validation.Constraints.Validator;
+import play.mvc.Http.Session;
 
 public class Constraints {
 	/**
@@ -101,7 +104,6 @@ public class Constraints {
 			if (tags.trim().equals("")) {
 				return true;
 			}
-			
 
 			for (String nameTag : tags.split(",")) {
 				nameTag = nameTag.trim().toLowerCase();
@@ -133,8 +135,7 @@ public class Constraints {
 	/**
 	 * Validator for <code>@LoginExists</code> fields.
 	 */
-	public static class TrueValidator extends Validator<Boolean> implements
-			ConstraintValidator<True, Boolean> {
+	public static class TrueValidator extends Validator<Boolean> implements ConstraintValidator<True, Boolean> {
 
 		final static public String message = "error.true";
 
@@ -148,6 +149,44 @@ public class Constraints {
 		@Override
 		public boolean isValid(Boolean bool) {
 			return bool;
+		}
+	}
+
+	@Target({ FIELD })
+	@Retention(RUNTIME)
+	@Constraint(validatedBy = AuthenticationTokenValidator.class)
+	@play.data.Form.Display(name = "constraint.auth_token")
+	public @interface AuthenticationToken {
+
+		String message() default AuthenticationTokenValidator.message;
+
+		Class<?>[] groups() default {};
+
+		Class<? extends Payload>[] payload() default {};
+	}
+
+	public static class AuthenticationTokenValidator extends play.data.validation.Constraints.Validator<Object>
+			implements ConstraintValidator<AuthenticationToken, Object> {
+
+		final static public String message = "error.auth_token";
+
+		public void initialize(AuthenticationToken constraintAnnotation) {
+		}
+
+		public boolean isValid(Object signedToken) {
+			Session session = play.mvc.Http.Context.current().session();
+			String savedToken = session.get(AuthenticationTokenGenerator.AUTH_TOKEN);
+
+			System.out.println(signedToken);
+			System.out.println(savedToken);
+			if (savedToken == null || signedToken == null)
+				return false;
+
+			String signedSavedToken = Crypto.sign(savedToken.toString());
+			
+			System.out.println(signedSavedToken);
+
+			return signedToken.equals(signedSavedToken);
 		}
 	}
 }

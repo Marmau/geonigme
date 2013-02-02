@@ -2,6 +2,8 @@
 
 @import helpers._
 
+@includes.authenticationToken(formHunt("token"))
+
 <div class="control-group @displayIfError(formHunt("label"), "error")">
 	<label class="control-label" for="name-hunt">Nom</label>
 	<div class="controls">

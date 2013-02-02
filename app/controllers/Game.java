@@ -3,11 +3,14 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.NS;
+
 import org.codehaus.jackson.node.ObjectNode;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.repository.object.ObjectQuery;
 
 import global.Sesame;
 import play.data.DynamicForm;
@@ -22,7 +25,13 @@ public class Game extends Controller {
 	public static final String progressClueSessionKey = "progressClue";
 
 	public static Result home() throws MalformedQueryException, RepositoryException, QueryEvaluationException {
-		List<models.Hunt> hunts = models.Hunt.getHuntsSortedByDate();
+//		List<models.Hunt> hunts = models.Hunt.getHuntsSortedByDate();
+		
+		ObjectConnection oc = Sesame.getObjectConnection();
+		ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX + 
+				"SELECT ?hunt WHERE { ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date) LIMIT 20");
+
+		List<models.Hunt> hunts = query.evaluate(models.Hunt.class).asList();
 		
 		return ok(views.html.game.home.render(hunts));
 	}

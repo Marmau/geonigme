@@ -3,11 +3,15 @@ package forms;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.openrdf.repository.object.ObjectConnection;
 
+import forms.Constraints.AuthenticationToken;
 import global.Sesame;
 import play.data.validation.Constraints.Required;
 
 public class Login {
 	public static final String ERROR = "Pseudonyme ou mot de passe invalide.";
+	
+	@AuthenticationToken
+	public String token;
 	
 	@Required
 	public String login;

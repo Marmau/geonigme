@@ -59,7 +59,6 @@ public class Sesame {
 	 * Ferme proprement la connexion et le répertoire d'objets RDF
 	 */
 	public static void shutdown() {
-		System.out.println("ARRET DE SESAME");
 		ObjectRepository or = connection.getRepository();
 		try {
 			connection.close();

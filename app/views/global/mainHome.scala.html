@@ -56,6 +56,8 @@
 						<div class="span4">
 							<h1><strong>Contactez</strong>-nous</h1>
 							@helper.form(action = routes.Application.submitContactForm(), 'id -> "contact-form") {
+								@includes.authenticationToken(contactForm("token"))
+								
 								<div>
 									<input name="@contactForm("email").name()" type="text" placeholder="@@votre adresse courriel" class="span12" value="@contactForm("email").value()" />
 								</div>

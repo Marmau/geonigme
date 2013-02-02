@@ -1,0 +1,7 @@
+@(tokenField: Field)
+
+@import _root_.global._
+
+@defining(AuthenticationTokenGenerator.generate()) { token =>
+	<input type="hidden" name="@tokenField.name" value="@token" />
+}

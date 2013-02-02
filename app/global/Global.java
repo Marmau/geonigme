@@ -22,11 +22,11 @@ public class Global extends GlobalSettings {
 	}
 
 	@Override
-	public void onStop(Application app) {
-		super.onStop(app);
-
+	public void onStop(Application app) {		
 		// Extinction de Sésame
 		Sesame.shutdown();
+		
+		super.onStop(app);
 	}
 
 	private void initializeFormatters() {
