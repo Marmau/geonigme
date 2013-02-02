@@ -91,6 +91,10 @@ public class User implements RDFObject {
 	public void setPasswordSha1Hash(String passwordSha1Hash) {
 		this.password = passwordSha1Hash;
 	}
+
+	public boolean hasRights() {
+		return role.hasRights();
+	}
 	
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");

@@ -1,6 +1,12 @@
 package models;
 
-public enum Right {
+import org.openrdf.annotations.Iri;
+import org.openrdf.model.Resource;
+import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.repository.object.RDFObject;
+
+@Iri(NS.GNGM + "Right")
+public enum Right implements RDFObject {
 	USER_LIST,
 	USER_EDIT;
 	
@@ -21,7 +27,22 @@ public enum Right {
         //this.value = 
     }
 
+	@Iri(NS.GNGM + "value")
 	public int getValue() {
 		return value;
+	}
+	
+	public static int allRights() {
+		return -1;// ~0
+	}
+
+	@Override
+	public ObjectConnection getObjectConnection() {
+		return null;
+	}
+
+	@Override
+	public Resource getResource() {
+		return null;
 	}
 }

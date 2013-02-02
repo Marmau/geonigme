@@ -55,7 +55,7 @@ public class User extends Controller {
 			
 			session(userSessionKey, user.getId());
 			
-			return redirect(routes.Manager.dashboard());
+			return redirect( (user.hasRights()) ? routes.AdminPanel.userlist() : routes.Manager.dashboard());
 		}
 	}
 	

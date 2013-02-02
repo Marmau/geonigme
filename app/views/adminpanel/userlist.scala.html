@@ -1,10 +1,10 @@
-@(users: List[models.user])
+@(users: List[models.User])
 
 @import helpers._
 @import models._
 
 
-@displayUserList(users: List[User], nbPerLine: Integer)(f: user => Html)(g: () => Html) = @{
+@displayUserList(users: List[User], nbPerLine: Integer)(f: User => Html)(g: () => Html) = @{
 	var i:Int = 0
 	var result = ""
 	if (users.isEmpty) {
@@ -20,19 +20,26 @@
 	new Html(result)
 }
 
-@mainDashboard("Tableau de bord", "dashboard") {
+@mainAdminPanel("Utilisateurs", "adminpanel") {
 	<ul class="menu">
 		<li class="selected"><a href="@routes.AdminPanel.userlist()">Utilisateurs</a></li>
 		<li><a class="pushable" href="@routes.AdminPanel.userlist()">Chasses</a></li>
 		<li><a class="pushable" href="">Autre</a></li>
 	</ul>
 } {
+	@*
+		@routes.user.show(user.getId())
+	*@
 	@if( !users.isEmpty() ) { 
 		<div id="container-user-box">
 		@for(user <- users) {
 			<div class="user-box">
-				<a class="pushable" href="@routes.user.show(user.getId())">
-					<div class="name"><div><span>@user.getLoginName()</span></div></div>
+				<a class="pushable" href="">
+					<div class="name">
+						<div>
+							<span>@user.getLoginName()</span>
+						</div>
+					</div>
 					<div>Inscrit le @user.getInscriptionDate()</div>
 				</a>
 			</div>
