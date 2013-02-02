@@ -1,5 +1,7 @@
 package controllers;
 
+import global.Sesame;
+
 import java.io.StringWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,8 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-
-import global.Sesame;
 
 import models.Answer;
 import models.Clue;
@@ -21,7 +21,8 @@ import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.rio.RDFWriter;
 
 import play.data.Form;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 public class Enigma extends Controller {
 
@@ -111,7 +112,7 @@ public class Enigma extends Controller {
 			}
 			formEnigma.clues.add(formClue);
 		}
-
+				
 		return ok(views.html.dashboard.updateEnigma.render(enigma, form(forms.Enigma.class).fill(formEnigma)));
 	}
 
@@ -161,7 +162,9 @@ public class Enigma extends Controller {
 			models.TextAnswer a = new models.TextAnswer();
 			Set<String> labels = new HashSet<String>();
 			for (String label: form.answer.possibleTexts) {
-				labels.add(label);
+				if (label.length() > 0) {
+					labels.add(label);					
+				}
 			}
 			a.setLabels(labels);
 			answer = a;

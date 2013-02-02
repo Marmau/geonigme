@@ -11,9 +11,9 @@
 		</ul>
 	</nav>
 
-	<ul data-role="listview" class="list-view">
-	@for(hunt <- hunts) {
-		<li><a href="@routes.Game.playHunt(hunt.getId())">@hunt.getLabel()</a></li>
-	}
+	<ul data-role="listview" class="list-view" id="hunts-list">
+		@for(hunt <- hunts) {
+			<li><a href="@routes.Game.playHunt(hunt.getId())">@hunt.getLabel()</a></li>
+		}
 	</ul>
 }

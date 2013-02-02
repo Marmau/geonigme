@@ -10,7 +10,6 @@
 		<title>Géonigme - @title</title>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		@*<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.mobile-1.2.0.min.css")">*@
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("leaflet/leaflet.css")">
@@ -27,9 +26,9 @@
 				<div class="btn-group user-menu">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @User.getLoggedUser().getLoginName()<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<a href="@routes.Game.home()">Jouer</a>
-						<a href="@routes.Manager.dashboard()">Tableau de bord</a>
-						<a href="@routes.User.logout()">Déconnexion</a>
+						<li><a href="@routes.Game.home()">Jouer</a></li>
+						<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
+						<li><a href="@routes.User.logout()">Déconnexion</a></li>
 					</ul>
 				</div>
 			</header>
@@ -43,7 +42,7 @@
 			</div>
 			<footer data-role="footer" class="container-fluid">
 				<div class="row-fluid">
-					<p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2012
+					<p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2013
 				</div>
 			</footer>
 		</div>

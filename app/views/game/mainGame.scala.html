@@ -1,5 +1,8 @@
 @(title: String, start: String = "")(content: Html)
 
+@import _root_.forms._
+@import controllers._
+
 <!DOCTYPE html>
 
 <html>
@@ -21,13 +24,21 @@
 		<div data-role="page">
 			<header data-role="header">
 				<div class="background"></div>
+				<div class="btn-group user-menu">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @User.getLoggedUser().getLoginName()<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="@routes.Game.home()">Jouer</a></li>
+						<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
+						<li><a href="@routes.User.logout()">Déconnexion</a></li>
+					</ul>
+				</div>
 			</header>
 			<div data-role="content" class="container-fluid">
 				@content
 			</div>
 			<footer data-role="footer" class="container-fluid">
 				<div class="row-fluid">
-					<p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2012
+					<p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2013
 				</div>
 			</footer>
 		</div>

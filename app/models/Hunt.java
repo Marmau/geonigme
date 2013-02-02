@@ -1,16 +1,20 @@
 package models;
 
+import global.Sesame;
+
 import java.util.List;
 import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.openrdf.annotations.Bind;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
-import org.openrdf.query.GraphQueryResult;
+import org.openrdf.query.MalformedQueryException;
+import org.openrdf.query.QueryEvaluationException;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
+import org.openrdf.repository.object.ObjectQuery;
 import org.openrdf.repository.object.RDFObject;
 
 @Iri(NS.GNGM + "Hunt")
@@ -157,54 +161,16 @@ public class Hunt implements RDFObject {
 		this.tags = tags;
 	}
 
-	// @Sparql("PREFIX gngm: " + URIs.GNGM + "\n" +
-	// "SELECT ?hunt WHERE { ?hunt gngm:level $level }")
-	public Set<org.openrdf.result.Result<Hunt>> getHuntsWithLevel(@Bind("level") Integer level) {
-		return null;
-	}
-
-	// @Sparql("PREFIX rdf:" + RDF + "\n" +
-	// "PREFIX gngm:" + URIs.GNGM + "\n" +
-	// "SELECT ?s WHERE { " +
-	// "?s rdf:type <" + NS +"> . " +
-	// "?s  gngm:cree ?date " +
-	// "} " +
-	// "ORDER BY ?date " +
-	// "LIMIT $number " +
-	// "OFFSET $offset ")
-	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByCreationDate(
-			@Bind("number") Integer number, @Bind("offset") Integer offset) {
-		return null;
-	}
-
-	// @Sparql("PREFIX rdf:" + RDF + "\n" +
-	// "PREFIX rdfs:" + RDFS + "\n" +
-	// "PREFIX gngm:" + URIs.GNGM + "\n" +
-	// "SELECT ?s WHERE {" +
-	// "?s rdf:type <http://geonigme.fr/rdf/ontology#Hunt> ." +
-	// "?s rdfs:label ?label ." +
-	// "?s gngm:cree ?date ." +
-	// "?s gngm:note ?note ." +
-	// "?note gngm:moyenne ?moyenne " +
-	// "?s gngm:estPublie $published " +
-	// "} " +
-	// "ORDER BY DESC($order) " +
-	// "LIMIT $number " +
-	// "OFFSET $offset")
-	public Set<org.openrdf.result.Result<Hunt>> getHuntsSortByParams(@Bind("order") String order,
-			@Bind("number") Integer number, @Bind("offset") Integer offset,
-			@Bind("published") Boolean published) {
-		return null;
-	}
-	
-//	@Sparql(NS.PREFIX + "CONSTRUCT {" +
-//			"$this 
-//	public GraphQueryResult getGraph() {
-//		return null;
-//	}
-
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
+	}
+	
+	public static List<Hunt> getHuntsSortedByDate() throws QueryEvaluationException, MalformedQueryException, RepositoryException {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX
+				+ "SELECT ?hunt WHERE { ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date) LIMIT 20");
+
+		return query.evaluate(Hunt.class).asList();
 	}
 
 	@Override

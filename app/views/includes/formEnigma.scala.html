@@ -1,0 +1,89 @@
+@(formEnigma: Form[forms.Enigma])
+
+@import helpers._
+
+<div class="control-group">
+	<label class="control-label" for="description-enigma">Enoncé de l'énigme</label>
+	<div class="controls">
+		<textarea class="span12" id="description-enigma" name="@formEnigma("description").name">@formEnigma("description").value</textarea>
+		<p class="help-block">Soyez imaginatif !</p>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label">Type de réponse</label>
+	<div class="controls">
+		<div class="btn-group answer-type-btn-group" data-toggle="buttons-radio">
+			<div class="btn @displayIf(formEnigma("answer.type").valueOr("0") == "0", "active")" data-selector=".text-answer-controls">Textuelle</div>
+			<div class="btn @displayIf(formEnigma("answer.type").valueOr("0") == "1", "active")" data-selector=".geolocated-answer-controls">Géolocalisée</div>
+		</div>
+		<input type="hidden" name="@formEnigma("answer.type").name" value="@formEnigma("answer.type").valueOr("0")" />
+	</div>
+</div>
+
+<div class="answer-controls text-answer-controls @displayIf(formEnigma("answer.type").valueOr("0") != "0", "hide")">
+	<div class="control-group">
+		<label class="control-label">Réponses</label>
+		<div class="controls" id="text-answers" data-max="5">
+			@repeat(formEnigma("answer.possibleTexts"), min = 1) { (i, field) =>
+				<div class="input-append text-answer row-fluid">
+					<input class="span8" type="text" name="@field.name" value="@field.value" data-renumber="text-answer" />
+					<button class="btn add-text-answer-btn pushable" type="button"><i class="icon-plus icon-white"></i></button>
+				</div>
+			}
+			<p class="help-block">Ajoutez jusqu'à 5 réponses pour votre énigme</p>
+		</div>
+	</div>
+</div>
+	
+<div class="answer-controls geolocated-answer-controls @displayIf(formEnigma("answer.type").valueOr("0") != "1", "hide")">
+	<div class="control-group">
+		<label class="control-label" for="label-position">Lieu</label>
+		<div class="controls">
+			<input class="span12" type="text" id="label-position" name="@formEnigma("answer.labelPosition").name" value="@formEnigma("answer.labelPosition").value" placeholder="Place des Grands Hommes" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label">Position</label>
+		<div class="controls">
+			<input type="text" class="span12" id="position-answer-display" readonly="readonly" />
+			<input type="hidden" id="position-answer" value="@formEnigma("answer.position").value" name="@formEnigma("answer.position").name" readonly="readonly" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="accuracy-answer">Précision</label>
+		<div class="controls">
+			<div class="input-append">
+				<input type="text" class="span12" id="accuracy-answer" value="@formEnigma("answer.accuracy").value" name="@formEnigma("answer.accuracy").name" />
+				<span class="add-on">mètres<span>
+			</div>
+			<p class="help-block">Placez le marqueur sur la position qui valide l'enigme</p>
+		</div>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for="clue">Indices</label>
+	<div class="controls">
+		<div id="clues" data-prototype="#clue-prototype">
+			@repeat(formEnigma("clues"), min = 0) { (i, field) =>
+				<div class="clue">
+					@if(field("type").value.get == forms.Enigma.Clue.TextClue.toString) {
+						<i class="icon-comment icon-type-clue icon-white"></i> Indice <span class="number">@(i + 1)</span>
+					} else {
+						<i class="icon-file icon-type-clue icon-white"></i> Indice <span class="number">@(i + 1)</span>
+					}
+					<input type="hidden" data-bind="type-clue" name="@field("type").name" value="@field("type").value" data-renumber="type-clue" />
+					<input type="hidden" data-bind="text-clue-description" name="@field("textDescription").name" value="@field("textDescription").value" data-renumber="text-clue-description" />
+					<input type="hidden" data-bind="file-clue-description" name="@field("fileDescription").name" value="@field("fileDescription").value" data-renumber="file-clue-description" />
+					<input type="hidden" data-bind="file-clue-link" name="@field("fileLink").name" value="@field("fileLink").value" data-renumber="file-clue-link" />
+					<div class="actions">
+						<a role="button" class="edit-clue-btn btn inverse pushable"><i class="icon-pencil icon-white"></i></a>
+						<button type="button" class="remove-clue-btn btn inverse pushable"><i class="icon-remove icon-white"></i></button>
+					</div>
+				</div>
+			}
+		</div>
+
+		<a href="#modal-add-clue" role="button" class="btn pushable" data-toggle="modal">Ajouter</a>
+		<p class="help-block">Ajoutez autant d'indices que vous le désirez !</p>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-require ['maps/poi_map', 'maps/icons', 'maps/helpers', 'fixed_map'], (PoiMap, Icons, Helpers) ->
+require ['maps/poi_map', 'maps/icons', 'helpers', 'fixed_map'], (PoiMap, Icons, Helpers) ->
 
 	map = new PoiMap $('#show-hunt-map')
 	

@@ -4,7 +4,6 @@
 
 # Home page
 GET		/							controllers.Application.index()
-GET		/hunt/reset					controllers.Application.reset()
 POST 	/contact-us					controllers.Application.submitContactForm()
 
 # Map static resources from the /public folder to the /assets URL path
@@ -12,13 +11,19 @@ GET		/assets/*file				controllers.Assets.at(path="/public", file)
 
 # RDF
 GET		/rdf/ontology				controllers.RDF.ontology()
-GET 	/test/:hid/:format			controllers.RDF.hunt(hid: String, format: String)
+GET 	/rdf/dump					controllers.RDF.dump()
+GET		/rdf/reset					controllers.RDF.reset()
+GET		/rdf/restore				controllers.RDF.restore()
+
 
 # Game
 GET 	/play						controllers.Game.home()
+GET		/play/go					controllers.Game.go()
+GET		/play/step/start			controllers.Game.startStep()
+POST 	/play/answer/check			controllers.Game.checkAnswer()	
+POST 	/play/clue/next				controllers.Game.nextClue()
+GET		/play/enigma/skip			controllers.Game.skipEnigma()
 GET		/play/:hid					controllers.Game.playHunt(hid: String)
-GET		/play/:hid/go				controllers.Game.go(hid: String)
-GET		/play/:hid/go/next			controllers.Game.goNext(hid: String)
 
 # Hunt
 GET		/hunt/:hid/show				controllers.Hunt.show(hid: String)

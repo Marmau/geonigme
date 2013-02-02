@@ -2,11 +2,11 @@
 
 @import helpers._
 
-@mainDashboard("Nouvelle énigme", "enigma") {
+@mainDashboard("Nouvelle énigme", "dashboard/enigma") {
 	<ul class="breadcrumb">
 		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
-		<li><a href="#"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
-		<li><a href="#">&Eacute;tape @step.getNumber()</a></li>
+		<li><a href="@routes.Hunt.show(step.getHunt().getId())"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
+		<li><a href="@routes.Hunt.show(step.getHunt().getId())">&Eacute;tape @step.getNumber()</a></li>
 		<li><a>Nouvelle énigme</a></li>
 	</ul>
 } {
@@ -18,87 +18,7 @@
 				Symbol("data-area") -> step.getHunt().getArea().toTemplateString(),
 				Symbol("data-start-position") -> step.getPosition().toTemplateString(),
 				Symbol("data-start-accuracy") -> Float.toString(step.getPosition().getAccuracy())) {
-				<div class="control-group">
-					<label class="control-label" for="description-enigma">Enoncé de l'énigme</label>
-					<div class="controls">
-						<textarea class="span12" id="description-enigma" name="@formEnigma("description").name" value="@formEnigma("description").value"></textarea>
-						<p class="help-block">Soyez imaginatif !</p>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Type de réponse</label>
-					<div class="controls">
-						<div class="btn-group answer-type-btn-group" data-toggle="buttons-radio">
-							<div class="btn active" data-selector=".text-answer-controls">Textuelle</div>
-							<div class="btn" data-selector=".geolocated-answer-controls">Géolocalisée</div>
-						</div>
-						<input type="hidden" name="@formEnigma("answer.type").name" value="@formEnigma("answer.type").valueOr("0")" />
-					</div>
-				</div>
-
-				<div class="answer-controls text-answer-controls">
-					<div class="control-group">
-						<label class="control-label">Réponses</label>
-						<div class="controls" id="text-answers" data-max="5">
-							@repeat(formEnigma("answer.possibleTexts"), min = 1) { (i, field) =>
-								<div class="input-append text-answer">
-									<input class="span12" type="text" name="@field.name" value="@field.value" data-renumber="text-answer" />
-									<button class="btn add-text-answer-btn pushable" type="button"><i class="icon-plus icon-white"></i></button>
-								</div>
-							}
-							<p class="help-block">Ajoutez jusqu'à 5 réponses pour votre énigme</p>
-						</div>
-					</div>
-				</div>
-					
-				<div class="answer-controls geolocated-answer-controls hide">
-					<div class="control-group">
-						<label class="control-label" for="label-position">Lieu</label>
-						<div class="controls">
-							<input class="span12" type="text" id="label-position" name="@formEnigma("answer.labelPosition").name" value="@formEnigma("answer.labelPosition").value" placeholder="Place des Grands Hommes" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label">Position</label>
-						<div class="controls">
-							<input type="text" class="span12" id="position-answer-display" readonly="readonly" />
-							<input type="hidden" id="position-answer" value="@formEnigma("answer.position").value" name="@formEnigma("answer.position").name" readonly="readonly" />
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="accuracy-answer">Précision</label>
-						<div class="controls">
-							<div class="input-append">
-								<input type="text" class="span12" id="accuracy-answer" value="@formEnigma("answer.accuracy").value" name="@formEnigma("answer.accuracy").name" />
-								<span class="add-on">mètres<span>
-							</div>
-							<p class="help-block">Placez le marqueur sur la position qui valide l'enigme</p>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="clue">Indices</label>
-					<div class="controls">
-						<div id="clues" data-prototype="#clue-prototype">
-							@repeat(formEnigma("clue"), min = 0) { (i, field) =>
-								<div class="clue">
-									<i class="icon-type-clue icon-white"></i> Indice <span class="number">@(i + 1)</span>
-									<input type="hidden" data-bind="type-clue" name="@field("type").name" value="@field("type").value" data-renumber="type-clue" />
-									<input type="hidden" data-bind="text-clue-description" name="@field("textDescription").name" value="@field("textDescription").value" data-renumber="text-clue-description" />
-									<input type="hidden" data-bind="file-clue-description" name="@field("fileDescription").name" value="@field("fileDescription").value" data-renumber="file-clue-description" />
-									<input type="hidden" data-bind="file-clue-link" name="@field("fileLink").name" value="@field("fileLink").value" data-renumber="file-clue-link" />
-									<div class="actions">
-										<a role="button" class="edit-clue-btn btn inverse pushable"><i class="icon-pencil icon-white"></i></a>
-										<button type="button" class="remove-clue-btn btn inverse pushable"><i class="icon-remove icon-white"></i></button>
-									</div>
-								</div>
-							}
-						</div>
-
-						<a href="#modal-add-clue" role="button" class="btn pushable" data-toggle="modal">Ajouter</a>
-						<p class="help-block">Ajoutez autant d'indices que vous le désirez !</p>
-					</div>
-				</div>
+				@includes.formEnigma(formEnigma)
 				<div class="form-actions">
 					<button type="submit" name="submit-enigma" class="pushable btn">Enregistrer</button>
 				</div>
@@ -110,120 +30,5 @@
 		</div>
 	</div>
 
-	<div class="modal modal-form hide fade out" id="modal-add-clue" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-header">
-			<button type="button" class="close pushable" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>Ajouter un indice</h3>
-		</div>
-		<div class="modal-body container-fluid">
-			<div class="form-horizontal row-fluid">
-				<div class="control-group">
-					<label class="control-label">Type</label>
-					<div class="controls">
-						<div class="btn-group clue-type-btn-group" data-toggle="buttons-radio">
-							<div class="btn active" data-selector=".text-clue-controls">Texte</div>
-							<div class="btn" data-selector=".file-clue-controls">Fichier</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="clue-controls text-clue-controls">
-					<div class="control-group">
-						<label class="control-label" for="add-text-clue-description">&Eacute;noncé</label>
-						<div class="controls">
-							<textarea class="span12" data-bind="text-clue-description" id="add-text-clue-description"></textarea>
-							<p class="help-block">Une citation, un mot, un truc tordu...</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="clue-controls file-clue-controls hide">
-					<div class="control-group">
-						<label class="control-label" for="add-file-clue-description">Description</label>
-						<div class="controls">
-							<input class="span12" type="text" data-bind="file-clue-description" id="add-file-clue-description" placeholder="Notre Dame de Paris" />
-							<p class="help-block">Description brève de l'image ou du son</p>
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label" for="add-file-clue-link">Lien</label>
-						<div class="controls">
-							<input class="span12" type="text" data-bind="file-clue-link" id="add-file-clue-link" placeholder="http://...png" />
-							<p class="help-block">Lien vers l'image (*.png *.jpg) ou le son (*.mp3)</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button class="btn pushable" id="add-clue-btn">Ajouter</button>
-		</div>
-	</div>
-
-	<div class="modal modal-form hide fade out" id="modal-edit-clue" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-header">
-			<button type="button" class="close pushable" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>Modifier un indice</h3>
-		</div>
-		<div class="modal-body container-fluid">
-			<div class="form-horizontal row-fluid">
-				<div class="control-group">
-					<label class="control-label">Type</label>
-					<div class="controls">
-						<div class="btn-group clue-type-btn-group" data-toggle="buttons-radio">
-							<div class="btn active" data-selector=".text-clue-controls">Texte</div>
-							<div class="btn" data-selector=".file-clue-controls">Fichier</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="clue-controls text-clue-controls">
-					<div class="control-group">
-						<label class="control-label" for="edit-text-clue-description">&Eacute;noncé</label>
-						<div class="controls">
-							<textarea class="span12" data-bind="text-clue-description" id="edit-text-clue-description"></textarea>
-							<p class="help-block">Une citation, un mot, un truc tordu...</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="clue-controls file-clue-controls hide">
-					<div class="control-group">
-						<label class="control-label" for="edit-file-clue-description">Description</label>
-						<div class="controls">
-							<input class="span12" type="text" data-bind="file-clue-description" id="edit-file-clue-description" placeholder="Notre Dame de Paris" />
-							<p class="help-block">Description brève de l'image ou du son</p>
-						</div>
-					</div>
-
-					<div class="control-group">
-						<label class="control-label" for="edit-file-clue-link">Lien</label>
-						<div class="controls">
-							<input class="span12" type="text" data-bind="file-clue-link" id="edit-file-clue-link" placeholder="http://...png" />
-							<p class="help-block">Lien vers l'image (*.png *.jpg) ou le son (*.mp3)</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button class="btn pushable" id="update-clue-btn">Enregistrer</button>
-			<button class="remove-clue-btn btn pushable btn-danger" id="add-clue-btn">Supprimer</button>
-		</div>
-	</div>
-
-	<div class="hide" id="clue-prototype">
-		<div class="clue">
-			<i class="icon-type-clue icon-white"></i> Indice <span class="number">1</span>
-			<input type="hidden" data-bind="type-clue" name="@formEnigma("clues[x].type").name" data-renumber="type-clue" />
-			<input type="hidden" data-bind="text-clue-description" name="@formEnigma("clues[x].textDescription").name" data-renumber="text-clue-description" />
-			<input type="hidden" data-bind="file-clue-description" name="@formEnigma("clues[x].fileDescription").name" data-renumber="file-clue-description" />
-			<input type="hidden" data-bind="file-clue-link" name="@formEnigma("clues[x].fileLink").name" data-renumber="file-clue-link" />
-			<div class="actions">
-				<a role="button" class="edit-clue-btn btn inverse pushable"><i class="icon-pencil icon-white"></i></a>
-				<button type="button" class="remove-clue-btn btn inverse pushable"><i class="icon-remove icon-white"></i></button>
-			</div>
-		</div>
-	</div>
+	@includes.hiddenFormEnigma(formEnigma)
 }

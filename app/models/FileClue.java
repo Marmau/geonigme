@@ -1,6 +1,8 @@
 package models;
 
 import java.net.URI;
+
+import org.codehaus.jackson.node.ObjectNode;
 import org.openrdf.annotations.Iri;
 
 @Iri(NS.GNGM + "FileClue")
@@ -22,5 +24,13 @@ public class FileClue extends Clue {
 	public void reset() {
 		super.reset();
 		this.setFile(null);
+	}
+	
+	@Override
+	public ObjectNode toJson() {
+		ObjectNode result = super.toJson();
+		result.put("file", getFile().toASCIIString());
+		
+		return result;
 	}
 }

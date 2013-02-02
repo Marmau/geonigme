@@ -1,4 +1,4 @@
-define ['jquery', 'maps/helpers', 'maps/icons', 'leaflet'], ($, Helpers, Icons) ->
+define ['jquery', 'helpers', 'maps/icons', 'leaflet'], ($, Helpers, Icons) ->
 	class PositionAccuracy
 		constructor: (@map, @formPosition, @formAccuracy) ->
 			@markerCenter = new L.Marker(new L.LatLng(43.64, 3.93), {

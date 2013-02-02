@@ -1,4 +1,4 @@
-require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers', 'renumber', 'fixed_map'], (PoiMap, PositionAccuracy, Icon, Helpers) ->
+require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'helpers', 'renumber', 'fixed_map'], (PoiMap, PositionAccuracy, Icon, Helpers) ->
 
 	container = $('#create-enigma')
 	formPosition = container.find('#position-answer')
@@ -89,6 +89,8 @@ require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers',
 		saveClue(modalAddClue, container)
 
 		modalAddClue.modal('hide')
+
+		false
 		
 	$('#update-clue-btn').click ->
 		container = modalEditClue.data('container-clue')
@@ -96,8 +98,10 @@ require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers',
 
 		modalEditClue.modal('hide')
 
+		false
+
 	# Edition d'un indice
-	$('.edit-clue-btn').live 'click', ->
+	$(document).on 'click', '.edit-clue-btn', ->
 		container = $(this).closest('.clue')
 
 		type = container.find('[data-bind="type-clue"]').val()
@@ -114,7 +118,9 @@ require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers',
 
 		modalEditClue.modal('show')
 
-	$('.remove-clue-btn').live 'click', ->
+		false
+
+	$(document).on 'click', '.remove-clue-btn', ->
 		container = $(this).closest('.clue')
 		container.remove();
 		containerClues.find('.clue').each (i) ->
@@ -122,6 +128,8 @@ require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'maps/helpers',
 
 		modalEditClue.modal('hide')
 		renumberClues()
+
+		false
 
 
 	# Click bouton plus/moins des réponses

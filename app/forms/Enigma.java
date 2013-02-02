@@ -5,7 +5,7 @@ import java.util.List;
 import play.data.validation.Constraints.Required;
 
 public class Enigma {
-	@Required
+	@Required(message = "Vous devez spécifier un énoncé à votre énigme.")
 	public String description;
 
 	public Answer answer;

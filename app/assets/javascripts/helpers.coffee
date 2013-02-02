@@ -78,7 +78,7 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 	Helpers.getCurrentPosition = (callback) ->
 		if (navigator.geolocation)
 			navigator.geolocation.getCurrentPosition((position)-> 
-				callback(new L.LatLng(position.coords.latitude, position.coords.longitude))
+				callback(position)
 			, (error) ->
 				callback(null)
 			, {
@@ -87,6 +87,22 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 				maximumAge: 0
 			})
 
-	
+	Helpers.watchPosition = (callback) ->
+		if (navigator.geolocation)
+			return navigator.geolocation.watchPosition((position)-> 
+				callback(position)
+			, (error) ->
+				callback(null)
+			, {
+				enableHighAccuracy: true,
+				timeout: 10000,
+				maximumAge: 0
+			})
+
+		return null
+
+	Helpers.clearWatchPosition = (id) ->
+		if (navigator.geolocation)
+			navigator.geolocation.clearWatch(id)
 
 	return Helpers

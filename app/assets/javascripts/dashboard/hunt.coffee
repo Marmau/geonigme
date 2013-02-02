@@ -1,4 +1,4 @@
-require ['maps/poi_map', 'maps/helpers', 'maps/icons', 'fixed_map'], (PoiMap, Helpers, Icons) ->
+require ['maps/poi_map', 'helpers', 'maps/icons', 'fixed_map'], (PoiMap, Helpers, Icons) ->
 
 	# Choix du niveau
 	if '' == level = $('#level-hunt').val()

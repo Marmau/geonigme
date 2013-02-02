@@ -8,6 +8,31 @@ body {
     background: white;
 }
 
+body, input, button, select, textarea, .navbar-search .search-query {
+    font-family: "Segoe UI", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  background-image: url("../images/glyphicons-halflings.png");
+}
+
+.icon-white,
+.nav-pills > .active > a > [class^="icon-"],
+.nav-pills > .active > a > [class*=" icon-"],
+.nav-list > .active > a > [class^="icon-"],
+.nav-list > .active > a > [class*=" icon-"],
+.navbar-inverse .nav > .active > a > [class^="icon-"],
+.navbar-inverse .nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"],
+.dropdown-submenu:hover > a > [class^="icon-"],
+.dropdown-submenu:hover > a > [class*=" icon-"] {
+  background-image: url("../images/glyphicons-halflings-white.png");
+}
+
 textarea {
     resize: none;
     height: 100px;
@@ -61,6 +86,10 @@ textarea {
 
 .actions {
     overflow: hidden;
+
+    * {
+        margin-bottom: 3px;
+    }
 }
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
@@ -154,36 +183,38 @@ input[type="text"], textarea {
     text-shadow: none;
     text-transform: uppercase;
 
-    &.inverse {
-        background: @colorClearBlue;
-        color: white;
-    }
-
-    &:hover, &.active {
-        color: white;
-        background: @colorClearBlue;
-    }
-
-    &:active, &:focus, &.active{
-        .box-shadow(none);
-        background: @colorClearBlue;
-        color: white;
-    }
-
-    &.btn-danger {
-        color: @colorRed;
-        border-color: @colorRed;
+    &:not(.disabled) {
+        &.inverse {
+            background: @colorClearBlue;
+            color: white;
+        }
 
         &:hover, &.active {
-            background: @colorRed;
+            color: white;
+            background: @colorClearBlue;
+        }
+
+        &:active, &:focus, &.active {
+            .box-shadow(none);
+            background: @colorClearBlue;
             color: white;
         }
 
-        &:active, &:focus, &.active{
-            background: @colorRed;
-            color: white;
+        &.btn-danger {
+            color: @colorRed;
+            border-color: @colorRed;
+
+            &:hover, &.active {
+                background: @colorRed;
+                color: white;
+            }
+
+            &:active, &:focus, &.active{
+                background: @colorRed;
+                color: white;
+            }
         }
-    }
+    }   
 }
 
 .form-actions {
@@ -315,12 +346,14 @@ header {
         }
 
         a.btn.dropdown-toggle {
-            text-transform: lowercase;
+            text-transform: capitalize;
             color: white;
             border: none;
+            padding: 4px 10px;
 
             &:hover {
                 background-color: transparent;
+                color: white;
             }
 
             .caret {
@@ -332,7 +365,13 @@ header {
         .dropdown-menu {
             a {
                 color: @colorClearBlue;
+
+                &:hover {
+                    background: @colorDarkBlue;
+                    color: white;
+                }
             }
+
             .border-radius(0px);
             border: none;
             left: initial;

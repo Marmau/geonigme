@@ -1,4 +1,4 @@
-require ['maps/base_map', 'maps/helpers', 'leaflet'], (BaseMap, Helpers) ->
+require ['maps/base_map', 'helpers', 'leaflet'], (BaseMap, Helpers) ->
 
 	containerMap = $('#presentation-game-hunt')
 	containerMap.height(containerMap.width() / 1.5)
