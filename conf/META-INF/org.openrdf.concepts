@@ -13,3 +13,5 @@ models.User
 models.Area
 models.Point
 models.Position
+models.Role
+models.Right

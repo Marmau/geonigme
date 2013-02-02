@@ -19,6 +19,7 @@ public class Global extends GlobalSettings {
 		}
 
 		initializeFormatters();
+		
 	}
 
 	@Override
