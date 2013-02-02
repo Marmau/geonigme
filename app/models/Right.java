@@ -6,30 +6,33 @@ import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
 
 @Iri(NS.GNGM + "Right")
-public enum Right implements RDFObject {
-	USER_LIST,
-	USER_EDIT;
+public class Right implements RDFObject {
 	
-	private final int value;
+	private static int COUNT = 0;
+	public static final Right USER_LIST = create();
+	public static final Right USER_EDIT = create();
 	
-	/*
-	private static int next;
-	static {
-		next = 1;
-        for (Right foo : EnumSet.allOf(Right.class)) {
-            foo.value = next;
-            next *= 2;
-        }
+	private Integer value;
+	
+	public static Right create() {
+		Right r = new Right();
+		r.setValue(1<<(++COUNT));
+		return r;
 	}
-	*/
+	
 	Right() {
-		this.value = 1 << this.ordinal();
+		//this.value = 1 << this.ordinal();
         //this.value = 
     }
+	
+	@Iri(NS.GNGM + "value")
+	public Integer getValue() {
+		return value;
+	}
 
 	@Iri(NS.GNGM + "value")
-	public int getValue() {
-		return value;
+	public void setValue(Integer value) {
+		this.value = value;
 	}
 	
 	public static int allRights() {

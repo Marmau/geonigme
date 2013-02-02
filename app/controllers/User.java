@@ -6,6 +6,8 @@ import global.Sesame;
 
 import java.io.StringWriter;
 
+import models.Role;
+
 import org.openrdf.query.QueryLanguage;
 import java.util.GregorianCalendar;
 
@@ -55,7 +57,7 @@ public class User extends Controller {
 			
 			session(userSessionKey, user.getId());
 			
-			return redirect( (user.hasRights()) ? routes.AdminPanel.userlist() : routes.Manager.dashboard());
+			return redirectToMain();
 		}
 	}
 	
@@ -75,6 +77,7 @@ public class User extends Controller {
 			newUser.setLastLoginTime(now);
 			newUser.setLoginName(form.pseudonym);
 			newUser.setMail(form.email);
+			newUser.setRole(Role.MEMBER);
 			newUser.setPasswordSha1Hash(DigestUtils.sha256Hex(form.password));
 
 			String uid = newUser.getLoginName().toLowerCase();
@@ -82,7 +85,7 @@ public class User extends Controller {
 			
 			session(userSessionKey, uid);
 			
-			return redirect(routes.Manager.dashboard());
+			return redirectToMain();
 		}
 	}
 	
@@ -106,9 +109,15 @@ public class User extends Controller {
 		}
 	}
 
+	public static Result redirectToMain() {
+		//return redirect(routes.Manager.dashboard());
+		models.User user = getLoggedUser();
+		return redirect( (user != null && user.hasRights()) ? routes.AdminPanel.userlist() : routes.Manager.dashboard());
+	}
+	
 	public static Result login() {
 		if (isLogged()) {
-			return redirect(routes.Manager.dashboard());
+			return redirectToMain();
 		}
 
 		Form<Login> formLogin = form(Login.class);

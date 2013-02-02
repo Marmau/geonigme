@@ -27,14 +27,11 @@
 		<li><a class="pushable" href="">Autre</a></li>
 	</ul>
 } {
-	@*
-		@routes.user.show(user.getId())
-	*@
 	@if( !users.isEmpty() ) { 
 		<div id="container-user-box">
 		@for(user <- users) {
 			<div class="user-box">
-				<a class="pushable" href="">
+				<a class="pushable" href="@routes.AdminPanel.useredit(user.getId())">
 					<div class="name">
 						<div>
 							<span>@user.getLoginName()</span>

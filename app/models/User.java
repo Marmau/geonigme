@@ -10,6 +10,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.ObjectQuery;
 import org.openrdf.repository.object.RDFObject;
@@ -34,6 +35,9 @@ public class User implements RDFObject {
 
 	@Iri(NS.USER + "role")
 	public Role getRole() {
+		if( role == null ) {// Pfiouuuu
+			setRole(Role.MEMBER);
+		}
 		return role;
 	}
 
@@ -93,11 +97,16 @@ public class User implements RDFObject {
 	}
 
 	public boolean hasRights() {
-		return role.hasRights();
+		return getRole().hasRights();
 	}
 	
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
+	}
+	
+	public void save() throws RepositoryException {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		oc.addObject(User.URI + getId(), this);
 	}
 
 	@Override
@@ -110,13 +119,29 @@ public class User implements RDFObject {
 		return null;
 	}
 	
+	public static User get(String uid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		try {
+			return oc.getObject(models.User.class, models.User.URI + uid);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public static List<User> getAll(String orderBy) {
 		List<User> users = new ArrayList<User>();
 		try {
 			ObjectConnection oc = Sesame.getObjectConnection();
+			//users = oc.getObjects(models.User.class).asList();
+			
+			String sqlQuery = "SELECT ?user WHERE { ?user user:"+orderBy+" ?orderBy } ORDER BY ASC(?orderBy)";
+			//System.out.println(sqlQuery);
 			ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX + 
-				"SELECT ?user WHERE { ?user gngm:"+orderBy+" ?orderBy } ORDER BY ASC(?orderBy)");
-			users = query.evaluate(User.class).asList();
+				sqlQuery);
+			users = query.evaluate(models.User.class).asList();
+			//System.out.println("We got "+users.size()+" users");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

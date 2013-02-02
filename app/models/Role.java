@@ -1,5 +1,8 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openrdf.annotations.Iri;
 import org.openrdf.model.Resource;
 import org.openrdf.repository.object.ObjectConnection;
@@ -10,28 +13,40 @@ public class Role implements RDFObject {
 
 	public static final String URI = "http://geonigme.fr/role/";
 	
-	public static final Role MEMBER = new Role("Membre");
-	public static final Role MODERATOR = new Role("Modérateur");
-	public static final Role ADMINISTRATOR = new Role("Administrateur", Right.allRights());
-	public static final Role DEVELOPER = new Role("Développeur", Right.allRights());
+	private static ArrayList<Role> instances = new ArrayList<>();
+	
+	public static final Role MEMBER = create("member", "Membre");
+	public static final Role MODERATOR = create("moderator", "Modérateur");
+	public static final Role ADMINISTRATOR = create("administrator", "Administrateur", Right.allRights());
+	public static final Role DEVELOPER = create("developer", "Développeur", Right.allRights());
 	
 	static {
-		MODERATOR.addRight(Right.USER_LIST);
+		MODERATOR.grantRight(Right.USER_LIST);
 	}
 
-	private String name;
-	private int rights;
+	private String name = "unnamedRole";
+	private String label = "UnnamedRole";
+	private Integer rights = 0;
+
+	public Role() {
+	}
 	
-	public Role(String name, int rights) {
-		this.name = name;
-		this.rights = rights;
+	public static Role create(String name, String label, int rights) {
+		Role r = new Role();
+		r.setName(name);
+		r.setLabel(label);
+		r.setRights(rights);
+		instances.add(r);
+		return r;
 	}
-	public Role(String name) {
-		this(name, 0);
+	public static Role create(String name, String label) {
+		return create(name, label, 0);
 	}
+	/*
 	public Role(Role other) {
-		this(other.getName(), other.getRights());
+		this(other.getLabel(), other.getRights());
 	}
+	*/
 	
 	public boolean canDo(Right r) {
 		return canDo(r.getValue());
@@ -39,26 +54,75 @@ public class Role implements RDFObject {
 	public boolean canDo(int r) {
 		return true;
 		//Every body is admin
-		//return (rights & r) == r;
+		//return (getRights() & r) == r;
 	}
 
+	public boolean hasRights() {
+		return true;
+		//return getRights() > 0;
+	}
+	
+	public Role grantRight(Right r) {
+		setRights(getRights() | r.getValue());
+		return this;
+	}
+	public Role revokeRight(Right r) {
+		setRights(getRights() & ~r.getValue());
+		return this;
+	}
+	
+	public boolean equals(Role other) {
+		return getLabel().equals(other.getLabel());
+	}
+	public boolean equals(Object other) {
+		return equals((Role) other);
+	}
+	
+	public static Role get(String name) {
+		for( Role r : instances ) {
+			if( r.getName().equals(name) ) {
+				return r;
+			}
+		}
+		return null;
+	}
+	
+	public static List<Role> getAll() {
+		return instances;
+	}
+	
+	//Getters
+	
 	@Iri(NS.GNGM + "name")
 	public String getName() {
 		return name;
 	}
 	
-	public Role addRight(Right r) {
-		rights |= r.getValue();
-		return this;
+	@Iri(NS.GNGM + "label")
+	public String getLabel() {
+		return label;
 	}
 
 	@Iri(NS.GNGM + "rights")
 	public int getRights() {
 		return rights;
 	}
+	
+	// Setters
+	
+	@Iri(NS.GNGM + "name")
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	public boolean hasRights() {
-		return rights > 0;
+	@Iri(NS.GNGM + "label")
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	@Iri(NS.GNGM + "rights")
+	public void setRights(Integer rights) {
+		this.rights = rights;
 	}
 	
 	@Override
