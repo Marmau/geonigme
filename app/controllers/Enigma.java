@@ -112,7 +112,7 @@ public class Enigma extends Controller {
 			}
 			formEnigma.clues.add(formClue);
 		}
-
+				
 		return ok(views.html.dashboard.updateEnigma.render(enigma, form(forms.Enigma.class).fill(formEnigma)));
 	}
 
@@ -162,7 +162,9 @@ public class Enigma extends Controller {
 			models.TextAnswer a = new models.TextAnswer();
 			Set<String> labels = new HashSet<String>();
 			for (String label: form.answer.possibleTexts) {
-				labels.add(label);
+				if (label.length() > 0) {
+					labels.add(label);					
+				}
 			}
 			a.setLabels(labels);
 			answer = a;

@@ -22,4 +22,15 @@ package helpers {
       return "";
     }
   }
+
+  object displayIf {
+    def apply(condition: Boolean, toDisplay: String): String = {
+
+      if (condition) {
+        return toDisplay;
+      }
+
+      return "";
+    }
+  }
 }

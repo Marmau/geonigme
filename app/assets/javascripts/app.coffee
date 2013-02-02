@@ -2,7 +2,7 @@ requirejs.config({
 	baseUrl: '/assets/javascripts',
 
 	paths: {
-		jquery: 'jquery-1.8.2.min',
+		jquery: 'jquery-1.9.0.min',
 		jquery_mobile: 'jquery.mobile-1.2.0.min',
 		jquery_easing: 'jquery.easing-1.3',
 		bootstrap: 'bootstrap',

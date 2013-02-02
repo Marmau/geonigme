@@ -3,7 +3,7 @@
 @mainDashboard("Nouvelle étape", "dashboard/step") {
 	<ul class="breadcrumb">
 		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
-		<li><a href="#"><span class="hunt-name">@hunt.getLabel()</span></a></li>
+		<li><a href="@routes.Hunt.show(hunt.getId())"><span class="hunt-name">@hunt.getLabel()</span></a></li>
 		<li><a>Nouvelle étape</a></li>
 	</ul>
 } {
@@ -13,33 +13,7 @@
 				'id -> "create-step", 
 				'class -> "form-horizontal", 
 				Symbol("data-area") -> hunt.getArea().toTemplateString()) {
-				<blockquote>
-					Une étape regroupe un ensemble d'énigmes qui se déroule dans un périmètre géographique restreint. Le joueur sera guidé grâce à son smartphone vers la position de départ !
-				</blockquote>
-				<div class="control-group">
-					<label class="control-label" for="description-step">Description de l'étape</label>
-					<div class="controls">
-						<textarea class="span12" id="description-step" name="@formStep("description").name">@formStep("description").value</textarea>
-						<p class="help-block">Soyez créatif !</p>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="position-step-display">Position</label>
-					<div class="controls">
-						<input type="text" class="span12" id="position-step-display" readonly="readonly" />
-						<input type="hidden" id="position-step" name="@formStep("position").name" value="@formStep("position").value" />
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label" for="accuracy-step">Précision</label>
-					<div class="controls">
-						<div class="input-append">
-							<input type="text" class="span12" id="accuracy-step" name="@formStep("accuracy").name" value="@formStep("accuracy").value" />
-							<span class="add-on">mètres<span>
-						</div>
-						<p class="help-block">Placez le marqueur sur la position qui permet de démarrer l'étape</p>
-					</div>
-				</div>
+				@includes.formStep(formStep)
 				<div class="form-actions">
 					<button type="submit" name="submit-step" class="btn pushable">Enregistrer</button>
 				</div>

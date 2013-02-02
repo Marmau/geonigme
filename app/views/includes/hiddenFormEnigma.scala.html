@@ -1,0 +1,120 @@
+@(formEnigma: Form[forms.Enigma])
+
+@import helpers._
+
+<div class="modal modal-form hide fade out" id="modal-add-clue" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close pushable" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3>Ajouter un indice</h3>
+	</div>
+	<div class="modal-body container-fluid">
+		<div class="form-horizontal row-fluid">
+			<div class="control-group">
+				<label class="control-label">Type</label>
+				<div class="controls">
+					<div class="btn-group clue-type-btn-group" data-toggle="buttons-radio">
+						<div class="btn active" data-selector=".text-clue-controls">Texte</div>
+						<div class="btn" data-selector=".file-clue-controls">Fichier</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clue-controls text-clue-controls">
+				<div class="control-group">
+					<label class="control-label" for="add-text-clue-description">&Eacute;noncé</label>
+					<div class="controls">
+						<textarea class="span12" data-bind="text-clue-description" id="add-text-clue-description"></textarea>
+						<p class="help-block">Une citation, un mot, un truc tordu...</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="clue-controls file-clue-controls hide">
+				<div class="control-group">
+					<label class="control-label" for="add-file-clue-description">Description</label>
+					<div class="controls">
+						<input class="span12" type="text" data-bind="file-clue-description" id="add-file-clue-description" placeholder="Notre Dame de Paris" />
+						<p class="help-block">Description brève de l'image ou du son</p>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="add-file-clue-link">Lien</label>
+					<div class="controls">
+						<input class="span12" type="text" data-bind="file-clue-link" id="add-file-clue-link" placeholder="http://...png" />
+						<p class="help-block">Lien vers l'image (*.png *.jpg) ou le son (*.mp3)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn pushable" id="add-clue-btn">Ajouter</button>
+	</div>
+</div>
+
+<div class="modal modal-form hide fade out" id="modal-edit-clue" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close pushable" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3>Modifier un indice</h3>
+	</div>
+	<div class="modal-body container-fluid">
+		<div class="form-horizontal row-fluid">
+			<div class="control-group">
+				<label class="control-label">Type</label>
+				<div class="controls">
+					<div class="btn-group clue-type-btn-group" data-toggle="buttons-radio">
+						<div class="btn active" data-selector=".text-clue-controls">Texte</div>
+						<div class="btn" data-selector=".file-clue-controls">Fichier</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clue-controls text-clue-controls">
+				<div class="control-group">
+					<label class="control-label" for="edit-text-clue-description">&Eacute;noncé</label>
+					<div class="controls">
+						<textarea class="span12" data-bind="text-clue-description" id="edit-text-clue-description"></textarea>
+						<p class="help-block">Une citation, un mot, un truc tordu...</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="clue-controls file-clue-controls hide">
+				<div class="control-group">
+					<label class="control-label" for="edit-file-clue-description">Description</label>
+					<div class="controls">
+						<input class="span12" type="text" data-bind="file-clue-description" id="edit-file-clue-description" placeholder="Notre Dame de Paris" />
+						<p class="help-block">Description brève de l'image ou du son</p>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="edit-file-clue-link">Lien</label>
+					<div class="controls">
+						<input class="span12" type="text" data-bind="file-clue-link" id="edit-file-clue-link" placeholder="http://...png" />
+						<p class="help-block">Lien vers l'image (*.png *.jpg) ou le son (*.mp3)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn pushable" id="update-clue-btn">Enregistrer</button>
+		<button class="remove-clue-btn btn pushable btn-danger" id="add-clue-btn">Supprimer</button>
+	</div>
+</div>
+
+<div class="hide" id="clue-prototype">
+	<div class="clue">
+		<i class="icon-type-clue icon-white"></i> Indice <span class="number">1</span>
+		<input type="hidden" data-bind="type-clue" name="@formEnigma("clues[x].type").name" data-renumber="type-clue" />
+		<input type="hidden" data-bind="text-clue-description" name="@formEnigma("clues[x].textDescription").name" data-renumber="text-clue-description" />
+		<input type="hidden" data-bind="file-clue-description" name="@formEnigma("clues[x].fileDescription").name" data-renumber="file-clue-description" />
+		<input type="hidden" data-bind="file-clue-link" name="@formEnigma("clues[x].fileLink").name" data-renumber="file-clue-link" />
+		<div class="actions">
+			<a role="button" class="edit-clue-btn btn inverse pushable"><i class="icon-pencil icon-white"></i></a>
+			<button type="button" class="remove-clue-btn btn inverse pushable"><i class="icon-remove icon-white"></i></button>
+		</div>
+	</div>
+</div>

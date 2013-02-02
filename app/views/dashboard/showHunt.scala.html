@@ -22,7 +22,7 @@
 	} else {
 		@if(answer.isInstanceOf[GeolocatedAnswer]) {
 			<h3>Réponse géolocalisée</h3>
-			<div>@answer.asInstanceOf[GeolocatedAnswer].getPosition().getPlace() : la position est indiquée sur la carte</div>
+			<div><strong>@answer.asInstanceOf[GeolocatedAnswer].getPosition().getPlace()</strong> : la position est indiquée sur la carte</div>
 		}
 	}
 }
