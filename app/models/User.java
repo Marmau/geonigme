@@ -3,18 +3,13 @@ package models;
 import global.Sesame;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.ObjectQuery;
 import org.openrdf.repository.object.RDFObject;
@@ -29,11 +24,22 @@ public class User implements RDFObject {
 	private String login;
 	private String mail;
 	private String password;
+	private Role role;
 
 	@Sparql(NS.PREFIX +
 		"SELECT ?hunt { ?hunt gngm:createdBy $this. ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date)")
 	public List<Hunt> getHunts() {
 		return null;
+	}
+
+	@Iri(NS.USER + "role")
+	public Role getRole() {
+		return role;
+	}
+
+	@Iri(NS.USER + "role")
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 	@Iri(NS.USER + "inscriptionDate")
@@ -100,9 +106,6 @@ public class User implements RDFObject {
 		return null;
 	}
 	
-	public static List<User> getAll() {
-		return getAll("loginName");
-	}
 	public static List<User> getAll(String orderBy) {
 		List<User> users = new ArrayList<User>();
 		try {
@@ -114,5 +117,8 @@ public class User implements RDFObject {
 			e.printStackTrace();
 		}
 		return users;
+	}
+	public static List<User> getAll() {
+		return getAll("loginName");
 	}
 }
