@@ -16,6 +16,8 @@
                 <div>Inscrivez-vous !</div>
             </div>
             @helper.form(action = routes.User.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
+                @includes.authenticationToken(formRegistration("token"))
+
                 <div class="control-group @displayIfError(formRegistration("pseudonym"), "error")">
                     <label class="control-label" for="registration-input-pseudonym">Pseudonyme</label>
                     <div class="controls">
@@ -46,6 +48,8 @@
                 <div><strong>Sinon, connectez-vous !</strong></div>
             </div>
             @helper.form(action = routes.User.submitLoginForm(), 'id -> "login-form") {
+                @includes.authenticationToken(formLogin("token"))
+                
                 @if(formLogin.hasGlobalErrors()) {
                     <div class="control-group error">
                         @for(error <- formLogin.globalErrors()) {
