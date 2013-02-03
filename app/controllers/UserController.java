@@ -113,7 +113,7 @@ public class UserController extends Controller {
 	public static Result redirectToMain() {
 		//return redirect(routes.ManagerController.dashboard());
 		models.User user = getLoggedUser();
-		return redirect( (user != null && user.hasRights()) ? routes.AdminPanel.userlist() : routes.ManagerController.dashboard());
+		return redirect( (user != null && user.hasRights()) ? routes.AdminPanelController.userlist() : routes.ManagerController.dashboard());
 	}
 	
 	public static Result login() {

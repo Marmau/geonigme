@@ -5,14 +5,14 @@
 
 @mainAdminPanel("Modifier un utilisateur", "adminpanel") {
 	<ul class="breadcrumb">
-		<li><a href="@routes.AdminPanel.userlist()">Utilisateurs</a></li>
-		<li><a href="@routes.AdminPanel.useredit(user.getId())">@user.getLoginName()</a></li>
+		<li><a href="@routes.AdminPanelController.userlist()">Utilisateurs</a></li>
+		<li><a href="@routes.AdminPanelController.useredit(user.getId())">@user.getLoginName()</a></li>
 		<li><a>Modifier l'utilisateur</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.AdminPanel.submitUserEditForm(user.getId()), 'id -> "edit-user", 'class -> "form-horizontal") {
+			@helper.form(action = routes.AdminPanelController.submitUserEditForm(user.getId()), 'id -> "edit-user", 'class -> "form-horizontal") {
 				<div class="control-group">
 					<label class="control-label" for="name-role">Rôle</label>
 					<div class="controls">
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.AdminPanel.userlist()">Annuler</a>
+					<a class="btn pushable" href="@routes.AdminPanelController.userlist()">Annuler</a>
 					<button type="submit" class="btn pushable">Enregistrer</button>
 				</div>
 			}

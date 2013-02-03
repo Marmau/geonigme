@@ -80,6 +80,6 @@ GET 	/poi/monuments				controllers.MapController.getMonumentsMontpellierJSON()
 GET		/routing					controllers.MapController.routing()
 
 # User
-GET		/admin/users				controllers.AdminPanel.userlist()
-GET		/admin/user/:uid			controllers.AdminPanel.useredit(uid: String)
-POST	/admin/user/:uid			controllers.AdminPanel.submitUserEditForm(uid: String)
+GET		/admin/users				controllers.AdminPanelController.userlist()
+GET		/admin/user/:uid			controllers.AdminPanelController.useredit(uid: String)
+POST	/admin/user/:uid			controllers.AdminPanelController.submitUserEditForm(uid: String)

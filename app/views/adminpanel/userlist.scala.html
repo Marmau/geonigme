@@ -22,8 +22,8 @@
 
 @mainAdminPanel("Utilisateurs", "adminpanel") {
 	<ul class="menu">
-		<li class="selected"><a href="@routes.AdminPanel.userlist()">Utilisateurs</a></li>
-		<li><a class="pushable" href="@routes.AdminPanel.userlist()">Chasses</a></li>
+		<li class="selected"><a href="@routes.AdminPanelController.userlist()">Utilisateurs</a></li>
+		<li><a class="pushable" href="@routes.AdminPanelController.userlist()">Chasses</a></li>
 		<li><a class="pushable" href="">Autre</a></li>
 	</ul>
 } {
@@ -31,7 +31,7 @@
 		<div id="container-user-box">
 		@for(user <- users) {
 			<div class="user-box">
-				<a class="pushable" href="@routes.AdminPanel.useredit(user.getId())">
+				<a class="pushable" href="@routes.AdminPanelController.useredit(user.getId())">
 					<div class="name">
 						<div>
 							<span>@user.getLoginName()</span>

@@ -12,7 +12,7 @@ import forms.AdmUserEdit;
 import play.data.Form;
 import play.mvc.*;
 
-public class AdminPanel extends Controller {
+public class AdminPanelController extends Controller {
 
 	public static Result userlist() throws RepositoryException, QueryEvaluationException {
 		if( !UserController.isLogged() ) {
@@ -62,6 +62,6 @@ public class AdminPanel extends Controller {
 	}
 
 	public static Result redirectToMain() {
-		return redirect(routes.AdminPanel.userlist());
+		return redirect(routes.AdminPanelController.userlist());
 	}
 }
