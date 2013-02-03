@@ -26,14 +26,14 @@ import org.openrdf.rio.RDFWriter;
 import play.data.Form;
 import play.mvc.*;
 
-public class User extends Controller {
+public class UserController extends Controller {
 
 	static String userSessionKey = "user";
 
 	public static Result logout() {
 		session().remove(userSessionKey);
 
-		return redirect(routes.Application.index());
+		return redirect(routes.ApplicationController.index());
 	}
 
 	public static Result submitLoginForm() throws DatatypeConfigurationException, RepositoryException,
@@ -111,9 +111,9 @@ public class User extends Controller {
 	}
 
 	public static Result redirectToMain() {
-		//return redirect(routes.Manager.dashboard());
+		//return redirect(routes.ManagerController.dashboard());
 		models.User user = getLoggedUser();
-		return redirect( (user != null && user.hasRights()) ? routes.AdminPanel.userlist() : routes.Manager.dashboard());
+		return redirect( (user != null && user.hasRights()) ? routes.AdminPanel.userlist() : routes.ManagerController.dashboard());
 	}
 	
 	public static Result login() {

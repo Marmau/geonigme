@@ -16,7 +16,7 @@ import org.openrdf.rio.RDFWriter;
 import play.data.Form;
 import play.mvc.*;
 
-public class Step extends Controller {
+public class StepController extends Controller {
 
 	public static Result create(String hid) throws RepositoryException, QueryEvaluationException {
 		Form<forms.Step> formStep = form(forms.Step.class);
@@ -42,7 +42,7 @@ public class Step extends Controller {
 			String sid = UUID.randomUUID().toString();
 			oc.addObject(models.Step.URI + sid, step);
 
-			return redirect(routes.Hunt.show(hid));
+			return redirect(routes.HuntController.show(hid));
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class Step extends Controller {
 
 			oc.addObject(models.Step.URI + sid, step);
 
-			return redirect(routes.Hunt.show(step.getHunt().getId()));
+			return redirect(routes.HuntController.show(step.getHunt().getId()));
 		}
 	}
 

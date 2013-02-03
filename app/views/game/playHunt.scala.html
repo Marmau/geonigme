@@ -6,7 +6,7 @@
 @mainGame("Jouer", "game/game") {
 	<nav>
 		<ul class="breadcrumb">
-			<li><a href="@routes.Game.home()">Liste des chasses</a></li>
+			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
 			<li><a><span class="hunt-name">@hunt.getLabel()</span></a></li>
 		</ul>
 	</nav>
@@ -24,6 +24,6 @@
 	<div data-area-hunt="@hunt.getArea().toTemplateString()" class="map" id="presentation-game-hunt"></div>
 
 	<div class="actions">
-		<a href="@routes.Game.go()" class="btn">Jouer</a>
+		<a href="@routes.GameController.go()" class="btn">Jouer</a>
 	</div>
 }

@@ -4,9 +4,9 @@
 
 @mainHome("Connexion - Inscription") { 
     <ul class="menu">
-        <li><a class="pushable" href="@routes.Application.index()">Découvrir</a></li>
-        <li class="selected"><a href="@routes.User.login()">Se connecter</a></li>
-        <li><a class="pushable" href="@routes.Game.home()">Jouer</a></li>
+        <li><a class="pushable" href="@routes.ApplicationController.index()">Découvrir</a></li>
+        <li class="selected"><a href="@routes.UserController.login()">Se connecter</a></li>
+        <li><a class="pushable" href="@routes.GameController.home()">Jouer</a></li>
     </ul>
 } {
     <div class="row-fluid">
@@ -15,7 +15,7 @@
                 <div><strong>Nouveau sur Géonigme ?</strong></div>
                 <div>Inscrivez-vous !</div>
             </div>
-            @helper.form(action = routes.User.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
+            @helper.form(action = routes.UserController.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
                 @includes.authenticationToken(formRegistration("token"))
 
                 <div class="control-group @displayIfError(formRegistration("pseudonym"), "error")">
@@ -47,7 +47,7 @@
                 <div><strong>&nbsp;</strong></div>
                 <div><strong>Sinon, connectez-vous !</strong></div>
             </div>
-            @helper.form(action = routes.User.submitLoginForm(), 'id -> "login-form") {
+            @helper.form(action = routes.UserController.submitLoginForm(), 'id -> "login-form") {
                 @includes.authenticationToken(formLogin("token"))
                 
                 @if(formLogin.hasGlobalErrors()) {

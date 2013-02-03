@@ -24,7 +24,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-public class Enigma extends Controller {
+public class EnigmaController extends Controller {
 
 	public static Result create(String sid) throws RepositoryException, QueryEvaluationException {
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class);
@@ -65,7 +65,7 @@ public class Enigma extends Controller {
 			String aid = UUID.randomUUID().toString();
 			oc.addObject(models.Answer.URI + aid, answer);
 			
-			return redirect(routes.Hunt.show(step.getHunt().getId()));
+			return redirect(routes.HuntController.show(step.getHunt().getId()));
 		}
 	}
 
@@ -152,7 +152,7 @@ public class Enigma extends Controller {
 			String aid = UUID.randomUUID().toString();
 			oc.addObject(models.Answer.URI + aid, answer);
 			
-			return redirect(routes.Hunt.show(enigma.getStep().getHunt().getId()));
+			return redirect(routes.HuntController.show(enigma.getStep().getHunt().getId()));
 		}
 	}
 

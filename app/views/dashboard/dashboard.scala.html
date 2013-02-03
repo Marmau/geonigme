@@ -23,15 +23,15 @@
 @mainDashboard("Tableau de bord", "dashboard/dashboard") {
 	<ul class="menu">
 		<li class="selected"><a href="">Tableau de bord</a></li>
-		<li><a class="pushable" href="@routes.Hunt.create()">Nouvelle chasse</a></li>
-		<li><a class="pushable" href="@routes.Game.home()">Jouer</a></li>
+		<li><a class="pushable" href="@routes.HuntController.create()">Nouvelle chasse</a></li>
+		<li><a class="pushable" href="@routes.GameController.home()">Jouer</a></li>
 	</ul>
 } {
 	@if(!hunts.isEmpty()) { 
 		<div id="container-hunt-box">
 		@for(hunt <- hunts) {
 			<div class="hunt-box">
-				<a class="pushable" href="@routes.Hunt.show(hunt.getId())">
+				<a class="pushable" href="@routes.HuntController.show(hunt.getId())">
 					<div class="name"><div><span>@hunt.getLabel()</span></div></div>
 					<div class="numbers">
 						@if(hunt.getSteps().size() > 1) {

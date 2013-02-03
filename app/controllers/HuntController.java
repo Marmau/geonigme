@@ -25,11 +25,11 @@ import org.openrdf.rio.RDFWriter;
 import play.data.Form;
 import play.mvc.*;
 
-public class Hunt extends Controller {
+public class HuntController extends Controller {
 
 	public static Result create() {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class);
@@ -38,8 +38,8 @@ public class Hunt extends Controller {
 	}
 
 	public static Result submitCreateForm() throws RepositoryException, DatatypeConfigurationException, QueryEvaluationException {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
@@ -61,19 +61,19 @@ public class Hunt extends Controller {
 			String hid = UUID.randomUUID().toString();
 			oc.addObject(models.Hunt.URI + hid, hunt);
 
-			return redirect(routes.Hunt.show(hid));
+			return redirect(routes.HuntController.show(hid));
 		}
 	}
 
 	public static Result update(String hid) throws RepositoryException,	QueryEvaluationException {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
 		ObjectConnection oc = Sesame.getObjectConnection();
 		models.Hunt hunt = oc.getObject(models.Hunt.class, models.Hunt.URI + hid);
 		
-		if (!User.getLoggedUser().equals(hunt.getCreatedBy())) {
+		if (!UserController.getLoggedUser().equals(hunt.getCreatedBy())) {
 			return forbidden();
 		}
 		
@@ -97,14 +97,14 @@ public class Hunt extends Controller {
 	}
 
 	public static Result submitUpdateForm(String hid) throws RepositoryException, QueryEvaluationException {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
 		ObjectConnection oc = Sesame.getObjectConnection();
 		models.Hunt hunt = oc.getObject(models.Hunt.class, models.Hunt.URI + hid);
 
-		if (!User.getLoggedUser().equals(hunt.getCreatedBy())) {
+		if (!UserController.getLoggedUser().equals(hunt.getCreatedBy())) {
 			return forbidden();
 		}
 
@@ -125,21 +125,21 @@ public class Hunt extends Controller {
 			
 			oc.addObject(models.Hunt.URI + hid, hunt);
 
-			return redirect(routes.Hunt.show(hid));
+			return redirect(routes.HuntController.show(hid));
 		}
 	}
 
 	public static Result delete(String hid) {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
 		return ok();
 	}
 
 	public static Result show(String hid) {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
 		ObjectConnection oc = Sesame.getObjectConnection();
@@ -152,7 +152,7 @@ public class Hunt extends Controller {
 		}
 		
 
-		if (!User.getLoggedUser().equals(h.getCreatedBy())) {
+		if (!UserController.getLoggedUser().equals(h.getCreatedBy())) {
 			return forbidden();
 		}
 
@@ -192,8 +192,8 @@ public class Hunt extends Controller {
 	}
 
 	public static Result publish(String hid) {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
 		return ok();
@@ -212,7 +212,7 @@ public class Hunt extends Controller {
 		hunt.setLevel(form.level);
 		hunt.setPublished(false);
 		hunt.setArea(Area.createFrom(form.area));
-		hunt.setCreatedBy(User.getLoggedUser());
+		hunt.setCreatedBy(UserController.getLoggedUser());
 		
 		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
 

@@ -16,9 +16,9 @@
 @mainGame("Jouer", "game/enigma") {
 	<nav>
 		<ul class="breadcrumb">
-			<li><a href="@routes.Game.home()">Liste des chasses</a></li>
-			<li><a href="@routes.Game.playHunt(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
-			<li><a href="@routes.Game.playHunt(enigma.getStep().getId())">&Eacute;tape @enigma.getStep().getNumber()</a></li>
+			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
+			<li><a href="@routes.GameController.playHunt(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
+			<li><a href="@routes.GameController.playHunt(enigma.getStep().getId())">&Eacute;tape @enigma.getStep().getNumber()</a></li>
 			<li><a>&Eacute;nigme @enigma.getNumber()</a></li>
 		</ul>
 	</nav>
@@ -29,7 +29,7 @@
 				@enigma.getDescription()
 			</blockquote>
 
-			<div class="form-horizontal" data-check-action="@routes.Game.checkAnswer()" id="form-check-answer">
+			<div class="form-horizontal" data-check-action="@routes.GameController.checkAnswer()" id="form-check-answer">
 				@if(enigma.getAnswer().isInstanceOf[models.TextAnswer]) {
 					<div class="control-group">
 						<label class="control-label" for="answer-text">Votre réponse</label>
@@ -60,11 +60,11 @@
 				}
 
 				@if(clues.size() < enigma.getClues().size()) {
-					<button id="next-clue" class="btn" data-next-clue="@routes.Game.nextClue()">Afficher un nouvel indice</button>
+					<button id="next-clue" class="btn" data-next-clue="@routes.GameController.nextClue()">Afficher un nouvel indice</button>
 				}
 
 				<div class="actions">
-					<button id="skip-enigma" data-url="@routes.Game.skipEnigma()" class="btn btn-danger">Passer</button>
+					<button id="skip-enigma" data-url="@routes.GameController.skipEnigma()" class="btn btn-danger">Passer</button>
 					<p id="info-pass" class="danger">Vous n'arrivez pas à résoudre l'énigme ? Passez...</p>
 				</div>
 			</div>

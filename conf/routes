@@ -3,81 +3,81 @@
 # ~~~~
 
 # Home page
-GET		/							controllers.Application.index()
-POST 	/contact-us					controllers.Application.submitContactForm()
+GET		/							controllers.ApplicationController.index()
+POST 	/contact-us					controllers.ApplicationController.submitContactForm()
 
 # Map static resources from the /public folder to the /assets URL path
 GET		/assets/*file				controllers.Assets.at(path="/public", file)
 
 # RDF
-GET		/rdf/ontology				controllers.RDF.ontology()
-GET 	/rdf/dump					controllers.RDF.dump()
-GET		/rdf/reset					controllers.RDF.reset()
-GET		/rdf/restore				controllers.RDF.restore()
+GET		/rdf/ontology				controllers.RdfController.ontology()
+GET 	/rdf/dump					controllers.RdfController.dump()
+GET		/rdf/reset					controllers.RdfController.reset()
+GET		/rdf/restore				controllers.RdfController.restore()
 
 
 # Game
-GET 	/play						controllers.Game.home()
-GET		/play/go					controllers.Game.go()
-GET		/play/step/start			controllers.Game.startStep()
-POST 	/play/answer/check			controllers.Game.checkAnswer()	
-POST 	/play/clue/next				controllers.Game.nextClue()
-GET		/play/enigma/skip			controllers.Game.skipEnigma()
-GET		/play/:hid					controllers.Game.playHunt(hid: String)
+GET 	/play						controllers.GameController.home()
+GET		/play/go					controllers.GameController.go()
+GET		/play/step/start			controllers.GameController.startStep()
+POST 	/play/answer/check			controllers.GameController.checkAnswer()	
+POST 	/play/clue/next				controllers.GameController.nextClue()
+GET		/play/enigma/skip			controllers.GameController.skipEnigma()
+GET		/play/:hid					controllers.GameController.playHunt(hid: String)
 
 # Hunt
-GET		/hunt/:hid/show				controllers.Hunt.show(hid: String)
-GET		/hunt/create				controllers.Hunt.create()
-POST	/hunt/create				controllers.Hunt.submitCreateForm()
-GET		/hunt/:hid/update			controllers.Hunt.update(hid: String)
-POST	/hunt/:hid/update			controllers.Hunt.submitUpdateForm(hid: String)
-#POST	/hunt/:hid/delete			controllers.Hunt.delete(hid: String)
-#POST	/hunt/:hid/publish			controllers.Hunt.publish(hid: String)
-GET		/hunt/:hid/:format			controllers.Hunt.showRDF(hid: String, format: String)
+GET		/hunt/:hid/show				controllers.HuntController.show(hid: String)
+GET		/hunt/create				controllers.HuntController.create()
+POST	/hunt/create				controllers.HuntController.submitCreateForm()
+GET		/hunt/:hid/update			controllers.HuntController.update(hid: String)
+POST	/hunt/:hid/update			controllers.HuntController.submitUpdateForm(hid: String)
+#POST	/hunt/:hid/delete			controllers.HuntController.delete(hid: String)
+#POST	/hunt/:hid/publish			controllers.HuntController.publish(hid: String)
+GET		/hunt/:hid/:format			controllers.HuntController.showRDF(hid: String, format: String)
 
 #Tag
-GET		/tag/:name/:format			controllers.Hunt.showTagRDF(name: String, format: String)
+GET		/tag/:name/:format			controllers.HuntController.showTagRDF(name: String, format: String)
 
 # Step
-GET		/hunt/:hid/step/create		controllers.Step.create(hid: String)
-POST	/hunt/:hid/step/create		controllers.Step.submitCreateForm(hid: String)
-GET		/step/:sid/update			controllers.Step.update(sid: String)
-POST	/step/:sid/update			controllers.Step.submitUpdateForm(sid: String)
-#POST	/step/:sid/delete			controllers.Step.delete(sid: String)
-GET		/step/:sid/:format			controllers.Step.showRDF(sid: String, format: String)
+GET		/hunt/:hid/step/create		controllers.StepController.create(hid: String)
+POST	/hunt/:hid/step/create		controllers.StepController.submitCreateForm(hid: String)
+GET		/step/:sid/update			controllers.StepController.update(sid: String)
+POST	/step/:sid/update			controllers.StepController.submitUpdateForm(sid: String)
+#POST	/step/:sid/delete			controllers.StepController.delete(sid: String)
+GET		/step/:sid/:format			controllers.StepController.showRDF(sid: String, format: String)
 
 # Enigma
-GET		/step/:sid/enigma/create	controllers.Enigma.create(sid: String)
-POST	/step/:sid/enigma/create	controllers.Enigma.submitCreateForm(sid: String)
-GET		/enigma/:eid/update			controllers.Enigma.update(eid: String)
-POST	/enigma/:eid/update			controllers.Enigma.submitUpdateForm(eid: String)
-#POST	/enigma/:eid/delete			controllers.Enigma.delete(eid: String)
-GET		/enigma/:eid/:format		controllers.Enigma.showRDF(eid: String, format: String)
+GET		/step/:sid/enigma/create	controllers.EnigmaController.create(sid: String)
+POST	/step/:sid/enigma/create	controllers.EnigmaController.submitCreateForm(sid: String)
+GET		/enigma/:eid/update			controllers.EnigmaController.update(eid: String)
+POST	/enigma/:eid/update			controllers.EnigmaController.submitUpdateForm(eid: String)
+#POST	/enigma/:eid/delete			controllers.EnigmaController.delete(eid: String)
+GET		/enigma/:eid/:format		controllers.EnigmaController.showRDF(eid: String, format: String)
 
 # Clue
-GET		/clue/:cid/:format			controllers.Enigma.showClueRDF(cid: String, format: String)
+GET		/clue/:cid/:format			controllers.EnigmaController.showClueRDF(cid: String, format: String)
 
 # Answer
-GET		/answer/:aid/:format		controllers.Enigma.showAnswerRDF(aid: String, format: String)
+GET		/answer/:aid/:format		controllers.EnigmaController.showAnswerRDF(aid: String, format: String)
 
 # User
-GET		/logout						controllers.User.logout()
-GET		/login						controllers.User.login()
-POST	/login						controllers.User.submitLoginForm()
-POST	/register					controllers.User.submitRegisterForm()
-GET		/user/:uid/:format			controllers.User.showRDF(uid: String, format: String)
+GET		/logout						controllers.UserController.logout()
+GET		/login						controllers.UserController.login()
+POST	/login						controllers.UserController.submitLoginForm()
+POST	/register					controllers.UserController.submitRegisterForm()
+GET		/user/:uid/:format			controllers.UserController.showRDF(uid: String, format: String)
 
 # Manager
-GET		/dashboard					controllers.Manager.dashboard()
+GET		/dashboard					controllers.ManagerController.dashboard()
 
 # Map
-GET		/poi/trees					controllers.Map.getTreesMontpellierJSON()
-GET		/poi/publicplaces			controllers.Map.getPublicPlacesMontpellierJSON()
-GET		/poi/fountains				controllers.Map.getFoutainsMontpellierJSON()
-GET		/poi/gardens				controllers.Map.getGardensMontpellierJSON()
-GET 	/poi/greenspaces			controllers.Map.getGreenSpacesMontpellierJSON()
-GET 	/poi/monuments				controllers.Map.getMonumentsMontpellierJSON()
-GET		/routing					controllers.Map.routing()
+GET		/poi/trees					controllers.MapController.getTreesMontpellierJSON()
+GET		/poi/publicplaces			controllers.MapController.getPublicPlacesMontpellierJSON()
+GET		/poi/fountains				controllers.MapController.getFoutainsMontpellierJSON()
+GET		/poi/gardens				controllers.MapController.getGardensMontpellierJSON()
+GET 	/poi/greenspaces			controllers.MapController.getGreenSpacesMontpellierJSON()
+GET 	/poi/monuments				controllers.MapController.getMonumentsMontpellierJSON()
+GET		/routing					controllers.MapController.routing()
 
 # User
 GET		/admin/users				controllers.AdminPanel.userlist()

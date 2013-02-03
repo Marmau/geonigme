@@ -69,7 +69,7 @@
 
 @mainDashboard("Voir la chasse", "dashboard/show_hunt") {
 	<ul class="breadcrumb">
-		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
+		<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
 		<li><a><span class="hunt-name">@hunt.getLabel()</span> |<span class="small">@hunt.getStringLevel()</span></a></li>
 	</ul>
 } {
@@ -85,17 +85,17 @@
 					@hunt.getDescription()
 				</blockquote>
 				<div class="actions">
-					<a href="@routes.Game.playHunt(hunt.getId())" class="action">Jouer</a>
-					<a href="@routes.Hunt.update(hunt.getId())" class="action">Modifier</a>
+					<a href="@routes.GameController.playHunt(hunt.getId())" class="action">Jouer</a>
+					<a href="@routes.HuntController.update(hunt.getId())" class="action">Modifier</a>
 					<a href="#" class="action">Publier</a>
 				</div>
 			</section>
 			<section class="steps">
 				<div class="actions">
-					<a href="@routes.Step.create(hunt.getId())" class="action add-step">Ajouter une étape</a>
+					<a href="@routes.StepController.create(hunt.getId())" class="action add-step">Ajouter une étape</a>
 				</div>
 				@if(hunt.getSteps().isEmpty()) {
-					<a class="underline" href="@routes.Step.create(hunt.getId())" class="no-step">Aucune étape... Créez-en une !</a>
+					<a class="underline" href="@routes.StepController.create(hunt.getId())" class="no-step">Aucune étape... Créez-en une !</a>
 				} else {
 					<div class="select" id="select-step">
 						<select>
@@ -107,18 +107,18 @@
 					@for(step <- hunt.getSteps()) {
 		 				<div class="step" id="step@step.getNumber()" @displayDataStep(step)>
 		 					<div class="update-link">
-								<a class="update-step pushable" href="@routes.Step.update(step.getId())">Modifier</a>
+								<a class="update-step pushable" href="@routes.StepController.update(step.getId())">Modifier</a>
 							</div>
 							<blockquote>
 								@step.getDescription()
 							</blockquote>
 							<section class="enigmas">
 								<div class="actions">
-									<a href="@routes.Enigma.create(step.getId())" class="action">Ajouter une énigme</a>
+									<a href="@routes.EnigmaController.create(step.getId())" class="action">Ajouter une énigme</a>
 								</div>
 								<div class="accordion accordion-enigmas" id="accordion@step.getNumber()-enigmas">
 									@if(step.getEnigmas().isEmpty()) {
-										<a class="underline" href="@routes.Enigma.create(step.getId())" class="no-enigma">Aucune énigme... Créez-en une !</a>
+										<a class="underline" href="@routes.EnigmaController.create(step.getId())" class="no-enigma">Aucune énigme... Créez-en une !</a>
 									} else {
 										@for(enigma <- step.getEnigmas()) {
 											@defining(enigma.getNumber()) { number =>
@@ -141,7 +141,7 @@
 															</div>
 														</div>
 														<div class="actions">
-															<a href="@routes.Enigma.update(enigma.getId())" class="action update-enigma">Modifier</a>
+															<a href="@routes.EnigmaController.update(enigma.getId())" class="action update-enigma">Modifier</a>
 														</div>
 													</div>
 												</div>

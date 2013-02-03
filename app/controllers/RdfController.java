@@ -24,7 +24,7 @@ import play.Play;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-public class RDF extends Controller {
+public class RdfController extends Controller {
 
 	private static void writeRDF(RDFWriter writer, GraphQueryResult gqr) throws RDFHandlerException,
 			QueryEvaluationException {

@@ -15,15 +15,15 @@ import play.mvc.*;
 public class AdminPanel extends Controller {
 
 	public static Result userlist() throws RepositoryException, QueryEvaluationException {
-		if( !User.isLogged() ) {
-			return redirect(routes.Application.index());
+		if( !UserController.isLogged() ) {
+			return redirect(routes.ApplicationController.index());
 		}
 		return ok(views.html.adminpanel.userlist.render(models.User.getAll()));
 	}
 
 	public static Result useredit(String uid) throws RepositoryException, QueryEvaluationException {
-		if( !User.isLogged() ) {
-			return redirect(routes.Application.index());
+		if( !UserController.isLogged() ) {
+			return redirect(routes.ApplicationController.index());
 		}
 		models.User user = models.User.get(uid);
 		if( user == null ) {
@@ -37,8 +37,8 @@ public class AdminPanel extends Controller {
 	}
 	
 	public static Result submitUserEditForm(String uid) throws RepositoryException, DatatypeConfigurationException {
-		if( !User.isLogged() ) {
-			return redirect(routes.Application.index());
+		if( !UserController.isLogged() ) {
+			return redirect(routes.ApplicationController.index());
 		}
 		models.User user = models.User.get(uid);
 		if( user == null ) {
@@ -55,7 +55,7 @@ public class AdminPanel extends Controller {
 			
 			user.setRole(Role.get(form.roleName));
 			user.save();
-			session(User.userSessionKey, uid);
+			session(UserController.userSessionKey, uid);
 			
 			return redirectToMain();
 		}

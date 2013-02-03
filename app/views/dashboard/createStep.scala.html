@@ -2,14 +2,14 @@
 
 @mainDashboard("Nouvelle étape", "dashboard/step") {
 	<ul class="breadcrumb">
-		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
-		<li><a href="@routes.Hunt.show(hunt.getId())"><span class="hunt-name">@hunt.getLabel()</span></a></li>
+		<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
+		<li><a href="@routes.HuntController.show(hunt.getId())"><span class="hunt-name">@hunt.getLabel()</span></a></li>
 		<li><a>Nouvelle étape</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Step.submitCreateForm(hunt.getId()), 
+			@helper.form(action = routes.StepController.submitCreateForm(hunt.getId()), 
 				'id -> "create-step", 
 				'class -> "form-horizontal", 
 				Symbol("data-area") -> hunt.getArea().toTemplateString()) {

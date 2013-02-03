@@ -20,7 +20,7 @@ import play.libs.WS;
 import play.libs.WS.Response;
 import play.mvc.*;
 
-public class Map extends Controller{
+public class MapController extends Controller{
 	
 	public static Result routing() throws MalformedURLException, IOException {	
 		Promise<Response> result = WS.url("http://boussole.mandarine34.fr/api/7c2xrVH6AhnOqpKd179ioUPxar8IEcvqdtSFD0sJ/getRouting/")

@@ -4,17 +4,17 @@
 
 @mainDashboard("Modifier une chasse", "dashboard/hunt") {
 	<ul class="breadcrumb">
-		<li><a href="@routes.Manager.dashboard()">Tableau de bord</a></li>
-		<li><a href="@routes.Hunt.show(hunt.getId())"><span class="hunt-name">@hunt.getLabel()</span></a></li>
+		<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
+		<li><a href="@routes.HuntController.show(hunt.getId())"><span class="hunt-name">@hunt.getLabel()</span></a></li>
 		<li><a>Modifier la chasse</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
 		<div class="span4">
-			@helper.form(action = routes.Hunt.submitUpdateForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {
+			@helper.form(action = routes.HuntController.submitUpdateForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {
 				@includes.formHunt(formHunt)
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.Hunt.show(hunt.getId())">Annuler</a>
+					<a class="btn pushable" href="@routes.HuntController.show(hunt.getId())">Annuler</a>
 					<button type="submit" class="btn pushable">Enregistrer</button>
 				</div>
 			}

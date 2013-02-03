@@ -7,8 +7,8 @@
 @mainGame("Jouer", "game/go") {
 	<nav>
 		<ul class="breadcrumb">
-			<li><a href="@routes.Game.home()">Liste des chasses</a></li>
-			<li><a href="@routes.Game.playHunt(step.getHunt().getId())"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
+			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
+			<li><a href="@routes.GameController.playHunt(step.getHunt().getId())"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
 			<li><a>&Eacute;tape @step.getNumber()</a></li>
 		</ul>
 	</nav>
@@ -46,12 +46,12 @@
 		</div>
 	</div>
 
-	<div class="map" id="go-map" data-target="@step.getPosition().toTemplateString()" data-target-accuracy="@step.getPosition().getAccuracy()" data-ws="@routes.Map.routing()"></div>
+	<div class="map" id="go-map" data-target="@step.getPosition().toTemplateString()" data-target-accuracy="@step.getPosition().getAccuracy()" data-ws="@routes.MapController.routing()"></div>
 
 	<div class="actions">
 		<button id="im-there" class="btn btn-danger">J'y suis !</button>
 		<div id="play-step-disabled" class="btn disabled">Jouer</div>
-		<a href="@routes.Game.startStep()" id="play-step" class="btn hide">Jouer</a>
+		<a href="@routes.GameController.startStep()" id="play-step" class="btn hide">Jouer</a>
 		<p id="info-not-here" class="danger">Vous n'êtes pas géolocalisé sur le lieu du rendez-vous. Malgré tout, nous vous permettons de commencer la chasse si vous certifiez que vous y êtes.</p>
 	</div>
 }

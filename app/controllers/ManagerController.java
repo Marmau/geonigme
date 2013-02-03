@@ -7,14 +7,14 @@ import org.openrdf.repository.RepositoryException;
 
 import play.mvc.*;
 
-public class Manager extends Controller {
+public class ManagerController extends Controller {
 
 	public static Result dashboard() throws RepositoryException, QueryEvaluationException {
-		if (!User.isLogged()) {
-			return redirect(routes.Application.index());
+		if (!UserController.isLogged()) {
+			return redirect(routes.ApplicationController.index());
 		}
 		
-		models.User user = User.getLoggedUser();
+		models.User user = UserController.getLoggedUser();
 		List<models.Hunt> hunts = user.getHunts();
 
 		return ok(views.html.dashboard.dashboard.render(hunts));

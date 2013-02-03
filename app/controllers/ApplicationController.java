@@ -2,7 +2,7 @@ package controllers;
 
 import play.mvc.*;
 
-public class Application extends Controller {
+public class ApplicationController extends Controller {
 
 	public static Result index() {
 		return ok(views.html.global.index.render());

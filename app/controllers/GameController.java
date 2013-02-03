@@ -17,7 +17,7 @@ import play.data.DynamicForm;
 import play.mvc.Result;
 import play.mvc.Controller;
 
-public class Game extends Controller {
+public class GameController extends Controller {
 
 	public static final String progressHuntSessionKey = "progressHunt";
 	public static final String progressStepSessionKey = "progressStep";
@@ -65,14 +65,14 @@ public class Game extends Controller {
 			}
 		}
 
-		return redirect(routes.Game.go());
+		return redirect(routes.GameController.go());
 	}
 
 	public static Result go() throws RepositoryException, QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
 		if (session(progressHuntSessionKey).isEmpty()) {
-			return redirect(routes.Game.home());
+			return redirect(routes.GameController.home());
 		}
 		
 		models.Hunt currentHunt = oc.getObject(models.Hunt.class, models.Hunt.URI + session(progressHuntSessionKey));
@@ -189,6 +189,6 @@ public class Game extends Controller {
 	public static Result skipEnigma() throws RepositoryException, QueryEvaluationException {
 		nextEnigma();
 		
-		return redirect(routes.Game.go());
+		return redirect(routes.GameController.go());
 	}
 }
