@@ -32,7 +32,6 @@ public class UserController extends Controller {
 
 	public static Result logout() {
 		session().remove(userSessionKey);
-
 		return redirect(routes.ApplicationController.index());
 	}
 
@@ -98,14 +97,12 @@ public class UserController extends Controller {
 	public static models.User getLoggedUser() {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		String uid = session(userSessionKey);
-
 		if (uid == null) {
 			return null;
 		}
-
 		try {
 			return oc.getObject(models.User.class, models.User.URI + uid);
-		} catch (RepositoryException | QueryEvaluationException e) {
+		} catch ( Exception e ) {
 			return null;
 		}
 	}
@@ -117,7 +114,8 @@ public class UserController extends Controller {
 	}
 	
 	public static Result login() {
-		if (isLogged()) {
+		if( isLogged() ) {
+			System.out.println("UserController.login() : Already loggued in.");
 			return redirectToMain();
 		}
 

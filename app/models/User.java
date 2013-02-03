@@ -35,7 +35,7 @@ public class User implements RDFObject {
 
 	@Iri(NS.USER + "role")
 	public Role getRole() {
-		if( role == null ) {// Pfiouuuu
+		if( role == null ) {// Lazy loading
 			setRole(Role.MEMBER);
 		}
 		return role;

@@ -1,28 +1,26 @@
 package controllers;
 
-import javax.xml.datatype.DatatypeConfigurationException;
+import global.Page;
 
 import models.Role;
-
-import org.openrdf.query.QueryEvaluationException;
-import org.openrdf.repository.RepositoryException;
-
-import forms.AdmUserEdit;
 
 import play.data.Form;
 import play.mvc.*;
 
 public class AdminPanelController extends Controller {
 
-	public static Result userlist() throws RepositoryException, QueryEvaluationException {
-		if( !UserController.isLogged() ) {
+	public static Result userlist() throws Exception {
+		Page page = Page.get("userlist");
+		if( !page.userCanAccess() ) {
+			System.out.println("AdminPanelController.userlist() : Access forbidden.");
 			return redirect(routes.ApplicationController.index());
 		}
 		return ok(views.html.adminpanel.userlist.render(models.User.getAll()));
 	}
 
-	public static Result useredit(String uid) throws RepositoryException, QueryEvaluationException {
-		if( !UserController.isLogged() ) {
+	public static Result useredit(String uid) throws Exception {
+		Page page = Page.get("useredit");
+		if( !page.userCanAccess() ) {
 			return redirect(routes.ApplicationController.index());
 		}
 		models.User user = models.User.get(uid);
@@ -36,8 +34,9 @@ public class AdminPanelController extends Controller {
 		return ok(views.html.adminpanel.editUser.render(user, form(forms.AdmUserEdit.class).fill(formUserEdit)));
 	}
 	
-	public static Result submitUserEditForm(String uid) throws RepositoryException, DatatypeConfigurationException {
-		if( !UserController.isLogged() ) {
+	public static Result submitUserEditForm(String uid) throws Exception {
+		Page page = Page.get("useredit");
+		if( !page.userCanAccess() ) {
 			return redirect(routes.ApplicationController.index());
 		}
 		models.User user = models.User.get(uid);

@@ -1,51 +1,48 @@
 package models;
 
-import org.openrdf.annotations.Iri;
-import org.openrdf.model.Resource;
-import org.openrdf.repository.object.ObjectConnection;
-import org.openrdf.repository.object.RDFObject;
-
-@Iri(NS.GNGM + "Right")
-public class Right implements RDFObject {
+public class Right {
+	
+	/*
+	USER_LIST,
+	USER_EDIT;
+	*/
 	
 	private static int COUNT = 0;
 	public static final Right USER_LIST = create();
 	public static final Right USER_EDIT = create();
 	
+	
 	private Integer value;
+
 	
 	public static Right create() {
+		return create(1<<(++COUNT));
+	}
+	
+	private static Right create(int value) {
 		Right r = new Right();
-		r.setValue(1<<(++COUNT));
+		r.value = value;
 		return r;
 	}
 	
-	Right() {
+	
+	private Right() {
 		//this.value = 1 << this.ordinal();
-        //this.value = 
     }
 	
-	@Iri(NS.GNGM + "value")
 	public Integer getValue() {
 		return value;
 	}
 
-	@Iri(NS.GNGM + "value")
-	public void setValue(Integer value) {
-		this.value = value;
+	public Integer v() {
+		return getValue();
+	}
+	
+	public Right AND(Right other) {
+		return create(other.v() | v());
 	}
 	
 	public static int allRights() {
 		return -1;// ~0
-	}
-
-	@Override
-	public ObjectConnection getObjectConnection() {
-		return null;
-	}
-
-	@Override
-	public Resource getResource() {
-		return null;
 	}
 }

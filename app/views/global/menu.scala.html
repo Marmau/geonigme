@@ -1,0 +1,10 @@
+@(menu: _root_.global.Menu, currentItem: _root_.global.MenuItem)
+
+
+	<ul class="menu">
+	@for( item <- menu.getItems() ) {
+		<li class="@if( item.equals(currentItem) ) { selected }">
+			<a href="@item.getUrl()" class="@if( !item.equals(currentItem) ) { pushable }">@item.getTitle()</a>
+		</li>
+	}
+	</ul>
