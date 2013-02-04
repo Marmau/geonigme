@@ -8,15 +8,17 @@ public class Right {
 	*/
 	
 	private static int COUNT = 0;
-	public static final Right USER_LIST = create();
-	public static final Right USER_EDIT = create();
+	public static final Right NONE			= null;
+	public static final Right MEMBER_AREA	= create();
+	public static final Right USER_LIST		= create();
+	public static final Right USER_EDIT		= create();
 	
 	
 	private Integer value;
 
 	
 	public static Right create() {
-		return create(1<<(++COUNT));
+		return create(1<<(COUNT++));
 	}
 	
 	private static Right create(int value) {

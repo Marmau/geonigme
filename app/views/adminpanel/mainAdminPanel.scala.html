@@ -1,6 +1,8 @@
 @(title: String, start: String = "")(nav: Html)(content: Html)
 
 @import _root_.forms._
+@import _root_.global.Menu
+@import _root_.global.Page
 @import controllers._
 
 <!DOCTYPE html>
@@ -26,11 +28,7 @@
 				<div class="background"></div>
 				<div class="btn-group user-menu">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserController.getLoggedUser().getLoginName()<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="@routes.GameController.home()">Jouer</a></li>
-						<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
-						<li><a href="@routes.UserController.logout()">Déconnexion</a></li>
-					</ul>
+					@Menu.memberMenu.render(AdminPanelController.currentPage)
 				</div>
 			</header>
 			<div data-role="content" class="container-fluid">

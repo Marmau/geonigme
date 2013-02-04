@@ -8,10 +8,12 @@ import play.data.Form;
 import play.mvc.*;
 
 public class AdminPanelController extends Controller {
+	
+	public static Page currentPage = null;
 
 	public static Result userlist() throws Exception {
-		Page page = Page.get("userlist");
-		if( !page.userCanAccess() ) {
+		currentPage = Page.get("userlist");
+		if( !currentPage.userCanAccess() ) {
 			System.out.println("AdminPanelController.userlist() : Access forbidden.");
 			return redirect(routes.ApplicationController.index());
 		}
@@ -19,8 +21,8 @@ public class AdminPanelController extends Controller {
 	}
 
 	public static Result useredit(String uid) throws Exception {
-		Page page = Page.get("useredit");
-		if( !page.userCanAccess() ) {
+		currentPage = Page.get("useredit");
+		if( !currentPage.userCanAccess() ) {
 			return redirect(routes.ApplicationController.index());
 		}
 		models.User user = models.User.get(uid);
@@ -35,8 +37,8 @@ public class AdminPanelController extends Controller {
 	}
 	
 	public static Result submitUserEditForm(String uid) throws Exception {
-		Page page = Page.get("useredit");
-		if( !page.userCanAccess() ) {
+		currentPage = Page.get("useredit");
+		if( !currentPage.userCanAccess() ) {
 			return redirect(routes.ApplicationController.index());
 		}
 		models.User user = models.User.get(uid);

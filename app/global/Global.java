@@ -20,7 +20,7 @@ public class Global extends GlobalSettings {
 		// Initialisation de Sésame
 		String sesameDir = app.configuration().getString("sesame.store.directory");
 
-		if (null != sesameDir) {
+		if( sesameDir != null ) {
 			Sesame.initialize(sesameDir);
 		} else {
 			throw new RuntimeException("sesame.store.directory de application.conf doit être spécifié");
@@ -32,6 +32,11 @@ public class Global extends GlobalSettings {
 		
 		// Pages
 		try {
+			
+			// Member's Global Pages
+			new SimplePage("home", "Jouer", routes.GameController.home(), Right.MEMBER_AREA);
+			new SimplePage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(), Right.MEMBER_AREA);
+			new SimplePage("logout", "Déconnexion", routes.UserController.logout(), Right.MEMBER_AREA);
 			
 			// Admin Panel Pages
 			new SimplePage("userlist", "Utilisateurs", routes.AdminPanelController.userlist(), Right.USER_LIST);

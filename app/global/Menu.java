@@ -8,10 +8,16 @@ public class Menu {
 	
 	public static final Menu adminPanelMenu = new Menu();
 	public static final Menu dashboardMenu = new Menu();
+	public static final Menu memberMenu = new Menu("dropdown-menu");
 	
 	static {
 		// Put all menus' configuration below
 		// Use an existing menu, declared above.
+
+		// Member's Global Menu
+		memberMenu.add("home");
+		memberMenu.add("dashboard");
+		memberMenu.add("logout");
 		
 		// Admin Panel Menu
 		adminPanelMenu.add("userlist");
@@ -19,11 +25,16 @@ public class Menu {
 		// Dashboard Menu
 	}
 
+	private String cssClasses = "";
 	private ArrayList<MenuItem> items;
-	//public final String cssClass = "menu";
+	
+	public Menu(String cssClasses) {
+		this.cssClasses = cssClasses;
+		items = new ArrayList<MenuItem>();
+	}
 	
 	public Menu() {
-		items = new ArrayList<MenuItem>();
+		this("menu");
 	}
 	
 	public Menu add(String pageName) {
@@ -44,6 +55,14 @@ public class Menu {
 		return items;
 	}
 	
+	public String getCSSClasses() {
+		return cssClasses;
+	}
+	
+	public Html render(MenuItem currentItem) {
+		return views.html.global.menu.render(this, currentItem);
+	}
+
 	public Html render(String currentPageName) {
 		Page page = null;
 		try {
@@ -55,8 +74,8 @@ public class Menu {
 		return render(page);
 	}
 	
-	public Html render(MenuItem currentItem) {
-		return views.html.global.menu.render(this, currentItem);
+	public Html render() {
+		return render((MenuItem) null);
 	}
 	
 	/*

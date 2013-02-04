@@ -18,7 +18,7 @@ public class Page implements MenuItem {
 	public static Page get(String pageName) throws Exception {
 		Page page = instances.get(pageName);
 		if( page == null ) {
-			throw new Exception("This page is unknown.");
+			throw new Exception("The page \""+pageName+"\" is unknown.");
 		}
 		return page;
 	}
@@ -37,7 +37,7 @@ public class Page implements MenuItem {
 	
 	public Page(String name, String title, Call route, Right accessRight) throws Exception {
 		if( instances.containsKey(name) ) {
-			throw new Exception("Another page with this name already exist.");
+			throw new Exception("Another page with this name \""+name+"\" already exist.");
 		}
 		this.name = name;
 		this.title = title;
@@ -51,7 +51,10 @@ public class Page implements MenuItem {
 			return true;
 		}
 		User user = UserController.getLoggedUser();
-		return accessRight.v() == 0 || ( user != null && user.getRole().canDo(accessRight) );
+		// User can be not loggued in to access to 0 right pages.
+		//return accessRight.v() == 0 || ( user != null && user.getRole().canDo(accessRight) );
+		// User should be loggued in to access to 0 right pages. Use Right.NONE to give access to everybody
+		return user != null && user.getRole().canDo(accessRight);
 	}
 
 	public String getTitle() {
