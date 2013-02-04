@@ -3,7 +3,7 @@
 @import helpers._
 @import models.Role
 
-@mainAdminPanel("Modifier un utilisateur", "adminpanel") {
+@mainAdminPanel("Modifier un utilisateur", "adminpanel/user") {
 	<ul class="breadcrumb">
 		<li><a href="@routes.AdminPanelController.userlist()">Utilisateurs</a></li>
 		<li><a href="@routes.AdminPanelController.useredit(user.getId())">@user.getLoginName()</a></li>

@@ -83,3 +83,7 @@ GET		/routing					controllers.MapController.routing()
 GET		/admin/users				controllers.AdminPanelController.userlist()
 GET		/admin/user/:uid			controllers.AdminPanelController.useredit(uid: String)
 POST	/admin/user/:uid			controllers.AdminPanelController.submitUserEditForm(uid: String)
+
+GET		/admin/hunt					controllers.AdminPanelController.huntlist()
+GET		/admin/hunt/:hid			controllers.AdminPanelController.huntedit(hid: String)
+POST	/admin/hunt/:hid			controllers.AdminPanelController.submitHuntEditForm(hid: String)

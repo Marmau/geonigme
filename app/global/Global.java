@@ -40,7 +40,9 @@ public class Global extends GlobalSettings {
 			
 			// Admin Panel Pages
 			new SimplePage("userlist", "Utilisateurs", routes.AdminPanelController.userlist(), Right.USER_LIST);
+			new SimplePage("huntlist", "Chasses", routes.AdminPanelController.huntlist(), Right.HUNT_LIST);
 			new AdmUserEditPage("Édition d'un utilisateur", Right.USER_LIST);
+			new AdmHuntEditPage("Édition d'une chasse", Right.HUNT_LIST);
 			
 			// Dashboard Pages
 			

@@ -2,16 +2,13 @@ package models;
 
 public class Right {
 	
-	/*
-	USER_LIST,
-	USER_EDIT;
-	*/
-	
 	private static int COUNT = 0;
 	public static final Right NONE			= null;
 	public static final Right MEMBER_AREA	= create();
 	public static final Right USER_LIST		= create();
 	public static final Right USER_EDIT		= create();
+	public static final Right HUNT_LIST		= create();
+	public static final Right HUNT_EDIT		= create();
 	
 	
 	private Integer value;
@@ -26,11 +23,6 @@ public class Right {
 		r.value = value;
 		return r;
 	}
-	
-	
-	private Right() {
-		//this.value = 1 << this.ordinal();
-    }
 	
 	public Integer getValue() {
 		return value;

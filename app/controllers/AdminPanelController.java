@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Iterator;
+
 import global.Page;
 
 import models.Role;
@@ -10,12 +12,79 @@ import play.mvc.*;
 public class AdminPanelController extends Controller {
 	
 	public static Page currentPage = null;
+	
+	/***** HUNTS *****/
 
+	public static Result huntlist() throws Exception {
+		currentPage = Page.get("huntlist");
+		if( !currentPage.userCanAccess() ) {
+			System.out.println("AdminPanelController.huntlist() : Access forbidden.");
+			return forbidden();
+		}
+		return ok(views.html.adminpanel.huntlist.render(models.Hunt.getAll()));
+	}
+
+	public static Result huntedit(String uid) throws Exception {
+		currentPage = Page.get("huntedit");
+		if( !currentPage.userCanAccess() ) {
+			return forbidden();
+		}
+		models.Hunt hunt = models.Hunt.get(uid);
+		if( hunt == null ) {
+			return notFound();
+		}
+		
+		forms.Hunt formHuntEdit = new forms.Hunt();
+		
+		formHuntEdit.label = hunt.getLabel();
+		formHuntEdit.description = hunt.getDescription();
+		formHuntEdit.level = hunt.getLevel();
+		formHuntEdit.area = hunt.getArea().toTemplateString();
+		
+		Iterator<models.Tag> it = hunt.getTags().iterator();
+		if (it.hasNext()) {
+			models.Tag firstTag = it.next();
+			formHuntEdit.tags = firstTag.getName();
+			
+			while (it.hasNext()) {
+				formHuntEdit.tags += ", " + it.next().getName();
+			}
+		}
+		return ok(views.html.adminpanel.editHunt.render(hunt, form(forms.Hunt.class).fill(formHuntEdit)));
+	}
+	
+	public static Result submitHuntEditForm(String uid) throws Exception {
+		currentPage = Page.get("huntedit");
+		if( !currentPage.userCanAccess() ) {
+			return forbidden();
+		}
+		models.Hunt hunt = models.Hunt.get(uid);
+		if( hunt == null ) {
+			return notFound();
+		}
+
+		Form<forms.Hunt> formHuntEdit= form(forms.Hunt.class).bindFromRequest();
+		
+		if( formHuntEdit.hasErrors() ) {
+			return badRequest(views.html.adminpanel.editHunt.render(hunt, formHuntEdit));
+			
+		} else {
+			HuntController.fillHunt(hunt, formHuntEdit.get());
+			//forms.AdmHuntEdit form = formHuntEdit.get();
+			
+			hunt.save();
+			
+			return redirectToMain();
+		}
+	}
+	
+	/***** USERS *****/
+	
 	public static Result userlist() throws Exception {
 		currentPage = Page.get("userlist");
 		if( !currentPage.userCanAccess() ) {
 			System.out.println("AdminPanelController.userlist() : Access forbidden.");
-			return redirect(routes.ApplicationController.index());
+			return forbidden();
 		}
 		return ok(views.html.adminpanel.userlist.render(models.User.getAll()));
 	}
@@ -23,7 +92,7 @@ public class AdminPanelController extends Controller {
 	public static Result useredit(String uid) throws Exception {
 		currentPage = Page.get("useredit");
 		if( !currentPage.userCanAccess() ) {
-			return redirect(routes.ApplicationController.index());
+			return forbidden();
 		}
 		models.User user = models.User.get(uid);
 		if( user == null ) {
@@ -39,7 +108,7 @@ public class AdminPanelController extends Controller {
 	public static Result submitUserEditForm(String uid) throws Exception {
 		currentPage = Page.get("useredit");
 		if( !currentPage.userCanAccess() ) {
-			return redirect(routes.ApplicationController.index());
+			return forbidden();
 		}
 		models.User user = models.User.get(uid);
 		if( user == null ) {

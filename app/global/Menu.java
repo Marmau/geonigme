@@ -21,6 +21,7 @@ public class Menu {
 		
 		// Admin Panel Menu
 		adminPanelMenu.add("userlist");
+		adminPanelMenu.add("huntlist");
 		
 		// Dashboard Menu
 	}

@@ -4,7 +4,6 @@
 @import models._
 @import _root_.global.Menu
 
-
 @displayUserList(users: List[User], nbPerLine: Integer)(f: User => Html)(g: () => Html) = @{
 	var i:Int = 0
 	var result = ""

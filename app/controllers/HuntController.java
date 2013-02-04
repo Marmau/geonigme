@@ -199,14 +199,14 @@ public class HuntController extends Controller {
 		return ok();
 	}
 
-	private static models.Hunt formToHunt(forms.Hunt form) {
+	public static models.Hunt formToHunt(forms.Hunt form) {
 		models.Hunt h = new models.Hunt();
 		fillHunt(h, form);
 
 		return h;
 	}
 	
-	private static void fillHunt(models.Hunt hunt, forms.Hunt form) {
+	public static void fillHunt(models.Hunt hunt, forms.Hunt form) {
 		hunt.setDescription(form.description);
 		hunt.setLabel(form.label);
 		hunt.setLevel(form.level);
@@ -225,7 +225,7 @@ public class HuntController extends Controller {
 
 	}
 	
-	private static Set<models.Tag> formToTags(forms.Hunt form) {
+	public static Set<models.Tag> formToTags(forms.Hunt form) {
 		return Tag.createFrom(form.tags);
 	}
 }

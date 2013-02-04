@@ -23,7 +23,9 @@ public class Role implements RDFObject {
 	public static final Role DEVELOPER = create("developer", "Développeur", Right.allRights());
 	
 	static {
-		MODERATOR.grantRight(Right.USER_LIST);
+		MODERATOR.grantRight(Right.USER_LIST
+			.AND(Right.HUNT_LIST)
+		);
 	}
 
 	private String name = "unnamedRole";
