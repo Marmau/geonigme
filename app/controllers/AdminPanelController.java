@@ -2,12 +2,17 @@ package controllers;
 
 import java.util.Iterator;
 
+import global.CurrentRequest;
 import global.Page;
 
+import models.Hunt;
 import models.Role;
+import models.User;
 
 import play.data.Form;
 import play.mvc.*;
+import repository.HuntRepository;
+import repository.UserRepository;
 
 public class AdminPanelController extends Controller {
 	
@@ -21,7 +26,7 @@ public class AdminPanelController extends Controller {
 			System.out.println("AdminPanelController.huntlist() : Access forbidden.");
 			return forbidden();
 		}
-		return ok(views.html.adminpanel.huntlist.render(models.Hunt.getAll()));
+		return ok(views.html.adminpanel.huntlist.render(HuntRepository.getAll()));
 	}
 
 	public static Result huntedit(String uid) throws Exception {
@@ -29,7 +34,7 @@ public class AdminPanelController extends Controller {
 		if( !currentPage.userCanAccess() ) {
 			return forbidden();
 		}
-		models.Hunt hunt = models.Hunt.get(uid);
+		Hunt hunt = HuntRepository.get(uid);
 		if( hunt == null ) {
 			return notFound();
 		}
@@ -58,7 +63,7 @@ public class AdminPanelController extends Controller {
 		if( !currentPage.userCanAccess() ) {
 			return forbidden();
 		}
-		models.Hunt hunt = models.Hunt.get(uid);
+		Hunt hunt = HuntRepository.get(uid);
 		if( hunt == null ) {
 			return notFound();
 		}
@@ -81,12 +86,15 @@ public class AdminPanelController extends Controller {
 	/***** USERS *****/
 	
 	public static Result userlist() throws Exception {
+		System.out.println("AdminPanelController Current thread: "+Thread.currentThread().getId());
+		System.out.println("AdminPanelController Current request: "+ctx().request().hashCode());
+		CurrentRequest.test();
 		currentPage = Page.get("userlist");
 		if( !currentPage.userCanAccess() ) {
 			System.out.println("AdminPanelController.userlist() : Access forbidden.");
 			return forbidden();
 		}
-		return ok(views.html.adminpanel.userlist.render(models.User.getAll()));
+		return ok(views.html.adminpanel.userlist.render(UserRepository.getAll()));
 	}
 
 	public static Result useredit(String uid) throws Exception {
@@ -94,7 +102,7 @@ public class AdminPanelController extends Controller {
 		if( !currentPage.userCanAccess() ) {
 			return forbidden();
 		}
-		models.User user = models.User.get(uid);
+		User user = UserRepository.get(uid);
 		if( user == null ) {
 			return notFound();
 		}
@@ -110,7 +118,7 @@ public class AdminPanelController extends Controller {
 		if( !currentPage.userCanAccess() ) {
 			return forbidden();
 		}
-		models.User user = models.User.get(uid);
+		User user = UserRepository.get(uid);
 		if( user == null ) {
 			return notFound();
 		}

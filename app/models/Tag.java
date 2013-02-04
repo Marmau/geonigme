@@ -44,7 +44,7 @@ public class Tag {
 
 	public String urify() {
 		try {
-			return URLEncoder.encode(getName(), "UTF-8");
+			return URI + URLEncoder.encode(getName(), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return null;

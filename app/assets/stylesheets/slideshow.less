@@ -1,0 +1,40 @@
+@import "lib.less";
+
+.flexslider {
+	.border-radius(0);
+	.box-shadow(none);
+	border: 0px;
+
+	.flex-viewport {
+		max-height: 600px;
+	}
+	
+	.flex-control-paging li a {
+		.border-radius(0);
+	}
+
+	.slides li {
+		position: relative;
+
+		h1 {
+			position: absolute;
+			font-weight: normal;
+			margin: 0px;
+			font-size: 20px;
+			line-height: 20px;
+			padding: 2px 5px 4px 5px;
+			background: @colorOrange;
+			color: white;
+			left: 0px;
+			bottom: 0px;
+		}
+	}
+
+	.flex-control-nav li a {
+		background: @colorClearBlue;
+
+		&.flex-active {
+			background: @colorDarkBlue;
+		}
+	}
+}

@@ -17,6 +17,7 @@ public class Menu {
 		// Member's Global Menu
 		memberMenu.add("home");
 		memberMenu.add("dashboard");
+		memberMenu.add("userlist");
 		memberMenu.add("logout");
 		
 		// Admin Panel Menu

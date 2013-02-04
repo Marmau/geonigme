@@ -21,5 +21,17 @@ public class AuthenticationTokenGenerator {
 		
 		return signedToken;
 	}
+	
+	public static boolean isValid(String signedToken) {
+		Session session = play.mvc.Http.Context.current().session();
+		String savedToken = session.get(AuthenticationTokenGenerator.AUTH_TOKEN);
+
+		if (savedToken == null || signedToken == null)
+			return false;
+
+		String signedSavedToken = Crypto.sign(savedToken);
+		
+		return signedToken.equals(signedSavedToken);
+	}
 
 }

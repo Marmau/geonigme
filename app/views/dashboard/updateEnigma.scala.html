@@ -19,7 +19,7 @@
 				Symbol("data-area") -> enigma.getStep().getHunt().getArea().toTemplateString(),
 				Symbol("data-start-position") -> enigma.getStep().getPosition().toTemplateString(),
 				Symbol("data-start-accuracy") -> Float.toString(enigma.getStep().getPosition().getAccuracy())) {
-				@includes.formEnigma(formEnigma)
+				@includeFormEnigma(formEnigma)
 				<div class="form-actions">
 					<a class="btn pushable" href="@routes.HuntController.show(enigma.getStep().getHunt().getId())">Annuler</a>
 					<button type="submit" name="submit-enigma" class="pushable btn">Enregistrer</button>
@@ -32,5 +32,5 @@
 		</div>
 	</div>
 
-	@includes.hiddenFormEnigma(formEnigma)
+	@includeHiddenFormEnigma(formEnigma)
 }

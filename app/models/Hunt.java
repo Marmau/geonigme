@@ -11,11 +11,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
-import org.openrdf.query.MalformedQueryException;
-import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
-import org.openrdf.repository.object.ObjectQuery;
 import org.openrdf.repository.object.RDFObject;
 
 @Iri(NS.GNGM + "Hunt")
@@ -44,7 +41,7 @@ public class Hunt implements RDFObject {
 	public void setCreatedAt(XMLGregorianCalendar createdAt) {
 		this.createdAt = createdAt;
 	}
-	
+
 	@Iri(NS.GNGM + "modifiedAt")
 	public XMLGregorianCalendar getModifiedAt() {
 		return modifiedAt;
@@ -94,7 +91,7 @@ public class Hunt implements RDFObject {
 	public void setCreatedBy(User createdBy) {
 		this.createdBy = createdBy;
 	}
-	
+
 	public String getStringLevel() {
 		Integer level = getLevel();
 		if (level == 0) {
@@ -104,7 +101,7 @@ public class Hunt implements RDFObject {
 		} else {
 			return "Difficile";
 		}
- 	}
+	}
 
 	@Iri(NS.GNGM + "level")
 	public Integer getLevel() {
@@ -136,18 +133,14 @@ public class Hunt implements RDFObject {
 		this.published = published;
 	}
 
-	@Sparql(NS.PREFIX +
-		"SELECT ?step { ?step gngm:stepOfHunt $this. ?step gngm:number ?number } ORDER BY ?number")
+	@Sparql(NS.PREFIX + "SELECT ?step { ?step gngm:stepOfHunt $this. ?step gngm:number ?number } ORDER BY ?number")
 	public List<Step> getSteps() {
 		return null;
 	}
-	
-	@Sparql(NS.PREFIX + "SELECT ?enigma { " +
-				"?step gngm:stepOfHunt $this. " +
-				"?step gngm:number ?stepNumber. " +
-				"?enigma gngm:enigmaOfStep ?step. " +
-				"?enigma gngm:number ?enigmaNumber " +
-			"} ORDER BY ?stepNumber ?enigmaNumber")
+
+	@Sparql(NS.PREFIX + "SELECT ?enigma { " + "?step gngm:stepOfHunt $this. " + "?step gngm:number ?stepNumber. "
+			+ "?enigma gngm:enigmaOfStep ?step. " + "?enigma gngm:number ?enigmaNumber "
+			+ "} ORDER BY ?stepNumber ?enigmaNumber")
 	public List<Enigma> getEnigmas() {
 		return null;
 	}
@@ -164,41 +157,6 @@ public class Hunt implements RDFObject {
 
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
-	}
-	
-	public static Hunt get(String uid) {
-		ObjectConnection oc = Sesame.getObjectConnection();
-		try {
-			return oc.getObject(models.Hunt.class, models.Hunt.URI + uid);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	public static List<Hunt> getAll(String orderBy) {
-		List<Hunt> hunts = new ArrayList<Hunt>();
-		try {
-			ObjectConnection oc = Sesame.getObjectConnection();
-			String sqlQuery = "SELECT ?hunt WHERE { ?hunt gngm:"+orderBy+" ?orderBy } ORDER BY ASC(?orderBy)";
-			ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX + 
-				sqlQuery);
-			hunts = query.evaluate(models.Hunt.class).asList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return hunts;
-	}
-	public static List<Hunt> getAll() {
-		return getAll("loginName");
-	}
-	
-	public static List<Hunt> getHuntsSortedByDate() throws QueryEvaluationException, MalformedQueryException, RepositoryException {
-		ObjectConnection oc = Sesame.getObjectConnection();
-		ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX
-				+ "SELECT ?hunt WHERE { ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date) LIMIT 20");
-
-		return query.evaluate(Hunt.class).asList();
 	}
 	
 	public void save() throws RepositoryException {
