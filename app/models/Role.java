@@ -1,5 +1,7 @@
 package models;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,6 +125,15 @@ public class Role implements RDFObject {
 	@Iri(NS.GNGM + "rights")
 	public void setRights(Integer rights) {
 		this.rights = rights;
+	}
+
+	public String urify() {
+		try {
+			return URI + URLEncoder.encode(getName(), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	@Override

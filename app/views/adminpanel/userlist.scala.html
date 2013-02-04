@@ -2,6 +2,7 @@
 
 @import helpers._
 @import models._
+@import _root_.global.Menu
 
 
 @displayUserList(users: List[User], nbPerLine: Integer)(f: User => Html)(g: () => Html) = @{
@@ -21,11 +22,7 @@
 }
 
 @mainAdminPanel("Utilisateurs", "adminpanel") {
-	<ul class="menu">
-		<li class="selected"><a href="@routes.AdminPanelController.userlist()">Utilisateurs</a></li>
-		<li><a class="pushable" href="@routes.AdminPanelController.userlist()">Chasses</a></li>
-		<li><a class="pushable" href="">Autre</a></li>
-	</ul>
+	@Menu.adminPanelMenu.render("userlist")
 } {
 	@if( !users.isEmpty() ) { 
 		<div id="container-user-box">
