@@ -26,7 +26,7 @@
 
 			@if(enigma.getAnswer().isInstanceOf[TextAnswer]) {
 				<p>Les réponses acceptées étaient : </p>
-				<ul>
+				<ul class="list">
 					@for(label <- enigma.getAnswer().asInstanceOf[TextAnswer].getLabels()) {
 						<li>@label</li>
 					}
@@ -40,7 +40,7 @@
 
 			@if(!enigma.getClues().isEmpty()) {
 				<p>Ces indices étaient à votre disposition :</p>
-				<ol>
+				<ul class="list-view">
 					@for(clue <- enigma.getClues()) {
 						@if(clue.isInstanceOf[FileClue]) {
 							<li>@clue.getDescription()</li>
@@ -48,7 +48,7 @@
 							<li>@clue.getDescription()</li>
 						}
 					}
-				</ol>
+				</ul>
 			} else {
 				<p>Il n'y avait pas d'indices pour cette énigme... Un peu trop dur peut-être !</p>
 			}
@@ -57,7 +57,12 @@
 				@defining(AuthenticationTokenGenerator.generate()) { token =>
 					<input type="hidden" name="token" value="@token" />
 				}
-				<button type="submit" class="btn">&Eacute;nigme suivante</button>
+
+				@if(enigma.isLastEnigma()) {
+					<button type="submit" class="btn">Finir</button>
+				} else {
+					<button type="submit" class="btn">&Eacute;nigme suivante</button>
+				}
 			</form>
 		</div>
 	</div>

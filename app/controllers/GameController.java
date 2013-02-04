@@ -16,6 +16,7 @@ import play.data.DynamicForm;
 import play.mvc.Result;
 import play.mvc.Controller;
 import repository.HuntRepository;
+import repository.UserRepository;
 
 public class GameController extends Controller {
 
@@ -64,36 +65,6 @@ public class GameController extends Controller {
 		}
 
 		return oc.getObject(Clue.class, Clue.URI + session(CURRENT_CLUE_SESSION));
-	}
-
-	public static Result nextClue() throws RepositoryException, QueryEvaluationException {
-		if (session(CURRENT_ENIGMA_SESSION) == null) {
-			return noContent();
-		}
-
-		ObjectConnection oc = Sesame.getObjectConnection();
-		Enigma enigma = oc.getObject(Enigma.class, Enigma.URI + session(CURRENT_ENIGMA_SESSION));
-
-		Clue nextClue = null;
-		if (session(CURRENT_CLUE_SESSION) == null) {
-			if (enigma.getClues().size() > 0) {
-				nextClue = enigma.getClues().get(0);
-			} else {
-				noContent();
-			}
-		} else {
-			Clue clue = oc.getObject(Clue.class, Clue.URI + session(CURRENT_CLUE_SESSION)).getNextClue();
-			if (clue == null) {
-				return noContent();
-			}
-			nextClue = clue;
-		}
-
-		session().put(CURRENT_CLUE_SESSION, nextClue.getId());
-
-		ObjectNode result = nextClue.toJson();
-
-		return ok(result);
 	}
 
 	private static void nextEnigma() throws RepositoryException, QueryEvaluationException {
@@ -146,9 +117,38 @@ public class GameController extends Controller {
 		}
 	}
 
-	private static void saveCurrentScore(int score) {
-		session().put(ENIGMA_SCORE_SESSION, Integer.toString(score));
-		session().put(TOTAL_SCORE_SESSION, Integer.toString(score + getTotalScore()));
+	private static int getMaximumScore() throws RepositoryException, QueryEvaluationException {
+		Hunt currentHunt = getCurrentHunt();
+
+		int max = 0;
+		for (Step s : currentHunt.getSteps()) {
+			for (Enigma e : s.getEnigmas()) {
+				max += computeScore(0, e.getClues().size());
+			}
+		}
+		
+		return max;
+	}
+
+	private static void saveCurrentScore(int scoreValue) throws RepositoryException, QueryEvaluationException {
+		session().put(ENIGMA_SCORE_SESSION, Integer.toString(scoreValue));
+		session().put(TOTAL_SCORE_SESSION, Integer.toString(scoreValue + getTotalScore()));
+		
+		ObjectConnection oc = Sesame.getObjectConnection();
+		
+		User loggedUser = UserRepository.getLoggedUser();
+		if (null != loggedUser) {
+			String uri = Score.URI + loggedUser.getId() + "/" + getCurrentHunt().getId();
+			Score score = oc.getObject(Score.class, uri);
+			if (null == score) {
+				Hunt currentHunt = getCurrentHunt();
+				score = new Score();
+				score.setHunt(currentHunt);
+				score.setUSer(loggedUser);
+			}
+			score.setValue(scoreValue);
+			oc.addObject(uri, score);
+		}
 	}
 
 	private static int computeScore(int usedClues, int totalClues) {
@@ -175,11 +175,11 @@ public class GameController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 		Hunt currentHunt = getCurrentHunt();
-		
-		if (currentHunt.equals(hunt)) {
+
+		if (hunt.equals(currentHunt)) {
 			return redirect(routes.GameController.go());
 		}
-		
+
 		session().put(CURRENT_HUNT_SESSION, hunt.getId());
 		try {
 			session().put(CURRENT_STEP_SESSION, hunt.getSteps().get(0).getId());
@@ -200,7 +200,7 @@ public class GameController extends Controller {
 		if (!AuthenticationTokenGenerator.isValid(data.get("token"))) {
 			return redirect(routes.GameController.go());
 		}
-		
+
 		Step currentStep = getCurrentStep();
 
 		if (null == getCurrentEnigma()) {
@@ -221,7 +221,7 @@ public class GameController extends Controller {
 
 		Step currentStep = getCurrentStep();
 		if (null == currentStep) {
-			return ok(views.html.game.finish.render(currentHunt));
+			return ok(views.html.game.finish.render(currentHunt, getTotalScore(), getMaximumScore()));
 		}
 
 		if (session(CURRENT_ENIGMA_SESSION) == null) {
@@ -292,6 +292,39 @@ public class GameController extends Controller {
 		} else {
 			return noContent();
 		}
+	}
+
+	public static Result clue() throws RepositoryException, QueryEvaluationException {
+		DynamicForm data = form().bindFromRequest();
+		if (!AuthenticationTokenGenerator.isValid(data.get("token"))) {
+			return noContent();
+		}
+
+		Enigma enigma = getCurrentEnigma();
+		if (null == enigma) {
+			return noContent();
+		}
+
+		Clue nextClue = getCurrentClue();
+		if (null == nextClue) {
+			if (enigma.getClues().size() > 0) {
+				nextClue = enigma.getClues().get(0);
+			} else {
+				noContent();
+			}
+		} else {
+			Clue clue = nextClue.getNextClue();
+			if (clue == null) {
+				return noContent();
+			}
+			nextClue = clue;
+		}
+
+		session().put(CURRENT_CLUE_SESSION, nextClue.getId());
+
+		ObjectNode result = nextClue.toJson();
+
+		return ok(result);
 	}
 
 }

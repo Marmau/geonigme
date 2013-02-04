@@ -107,6 +107,9 @@ require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers
 
 		drawTransport(startPosition, targetPosition)
 
+
+	alreadyThere = false
+
 	# Surveille la position de l'utilisateur pour lui proposer de nouvelles actions
 	watchId = Helpers.watchPosition (position) ->
 		if not position
@@ -120,16 +123,18 @@ require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers
 			$('#im-there').hide()
 			$('#info-not-here').hide()
 			$('#play-step-disabled').hide()
-			$('#play-step').css('display', 'inline-block')
-		else
+			$('#play-step').show()
+		else if not alreadyThere
 			$('#im-there').show()
+			$('#info-not-here').show()
 			$('#play-step-disabled').show()
 			$('#play-step').hide()
 
 	$('#im-there').click ->
-		if confirm('Êtes-vous sûr de vous ?') 
+		if confirm('Êtes-vous sûr de vous ?')
+			alreadyThere = true
 			Helpers.clearWatchPosition()
 			$('#im-there').hide()
 			$('#info-not-here').hide()
 			$('#play-step-disabled').hide()
-			$('#play-step').css('display', 'inline-block')
+			$('#play-step').show()

@@ -23,7 +23,6 @@ import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.rio.RDFWriter;
 
-import play.api.templates.Html;
 import play.data.Form;
 import play.mvc.*;
 

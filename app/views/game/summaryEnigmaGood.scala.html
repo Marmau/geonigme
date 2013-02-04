@@ -21,55 +21,66 @@
 				@enigma.getDescription()
 			</blockquote>
 
-			<p>Vous avez résolu cette énigme, bravo ! Vous gagnez @score points !</p>
+			<p class="finish">Vous avez résolu cette énigme, bravo ! Vous gagnez <span class="score">@score</span> points !</p>
 
-			@if(enigma.getAnswer().isInstanceOf[TextAnswer]) {
-				<p>Les réponses acceptées étaient : </p>
-				<ul>
-					@for(label <- enigma.getAnswer().asInstanceOf[TextAnswer].getLabels()) {
-						<li>@label</li>
+			<div class="answer summary">
+				@if(enigma.getAnswer().isInstanceOf[TextAnswer]) {
+					<p>Les réponses acceptées étaient : </p>
+					<ul class="list">
+						@for(label <- enigma.getAnswer().asInstanceOf[TextAnswer].getLabels()) {
+							<li>@label</li>
+						}
+					</ul>
+				} else {
+					@defining(enigma.getAnswer().asInstanceOf[GeolocatedAnswer]) { geolocatedAnswer =>
+						<p>Il fallait donc se rendre ici : <strong>@geolocatedAnswer.getPosition().getPlace()</strong>.</p>
+						<div class="map" id="summary-map" data-target="@geolocatedAnswer.getPosition().toTemplateString()" data-target-accuracy="@geolocatedAnswer.getPosition().getAccuracy()"></div>
 					}
-				</ul>
-			} else {
-				@defining(enigma.getAnswer().asInstanceOf[GeolocatedAnswer]) { geolocatedAnswer =>
-					<p>Il fallait donc se rendre ici : <strong>@geolocatedAnswer.getPosition().getPlace()</strong>.</p>
-					<div class="map" id="summary-map" data-target="@geolocatedAnswer.getPosition().toTemplateString()" data-target-accuracy="@geolocatedAnswer.getPosition().getAccuracy()"></div>
 				}
-			}
+			</div>
 
-			@if(usedClues.isEmpty()) {
-				<p>Vous n'avez utilisé aucun indice pour résoudre cette énigme... Peut-être l'avez vous trouvé trop simple !</p>
-			} else {
-				<p>Il vous a fallu ces indices pour venir à bout de l'énigme :</p>
-				<ol>
-					@for(clue <- usedClues) {
-						@if(clue.isInstanceOf[FileClue]) {
-							<li>@clue.getDescription()</li>
-						} else {
-							<li>@clue.getDescription()</li>
+			<div class="used-clues summary">
+				@if(usedClues.isEmpty()) {
+					<p>Vous n'avez utilisé aucun indice pour résoudre cette énigme... Peut-être l'avez vous trouvé trop simple !</p>
+				} else {
+					<p>Il vous a fallu ces indices pour venir à bout de l'énigme :</p>
+					<ul class="list-view">
+						@for(clue <- usedClues) {
+							@if(clue.isInstanceOf[FileClue]) {
+								<li>@clue.getDescription()</li>
+							} else {
+								<li>@clue.getDescription()</li>
+							}
 						}
-					}
-				</ol>
-			}
+					</ul>
+				}
+			</div>
 
-			@if(!usedClues.isEmpty()) {
-				<p>Ces indices étaient à votre disposition si vous n'y arriviez vraiment pas...</p>
-				<ol start="@(usedClues.size() + 1)">
-					@for(clue <- otherClues) {
-						@if(clue.isInstanceOf[FileClue]) {
-							<li>@clue.getDescription()</li>
-						} else {
-							<li>@clue.getDescription()</li>
+			<div class="other-clues summary">
+				@if(!otherClues.isEmpty()) {
+					<p>Ces indices étaient à votre disposition si vous n'y arriviez vraiment pas...</p>
+					<ul class="list-view">
+						@for(clue <- otherClues) {
+							@if(clue.isInstanceOf[FileClue]) {
+								<li>@clue.getDescription()</li>
+							} else {
+								<li>@clue.getDescription()</li>
+							}
 						}
-					}
-				</ol>
-			}
+					</ul>
+				}
+			</div>				
 
 			<form method="POST" action="@routes.GameController.finishEnigma()">
 				@defining(AuthenticationTokenGenerator.generate()) { token =>
 					<input type="hidden" name="token" value="@token" />
 				}
-				<button type="submit" class="btn">&Eacute;nigme suivante</button>
+
+				@if(enigma.isLastEnigma()) {
+					<button type="submit" class="btn">Finir</button>
+				} else {
+					<button type="submit" class="btn">&Eacute;nigme suivante</button>
+				}
 			</form>
 		</div>
 	</div>

@@ -25,8 +25,8 @@
 
 	<div class="row-fluid">
 		<div class="span12">
-			<blockquote>
-				@enigma.getDescription()
+			<blockquote class="enigma">
+				<p>@enigma.getDescription()</p>
 			</blockquote>
 
 			<div class="form-horizontal" data-check-action="@routes.GameController.checkAnswer()" id="form-check-answer">
@@ -55,12 +55,16 @@
 					<li class="clue">__description__</li>
 				</div>
 
-				@if(clues.isEmpty()) {
-					<p id="no-clues">Vous n'avez pas affiché d'indices pour le moment</p>
+				@if(enigma.getClues().isEmpty()) {
+					<p>Dur dur... Il n'y aucun indice pour vous aider...</p>
+				} else {
+					@if(clues.isEmpty()) {
+						<p id="no-clues">Vous n'avez pas affiché d'indices pour le moment</p>
+					}
 				}
 
 				@if(clues.size() < enigma.getClues().size()) {
-					<form method="POST" action="@routes.GameController.nextClue()" id="next-clue">
+					<form method="POST" action="@routes.GameController.clue()" id="next-clue">
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />
 						}
@@ -68,7 +72,7 @@
 					</form>
 				}
 
-				<div class="actions">
+				<div class="actions @displayIf(clues.size() < enigma.getClues().size(), "hide")" id="skip">
 					<form method="POST" action="@routes.GameController.skipEnigma()" id="skip-enigma">
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />

@@ -10,13 +10,67 @@
 		// font-size: 18px;
 	}
 
-	ul.list-view  {
-		margin: 0px;
-		list-style: none;
+	ul.list {
 		color: @colorClearBlue;
+		list-style: none;
 
 		li {
+			border-left: 5px solid @colorClearBlue;
+			padding-left: 5px;
+			margin-bottom: 3px;
+		}
+	}
+
+	blockquote.enigma {
+		border: none;
+		position: relative;
+		padding: 0px;
+		width: 80%;
+
+		p {
+			font-size: 24px;
+			font-style: italic;
+			color: @colorClearBlue;
+			line-height: 24px;
+			padding: 50px 0px 30px 130px;
+			text-align: left;
+		}
+
+		&:before {
+			top: 100px;
+			left: -30px;
+			position: absolute;
+			content: '\201C';
+			font-family: serif;
+			font-weight: bold;
+			font-size: 300px;
+			color: @colorDarkBlue;
+			font-style: italic;
+		}
+
+		// &:after {
+		// 	bottom: 10px;
+		// 	right: 50px;
+		// 	position: absolute;
+		// 	content: '\201D';
+		// 	font-family: serif;
+		// 	font-weight: bold;
+		// 	font-size: 200px;
+		// 	color: @colorDarkBlue;
+		// 	font-style: italic;
+		// }
+	}
+
+	.list-view  {
+		margin: 0px;
+		margin-bottom: 20px;
+		color: @colorClearBlue;
+		list-style: none;
+
+		li {
+			background: white;
 			border-bottom: solid 1px @colorClearBlue;
+			padding: 10px 0px;
 			
 			&:first-child {
 				border-top: solid 1px @colorClearBlue;
@@ -24,7 +78,11 @@
 		}
 	}
 
-	#hunts-list {
+	#hunts-list.list-view {
+		li {
+			padding: 0px;
+		}
+
 		a {
 			display: block;
 			padding: 10px 0px;
@@ -55,6 +113,11 @@
 		&.danger {
 			color: @colorRed;
 		}
+
+		.score {
+			font-weight: bold;
+			font-size: 32px;
+		}
 	}
 
 	.list-view.itinerary {
@@ -83,6 +146,20 @@
 			font-size: 18px;
 			text-transform: lowercase;
 			font-weight: normal;
+		}
+	}
+
+	p.finish {
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.summary {
+		margin: 25px 0px;
+
+		p {
+			font-size: 18px;
+			color: @colorDarkBlue;
 		}
 	}
 
