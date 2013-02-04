@@ -15,9 +15,7 @@ import javax.validation.Payload;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 
-import play.api.libs.Crypto;
 import play.data.validation.Constraints.Validator;
-import play.mvc.Http.Session;
 
 public class Constraints {
 	/**
@@ -174,19 +172,7 @@ public class Constraints {
 		}
 
 		public boolean isValid(Object signedToken) {
-			Session session = play.mvc.Http.Context.current().session();
-			String savedToken = session.get(AuthenticationTokenGenerator.AUTH_TOKEN);
-
-			System.out.println(signedToken);
-			System.out.println(savedToken);
-			if (savedToken == null || signedToken == null)
-				return false;
-
-			String signedSavedToken = Crypto.sign(savedToken.toString());
-			
-			System.out.println(signedSavedToken);
-
-			return signedToken.equals(signedSavedToken);
+			return AuthenticationTokenGenerator.isValid(signedToken.toString());
 		}
 	}
 }

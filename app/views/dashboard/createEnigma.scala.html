@@ -18,7 +18,7 @@
 				Symbol("data-area") -> step.getHunt().getArea().toTemplateString(),
 				Symbol("data-start-position") -> step.getPosition().toTemplateString(),
 				Symbol("data-start-accuracy") -> Float.toString(step.getPosition().getAccuracy())) {
-				@includes.formEnigma(formEnigma)
+				@includeFormEnigma(formEnigma)
 				<div class="form-actions">
 					<button type="submit" name="submit-enigma" class="pushable btn">Enregistrer</button>
 				</div>
@@ -30,5 +30,5 @@
 		</div>
 	</div>
 
-	@includes.hiddenFormEnigma(formEnigma)
+	@includeHiddenFormEnigma(formEnigma)
 }

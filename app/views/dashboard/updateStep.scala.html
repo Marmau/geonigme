@@ -14,7 +14,7 @@
 				'id -> "create-step", 
 				'class -> "form-horizontal", 
 				Symbol("data-area") -> step.getHunt().getArea().toTemplateString()) {
-				@includes.formStep(formStep) 
+				@includeFormStep(formStep) 
 				<div class="form-actions">
 					<a class="btn pushable" href="@routes.HuntController.show(step.getHunt().getId())">Annuler</a>
 					<button type="submit" name="submit-step" class="btn pushable">Enregistrer</button>

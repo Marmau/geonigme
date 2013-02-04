@@ -12,7 +12,7 @@
 	<div class="row-fluid">
 		<div class="span4">
 			@helper.form(action = routes.HuntController.submitUpdateForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {
-				@includes.formHunt(formHunt)
+				@includeFormHunt(formHunt)
 				<div class="form-actions">
 					<a class="btn pushable" href="@routes.HuntController.show(hunt.getId())">Annuler</a>
 					<button type="submit" class="btn pushable">Enregistrer</button>

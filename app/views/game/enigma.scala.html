@@ -3,13 +3,13 @@
 
 @import helpers._
 @import models._
-
+@import _root_.global._
 
 @createCheckAnswerButton(answer: Answer) = {
 	@if(answer.isInstanceOf[TextAnswer]) {
 		<button class="btn" id="check-answer" data-type-answer="text">Vérifiez votre réponse</button>
 	} else {
-		<button class="btn" id="check-answer" data-type-answer="geolocated">Vérifiez votre réponse</button>
+		<button class="btn" id="check-answer" data-type-answer="geolocated">Vérifiez votre position</button>
 	}
 }
 
@@ -45,11 +45,11 @@
 					@createCheckAnswerButton(enigma.getAnswer())
 				</div>
 
-				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
+				<ol data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
 					@for(clue <- clues) {
 						<li class="clue">@clue.getDescription()</li>
 					}
-				</ul>
+				</ol>
 
 				<div id="template-clue" class="hide">
 					<li class="clue">__description__</li>
@@ -60,11 +60,21 @@
 				}
 
 				@if(clues.size() < enigma.getClues().size()) {
-					<button id="next-clue" class="btn" data-next-clue="@routes.GameController.nextClue()">Afficher un nouvel indice</button>
+					<form method="POST" action="@routes.GameController.nextClue()" id="next-clue">
+						@defining(AuthenticationTokenGenerator.generate()) { token =>
+							<input type="hidden" name="token" value="@token" />
+						}
+						<button type="submit" class="btn">Afficher un nouvel indice</button>
+					</form>
 				}
 
 				<div class="actions">
-					<button id="skip-enigma" data-url="@routes.GameController.skipEnigma()" class="btn btn-danger">Passer</button>
+					<form method="POST" action="@routes.GameController.skipEnigma()" id="skip-enigma">
+						@defining(AuthenticationTokenGenerator.generate()) { token =>
+							<input type="hidden" name="token" value="@token" />
+						}
+						<button type="submit" class="btn btn-danger">Passer</button>
+					</form>
 					<p id="info-pass" class="danger">Vous n'arrivez pas à résoudre l'énigme ? Passez...</p>
 				</div>
 			</div>

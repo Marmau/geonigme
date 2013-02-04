@@ -1,4 +1,4 @@
-require ['helpers'], (Helpers) ->
+require ['helpers', 'spinner'], (Helpers, Spinner) ->
 
 	checkAnswer = (answer) ->
 		ws = $('#form-check-answer').data('check-action')
@@ -6,8 +6,8 @@ require ['helpers'], (Helpers) ->
 		$.post ws, {
 			'answer': answer
 		}, (data) ->
+			Spinner.stop()
 			if data
-				$('#check-answer').hide()
 				alert('Vous venez de trouvez la bonne réponse, vous pouvez continuer !')
 				document.location.reload(true)
 			else 
@@ -16,6 +16,7 @@ require ['helpers'], (Helpers) ->
 		
 	$('#check-answer').click ->
 		$(this).addClass('disabled')
+		Spinner.start()
 		if $(this).data('type-answer') == 'text'
 			answer = $('#answer-text').val()
 			checkAnswer(answer)
@@ -27,9 +28,10 @@ require ['helpers'], (Helpers) ->
 				answer = position.coords.latitude + ',' + position.coords.longitude
 				checkAnswer(answer)
 
-	$('#next-clue').click ->	
+	$('#next-clue').submit ->	
+		Spinner.start()
 		$(this).addClass('disabled')	
-		ws = $(this).data('next-clue')
+		ws = $(this).attr('action')
 
 		$.post ws, (data) =>
 			if not data
@@ -49,7 +51,9 @@ require ['helpers'], (Helpers) ->
 				$(this).hide()
 
 			$(this).removeClass('disabled')
+			Spinner.stop()
 
-	$('#skip-enigma').click ->
-		if confirm('Voulez-vous vraiment passer cette énigme ?')
-			document.location = $(this).data('url')
+		return false
+
+	$('#skip-enigma').submit ->
+		return confirm('Voulez-vous vraiment passer cette énigme ?')

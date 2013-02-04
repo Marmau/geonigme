@@ -8,18 +8,8 @@
     </ul>
 } {
     <div class="row-fluid">
-        <div class="span6">
-            <div id="camera-wrap" class="camera_black_skin">
-                <div data-src="@routes.Assets.at("slideshow/illu1.jpg")">
-                    <div class="caption">Découvrez des lieux insolites...</div>
-                </div>
-                <div data-src="@routes.Assets.at("slideshow/illu1.jpg")">
-                    <div class="caption">Découvrez des lieux insolites...</div>
-                </div>
-                <div data-src="@routes.Assets.at("slideshow/illu1.jpg")">
-                    <div class="caption">Découvrez des lieux insolites...</div>
-                </div>
-            </div>
+        <div class="span6 wrapper-slideshow">
+            @includes.slideshow()
         </div>
         <div class="span6 left-glue" id="geonigme-description"> 
             <p class="big">

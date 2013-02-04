@@ -1,0 +1,64 @@
+@(enigma: models.Enigma)
+
+
+@import helpers._
+@import _root_.models._
+@import _root_.global._
+
+@mainGame("Jouer", "game/enigma") {
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
+			<li><a href="@routes.GameController.playHunt(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
+			<li><a href="@routes.GameController.playHunt(enigma.getStep().getId())">&Eacute;tape @enigma.getStep().getNumber()</a></li>
+			<li><a>Résumé de l'énigme @enigma.getNumber()</a></li>
+		</ul>
+	</nav>
+
+	<div class="row-fluid">
+		<div class="span12">
+			<blockquote>
+				@enigma.getDescription()
+			</blockquote>
+
+			<p>Désolé, cette énigme ne vous a apparemment pas inspiré, peut être la prochaine !</p>
+			<p>Cette énigme ne vous rapporte donc aucun point.</p>
+
+			@if(enigma.getAnswer().isInstanceOf[TextAnswer]) {
+				<p>Les réponses acceptées étaient : </p>
+				<ul>
+					@for(label <- enigma.getAnswer().asInstanceOf[TextAnswer].getLabels()) {
+						<li>@label</li>
+					}
+				</ul>
+			} else {
+				@defining(enigma.getAnswer().asInstanceOf[GeolocatedAnswer]) { geolocatedAnswer =>
+					<p>Il fallait se rendre ici : <strong>@geolocatedAnswer.getPosition().getPlace()</strong>.</p>
+					<div class="map" id="summary-map" data-target="@geolocatedAnswer.getPosition().toTemplateString()" data-target-accuracy="@geolocatedAnswer.getPosition().getAccuracy()"></div>
+				}
+			}
+
+			@if(!enigma.getClues().isEmpty()) {
+				<p>Ces indices étaient à votre disposition :</p>
+				<ol>
+					@for(clue <- enigma.getClues()) {
+						@if(clue.isInstanceOf[FileClue]) {
+							<li>@clue.getDescription()</li>
+						} else {
+							<li>@clue.getDescription()</li>
+						}
+					}
+				</ol>
+			} else {
+				<p>Il n'y avait pas d'indices pour cette énigme... Un peu trop dur peut-être !</p>
+			}
+
+			<form method="POST" action="@routes.GameController.finishEnigma()">
+				@defining(AuthenticationTokenGenerator.generate()) { token =>
+					<input type="hidden" name="token" value="@token" />
+				}
+				<button type="submit" class="btn">&Eacute;nigme suivante</button>
+			</form>
+		</div>
+	</div>
+}

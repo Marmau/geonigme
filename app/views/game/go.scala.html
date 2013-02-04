@@ -2,7 +2,7 @@
 
 
 @import helpers._
-@import models._
+@import _root_.global._
 
 @mainGame("Jouer", "game/go") {
 	<nav>
@@ -51,7 +51,13 @@
 	<div class="actions">
 		<button id="im-there" class="btn btn-danger">J'y suis !</button>
 		<div id="play-step-disabled" class="btn disabled">Jouer</div>
-		<a href="@routes.GameController.startStep()" id="play-step" class="btn hide">Jouer</a>
-		<p id="info-not-here" class="danger">Vous n'êtes pas géolocalisé sur le lieu du rendez-vous. Malgré tout, nous vous permettons de commencer la chasse si vous certifiez que vous y êtes.</p>
+		<form method="POST" action="@routes.GameController.startStep()">
+			@defining(AuthenticationTokenGenerator.generate()) { token =>
+				<input type="hidden" name="token" value="@token" />
+			}
+			<button type="submit" class="btn" id="play-step" class="btn hide">Jouer</button>
+		</form>
+<!-- 		<a href="@routes.GameController.startStep()" id="play-step" class="btn hide">Jouer</a>
+ -->		<p id="info-not-here" class="danger">Vous n'êtes pas géolocalisé sur le lieu du rendez-vous. Malgré tout, nous vous permettons de commencer la chasse si vous certifiez que vous y êtes.</p>
 	</div>
 }

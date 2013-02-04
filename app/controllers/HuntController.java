@@ -53,8 +53,8 @@ public class HuntController extends Controller {
 			Set<models.Tag> tags = formToTags(formHunt.get());
 			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
 			for (models.Tag tag: tags) {
-				oc.addObject(models.Tag.URI + tag.urify(), tag);
-				tagsWithURI.add(oc.getObject(models.Tag.class, models.Tag.URI + tag.urify()));
+				oc.addObject(tag.urify(), tag);
+				tagsWithURI.add(oc.getObject(models.Tag.class, tag.urify()));
 			}
 			hunt.setTags(tagsWithURI);
 			
@@ -118,8 +118,8 @@ public class HuntController extends Controller {
 			Set<models.Tag> tags = formToTags(formHunt.get());
 			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
 			for (models.Tag tag: tags) {
-				oc.addObject(models.Tag.URI + tag.urify(), tag);
-				tagsWithURI.add(oc.getObject(models.Tag.class, models.Tag.URI + tag.urify()));
+				oc.addObject(tag.urify(), tag);
+				tagsWithURI.add(oc.getObject(models.Tag.class, tag.urify()));
 			}
 			hunt.setTags(tagsWithURI);
 			
@@ -181,7 +181,7 @@ public class HuntController extends Controller {
 			RDFWriter writer = Sesame.getWriter(strw, format);
 			Tag t = new Tag();
 			t.setName(name);
-			String queryString = "DESCRIBE <" + models.Tag.URI + t.urify() + ">";
+			String queryString = "DESCRIBE <" + t.urify() + ">";
 			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
 		} catch (Exception e) {
 			e.printStackTrace();
