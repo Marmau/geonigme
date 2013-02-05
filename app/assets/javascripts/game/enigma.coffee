@@ -46,19 +46,12 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 
 			$('#no-clues').hide()
 			if data.file
-				console.log(data)
-				li = $('#template-clue').find('.clue').clone()
-				li.html(li.html().replace('__description__', data.description))
-				$('#clues-list').append(li)
 				li = $('#template-file-clue').find('.clue').clone()
 				li.html(li.html().replace('__file__', data.file))
 				$('#clues-list').append(li)
 			else
 				li = $('#template-clue').find('.clue').clone()
 				li.html(li.html().replace('__description__', data.description))
-				$('#clues-list').append(li)
-				li = $('#template-file-clue').find('.clue').clone()
-				li.html(li.html().replace('__file__', data.file))
 				$('#clues-list').append(li)
 
 			if $('#clues-list > li').size() == $('#clues-list').data('number')
