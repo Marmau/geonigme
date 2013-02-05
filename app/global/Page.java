@@ -51,6 +51,9 @@ public class Page implements MenuItem {
 			return true;
 		}
 		User user = UserController.getLoggedUser();
+		if( user == null ) {
+			System.out.println("Page.userCanAccess> User is null");
+		}
 		// User can be not loggued in to access to 0 right pages.
 		//return accessRight.v() == 0 || ( user != null && user.getRole().canDo(accessRight) );
 		// User should be loggued in to access to 0 right pages. Use Right.NONE to give access to everybody

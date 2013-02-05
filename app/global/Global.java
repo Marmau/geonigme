@@ -10,6 +10,10 @@ import controllers.routes;
 import play.Application;
 import play.GlobalSettings;
 import play.api.mvc.Call;
+import play.api.mvc.Handler;
+import play.mvc.Action;
+import play.mvc.Http.Request;
+import play.mvc.Http.RequestHeader;
 
 public class Global extends GlobalSettings {
 
@@ -51,6 +55,24 @@ public class Global extends GlobalSettings {
 		}
 
 	}
+ 	
+	@Override
+ 	public Action<?> onRequest(Request request, Method actionMethod) {
+ 		
+ 		System.out.println("Requesting");
+ 		Action<?> action = super.onRequest(request, actionMethod);
+ 		System.out.println("Request done");
+ 		return action;
+ 	}
+ 	
+ 	@Override
+ 	public Handler onRouteRequest(RequestHeader arg0) {
+ 		
+ 		//System.out.println("onRouteRequest");
+ 		Handler handler = super.onRouteRequest(arg0);
+ 		//System.out.println("onRouteRequest done");
+ 		return handler;
+ 	}
 
 	@Override
 	public void onStop(Application app) {

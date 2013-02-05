@@ -1,0 +1,30 @@
+@(hunts: List[models.Hunt])
+
+@import helpers._
+@import models._
+@import _root_.global.Menu
+
+@mainAdminPanel("Chasses", "adminpanel") {
+	@Menu.adminPanelMenu.render("huntlist")
+} {
+	@if( !hunts.isEmpty() ) { 
+		<div id="container-hunt-box">
+		@for(hunt <- hunts) {
+			<div class="user-box">
+				<a class="pushable" href="@routes.AdminPanelController.huntedit(hunt.getId())">
+					<div class="name">
+						<div>
+							<span>@hunt.getLabel()</span>
+						</div>
+					</div>
+					<div>Modifiée le @hunt.getModifiedAt()</div>
+				</a>
+			</div>
+		}
+		</div>
+	} else { 
+		<div class="span12">
+			<p>Aucune chasse.</p>
+		</div>
+	}
+}

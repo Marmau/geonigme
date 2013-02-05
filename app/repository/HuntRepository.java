@@ -38,7 +38,7 @@ public class HuntRepository {
 		List<Hunt> hunts = new ArrayList<Hunt>();
 		try {
 			ObjectConnection oc = Sesame.getObjectConnection();
-			String sqlQuery = "SELECT ?hunt WHERE { ?hunt gngm:"+orderBy+" ?orderBy } ORDER BY ASC(?orderBy)";
+			String sqlQuery = "SELECT ?hunt WHERE { ?hunt gngm:"+orderBy+" ?orderBy } ORDER BY DESC(?orderBy)";
 			ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX + 
 				sqlQuery);
 			hunts = query.evaluate(models.Hunt.class).asList();
@@ -49,6 +49,6 @@ public class HuntRepository {
 	}
 	
 	public static List<Hunt> getAll() {
-		return getAll("loginName");
+		return getAll("modifiedAt");
 	}
 }

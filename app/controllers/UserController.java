@@ -26,6 +26,8 @@ import org.openrdf.rio.RDFWriter;
 import play.api.templates.Html;
 import play.data.Form;
 import play.mvc.*;
+import play.mvc.Http.Context;
+import play.mvc.Http.Session;
 
 public class UserController extends Controller {
 
@@ -97,7 +99,13 @@ public class UserController extends Controller {
 
 	public static models.User getLoggedUser() {
 		ObjectConnection oc = Sesame.getObjectConnection();
-		String uid = session(userSessionKey);
+		Session session = Context.current().session();
+		if( session == null ) {
+			System.out.println("UserController.getLoggedUser> Session null");
+			return null;
+		}
+		String uid = session.get(userSessionKey);
+		//String uid = session(userSessionKey);
 		if (uid == null) {
 			return null;
 		}

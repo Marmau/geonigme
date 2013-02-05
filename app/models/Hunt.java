@@ -161,7 +161,7 @@ public class Hunt implements RDFObject {
 	
 	public void save() throws RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
-		oc.addObject(User.URI + getId(), this);
+		oc.addObject(Hunt.URI + getId(), this);
 	}
 
 	@Override

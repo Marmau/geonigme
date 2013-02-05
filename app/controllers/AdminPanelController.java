@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.Iterator;
 
+import global.AssociatedPage;
 import global.CurrentRequest;
 import global.Page;
 
@@ -20,20 +21,13 @@ public class AdminPanelController extends Controller {
 	
 	/***** HUNTS *****/
 
+	@AssociatedPage("huntlist")
 	public static Result huntlist() throws Exception {
-		currentPage = Page.get("huntlist");
-		if( !currentPage.userCanAccess() ) {
-			System.out.println("AdminPanelController.huntlist() : Access forbidden.");
-			return forbidden();
-		}
 		return ok(views.html.adminpanel.huntlist.render(HuntRepository.getAll()));
 	}
 
+	@AssociatedPage("huntedit")
 	public static Result huntedit(String uid) throws Exception {
-		currentPage = Page.get("huntedit");
-		if( !currentPage.userCanAccess() ) {
-			return forbidden();
-		}
 		Hunt hunt = HuntRepository.get(uid);
 		if( hunt == null ) {
 			return notFound();
@@ -58,11 +52,8 @@ public class AdminPanelController extends Controller {
 		return ok(views.html.adminpanel.editHunt.render(hunt, form(forms.Hunt.class).fill(formHuntEdit)));
 	}
 	
+	@AssociatedPage("huntedit")
 	public static Result submitHuntEditForm(String uid) throws Exception {
-		currentPage = Page.get("huntedit");
-		if( !currentPage.userCanAccess() ) {
-			return forbidden();
-		}
 		Hunt hunt = HuntRepository.get(uid);
 		if( hunt == null ) {
 			return notFound();
@@ -79,29 +70,20 @@ public class AdminPanelController extends Controller {
 			
 			hunt.save();
 			
-			return redirectToMain();
+			return redirect(routes.AdminPanelController.huntlist());
 		}
 	}
 	
 	/***** USERS *****/
-	
+
+	@AssociatedPage("userlist")
 	public static Result userlist() throws Exception {
-		System.out.println("AdminPanelController Current thread: "+Thread.currentThread().getId());
-		System.out.println("AdminPanelController Current request: "+ctx().request().hashCode());
 		CurrentRequest.test();
-		currentPage = Page.get("userlist");
-		if( !currentPage.userCanAccess() ) {
-			System.out.println("AdminPanelController.userlist() : Access forbidden.");
-			return forbidden();
-		}
 		return ok(views.html.adminpanel.userlist.render(UserRepository.getAll()));
 	}
 
+	@AssociatedPage("useredit")
 	public static Result useredit(String uid) throws Exception {
-		currentPage = Page.get("useredit");
-		if( !currentPage.userCanAccess() ) {
-			return forbidden();
-		}
 		User user = UserRepository.get(uid);
 		if( user == null ) {
 			return notFound();
@@ -112,12 +94,9 @@ public class AdminPanelController extends Controller {
 		formUserEdit.roleName = user.getRole().getName();
 		return ok(views.html.adminpanel.editUser.render(user, form(forms.AdmUserEdit.class).fill(formUserEdit)));
 	}
-	
+
+	@AssociatedPage("useredit")
 	public static Result submitUserEditForm(String uid) throws Exception {
-		currentPage = Page.get("useredit");
-		if( !currentPage.userCanAccess() ) {
-			return forbidden();
-		}
 		User user = UserRepository.get(uid);
 		if( user == null ) {
 			return notFound();
