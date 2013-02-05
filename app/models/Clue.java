@@ -88,4 +88,5 @@ public class Clue implements RDFObject {
 	public Resource getResource() {
 		return null;
 	}
+	
 }

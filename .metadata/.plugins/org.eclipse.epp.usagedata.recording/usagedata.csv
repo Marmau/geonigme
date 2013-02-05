@@ -1,0 +1,4 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.team.cvs.ui,3.3.401.v20120126-1227,"org.eclipse.team.cvs.ui",1360058854836
+stopped,bundle,com.collabnet.subversion.merge,3.0.12,"com.collabnet.subversion.merge",1360058854837
+stopped,bundle,org.tigris.subversion.subclipse.graph,1.1.1,"org.tigris.subversion.subclipse.graph",1360058854837
