@@ -1,0 +1,45 @@
+@(page: _root_.global.Page=_root_.global.CurrentRequest.page())(content: Html)
+
+@import _root_.global.Menu
+@import controllers.UserController
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Géonigme - @page.getTitle()</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("leaflet/leaflet.css")">
+		<!--[if lte IE 8]><link rel="stylesheet" href="leaflet/leaflet.ie.css" /><![endif]-->
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.min.css")">
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+		<script src="@routes.Assets.at("javascripts/require.min.js")" data-main="@routes.Assets.at("javascripts/app")" type="text/javascript" data-start="@page.getStartJS()"></script>
+	</head>
+	<body class="@page.getBodyClasses()">
+		<div data-role="page">
+			<header data-role="header">
+				<div class="background"></div>
+				<div class="btn-group user-menu">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserController.getLoggedUser().getLoginName()<span class="caret"></span></a>
+					@Menu.memberMenu.render(page)
+				</div>
+			</header>
+			<div data-role="content" class="container-fluid">
+				<div class="row-fluid">
+					<nav>
+						@page.renderMenu()
+					</nav>
+				</div>
+				@content
+			</div>
+			<footer data-role="footer" class="container-fluid">
+				<div class="row-fluid">
+					<p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2012-2013
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

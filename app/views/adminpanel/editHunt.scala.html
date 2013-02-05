@@ -2,13 +2,7 @@
 
 @import helpers._
 
-@mainAdminPanel("Modifier une chasse", "dashboard/hunt") {
-	<ul class="breadcrumb">
-		<li><a href="@routes.AdminPanelController.huntlist()">Chasses</a></li>
-		<li><a href="@routes.AdminPanelController.huntedit(hunt.getId())">@hunt.getLabel()</a></li>
-		<li><a>Modifier la chasse</a></li>
-	</ul>
-} {
+@mainAdminPanel() {
 	<div class="row-fluid">
 		<div class="span4">
 			@helper.form(action = routes.AdminPanelController.submitHuntEditForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {

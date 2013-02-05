@@ -3,6 +3,7 @@ package global;
 import java.util.Hashtable;
 
 import play.api.mvc.Call;
+import play.api.templates.Html;
 
 import controllers.UserController;
 import models.Right;
@@ -14,6 +15,10 @@ public class Page implements MenuItem {
 	public static final Right USER_EDIT = Right.USER_LIST.AND(Right.USER_LIST);
 */
 	private static Hashtable<String, Page> instances = new Hashtable<String, Page>();
+	
+	public static Page getCopy(String pageName) throws Exception {
+		return new Page(get(pageName));
+	}
 	
 	public static Page get(String pageName) throws Exception {
 		Page page = instances.get(pageName);
@@ -30,20 +35,35 @@ public class Page implements MenuItem {
 	
 	//HashMap<String, Page> instances = new HashMap<String, Page>();
 	
-	private String title;
-	private String name;
-	private Call route;
-	private Right accessRight;
-	
-	public Page(String name, String title, Call route, Right accessRight) throws Exception {
-		if( instances.containsKey(name) ) {
+	protected String title;
+	protected String name;
+	protected Call route;
+	protected Right accessRight;
+	protected Menu menu;
+	protected String bodyClasses;
+	protected String startJS;
+
+	private Page(String name, String title, Call route, Right accessRight, String startJS, boolean clone) throws Exception {
+		if( !clone && instances.containsKey(name) ) {
 			throw new Exception("Another page with this name \""+name+"\" already exist.");
 		}
 		this.name = name;
 		this.title = title;
 		this.route = route;
 		this.accessRight = accessRight;
-		instances.put(name, this);
+		this.startJS = startJS;
+		this.menu = new Menu(false);// Empty menu
+		this.bodyClasses = "";
+		if( !clone ) {
+			instances.put(name, this);
+		}
+	}
+	public Page(String name, String title, Call route, Right accessRight, String startJS) throws Exception {
+		this(name, title, route, accessRight, startJS, false);
+	}
+	// Clone it !
+	public Page(Page other) throws Exception {
+		this(other.name, other.title, other.route, other.accessRight, other.startJS, true);
 	}
 
 	public boolean userCanAccess() {
@@ -58,6 +78,39 @@ public class Page implements MenuItem {
 		//return accessRight.v() == 0 || ( user != null && user.getRole().canDo(accessRight) );
 		// User should be loggued in to access to 0 right pages. Use Right.NONE to give access to everybody
 		return user != null && user.getRole().canDo(accessRight);
+	}
+	
+	/*
+	 * We prefer to clone pages.
+	// Only for the current request (loading page)
+	public void setParameter(String paramName, String paramValue) {
+		CurrentRequest.instance().setPageParameter(name, paramName, paramValue);
+	}
+
+	// Only for the current request (loading page)
+	public String getParameter(String paramName) {
+		return CurrentRequest.instance().getPageParameter(name, paramName);
+	}
+	*/
+	
+	public String getStartJS() {
+		return bodyClasses;
+	}
+	
+	public String getBodyClasses() {
+		return bodyClasses;
+	}
+	
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+	
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public Html renderMenu() {
+		return getMenu().render(this);
 	}
 
 	public String getTitle() {

@@ -7,6 +7,12 @@ import models.Right;
 
 import controllers.routes;
 
+import pages.AdmHuntEditPage;
+import pages.AdminPanelPage;
+import pages.AdminUserEditPage;
+import pages.DashboardPage;
+import pages.GamePage;
+import pages.HomePage;
 import play.Application;
 import play.GlobalSettings;
 import play.api.mvc.Call;
@@ -37,18 +43,20 @@ public class Global extends GlobalSettings {
 		// Pages
 		try {
 
-			// Member's Global Pages
-			new SimplePage("home", "Jouer", routes.GameController.home(), Right.MEMBER_AREA);
-			new SimplePage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(), Right.MEMBER_AREA);
-			new SimplePage("logout", "Déconnexion", routes.UserController.logout(), Right.MEMBER_AREA);
-
 			// Admin Panel Pages
-			new SimplePage("userlist", "Utilisateurs", routes.AdminPanelController.userlist(), Right.USER_LIST);
-			new SimplePage("huntlist", "Chasses", routes.AdminPanelController.huntlist(), Right.HUNT_LIST);
-			new AdmUserEditPage("Édition d'un utilisateur", Right.USER_LIST);
-			new AdmHuntEditPage("Édition d'une chasse", Right.HUNT_LIST);
-
+			new AdminPanelPage("userlist", "Utilisateurs", routes.AdminPanelController.userlist(), Right.USER_LIST, "");
+			new AdminPanelPage("huntlist", "Chasses", routes.AdminPanelController.huntlist(), Right.HUNT_LIST, "");
+			new AdminUserEditPage("Édition d'un utilisateur", Right.USER_LIST, "");
+			new AdmHuntEditPage("Édition d'une chasse", Right.HUNT_LIST, "dashboard/hunt");
+			
 			// Dashboard Pages
+			new DashboardPage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(), Right.MEMBER_AREA, "");
+			
+			// Game Pages
+			new GamePage("play", "Jouer", routes.GameController.home(), Right.MEMBER_AREA, "");
+
+			// Home Pages
+			new HomePage("logout", "Déconnexion", routes.UserController.logout(), Right.MEMBER_AREA, "");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,9 +67,9 @@ public class Global extends GlobalSettings {
 	@Override
  	public Action<?> onRequest(Request request, Method actionMethod) {
  		
- 		System.out.println("Requesting");
+ 		//System.out.println("Requesting");
  		Action<?> action = super.onRequest(request, actionMethod);
- 		System.out.println("Request done");
+ 		//System.out.println("Request done");
  		return action;
  	}
  	

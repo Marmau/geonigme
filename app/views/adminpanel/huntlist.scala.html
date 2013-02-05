@@ -4,9 +4,7 @@
 @import models._
 @import _root_.global.Menu
 
-@mainAdminPanel("Chasses", "adminpanel") {
-	@Menu.adminPanelMenu.render("huntlist")
-} {
+@mainAdminPanel() {
 	@if( !hunts.isEmpty() ) { 
 		<div id="container-hunt-box">
 		@for(hunt <- hunts) {

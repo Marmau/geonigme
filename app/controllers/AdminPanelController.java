@@ -78,7 +78,7 @@ public class AdminPanelController extends Controller {
 
 	@AssociatedPage("userlist")
 	public static Result userlist() throws Exception {
-		CurrentRequest.test();
+		//return forbidden("THIS IS A TEST ABOUT A FIRBIDDEN PAGE.");
 		return ok(views.html.adminpanel.userlist.render(UserRepository.getAll()));
 	}
 

@@ -4,25 +4,7 @@
 @import models._
 @import _root_.global.Menu
 
-@displayUserList(users: List[User], nbPerLine: Integer)(f: User => Html)(g: () => Html) = @{
-	var i:Int = 0
-	var result = ""
-	if (users.isEmpty) {
-		g()
-	} else {
-		for (user <- users) {
-			result += f(user)
-
-			i += 1
-		}
-	}
-
-	new Html(result)
-}
-
-@mainAdminPanel("Utilisateurs", "adminpanel") {
-	@Menu.adminPanelMenu.render("userlist")
-} {
+@mainAdminPanel() {
 	@if( !users.isEmpty() ) { 
 		<div id="container-user-box">
 		@for(user <- users) {
