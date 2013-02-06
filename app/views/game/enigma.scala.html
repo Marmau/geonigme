@@ -22,7 +22,7 @@
 			<li><a>&Eacute;nigme @enigma.getNumber()</a></li>
 		</ul>
 	</nav>
-
+ 	
 	<div class="row-fluid">
 		<div class="span12">
 			<blockquote class="enigma">
@@ -45,11 +45,11 @@
 					@createCheckAnswerButton(enigma.getAnswer())
 				</div>
 
-				<ol data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
+				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
 					@for(clue <- clues) {
 						<li class="clue">@clue.getDescription()</li>
 					}
-				</ol>
+				</ul>
 
 				<div id="template-clue" class="hide">
 					<li class="clue">__description__</li>
