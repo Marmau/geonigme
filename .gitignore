@@ -14,3 +14,4 @@ store/
 .classpath
 .loadpath
 .project
+.metadata/
