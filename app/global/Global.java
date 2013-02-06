@@ -65,7 +65,7 @@ public class Global extends GlobalSettings {
 			new AdminHuntEditPage("Édition d'une chasse", Right.HUNT_LIST, "dashboard/hunt");
 			
 			// Dashboard Pages
-			new DashboardPage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(), "");
+			new DashboardPage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(), "dashboard/dashboard");
 			
 			new HuntShowPage("Voir la chasse", "dashboard/show_hunt");
 			new HuntCreatePage("Nouvelle chasse", "dashboard/hunt");
