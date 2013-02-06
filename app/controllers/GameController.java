@@ -139,14 +139,12 @@ public class GameController extends Controller {
 		User loggedUser = UserRepository.getLoggedUser();
 		if (null != loggedUser) {
 			String uri = Score.URI + loggedUser.getId() + "/" + getCurrentHunt().getId();
-			Score score = oc.getObject(Score.class, uri);
-			if (null == score) {
-				Hunt currentHunt = getCurrentHunt();
-				score = new Score();
-				score.setHunt(currentHunt);
-				score.setUSer(loggedUser);
-			}
+			Hunt currentHunt = getCurrentHunt();
+			Score score = new Score();
+			score.setHunt(currentHunt);
+			score.setUSer(loggedUser);
 			score.setValue(scoreValue);
+			
 			oc.addObject(uri, score);
 		}
 	}

@@ -24,7 +24,7 @@ define ['spin'], (Spin) ->
 
 	Spinner.start = ->
 		element = $('#spinner')
-		element.height($(window).height())
+		element.height($(document).height())
 		element.show()
 		spinner.spin(document.getElementById('spinner'))
 
