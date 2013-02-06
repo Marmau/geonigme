@@ -10,4 +10,12 @@ public class GamePage extends Page {
 		super(name, title, route, accessRight, startJS);
 		this.bodyClasses = "game";
 	}
+	
+	public GamePage(GamePage other) throws Exception {
+		super(other);
+	}
+	
+	protected void setup() {
+		this.bodyClasses = "game";
+	}
 }

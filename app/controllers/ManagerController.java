@@ -1,5 +1,7 @@
 package controllers;
 
+import global.AssociatedPage;
+
 import java.util.List;
 
 import org.openrdf.query.QueryEvaluationException;
@@ -9,6 +11,7 @@ import play.mvc.*;
 
 public class ManagerController extends Controller {
 
+	@AssociatedPage("dashboard")
 	public static Result dashboard() throws RepositoryException, QueryEvaluationException {
 		if (!UserController.isLogged()) {
 			return redirect(routes.ApplicationController.index());

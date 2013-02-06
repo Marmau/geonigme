@@ -10,10 +10,7 @@ import models.Right;
 import models.User;
 
 public class Page implements MenuItem {
-/*
-	public static final Right USER_LIST = Right.USER_LIST;
-	public static final Right USER_EDIT = Right.USER_LIST.AND(Right.USER_LIST);
-*/
+	
 	private static Hashtable<String, Page> instances = new Hashtable<String, Page>();
 	
 	public static Page getCopy(String pageName) throws Exception {
@@ -27,10 +24,19 @@ public class Page implements MenuItem {
 		}
 		return page;
 	}
-
+	
 	// Should really exist ? Or dev should use get and instance method ?
 	public static boolean userCanAccess(String pageName) throws Exception {
 		return get(pageName).userCanAccess();
+	}
+
+	// Should really exist ? Or dev should use get and instance method ?
+	public static String getReachableURL(String pageName) throws Exception {
+		Page page = get(pageName);
+		if( page == null ) {
+			return "";
+		}
+		return page.getReachableUrl();
 	}
 	
 	//HashMap<String, Page> instances = new HashMap<String, Page>();
@@ -57,6 +63,7 @@ public class Page implements MenuItem {
 		if( !clone ) {
 			instances.put(name, this);
 		}
+		setup();
 	}
 	public Page(String name, String title, Call route, Right accessRight, String startJS) throws Exception {
 		this(name, title, route, accessRight, startJS, false);
@@ -65,6 +72,9 @@ public class Page implements MenuItem {
 	public Page(Page other) throws Exception {
 		this(other.name, other.title, other.route, other.accessRight, other.startJS, true);
 	}
+	
+	// Do nothing here
+	protected void setup() { }
 
 	public boolean userCanAccess() {
 		if( accessRight == null ) {
@@ -94,7 +104,7 @@ public class Page implements MenuItem {
 	*/
 	
 	public String getStartJS() {
-		return bodyClasses;
+		return startJS;
 	}
 	
 	public String getBodyClasses() {
@@ -102,7 +112,10 @@ public class Page implements MenuItem {
 	}
 	
 	public void setMenu(Menu menu) {
-		this.menu = menu;
+		// We defined this menu as main of this page only if this page does not set a menu yet.
+		if( this.menu == null || this.menu.isEmpty() ) {
+			this.menu = menu;
+		}
 	}
 	
 	public Menu getMenu() {
@@ -112,9 +125,17 @@ public class Page implements MenuItem {
 	public Html renderMenu() {
 		return getMenu().render(this);
 	}
-
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	public String getTitle() {
 		return title;
+	}
+
+	public Html getLabel() {
+		return new Html(title);
 	}
 	
 	public String getName() {
@@ -126,7 +147,23 @@ public class Page implements MenuItem {
 	}
 	
 	public String getUrl() {
-		return getRoute().url();
+		/*
+		if( getRoute() != null ) {
+			System.out.println("Route of "+getName()+" is NOT null");
+		} else {
+			System.out.println("Route of "+getName()+" IS NULL");
+		}*/
+		return (getRoute() != null) ? getRoute().url() : "";
+	}
+	
+	public String getReachableUrl() {
+		/*if( userCanAccess() ) {
+			System.out.println("User can access to page "+getName());
+		} else {
+			System.out.println("User can NOT access to page "+getName());
+		}
+		System.out.println("URL is "+getUrl());*/
+		return (userCanAccess()) ? getUrl() : "";
 	}
 
 	public Right getAccessRight() {

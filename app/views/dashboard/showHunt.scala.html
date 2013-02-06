@@ -67,12 +67,7 @@
 	result
 }
 
-@mainDashboard("Voir la chasse", "dashboard/show_hunt") {
-	<ul class="breadcrumb">
-		<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
-		<li><a><span class="hunt-name">@hunt.getLabel()</span> |<span class="small">@hunt.getStringLevel()</span></a></li>
-	</ul>
-} {
+@global.main() {
 	<div class="row-fluid">
 		<div class="span4" id="show-hunt" data-area-hunt="@hunt.getArea().toTemplateString()">
 			<section class="hunt">
@@ -160,5 +155,4 @@
 			@includes.map("show-hunt-map")
 		</div>
 	</div>
-
 }

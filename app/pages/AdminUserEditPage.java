@@ -1,17 +1,19 @@
 package pages;
 
-import global.Page;
 import controllers.routes;
 import models.Right;
+import models.User;
 import play.api.mvc.Call;
 
-public class AdminUserEditPage extends Page {
+public class AdminUserEditPage extends AdminPanelPage {
 	
-	protected String uid = null;
+	protected User user = null;
+	public static final String commonName = "adminuseredit";
 	
 	public AdminUserEditPage(String title, Right accessRight, String startJS) throws Exception {
-		super("useredit", title, null, accessRight, startJS);
-		menu.add("userlist");
+		super(commonName, title, null, accessRight, startJS);
+		menu.setCSSClasses("breadcrumb");
+		menu.add("adminuserlist");
 		menu.add(new AdminUserEditPage(this));//Copy it
 	}
 	
@@ -19,19 +21,35 @@ public class AdminUserEditPage extends Page {
 		super(other);
 	}
 	
-	public void setMyParameters(String uid) {
-		this.uid = uid;
+	public AdminUserEditPage setMyParameters(User user) {
+		this.user = user;
+		return this;
 	}
 
 	// The entry in the menu could (should) be a copy
-	public void setMenuParameters(String uid) {
+	public void setMenuParameters(User user) {
 		AdminUserEditPage p = (AdminUserEditPage) menu.getPage(name);// Should be a copy of this one
-		p.setMyParameters(uid);
+		p.setMyParameters(user);
 	}
 	
 	@Override
 	public Call getRoute() {
-		return routes.AdminPanelController.useredit(uid);
+		return routes.AdminPanelController.useredit(user.getId());
+	}
+	
+	public static AdminUserEditPage getCopy() throws Exception {
+		return new AdminUserEditPage((AdminUserEditPage) get(commonName));
+	}
+	
+	public static String getReachableUrl(User user) {
+		try {
+			AdminUserEditPage page = getCopy();
+			page.setMyParameters(user);
+			return page.getReachableUrl();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 
 }

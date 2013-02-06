@@ -6,26 +6,15 @@ import play.api.templates.Html;
 
 public class Menu {
 	
-	public static final Menu adminPanelMenu = new Menu(true);
-	public static final Menu dashboardMenu = new Menu(true);
-	public static final Menu memberMenu = new Menu(false, "dropdown-menu");
+	public static Menu adminPanelMenu = new Menu(true);
+	public static Menu dashboardMenu = new Menu(true);
+	public static Menu memberMenu = new Menu(false, "dropdown-menu");
 	
+	/*
+	 * Not working by this way
 	static {
-		// Put all menus' configuration below
-		// Use an existing menu, declared above.
-
-		// Member's Global Menu
-		memberMenu.add("home");
-		memberMenu.add("dashboard");
-		memberMenu.add("userlist");
-		memberMenu.add("logout");
-		
-		// Admin Panel Menu
-		adminPanelMenu.add("userlist");
-		adminPanelMenu.add("huntlist");
-		
-		// Dashboard Menu
 	}
+	*/
 
 	private boolean isNavMenu;
 	private String cssClasses = "";
@@ -59,7 +48,7 @@ public class Menu {
 		return this;
 	}
 	
-	//Fail if name does no match with a page.
+	// Fail if name does no match with a page.
 	public Page getPage(String name) {
 		for( MenuItem item : items) {
 			if( item.getName().equals(name) ) {
@@ -69,12 +58,25 @@ public class Menu {
 		return null;
 	}
 	
+	// Fail if name does no match with a page.
+	public Page getPage(int pos) {
+		return (Page) items.get(pos);
+	}
+	
 	public ArrayList<MenuItem> getItems() {
 		return items;
 	}
 	
+	public boolean isEmpty() {
+		return items == null || items.isEmpty();
+	}
+	
 	public String getCSSClasses() {
 		return cssClasses;
+	}
+	
+	public void setCSSClasses(String cssClasses) {
+		this.cssClasses = cssClasses;
 	}
 	
 	public Html render(MenuItem currentItem) {

@@ -2,15 +2,7 @@
 
 @import helpers._
 
-@mainDashboard("Modifier une énigme", "dashboard/enigma") {
-	<ul class="breadcrumb">
-		<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
-		<li><a href="@routes.HuntController.show(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
-		<li><a href="@routes.HuntController.show(enigma.getStep().getHunt().getId())">&Eacute;tape @enigma.getStep().getNumber()</a></li>
-		<li><a href="@routes.HuntController.show(enigma.getStep().getHunt().getId())">&Eacute;nigme @enigma.getNumber()</a></li>
-		<li><a>Modifier l'énigme</a></li>
-	</ul>
-} {
+@global.main() {
 	<div class="row-fluid">
 		<div class="span4">
 			@helper.form(action = routes.EnigmaController.submitUpdateForm(enigma.getId()), 

@@ -2,11 +2,13 @@ package controllers;
 
 import forms.Login;
 import forms.Register;
+import global.AssociatedPage;
 import global.Sesame;
 
 import java.io.StringWriter;
 
 import models.Role;
+import models.User;
 
 import org.openrdf.query.QueryLanguage;
 import java.util.GregorianCalendar;
@@ -23,7 +25,6 @@ import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.rio.RDFWriter;
 
-import play.api.templates.Html;
 import play.data.Form;
 import play.mvc.*;
 import play.mvc.Http.Context;
@@ -33,95 +34,13 @@ public class UserController extends Controller {
 
 	static String userSessionKey = "user";
 
+	@AssociatedPage("logout")
 	public static Result logout() {
 		session().remove(userSessionKey);
 		return redirect(routes.ApplicationController.index());
 	}
 
-	public static Result submitLoginForm() throws DatatypeConfigurationException, RepositoryException,
-			QueryEvaluationException, MalformedQueryException {
-		Form<forms.Login> formLogin = form(forms.Login.class).bindFromRequest();
-
-		if (formLogin.hasErrors()) {
-			return badRequest(views.html.global.login.render(formLogin, form(Register.class)));
-		} else {
-			ObjectConnection oc = Sesame.getObjectConnection();
-
-			forms.Login form = formLogin.get();
-
-			String uid = form.login.toLowerCase();
-			models.User user = oc.getObject(models.User.class, models.User.URI + uid);
-
-			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
-			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-
-			user.setLastLoginTime(now);
-
-			oc.addObject(user.getResource(), user);
-
-			session(userSessionKey, user.getId());
-
-			return redirectToMain();
-		}
-	}
-
-	public static Result submitRegisterForm() throws RepositoryException, DatatypeConfigurationException {
-		Form<forms.Register> formRegister = form(forms.Register.class).bindFromRequest();
-
-		if (formRegister.hasErrors()) {
-			return badRequest(views.html.global.login.render(form(Login.class), formRegister));
-		} else {
-			ObjectConnection oc = Sesame.getObjectConnection();
-
-			forms.Register form = formRegister.get();
-			models.User newUser = new models.User();
-			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
-			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-			newUser.setInscriptionDate(now);
-			newUser.setLastLoginTime(now);
-			newUser.setLoginName(form.pseudonym);
-			newUser.setMail(form.email);
-			newUser.setRole(Role.MEMBER);
-			newUser.setPasswordSha1Hash(DigestUtils.sha256Hex(form.password));
-
-			String uid = newUser.getLoginName().toLowerCase();
-			oc.addObject(models.User.URI + uid, newUser);
-
-			session(userSessionKey, uid);
-
-			return redirectToMain();
-		}
-	}
-
-	public static boolean isLogged() {
-		return getLoggedUser() != null;
-	}
-
-	public static models.User getLoggedUser() {
-		ObjectConnection oc = Sesame.getObjectConnection();
-		Session session = Context.current().session();
-		if( session == null ) {
-			System.out.println("UserController.getLoggedUser> Session null");
-			return null;
-		}
-		String uid = session.get(userSessionKey);
-		//String uid = session(userSessionKey);
-		if (uid == null) {
-			return null;
-		}
-		try {
-			return oc.getObject(models.User.class, models.User.URI + uid);
-		} catch ( Exception e ) {
-			return null;
-		}
-	}
-
-	public static Result redirectToMain() {
-		//return redirect(routes.ManagerController.dashboard());
-		models.User user = getLoggedUser();
-		return redirect( (user != null && user.hasRights()) ? routes.AdminPanelController.userlist() : routes.ManagerController.dashboard());
-	}
-	
+	@AssociatedPage("login")
 	public static Result login() {
 		if( isLogged() ) {
 			System.out.println("UserController.login() : Already loggued in.");
@@ -134,12 +53,94 @@ public class UserController extends Controller {
 		return ok(views.html.global.login.render(formLogin, formRegister));
 	}
 
+	@AssociatedPage("login")
+	public static Result submitLoginForm() throws DatatypeConfigurationException, RepositoryException,
+			QueryEvaluationException, MalformedQueryException {
+		Form<forms.Login> formLogin = form(forms.Login.class).bindFromRequest();
+
+		if (formLogin.hasErrors()) {
+			return badRequest(views.html.global.login.render(formLogin, form(Register.class)));
+		} else {
+			ObjectConnection oc = Sesame.getObjectConnection();
+			forms.Login form = formLogin.get();
+
+			String uid = form.login.toLowerCase();
+			User user = oc.getObject(User.class, User.URI + uid);
+
+			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
+			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+
+			user.setLastLoginTime(now);
+			oc.addObject(user.getResource(), user);
+			session(userSessionKey, user.getId());
+			return redirectToMain();
+		}
+	}
+
+	@AssociatedPage("login")
+	public static Result submitRegisterForm() throws RepositoryException, DatatypeConfigurationException {
+		Form<forms.Register> formRegister = form(forms.Register.class).bindFromRequest();
+
+		if (formRegister.hasErrors()) {
+			return badRequest(views.html.global.login.render(form(Login.class), formRegister));
+		} else {
+			ObjectConnection oc = Sesame.getObjectConnection();
+
+			forms.Register form = formRegister.get();
+			User newUser = new User();
+			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
+			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+			newUser.setInscriptionDate(now);
+			newUser.setLastLoginTime(now);
+			newUser.setLoginName(form.pseudonym);
+			newUser.setMail(form.email);
+			newUser.setRole(Role.MEMBER);
+			newUser.setPasswordSha1Hash(DigestUtils.sha256Hex(form.password));
+
+			String uid = newUser.getLoginName().toLowerCase();
+			oc.addObject(User.URI + uid, newUser);
+
+			session(userSessionKey, uid);
+
+			return redirectToMain();
+		}
+	}
+
+	public static boolean isLogged() {
+		return getLoggedUser() != null;
+	}
+
+	public static User getLoggedUser() {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		Session session = Context.current().session();
+		if( session == null ) {
+			System.out.println("UserController.getLoggedUser> Session null");
+			return null;
+		}
+		String uid = session.get(userSessionKey);
+		//String uid = session(userSessionKey);
+		if (uid == null) {
+			return null;
+		}
+		try {
+			return oc.getObject(User.class, User.URI + uid);
+		} catch ( Exception e ) {
+			return null;
+		}
+	}
+
+	public static Result redirectToMain() {
+		//return redirect(routes.ManagerController.dashboard());
+		User user = getLoggedUser();
+		return redirect( (user != null && user.hasRights()) ? routes.AdminPanelController.userlist() : routes.ManagerController.dashboard());
+	}
+
 	public static Result showRDF(String uid, String format) {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		StringWriter strw = new StringWriter();
 		try {
 			RDFWriter writer = Sesame.getWriter(strw, format);
-			String queryString = "DESCRIBE <" + models.User.URI + uid + ">";
+			String queryString = "DESCRIBE <" + User.URI + uid + ">";
 			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
 		} catch (Exception e) {
 			e.printStackTrace();

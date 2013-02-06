@@ -3,20 +3,21 @@
 @import helpers._
 @import models._
 @import _root_.global.Menu
+@import _root_.pages._
 
-@mainAdminPanel() {
+@global.main() {
 	@if( !users.isEmpty() ) { 
 		<div id="container-user-box">
 		@for(user <- users) {
 			<div class="user-box">
-				<a class="pushable" href="@routes.AdminPanelController.useredit(user.getId())">
+				@components.link(AdminUserEditPage.getCopy().setMyParameters(user)) {
 					<div class="name">
 						<div>
 							<span>@user.getLoginName()</span>
 						</div>
 					</div>
 					<div>Inscrit le @user.getInscriptionDate()</div>
-				</a>
+				}
 			</div>
 		}
 		</div>

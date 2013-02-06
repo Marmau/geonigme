@@ -4,6 +4,7 @@
 
 # Home page
 GET		/							controllers.ApplicationController.index()
+GET		/app/load					controllers.ApplicationController.appLoad()
 POST 	/contact-us					controllers.ApplicationController.submitContactForm()
 
 # Map static resources from the /public folder to the /assets URL path

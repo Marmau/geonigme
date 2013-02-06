@@ -17,7 +17,7 @@
 	<label class="control-label" for="level-hunt">Difficulté</label>
 	<div class="controls">
 		<div class="btn-group" id="level-hunt-group" data-toggle="buttons-radio">
-			<div class="btn active pushable" rel="tooltip" title="Ayant lieu dans un périmètre restreint, les énigmes ne demandent pas des connaissances culturelles pointues.">Facile</div>
+			<div class="btn @if( formHunt("level").value == null  ) { active } pushable" rel="tooltip" title="Ayant lieu dans un périmètre restreint, les énigmes ne demandent pas des connaissances culturelles pointues.">Facile</div>
 			<div class="btn pushable" rel="tooltip" title="Découvrez et apprenez ! La chasse va vous faire parcourir des coins reculés de votre cité...">Intermédiaire</div>
 			<div class="btn pushable" rel="tooltip" title="Vous êtes né ici, vous connaissez toutes les anecdotes qui ont trait à votre ville, les touristes sont déjà repartis !">Difficile</div>
 		</div>

@@ -10,6 +10,8 @@ import models.Hunt;
 import models.Role;
 import models.User;
 
+import pages.AdminHuntEditPage;
+import pages.AdminUserEditPage;
 import play.data.Form;
 import play.mvc.*;
 import repository.HuntRepository;
@@ -21,14 +23,14 @@ public class AdminPanelController extends Controller {
 	
 	/***** HUNTS *****/
 
-	@AssociatedPage("huntlist")
+	@AssociatedPage("adminhuntlist")
 	public static Result huntlist() throws Exception {
 		return ok(views.html.adminpanel.huntlist.render(HuntRepository.getAll()));
 	}
 
-	@AssociatedPage("huntedit")
-	public static Result huntedit(String uid) throws Exception {
-		Hunt hunt = HuntRepository.get(uid);
+	@AssociatedPage("adminhuntedit")
+	public static Result huntedit(String hid) throws Exception {
+		Hunt hunt = HuntRepository.get(hid);
 		if( hunt == null ) {
 			return notFound();
 		}
@@ -49,12 +51,14 @@ public class AdminPanelController extends Controller {
 				formHuntEdit.tags += ", " + it.next().getName();
 			}
 		}
+
+		((AdminHuntEditPage)CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
 		return ok(views.html.adminpanel.editHunt.render(hunt, form(forms.Hunt.class).fill(formHuntEdit)));
 	}
 	
-	@AssociatedPage("huntedit")
-	public static Result submitHuntEditForm(String uid) throws Exception {
-		Hunt hunt = HuntRepository.get(uid);
+	@AssociatedPage("adminhuntedit")
+	public static Result submitHuntEditForm(String hid) throws Exception {
+		Hunt hunt = HuntRepository.get(hid);
 		if( hunt == null ) {
 			return notFound();
 		}
@@ -62,6 +66,7 @@ public class AdminPanelController extends Controller {
 		Form<forms.Hunt> formHuntEdit= form(forms.Hunt.class).bindFromRequest();
 		
 		if( formHuntEdit.hasErrors() ) {
+			((AdminHuntEditPage)CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
 			return badRequest(views.html.adminpanel.editHunt.render(hunt, formHuntEdit));
 			
 		} else {
@@ -76,13 +81,13 @@ public class AdminPanelController extends Controller {
 	
 	/***** USERS *****/
 
-	@AssociatedPage("userlist")
+	@AssociatedPage("adminuserlist")
 	public static Result userlist() throws Exception {
 		//return forbidden("THIS IS A TEST ABOUT A FIRBIDDEN PAGE.");
 		return ok(views.html.adminpanel.userlist.render(UserRepository.getAll()));
 	}
 
-	@AssociatedPage("useredit")
+	@AssociatedPage("adminuseredit")
 	public static Result useredit(String uid) throws Exception {
 		User user = UserRepository.get(uid);
 		if( user == null ) {
@@ -92,10 +97,11 @@ public class AdminPanelController extends Controller {
 		forms.AdmUserEdit formUserEdit = new forms.AdmUserEdit();
 		//System.out.println(formUserEdit);
 		formUserEdit.roleName = user.getRole().getName();
+		((AdminUserEditPage)CurrentRequest.page()).setMenuParameters(user);// Menu's parameters
 		return ok(views.html.adminpanel.editUser.render(user, form(forms.AdmUserEdit.class).fill(formUserEdit)));
 	}
 
-	@AssociatedPage("useredit")
+	@AssociatedPage("adminuseredit")
 	public static Result submitUserEditForm(String uid) throws Exception {
 		User user = UserRepository.get(uid);
 		if( user == null ) {
@@ -105,6 +111,7 @@ public class AdminPanelController extends Controller {
 		Form<forms.AdmUserEdit> formUserEdit= form(forms.AdmUserEdit.class).bindFromRequest();
 		
 		if( formUserEdit.hasErrors() ) {
+			((AdminUserEditPage)CurrentRequest.page()).setMenuParameters(user);// Menu's parameters
 			return badRequest(views.html.adminpanel.editUser.render(user, formUserEdit));
 			
 		} else {

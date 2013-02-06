@@ -58,6 +58,10 @@ public class CurrentRequest extends Controller {
 		return loadingPages.get(id());
 	}
 	
+	public static HashMap<Integer, CurrentRequest> getLoadingPages() {
+		return loadingPages;
+	}
+	
 	public static Page page() {
 		CurrentRequest curr = instance();
 		if( curr == null ) {
@@ -90,16 +94,12 @@ public class CurrentRequest extends Controller {
 	public static void displayID() {
 		System.out.println("CurrentRequest id: "+id());
 	}
-	
-	public static void displayPageCount() {
-		System.out.println("CurrentRequest> "+loadingPages.size()+" pages loading.");
-	}
 
 	public static void remove() {
 		if( !loadingPages.containsKey(id()) ) {
 			System.out.println("CurrentRequest.removePage> ID to remove NOT FOUND.");
 		}
-		System.out.println("CurrentRequest.removePage> Removing requested page.");
+		//System.out.println("CurrentRequest.removePage> Removing requested page.");
 		loadingPages.remove(id());
 	}
 }
