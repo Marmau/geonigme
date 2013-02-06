@@ -46,8 +46,8 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 
 			$('#no-clues').hide()
 			if data.file
-				li = $('#template-clue').find('.clue').clone()
-				li.html(li.html().replace('__description__', data.description))
+				li = $('#template-file-clue').find('.clue').clone()
+				li.html(li.html().replace('__file__', data.file))
 				$('#clues-list').append(li)
 			else
 				li = $('#template-clue').find('.clue').clone()

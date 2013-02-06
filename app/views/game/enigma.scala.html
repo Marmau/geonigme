@@ -47,12 +47,22 @@
 
 				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
 					@for(clue <- clues) {
-						<li class="clue">@clue.getDescription()</li>
+						@if(clue.isInstanceOf[models.TextClue]) {
+							<li class="clue">@clue.getDescription()</li>
+						}
+						@if(clue.isInstanceOf[models.FileClue]) {
+							<li class="clue"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></li>
+						}
 					}
 				</ul>
 
 				<div id="template-clue" class="hide">
 					<li class="clue">__description__</li>
+				</div>
+				
+				
+				<div id="template-file-clue" class="hide">
+					<li class="clue"><img alt="__description__" src="__file__" /></li>
 				</div>
 
 				@if(enigma.getClues().isEmpty()) {
