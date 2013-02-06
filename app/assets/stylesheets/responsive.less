@@ -17,7 +17,6 @@
 @media (max-width: 767px) {
 	body {	
 		padding: 0px;
-		overflow-x: hidden;
 	}
 
 	.container-fluid, .container {
@@ -29,9 +28,48 @@
   			margin: 0px;
   		}
   	}
-}
 
-@media (max-width: 480px) {
+  	[class*="span"].left-glue {
+  		margin-left: 0px;
+  	}
+
+  	nav {
+	  	ul.breadcrumb {
+	  		height: auto;
+
+	  		li {
+	  			overflow: hidden;
+	  			margin-bottom: 1px;
+	  			margin-right: 5px;
+	  			float: left;
+	  			padding-right: 15px;
+
+	  			a {
+	  				padding-left: 10px;
+	  			}
+	  		}
+	  	}
+  	}
+
+  	#connection {
+		border-top: solid 1px @colorOrange;
+		border-left: none;
+	}
+
+	#partners .logos {
+		text-align: left;
+	}
+
+	.home header {
+		height: 118px;
+		position: relative;
+
+		.background {
+	        background: url(/assets/images/header-small.png) no-repeat left;
+        	height: 120px;
+	    }
+	}
+
 	nav {
 		ul.menu {
 			li {
@@ -44,30 +82,15 @@
 				}
 			}
 		}
+	}
 
-		ul.breadcrumb {
-			height: auto;
+	.big {
+		font-size: 18px;
+	}
 
-			li {
-				margin-bottom: 2px;
-
-				a {
-					padding-left: 10px;
-					float: none;
-					display: block;
-
-					&:after, &:before {
-						display: none;
-						border: none;
-						content: none;
-					}
-
-					.hunt-name {
-						overflow: visible;
-					}
-				}
-			}
-		}
+	.btn-arrow-green a {
+		font-size: 18px;
+		padding: 3px;
 	}
 }
 

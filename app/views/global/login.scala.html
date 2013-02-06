@@ -12,8 +12,8 @@
     <div class="row-fluid">
         <div class="span6" id="registration">
             <div class="introduction">
-                <div><strong>Nouveau sur Géonigme ?</strong></div>
-                <div>Inscrivez-vous !</div>
+                <div><strong>Nouveau sur Géonigme&nbsp;?</strong></div>
+                <div>Inscrivez-vous&nbsp;!</div>
             </div>
             @helper.form(action = routes.UserController.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
                 @includes.authenticationToken(formRegistration("token"))
@@ -39,13 +39,15 @@
                         <input name="@formRegistration("password").name()" id="registration-input-password" type="password" class="span12" value="@formRegistration("password").value()" autocomplete="off" />
                     </div>
                 </div>
-                <button type="submit" class="btn pushable pull-right uppercase">M'inscrire</button>
+                <div class="actions">
+                    <button type="submit" class="btn pushable pull-right uppercase">M'inscrire</button>
+                </div>
             } 
         </div>
         <div class="span6" id="connection">
             <div class="introduction">
                 <div><strong>&nbsp;</strong></div>
-                <div><strong>Sinon, connectez-vous !</strong></div>
+                <div><strong>Sinon, connectez-vous&nbsp;!</strong></div>
             </div>
             @helper.form(action = routes.UserController.submitLoginForm(), 'id -> "login-form") {
                 @includes.authenticationToken(formLogin("token"))
