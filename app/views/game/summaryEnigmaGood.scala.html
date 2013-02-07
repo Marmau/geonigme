@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="used-clues summary">
-				@if(usedClues.isEmpty()) {
+				@if(usedClues.isEmpty) {
 					<p>Vous n'avez utilisé aucun indice pour résoudre cette énigme... Peut-être l'avez vous trouvé trop simple !</p>
 				} else {
 					<p>Il vous a fallu ces indices pour venir à bout de l'énigme :</p>
@@ -48,7 +48,7 @@
 			</div>
 
 			<div class="other-clues summary">
-				@if(!otherClues.isEmpty()) {
+				@if(!otherClues.isEmpty) {
 					<p>Ces indices étaient à votre disposition si vous n'y arriviez vraiment pas...</p>
 					<ul class="list-view">
 						@for(clue <- otherClues) {

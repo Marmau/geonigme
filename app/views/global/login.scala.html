@@ -15,7 +15,7 @@
                 <div class="control-group @displayIfError(formRegistration("pseudonym"), "error")">
                     <label class="control-label" for="registration-input-pseudonym">@Messages("pseudo")</label>
                     <div class="controls">
-                        <input name="@formRegistration("pseudonym").name()" id="registration-input-pseudonym" type="text" class="span12" value="@formRegistration("pseudonym").value()" />
+                        <input name="@formRegistration("pseudonym").name" id="registration-input-pseudonym" type="text" class="span12" value="@formRegistration("pseudonym").value" />
                         @formRegistration("pseudonym").errors.map { error =>
                             <p class="help-block error">@error.message</p>
                         }
@@ -24,13 +24,13 @@
                 <div class="control-group">
                     <label class="control-label" for="registration-input-email">@Messages("mail")</label>
                     <div class="controls">
-                        <input name="@formRegistration("email").name()" id="registration-input-email" type="text" class="span12" value="@formRegistration("email").value()" />
+                        <input name="@formRegistration("email").name" id="registration-input-email" type="text" class="span12" value="@formRegistration("email").value" />
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="registration-input-password">@Messages("pwd")</label>
                     <div class="controls">
-                        <input name="@formRegistration("password").name()" id="registration-input-password" type="password" class="span12" value="@formRegistration("password").value()" autocomplete="off" />
+                        <input name="@formRegistration("password").name" id="registration-input-password" type="password" class="span12" value="@formRegistration("password").value" autocomplete="off" />
                     </div>
                 </div>
                 <div class="actions">
@@ -46,20 +46,20 @@
             @helper.form(action = routes.UserController.submitLoginForm(), 'id -> "login-form") {
                 @includes.authenticationToken(formLogin("token"))
                 
-                @if(formLogin.hasGlobalErrors()) {
+                @if(formLogin.hasGlobalErrors) {
                     <div class="control-group error">
-                        @for(error <- formLogin.globalErrors()) {
+                        @for(error <- formLogin.globalErrors) {
                             <p class="help-block">@error.message</p>
                         }
                     </div>
                 }
                 <div>
                     <label class="uppercase focus" for="connection-input-login">@Messages("pseudo")</label>
-                    <input name="@formLogin("login").name()" id="connection-input-login" type="text" class="span12" value="@formLogin("login").value()" autofocus />
+                    <input name="@formLogin("login").name" id="connection-input-login" type="text" class="span12" value="@formLogin("login").value" autofocus />
                 </div>
                 <div>
                     <label class="uppercase" for="connection-input-password">@Messages("pwd")</label>
-                    <input name="@formLogin("password").name()" id="connection-input-password" type="password" class="span12" value="@formLogin("password").value()" />
+                    <input name="@formLogin("password").name" id="connection-input-password" type="password" class="span12" value="@formLogin("password").value" />
                 </div>
                 <button type="submit" class="btn pushable pull-right uppercase">@Messages("connectMe")</button>
 

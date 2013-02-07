@@ -20,23 +20,23 @@
 }
 
 @global.main() {
-	@if(!hunts.isEmpty()) { 
+	@if(!hunts.isEmpty) { 
 		<div id="container-hunt-box">
 		@for(hunt <- hunts) {
 			<div class="hunt-box">
 				<a class="pushable" href="@routes.HuntController.show(hunt.getId())">
 					<div class="name"><div><span>@hunt.getLabel()</span></div></div>
 					<div class="numbers">
-						@if(hunt.getSteps().size() > 1) {
-							<div class="steps"><span class="number">@hunt.getSteps().size()</span><span>@Messages("steps")</span></div>
+						@if(hunt.getSteps().size > 1) {
+							<div class="steps"><span class="number">@hunt.getSteps().size</span><span>@Messages("steps")</span></div>
 						} else {
-							<div class="steps"><span class="number">@hunt.getSteps().size()</span><span>@Messages("step")</span></div>
+							<div class="steps"><span class="number">@hunt.getSteps().size</span><span>@Messages("step")</span></div>
 						}
 
-						@if(hunt.getEnigmas().size() > 1) {
-							<div class="enigmas"><span class="number">@hunt.getEnigmas().size()</span><span>@Messages("enigmas")</span></div>
+						@if(hunt.getEnigmas().size > 1) {
+							<div class="enigmas"><span class="number">@hunt.getEnigmas().size</span><span>@Messages("enigmas")</span></div>
 						} else {
-							<div class="enigmas"><span class="number">@hunt.getEnigmas().size()</span><span>@Messages("enigma")</span></div>
+							<div class="enigmas"><span class="number">@hunt.getEnigmas().size</span><span>@Messages("enigma")</span></div>
 						}
 					</div>
 					<div class="tags">

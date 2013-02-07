@@ -58,10 +58,10 @@
 								@includes.authenticationToken(contactForm("token"))
 								
 								<div>
-									<input name="@contactForm("email").name()" type="text" placeholder="@Messages("yourmail")" class="span12" value="@contactForm("email").value()" />
+									<input name="@contactForm("email").name" type="text" placeholder="@Messages("yourmail")" class="span12" value="@contactForm("email").value" />
 								</div>
 								<div>
-									<textarea name="@contactForm("content").name()" placeholder="@Messages("yourrequest")" class="span12">@contactForm("email").value()</textarea>
+									<textarea name="@contactForm("content").name" placeholder="@Messages("yourrequest")" class="span12">@contactForm("email").value</textarea>
 								</div>
 								<button type="submit" class="pushable pull-right uppercase">@Messages("send")</button>
 							}

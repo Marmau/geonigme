@@ -7,7 +7,6 @@ import global.CurrentRequest;
 import global.Page;
 
 import models.Hunt;
-import models.Role;
 import models.User;
 
 import pages.AdminHuntEditPage;
@@ -15,6 +14,7 @@ import pages.AdminUserEditPage;
 import play.data.Form;
 import play.mvc.*;
 import repository.HuntRepository;
+import repository.RoleRepository;
 import repository.UserRepository;
 
 public class AdminPanelController extends Controller {
@@ -121,7 +121,7 @@ public class AdminPanelController extends Controller {
 		} else {
 			forms.AdmUserEdit form = formUserEdit.get();
 
-			user.setRole(Role.get(form.roleName));
+			user.setRole(RoleRepository.get(form.roleName));
 			user.save();
 			session(UserController.userSessionKey, uid);
 

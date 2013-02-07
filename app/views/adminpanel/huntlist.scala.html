@@ -1,4 +1,4 @@
-@(hunts: List[models.Hunt])
+@(hunts: java.util.List[models.Hunt])
 
 @import helpers._
 @import models._
@@ -6,7 +6,7 @@
 @import _root_.pages._
 
 @global.main() {
-	@if( !hunts.isEmpty() ) { 
+	@if(!hunts.isEmpty) { 
 		<div id="container-hunt-box">
 		@for(hunt <- hunts) {
 			<div class="user-box">

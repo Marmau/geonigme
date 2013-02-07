@@ -6,7 +6,7 @@
 @import _root_.pages._
 
 @global.main() {
-	@if( !users.isEmpty() ) { 
+	@if(!users.isEmpty) { 
 		<div id="container-user-box">
 		@for(user <- users) {
 			<div class="user-box">

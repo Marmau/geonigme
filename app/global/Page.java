@@ -2,11 +2,13 @@ package global;
 
 import java.util.Hashtable;
 
+import forms.ContactUs;
+
 import play.api.mvc.Call;
 import play.api.templates.Html;
+import play.data.Form;
 import repository.UserRepository;
 
-import controllers.UserController;
 import models.Right;
 import models.User;
 
@@ -183,5 +185,8 @@ public class Page implements MenuItem {
 	public boolean equals(Object other) {
 		return equals((Page) other);
 	}
-
+	
+	public Form<ContactUs> getFormContact() {
+		return new Form<>(ContactUs.class);
+	}
 }

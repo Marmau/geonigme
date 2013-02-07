@@ -1,7 +1,7 @@
 @(user: models.User, formUser: Form[forms.AdmUserEdit])
 
 @import helpers._
-@import models.Role
+@import repository.RoleRepository
 
 @global.main() {
 	<div class="row-fluid">
@@ -12,8 +12,8 @@
 					<div class="controls">
 						<div class="select" id="name-role">
 							<select name="@formUser("roleName").name">
-								@for(role <- Role.getAll()) {
-								<option value="@role.getName()" @if( formUser("roleName").value == role.getName() ) { selected } >@role.getLabel()</option>
+								@for(role <- RoleRepository.getAll()) {
+									<option value="@role.getName()" @if( formUser("roleName").value == role.getName() ) { selected } >@role.getLabel()</option>
 								}
 							</select>
 						</div>
