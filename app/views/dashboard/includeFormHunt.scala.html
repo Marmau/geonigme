@@ -5,47 +5,47 @@
 @includes.authenticationToken(formHunt("token"))
 
 <div class="control-group @displayIfError(formHunt("label"), "error")">
-	<label class="control-label" for="name-hunt">Nom</label>
+	<label class="control-label" for="name-hunt">@Messages("name")</label>
 	<div class="controls">
-		<input class="span12" type="text" id="name-hunt" name="@formHunt("label").name" placeholder="Nom de la chasse" value="@formHunt("label").value" maxlength="50" />
+		<input class="span12" type="text" id="name-hunt" name="@formHunt("label").name" placeholder=@Messages("huntName") value="@formHunt("label").value" maxlength="50" />
 		@formHunt("label").errors.map { error =>
 	        <p class="help-block error">@error.message</p>
 	    }
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for="level-hunt">Difficulté</label>
+	<label class="control-label" for="level-hunt">@Messages("dif")</label>
 	<div class="controls">
 		<div class="btn-group" id="level-hunt-group" data-toggle="buttons-radio">
-			<div class="btn @if( formHunt("level").value == null  ) { active } pushable" rel="tooltip" title="Ayant lieu dans un périmètre restreint, les énigmes ne demandent pas des connaissances culturelles pointues.">Facile</div>
-			<div class="btn pushable" rel="tooltip" title="Découvrez et apprenez ! La chasse va vous faire parcourir des coins reculés de votre cité...">Intermédiaire</div>
-			<div class="btn pushable" rel="tooltip" title="Vous êtes né ici, vous connaissez toutes les anecdotes qui ont trait à votre ville, les touristes sont déjà repartis !">Difficile</div>
+			<div class="btn @if( formHunt("level").value == null  ) { active } pushable" rel="tooltip" title="@Messages("difEasyTip")">@Messages("easy")</div>
+			<div class="btn pushable" rel="tooltip" title="@Messages("difMediumTip")">@Messages("medium")</div>
+			<div class="btn pushable" rel="tooltip" title="@Messages("difHardTip")">@Messages("hard")</div>
 		</div>
 		<input type="hidden" value="@formHunt("level").value" name="@formHunt("level").name" id="level-hunt" />
-		<p class="help-block">Définissez la difficulté de votre chasse</p>
+		<p class="help-block">@Messages("difTip")</p>
 	</div>
 </div>
 <div class="control-group @displayIfError(formHunt("tags"), "error")">
-	<label class="control-label" for="tags-hunt">Tags</label>
+	<label class="control-label" for="tags-hunt">@Messages("tags")</label>
 	<div class="controls">
-		<input class="span12" type="text" id="tags-hunt" name="@formHunt("tags").name" placeholder="centre ville, montpellier, pedestre" value="@formHunt("tags").value" maxlength="100" />
+		<input class="span12" type="text" id="tags-hunt" name="@formHunt("tags").name" placeholder="@Messages("tagsExample")" value="@formHunt("tags").value" maxlength="100" />
 		@formHunt("tags").errors.map { error =>
 	        <p class="help-block error">@error.message</p>
 	    }
-		<p class="help-block">Séparez les tags par une virgule</p>
+		<p class="help-block">@Messages("tagTip")</p>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for="description-hunt">Description</label>
+	<label class="control-label" for="description-hunt">@Messages("descr")</label>
 	<div class="controls">
 		<textarea class="span12" id="description-hunt" name="@formHunt("description").name">@formHunt("description").value</textarea>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for="area-hunt-display">Zone</label>
+	<label class="control-label" for="area-hunt-display">@Messages("zone")</label>
 	<div class="controls">
 		<input type="text" class="span12" id="area-hunt-display" readonly="readonly" />
-		<p class="help-block">Définissez la zone où aura lieu la chasse aux trésors grâce à la carte</p>
+		<p class="help-block">@Messages("zoneTip")</p>
 		<input type="hidden" id="area-hunt" name="@formHunt("area").name" value="@formHunt("area").value" />
 	</div>
 </div>

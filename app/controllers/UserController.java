@@ -27,8 +27,7 @@ import org.openrdf.rio.RDFWriter;
 
 import play.data.Form;
 import play.mvc.*;
-import play.mvc.Http.Context;
-import play.mvc.Http.Session;
+import repository.UserRepository;
 
 public class UserController extends Controller {
 
@@ -42,7 +41,7 @@ public class UserController extends Controller {
 
 	@AssociatedPage("login")
 	public static Result login() {
-		if( isLogged() ) {
+		if( UserRepository.isLogged() ) {
 			System.out.println("UserController.login() : Already loggued in.");
 			return redirectToMain();
 		}
@@ -105,33 +104,10 @@ public class UserController extends Controller {
 			return redirectToMain();
 		}
 	}
-
-	public static boolean isLogged() {
-		return getLoggedUser() != null;
-	}
-
-	public static User getLoggedUser() {
-		ObjectConnection oc = Sesame.getObjectConnection();
-		Session session = Context.current().session();
-		if( session == null ) {
-			//System.out.println("UserController.getLoggedUser> Session null");
-			return null;
-		}
-		String uid = session.get(userSessionKey);
-		//String uid = session(userSessionKey);
-		if (uid == null) {
-			return null;
-		}
-		try {
-			return oc.getObject(User.class, User.URI + uid);
-		} catch ( Exception e ) {
-			return null;
-		}
-	}
-
+	
 	public static Result redirectToMain() {
 		//return redirect(routes.ManagerController.dashboard());
-		User user = getLoggedUser();
+		User user = UserRepository.getLoggedUser();
 		return redirect( (user != null && user.hasRights()) ? routes.AdminPanelController.userlist() : routes.ManagerController.dashboard());
 	}
 

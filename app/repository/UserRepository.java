@@ -11,7 +11,28 @@ import models.User;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.ObjectQuery;
 
+import play.mvc.Http.Context;
+
 public class UserRepository {
+	static String USER_SESSION = "user";
+	
+	public static boolean isLogged() {
+		return getLoggedUser() != null;
+	}
+
+	public static models.User getLoggedUser() {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		String uid = Context.current().session().get(USER_SESSION);
+		if (uid == null) {
+			return null;
+		}
+		
+		try {
+			return oc.getObject(models.User.class, models.User.URI + uid);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	public static User get(String uid) {
 		ObjectConnection oc = Sesame.getObjectConnection();

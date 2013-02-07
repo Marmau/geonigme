@@ -13,8 +13,8 @@
 				Symbol("data-start-accuracy") -> Float.toString(enigma.getStep().getPosition().getAccuracy())) {
 				@includeFormEnigma(formEnigma)
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.HuntController.show(enigma.getStep().getHunt().getId())">Annuler</a>
-					<button type="submit" name="submit-enigma" class="pushable btn">Enregistrer</button>
+					<a class="btn pushable" href="@routes.HuntController.show(enigma.getStep().getHunt().getId())">@Messages("cancel")</a>
+					<button type="submit" name="submit-enigma" class="pushable btn">@Messages("save")</button>
 				</div>
 			}
 		</div>

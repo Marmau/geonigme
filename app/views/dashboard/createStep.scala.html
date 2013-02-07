@@ -9,7 +9,7 @@
 				Symbol("data-area") -> hunt.getArea().toTemplateString()) {
 				@includeFormStep(formStep)
 				<div class="form-actions">
-					<button type="submit" name="submit-step" class="btn pushable">Enregistrer</button>
+					<button type="submit" name="submit-step" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>
@@ -17,6 +17,5 @@
 		<div class="span8">
 			@includes.map("step-map")
 		</div>
-
 	</div>
 }

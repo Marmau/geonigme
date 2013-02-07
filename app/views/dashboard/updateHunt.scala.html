@@ -8,8 +8,8 @@
 			@helper.form(action = routes.HuntController.submitUpdateForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {
 				@includeFormHunt(formHunt)
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.HuntController.show(hunt.getId())">Annuler</a>
-					<button type="submit" class="btn pushable">Enregistrer</button>
+					<a class="btn pushable" href="@routes.HuntController.show(hunt.getId())">@Messages("cancel")</a>
+					<button type="submit" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>

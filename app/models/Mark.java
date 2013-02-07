@@ -5,6 +5,8 @@ import org.openrdf.annotations.Iri;
 @Iri(NS.GNGM + "Mark")
 public class Mark {
 
+	public static final String URI = "http://geonigme.fr/mark/";
+	
 	private Float value;
 
 	@Iri(NS.GNGM + "value")

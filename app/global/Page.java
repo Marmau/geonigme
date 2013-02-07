@@ -4,6 +4,7 @@ import java.util.Hashtable;
 
 import play.api.mvc.Call;
 import play.api.templates.Html;
+import repository.UserRepository;
 
 import controllers.UserController;
 import models.Right;
@@ -83,13 +84,10 @@ public class Page implements MenuItem {
 		if( accessRight == null ) {
 			return true;
 		}
-		User user = UserController.getLoggedUser();
-		if( user == null ) {
-			System.out.println("Page.userCanAccess> User is null");
-		}
-		// User can be not loggued in to access to 0 right pages.
+		User user = UserRepository.getLoggedUser();
+		// User can be not logged in to access to 0 right pages.
 		//return accessRight.v() == 0 || ( user != null && user.getRole().canDo(accessRight) );
-		// User should be loggued in to access to 0 right pages. Use Right.NONE to give access to everybody
+		// User should be logged in to access to 0 right pages. Use Right.NONE to give access to everybody
 		return user != null && user.getRole().canDo(accessRight);
 	}
 	

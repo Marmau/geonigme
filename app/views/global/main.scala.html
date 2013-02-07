@@ -1,7 +1,7 @@
 @(page: _root_.global.Page=_root_.global.CurrentRequest.page())(content: Html)
 
 @import _root_.global.Menu
-@import controllers.UserController
+@import repository.UserRepository
 
 <!DOCTYPE html>
 <html>
@@ -23,9 +23,9 @@
 		<div data-role="page">
 			<header data-role="header">
 				<div class="background"></div>
-				@if( UserController.isLogged() ) {
+				@if( UserRepository.isLogged() ) {
 				<div class="btn-group user-menu">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserController.getLoggedUser().getLoginName()<span class="caret"></span></a>
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserRepository.getLoggedUser().getLoginName()<span class="caret"></span></a>
 					@Menu.memberMenu.render(page)
 				</div>
 				}

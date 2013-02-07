@@ -52,6 +52,7 @@ public class Enigma implements RDFObject {
 	public Enigma getNextEnigma() {
 		return null;
 	}
+	
 
 	@Sparql(NS.PREFIX +
 		"SELECT ?clue { ?clue gngm:clueOfEnigma $this. ?clue gngm:number ?number } ORDER BY ?number")
@@ -69,6 +70,18 @@ public class Enigma implements RDFObject {
 		this.enigmaOfStep = enigmaOfStep;
 	}
 	
+	public boolean isLastEnigma() {
+		if (null != getNextEnigma()) {
+			return false;
+		}
+		
+		if (null != getStep().getNextStep()) {
+			return false;
+		}
+		
+		return true;
+	}
+
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
 	}

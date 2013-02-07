@@ -10,13 +10,56 @@
 		// font-size: 18px;
 	}
 
-	ul.list-view  {
-		margin: 0px;
-		list-style: none;
+	ul.list {
 		color: @colorClearBlue;
+		list-style: none;
 
 		li {
+			border-left: 5px solid @colorClearBlue;
+			padding-left: 5px;
+			margin-bottom: 3px;
+		}
+	}
+
+	blockquote.enigma {
+		border: none;
+		position: relative;
+		padding: 0px;
+
+		p {
+			font-size: 24px;
+			font-style: italic;
+			color: @colorDarkBlue;
+			padding: 30px 0px 30px 60px;
+			max-width: 480px;
+			text-align: left;
+		}
+
+		&:before {
+			top: 80px;
+			left: -30px;
+			position: absolute;
+			content: '\201C';
+			font-family: serif;
+			font-weight: bold;
+			font-size: 200px;
+			color: white;
+			text-shadow: 0 0 2px @colorClearBlue;
+			font-style: italic;
+			z-index: -1;
+		}
+	}
+
+	.list-view  {
+		margin: 0px;
+		margin-bottom: 20px;
+		color: @colorClearBlue;
+		list-style: none;
+
+		li {
+			background: white;
 			border-bottom: solid 1px @colorClearBlue;
+			padding: 10px 0px;
 			
 			&:first-child {
 				border-top: solid 1px @colorClearBlue;
@@ -24,7 +67,11 @@
 		}
 	}
 
-	#hunts-list {
+	#hunts-list.list-view {
+		li {
+			padding: 0px;
+		}
+
 		a {
 			display: block;
 			padding: 10px 0px;
@@ -54,6 +101,11 @@
 
 		&.danger {
 			color: @colorRed;
+		}
+
+		.score {
+			font-weight: bold;
+			font-size: 32px;
 		}
 	}
 
@@ -86,6 +138,20 @@
 		}
 	}
 
+	p.finish {
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.summary {
+		margin: 25px 0px;
+
+		p {
+			font-size: 18px;
+			color: @colorDarkBlue;
+		}
+	}
+
 	.tag {
 		color: @colorClearBlue;
 	}
@@ -100,7 +166,7 @@
 	}
 
 	.btn {
-		padding: 5px 50px;
+		padding: 5px 20px;
 
 		&:not(.disabled) {
 			&:hover {

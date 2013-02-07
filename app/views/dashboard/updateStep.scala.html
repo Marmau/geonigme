@@ -9,8 +9,8 @@
 				Symbol("data-area") -> step.getHunt().getArea().toTemplateString()) {
 				@includeFormStep(formStep) 
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.HuntController.show(step.getHunt().getId())">Annuler</a>
-					<button type="submit" name="submit-step" class="btn pushable">Enregistrer</button>
+					<a class="btn pushable" href="@routes.HuntController.show(step.getHunt().getId())">@Messages("cancel")</a>
+					<button type="submit" name="submit-step" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>

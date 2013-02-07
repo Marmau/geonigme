@@ -24,7 +24,7 @@
 	<body class="home">
 		<div data-role="page">
 			<header data-role="header">
-				<div class="background container"></div>
+				<div class="background"></div>
 			</header>
 			<section class="container" id="content" data-role="content">
 				<div class="row-fluid">
@@ -39,33 +39,31 @@
 				<div class="container content">
 					<div class="row-fluid informations">
 						<div class="span4">
-							<h1><strong>Qui</strong> sommes-nous&nbsp;?</h1>
+							<h1><strong>@Messages("who")</strong> @Messages("areWe")</h1>
 							<p>
-								<strong>Géonigme</strong> a été créé par un groupe d'étudiants à la faculté des sciences
-								de Montpellier dans le cadre d'un projet d'études portant sur le web de données 
-								(web sémantique, open data, etc.).
+								<strong>Géonigme</strong> @Messages("geonigmeCreation")
 							</p>
 						</div>
 						<div class="span4" id="partners">
-							<h1><strong>Partenaires</strong></h1>
+							<h1><strong>@Messages("partner")</strong></h1>
 							<div class="logos">
-								<a href="http://www.montpellier.fr/" target="_blank"><img width="79" height="100" src="@routes.Assets.at("partners/logo_montpellier.jpg")" alt="logo montpellier" /></a>
-								<a href="http://www.lirmm.fr/" target="_blank"><img width="99" height="100" src="@routes.Assets.at("partners/logo_lirmm.png")" alt="logo lirmm" /></a>
-								<a href="http://www.univ-montp2.fr/" target="_blank"><img width="100" height="76" src="@routes.Assets.at("partners/logo_um2.png")" alt="logo um2" /></a>
+								<a href="http://www.montpellier.fr/" target="_blank"><img src="@routes.Assets.at("partners/logo_montpellier.jpg")" alt="logo montpellier" /></a>
+								<a href="http://www.lirmm.fr/" target="_blank"><img src="@routes.Assets.at("partners/logo_lirmm.png")" alt="logo lirmm" /></a>
+								<a href="http://www.univ-montp2.fr/" target="_blank"><img src="@routes.Assets.at("partners/logo_um2.png")" alt="logo um2" /></a>
 							</div>
 						</div>
 						<div class="span4">
-							<h1><strong>Contactez</strong>-nous</h1>
+							<h1><strong>@Messages("contact")</strong></h1>
 							@helper.form(action = routes.ApplicationController.submitContactForm(), 'id -> "contact-form") {
 								@includes.authenticationToken(contactForm("token"))
 								
 								<div>
-									<input name="@contactForm("email").name()" type="text" placeholder="@@votre adresse courriel" class="span12" value="@contactForm("email").value()" />
+									<input name="@contactForm("email").name()" type="text" placeholder="@Messages("yourmail")" class="span12" value="@contactForm("email").value()" />
 								</div>
 								<div>
-									<textarea name="@contactForm("content").name()" placeholder="votre message..." class="span12">@contactForm("email").value()</textarea>
+									<textarea name="@contactForm("content").name()" placeholder="@Messages("yourrequest")" class="span12">@contactForm("email").value()</textarea>
 								</div>
-								<button type="submit" class="pushable pull-right uppercase">Envoyer</button>
+								<button type="submit" class="pushable pull-right uppercase">@Messages("send")</button>
 							}
 						</div>
 					</div>

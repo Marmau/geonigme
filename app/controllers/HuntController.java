@@ -29,6 +29,7 @@ import pages.HuntEditPage;
 import pages.HuntShowPage;
 import play.data.Form;
 import play.mvc.*;
+import repository.UserRepository;
 
 public class HuntController extends Controller {
 
@@ -71,7 +72,7 @@ public class HuntController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 		
-		if (!UserController.getLoggedUser().equals(hunt.getCreatedBy())) {
+		if (!UserRepository.getLoggedUser().equals(hunt.getCreatedBy())) {
 			return forbidden();
 		}
 		
@@ -100,7 +101,7 @@ public class HuntController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 
-		if (!UserController.getLoggedUser().equals(hunt.getCreatedBy())) {
+		if (!UserRepository.getLoggedUser().equals(hunt.getCreatedBy())) {
 			return forbidden();
 		}
 
@@ -137,7 +138,7 @@ public class HuntController extends Controller {
 			return notFound();
 		}
 		// If the current user didn't create it, it's a hack
-		if ( !UserController.getLoggedUser().equals(hunt.getCreatedBy()) ) {
+		if ( !UserRepository.getLoggedUser().equals(hunt.getCreatedBy()) ) {
 			return forbidden();
 		}
 		((HuntShowPage)CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
@@ -198,7 +199,7 @@ public class HuntController extends Controller {
 		hunt.setLevel(form.level);
 		hunt.setPublished(false);
 		hunt.setArea(Area.createFrom(form.area));
-		hunt.setCreatedBy(UserController.getLoggedUser());
+		hunt.setCreatedBy(UserRepository.getLoggedUser());
 		
 		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
 		try {

@@ -21,6 +21,7 @@ import play.data.DynamicForm;
 import play.mvc.Result;
 import play.mvc.Controller;
 import repository.HuntRepository;
+import repository.UserRepository;
 
 public class GameController extends Controller {
 
@@ -298,9 +299,36 @@ public class GameController extends Controller {
 		}
 	}
 
-	private static void saveCurrentScore(int score) {
-		session().put(ENIGMA_SCORE_SESSION, Integer.toString(score));
-		session().put(TOTAL_SCORE_SESSION, Integer.toString(score + getTotalScore()));
+	private static int getMaximumScore() throws RepositoryException, QueryEvaluationException {
+		Hunt currentHunt = getCurrentHunt();
+
+		int max = 0;
+		for (Step s : currentHunt.getSteps()) {
+			for (Enigma e : s.getEnigmas()) {
+				max += computeScore(0, e.getClues().size());
+			}
+		}
+		
+		return max;
+	}
+
+	private static void saveCurrentScore(int scoreValue) throws RepositoryException, QueryEvaluationException {
+		session().put(ENIGMA_SCORE_SESSION, Integer.toString(scoreValue));
+		session().put(TOTAL_SCORE_SESSION, Integer.toString(scoreValue + getTotalScore()));
+		
+		ObjectConnection oc = Sesame.getObjectConnection();
+		
+		User loggedUser = UserRepository.getLoggedUser();
+		if (null != loggedUser) {
+			String uri = Score.URI + loggedUser.getId() + "/" + getCurrentHunt().getId();
+			Hunt currentHunt = getCurrentHunt();
+			Score score = new Score();
+			score.setHunt(currentHunt);
+			score.setUSer(loggedUser);
+			score.setValue(scoreValue);
+			
+			oc.addObject(uri, score);
+		}
 	}
 
 	private static int computeScore(int usedClues, int totalClues) {
@@ -315,6 +343,39 @@ public class GameController extends Controller {
 		int score = Math.round((rate * rate * (100 - scoreMin)) + scoreMin);
 
 		return score;
+	}
+
+	public static Result clue() throws RepositoryException, QueryEvaluationException {
+		DynamicForm data = form().bindFromRequest();
+		if (!AuthenticationTokenGenerator.isValid(data.get("token"))) {
+			return noContent();
+		}
+
+		Enigma enigma = getCurrentEnigma();
+		if (null == enigma) {
+			return noContent();
+		}
+
+		Clue nextClue = getCurrentClue();
+		if (null == nextClue) {
+			if (enigma.getClues().size() > 0) {
+				nextClue = enigma.getClues().get(0);
+			} else {
+				noContent();
+			}
+		} else {
+			Clue clue = nextClue.getNextClue();
+			if (clue == null) {
+				return noContent();
+			}
+			nextClue = clue;
+		}
+
+		session().put(CURRENT_CLUE_SESSION, nextClue.getId());
+
+		ObjectNode result = nextClue.toJson();
+
+		return ok(result);
 	}
 
 }

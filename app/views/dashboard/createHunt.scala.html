@@ -8,7 +8,7 @@
 			@helper.form(action = routes.HuntController.submitCreateForm(), 'id -> "create-hunt", 'class -> "form-horizontal") {
 				@includeFormHunt(formHunt)
 				<div class="form-actions">
-					<button type="submit" class="btn pushable">Enregistrer</button>
+					<button type="submit" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>

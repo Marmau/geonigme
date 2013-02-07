@@ -125,6 +125,7 @@ public class Global extends GlobalSettings {
 			Menu.homeMenu.add("play");
 			
 			// Home Menu
+			Menu.gameMenu.add("home", false);
 			Menu.gameMenu.add("dashboard", false);// Not the page menu
 			Menu.gameMenu.add("huntlist");
 			

@@ -1,8 +1,16 @@
-@(hunt: models.Hunt)
-
+@(hunt: models.Hunt, score: Int, maxScore: Int)
 @import helpers._
 @import models._
+@import _root_.repository._
 
 @global.main() {
 	<p>Bravo, vous avez terminé la chasse aux trésors ! Vous pouvez d'ores et déjà en commencer une autre !</p>
+
+	<p>Cette chasse vous a permis de collecter <span class="score">@score</span> points sur les <strong>@maxScore</strong> possibles !</p> 
+
+	@if(UserRepository.isLogged()) {
+		<p>Le score a été enregistré dans votre profil !</p>
+	} else {
+		<p>Malheureusement, vous n'êtes pas connecté, votre score n'a donc pas été enregistré.</p>
+	}
 }
