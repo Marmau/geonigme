@@ -43,16 +43,15 @@ public class RdfController extends Controller {
 
 		writer.endRDF();
 	}
-	
+
 	public static Result restore() throws RDFParseException, RDFHandlerException, IOException, RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		InputStream is = Play.application().resourceAsStream("public/rdf/geonigme.ttl");
-		
+
 		oc.add(is, NS.GNGM, RDFFormat.TURTLE);
-		
+
 		return ok("Done");
 	}
-	
 
 	public static Result reset() throws RepositoryException, QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
@@ -73,10 +72,10 @@ public class RdfController extends Controller {
 			e.printStackTrace();
 			return notFound();
 		}
-		
+
 		response().setContentType("text/turtle");
 		response().setHeader("Content-Disposition", "attachment; filename=geonigme.ttl");
-		
+
 		return ok(strw.toString());
 	}
 

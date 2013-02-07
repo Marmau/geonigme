@@ -15,7 +15,7 @@ import play.mvc.Http.Context;
 
 public class UserRepository {
 	static String USER_SESSION = "user";
-	
+
 	public static boolean isLogged() {
 		return getLoggedUser() != null;
 	}
@@ -26,7 +26,7 @@ public class UserRepository {
 		if (uid == null) {
 			return null;
 		}
-		
+
 		try {
 			return oc.getObject(models.User.class, models.User.URI + uid);
 		} catch (Exception e) {
@@ -43,25 +43,25 @@ public class UserRepository {
 			return null;
 		}
 	}
-	
+
 	public static List<User> getAll(String orderBy) {
 		List<User> users = new ArrayList<User>();
 		try {
 			ObjectConnection oc = Sesame.getObjectConnection();
-			//users = oc.getObjects(models.User.class).asList();
-			
-			String sqlQuery = "SELECT ?user WHERE { ?user user:"+orderBy+" ?orderBy } ORDER BY ASC(?orderBy)";
-			//System.out.println(sqlQuery);
-			ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX + 
-				sqlQuery);
+			// users = oc.getObjects(models.User.class).asList();
+
+			String sqlQuery = "SELECT ?user WHERE { ?user user:" + orderBy + " ?orderBy } ORDER BY ASC(?orderBy)";
+			// System.out.println(sqlQuery);
+			ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX + sqlQuery);
 			users = query.evaluate(models.User.class).asList();
-			//System.out.println("We got "+users.size()+" users");
-			
+			// System.out.println("We got "+users.size()+" users");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return users;
 	}
+
 	public static List<User> getAll() {
 		return getAll("loginName");
 	}

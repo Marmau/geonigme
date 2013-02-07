@@ -6,7 +6,7 @@ import org.openrdf.annotations.Iri;
 public class GeolocatedAnswer extends Answer {
 
 	private Position position;
-	
+
 	@Iri(NS.GNGM + "position")
 	public Position getPosition() {
 		return position;
@@ -16,20 +16,20 @@ public class GeolocatedAnswer extends Answer {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-	
+
 	@Override
 	public void reset() {
 		super.reset();
 		this.setPosition(null);
 	}
-	
+
 	@Override
 	public boolean isCorrect(String answer) {
 		Point p = Point.createFrom(answer);
 		if (p == null) {
 			return false;
 		}
-		
+
 		return p.in(getPosition());
 	}
 }

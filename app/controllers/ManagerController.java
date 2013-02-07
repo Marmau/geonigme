@@ -17,7 +17,7 @@ public class ManagerController extends Controller {
 		if (!UserRepository.isLogged()) {
 			return redirect(routes.ApplicationController.index());
 		}
-		
+
 		models.User user = UserRepository.getLoggedUser();
 		List<models.Hunt> hunts = user.getHunts();
 

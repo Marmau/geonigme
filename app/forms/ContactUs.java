@@ -6,7 +6,7 @@ import play.data.validation.Constraints.*;
 public class ContactUs {
 	@AuthenticationToken
 	public String token;
-	
+
 	@Required
 	@Email
 	public String email;

@@ -31,7 +31,7 @@ public class TextAnswer extends Answer {
 	@Override
 	public boolean isCorrect(String answer) {
 		answer = StringUtils.removeAccents(answer).toLowerCase();
-		
+
 		for (String label : getLabels()) {
 			label = StringUtils.removeAccents(label).toLowerCase();
 
@@ -39,7 +39,7 @@ public class TextAnswer extends Answer {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 }

@@ -25,15 +25,14 @@ public class User implements RDFObject {
 	private String password;
 	private Role role;
 
-	@Sparql(NS.PREFIX +
-		"SELECT ?hunt { ?hunt gngm:createdBy $this. ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date)")
+	@Sparql(NS.PREFIX + "SELECT ?hunt { ?hunt gngm:createdBy $this. ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date)")
 	public List<Hunt> getHunts() {
 		return null;
 	}
 
 	@Iri(NS.USER + "role")
 	public Role getRole() {
-		if( role == null ) {// Lazy loading
+		if (role == null) {// Lazy loading
 			setRole(Role.MEMBER);
 		}
 		return role;
@@ -97,11 +96,11 @@ public class User implements RDFObject {
 	public boolean hasRights() {
 		return getRole().hasRights();
 	}
-	
+
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
 	}
-	
+
 	public void save() throws RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		oc.addObject(User.URI + getId(), this);

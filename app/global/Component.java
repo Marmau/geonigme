@@ -8,6 +8,7 @@ public class Component {
 	public static Html link(Linkable o, Html Content) {
 		return views.html.components.link.render(o, Content);
 	}
+
 	public static Html link(Linkable o) {
 		return link(o, o.getLabel());
 	}

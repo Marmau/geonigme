@@ -53,10 +53,10 @@ public class Point {
 		double earthRadius = 3958.75;
 		double dLat = Math.toRadians(p.getLat() - getLat());
 		double dLng = Math.toRadians(p.getLng() - getLng());
-		
+
 		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(getLat()))
 				* Math.cos(Math.toRadians(p.getLat())) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
-		
+
 		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 		double distance = earthRadius * c;
 

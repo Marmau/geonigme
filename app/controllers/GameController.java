@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 
+import org.codehaus.jackson.node.ObjectNode;
 import org.openrdf.query.MalformedQueryException;
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.repository.RepositoryException;
@@ -44,8 +45,8 @@ public class GameController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 		Hunt currentHunt = getCurrentHunt();
-		
-		if( currentHunt != null && currentHunt.equals(hunt) ) {
+
+		if (currentHunt != null && currentHunt.equals(hunt)) {
 			return redirect(routes.GameController.go());
 		}
 
@@ -63,31 +64,34 @@ public class GameController extends Controller {
 		session().remove(ENIGMA_SCORE_SESSION);
 		session().remove(TOTAL_SCORE_SESSION);
 
-		((HuntPlayPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
+		((HuntPlayPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
+																		// parameters
 		return ok(views.html.game.playHunt.render(hunt));
 	}
 
 	@AssociatedPage("stepplay")
 	public static Result go() throws Exception {
 		Hunt currentHunt = getCurrentHunt();
-		if( currentHunt == null ) {
+		if (currentHunt == null) {
 			return redirect(routes.GameController.home());
 		}
 
 		Step currentStep = getCurrentStep();
-		if( currentStep == null ) {
-			//Render HUNTFINISH
+		if (currentStep == null) {
+			// Render HUNTFINISH
 			HuntPlayPage page = (HuntPlayPage) Page.get("huntfinish");
 			CurrentRequest.setPage(page);
 			page.setMenuParameters(currentHunt);// Menu's parameters
-			return ok(views.html.game.finish.render(currentHunt));
+			return ok(views.html.game.finish.render(currentHunt, getTotalScore(), getMaximumScore()));
 		}
-		((StepPlayPage) CurrentRequest.page()).setMenuParameters(currentStep);// Menu's parameters
+		((StepPlayPage) CurrentRequest.page()).setMenuParameters(currentStep);// Menu's
+																				// parameters
 
 		Enigma currentEnigma = getCurrentEnigma();
-		if( currentEnigma == null ) {
+		if (currentEnigma == null) {
 			// Render STEPPLAY
-			((StepPlayPage) CurrentRequest.page()).setMenuParameters(currentStep);// Menu's parameters
+			((StepPlayPage) CurrentRequest.page()).setMenuParameters(currentStep);// Menu's
+																					// parameters
 			return ok(views.html.game.go.render(currentStep));
 		}
 
@@ -96,26 +100,27 @@ public class GameController extends Controller {
 		int indexOfLastClue = clues.indexOf(currentClue);
 		List<Clue> usedClues = clues.subList(0, indexOfLastClue + 1);
 
-		if( getCurrentScore() == -1 ) {
-			//Render ENIGMAPLAY
+		if (getCurrentScore() == -1) {
+			// Render ENIGMAPLAY
 			EnigmaPlayPage page = (EnigmaPlayPage) Page.get("enigmaplay");
 			CurrentRequest.setPage(page);
 			page.setMenuParameters(currentEnigma);// Menu's parameters
 			return ok(views.html.game.enigma.render(currentEnigma, usedClues));
-			
-		} else if( getCurrentScore() == 0 ) {
-			//Render ENIGMAFAIL
+
+		} else if (getCurrentScore() == 0) {
+			// Render ENIGMAFAIL
 			EnigmaPlayPage page = (EnigmaPlayPage) Page.get("enigmafail");
 			CurrentRequest.setPage(page);
 			page.setMenuParameters(currentEnigma);// Menu's parameters
 			return ok(views.html.game.summaryEnigmaFail.render(currentEnigma));
-			
+
 		} else {
-			//Render ENIGMASUCCESS
+			// Render ENIGMASUCCESS
 			EnigmaPlayPage page = (EnigmaPlayPage) Page.get("enigmasuccess");
 			CurrentRequest.setPage(page);
 			page.setMenuParameters(currentEnigma);// Menu's parameters
-			return ok(views.html.game.summaryEnigmaGood.render(currentEnigma, usedClues, clues.subList(indexOfLastClue + 1, clues.size()), getCurrentScore()));
+			return ok(views.html.game.summaryEnigmaGood.render(currentEnigma, usedClues,
+					clues.subList(indexOfLastClue + 1, clues.size()), getCurrentScore()));
 		}
 	}
 
@@ -125,7 +130,7 @@ public class GameController extends Controller {
 		if (!AuthenticationTokenGenerator.isValid(data.get("token"))) {
 			return redirect(routes.GameController.go());
 		}
-		
+
 		Step currentStep = getCurrentStep();
 
 		if (null == getCurrentEnigma()) {
@@ -135,7 +140,8 @@ public class GameController extends Controller {
 			}
 		}
 
-		((StepPlayPage) CurrentRequest.page()).setMenuParameters(currentStep);// Menu's parameters
+		((StepPlayPage) CurrentRequest.page()).setMenuParameters(currentStep);// Menu's
+																				// parameters
 		return redirect(routes.GameController.go());
 	}
 
@@ -168,7 +174,7 @@ public class GameController extends Controller {
 
 	public static Result finishEnigma() throws RepositoryException, QueryEvaluationException {
 		DynamicForm data = form().bindFromRequest();
-		if( AuthenticationTokenGenerator.isValid(data.get("token")) ) {
+		if (AuthenticationTokenGenerator.isValid(data.get("token"))) {
 			nextEnigma();
 		}
 		return redirect(routes.GameController.go());
@@ -176,7 +182,7 @@ public class GameController extends Controller {
 
 	public static Result skipEnigma() throws RepositoryException, QueryEvaluationException {
 		DynamicForm data = form().bindFromRequest();
-		if( !AuthenticationTokenGenerator.isValid(data.get("token")) ) {
+		if (!AuthenticationTokenGenerator.isValid(data.get("token"))) {
 			return redirect(routes.GameController.go());
 		}
 		saveCurrentScore(0);
@@ -185,7 +191,7 @@ public class GameController extends Controller {
 
 	public static Result checkAnswer() throws RepositoryException, QueryEvaluationException {
 		// Checked twice ?
-		if( session(CURRENT_ENIGMA_SESSION) == null ) {
+		if (session(CURRENT_ENIGMA_SESSION) == null) {
 			return noContent();
 		}
 		DynamicForm data = form().bindFromRequest();
@@ -308,16 +314,16 @@ public class GameController extends Controller {
 				max += computeScore(0, e.getClues().size());
 			}
 		}
-		
+
 		return max;
 	}
 
 	private static void saveCurrentScore(int scoreValue) throws RepositoryException, QueryEvaluationException {
 		session().put(ENIGMA_SCORE_SESSION, Integer.toString(scoreValue));
 		session().put(TOTAL_SCORE_SESSION, Integer.toString(scoreValue + getTotalScore()));
-		
+
 		ObjectConnection oc = Sesame.getObjectConnection();
-		
+
 		User loggedUser = UserRepository.getLoggedUser();
 		if (null != loggedUser) {
 			String uri = Score.URI + loggedUser.getId() + "/" + getCurrentHunt().getId();
@@ -326,7 +332,7 @@ public class GameController extends Controller {
 			score.setHunt(currentHunt);
 			score.setUSer(loggedUser);
 			score.setValue(scoreValue);
-			
+
 			oc.addObject(uri, score);
 		}
 	}

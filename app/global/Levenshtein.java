@@ -1,7 +1,7 @@
 package global;
 
 public class Levenshtein {
-	
+
 	private static int minimum(int a, int b, int c) {
 		return Math.min(Math.min(a, b), c);
 	}

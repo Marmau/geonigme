@@ -8,7 +8,7 @@ import play.data.validation.Constraints.Required;
 public class Hunt {
 	@AuthenticationToken
 	public String token;
-	
+
 	@MaxLength(value = 50, message = "Le nom de votre chasse ne peut dépasser 50 caractères.")
 	@Required(message = "Vous devez spécifier un nom à votre chasse.")
 	public String label;
