@@ -33,4 +33,17 @@ public class FileClue extends Clue {
 		
 		return result;
 	}
+	
+	public String getFileType(){
+		String result="picture";
+		String file = getFile().toString();
+		String extension = file.substring(file.lastIndexOf('.'));
+		if(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("gif") || extension.equals("png")){
+			result="picture";
+		}
+		if(extension.equals("mp3") || extension.equals("ogg")){
+			result="sound";
+		}
+		return result;
+	}
 }

@@ -34,6 +34,13 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 
 				answer = position.coords.latitude + ',' + position.coords.longitude
 				checkAnswer(answer, type)
+				
+	$('#display-picture').click ->
+		if $('#display-hide-picture').hasClass('hide')
+				$('#display-hide-picture').removeClass('hide')
+		else
+			$('#display-hide-picture').addClass('hide')
+
 
 	$('#next-clue').submit ->	
 		Spinner.start()
