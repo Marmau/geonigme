@@ -1,17 +1,9 @@
 @(hunt: models.Hunt, score: Int, maxScore: Int)
-
 @import helpers._
 @import models._
 @import _root_.repository._
 
-@mainGame("Jouer", "game/game") {
-	<nav>
-		<ul class="breadcrumb">
-			<li><a href="@routes.GameController.home()">@Messages("huntList")</a></li>
-			<li><a><span class="hunt-name">@hunt.getLabel()</span></a></li>
-		</ul>
-	</nav>
-	
+@global.main() {
 	<p>@Messages("huntFinish")</p>
 
 	<p>@Messages("huntScore", score, maxScore)</p> 

@@ -2,13 +2,7 @@
 
 @import helpers._
 
-@mainHome("Connexion - Inscription") { 
-    <ul class="menu">
-        <li><a class="pushable" href="@routes.ApplicationController.index()">@Messages("discover")</a></li>
-        <li class="selected"><a href="@routes.UserController.login()">@Messages("connect")</a></li>
-        <li><a class="pushable" href="@routes.GameController.home()">@Messages("play")</a></li>
-    </ul>
-} {
+@global.mainHome() {
     <div class="row-fluid">
         <div class="span6" id="registration">
             <div class="introduction">

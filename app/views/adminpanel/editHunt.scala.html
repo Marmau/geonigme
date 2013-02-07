@@ -1,0 +1,22 @@
+@(hunt: models.Hunt, formHunt: Form[forms.Hunt])
+
+@import helpers._
+
+@global.main() {
+	<div class="row-fluid">
+		<div class="span4">
+			@helper.form(action = routes.AdminPanelController.submitHuntEditForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {
+				@dashboard.includeFormHunt(formHunt)
+				<div class="form-actions">
+					<a class="btn pushable" href="@routes.AdminPanelController.huntlist()">Annuler</a>
+					<button type="submit" class="btn pushable">Enregistrer</button>
+				</div>
+			}
+		</div>
+
+		<div class="span8">
+			@includes.map("hunt-map")
+		</div>
+
+	</div>
+}

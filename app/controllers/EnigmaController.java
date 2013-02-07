@@ -1,5 +1,7 @@
 package controllers;
 
+import global.AssociatedPage;
+import global.CurrentRequest;
 import global.Sesame;
 
 import java.io.StringWriter;
@@ -13,6 +15,7 @@ import java.util.UUID;
 
 import models.Answer;
 import models.Clue;
+import models.Enigma;
 
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
@@ -20,12 +23,15 @@ import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.rio.RDFWriter;
 
+import pages.EnigmaCreatePage;
+import pages.EnigmaEditPage;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 public class EnigmaController extends Controller {
 
+	@AssociatedPage("enigmacreate")
 	public static Result create(String sid) throws RepositoryException, QueryEvaluationException {
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class);
 		ObjectConnection oc = Sesame.getObjectConnection();
@@ -34,25 +40,28 @@ public class EnigmaController extends Controller {
 		
 		formEnigma.fill(new forms.Enigma());
 
+		((EnigmaCreatePage)CurrentRequest.page()).setMenuParameters(step);// Menu's parameters
 		return ok(views.html.dashboard.createEnigma.render(step, formEnigma));
 	}
 
+	@AssociatedPage("enigmacreate")
 	public static Result submitCreateForm(String sid) throws RepositoryException, QueryEvaluationException {
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class).bindFromRequest();
 		ObjectConnection oc = Sesame.getObjectConnection();
 		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
 
 		if (formEnigma.hasErrors()) {
+			((EnigmaCreatePage)CurrentRequest.page()).setMenuParameters(step);// Menu's parameters
 			return badRequest(views.html.dashboard.createEnigma.render(step, formEnigma));
 		} else {
-			models.Enigma enigma = formToEnigma(formEnigma.get());
+			Enigma enigma = formToEnigma(formEnigma.get());
 			enigma.setStep(step);
 			enigma.setNumber(step.getEnigmas().size() + 1);
 			
 			String eid = UUID.randomUUID().toString();
-			oc.addObject(models.Enigma.URI + eid, enigma);
+			oc.addObject(Enigma.URI + eid, enigma);
 			
-			enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+			enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 			
 			for (models.Clue clue: formToClues(formEnigma.get())) {
 				clue.setEnigma(enigma);
@@ -73,10 +82,11 @@ public class EnigmaController extends Controller {
 		return ok();
 	}
 
+	@AssociatedPage("enigmaedit")
 	public static Result update(String eid) throws RepositoryException,	QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
-		models.Enigma enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+		Enigma enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 		
 		forms.Enigma formEnigma = new forms.Enigma();
 		formEnigma.description = enigma.getDescription();
@@ -112,23 +122,24 @@ public class EnigmaController extends Controller {
 			}
 			formEnigma.clues.add(formClue);
 		}
-				
+		
+		((EnigmaEditPage)CurrentRequest.page()).setMenuParameters(enigma);// Menu's parameters
 		return ok(views.html.dashboard.updateEnigma.render(enigma, form(forms.Enigma.class).fill(formEnigma)));
 	}
 
+	@AssociatedPage("enigmaedit")
 	public static Result submitUpdateForm(String eid) throws RepositoryException, QueryEvaluationException {
 		Form<forms.Enigma> formEnigma = form(forms.Enigma.class).bindFromRequest();
 		ObjectConnection oc = Sesame.getObjectConnection();
-		models.Enigma enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+		Enigma enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 
 		if (formEnigma.hasErrors()) {
+			((EnigmaEditPage)CurrentRequest.page()).setMenuParameters(enigma);// Menu's parameters
 			return badRequest(views.html.dashboard.updateEnigma.render(enigma, formEnigma));
 		} else {
 			fillEnigma(enigma, formEnigma.get());
-			
-			oc.addObject(models.Enigma.URI + eid, enigma);
-			
-			enigma = oc.getObject(models.Enigma.class, models.Enigma.URI + eid);
+			oc.addObject(Enigma.URI + eid, enigma);
+			enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 			
 			// Suppression des anciens indices
 			for (models.Clue oldClue: enigma.getClues()) {
@@ -207,18 +218,18 @@ public class EnigmaController extends Controller {
 		return clues;
 	}
 
-	private static models.Enigma formToEnigma(forms.Enigma form) {
-		models.Enigma e = new models.Enigma();
+	private static Enigma formToEnigma(forms.Enigma form) {
+		Enigma e = new Enigma();
 		fillEnigma(e, form);
 
 		return e;
 	}
 	
-	private static void fillEnigma(models.Enigma enigma, forms.Enigma form) {
+	private static void fillEnigma(Enigma enigma, forms.Enigma form) {
 		enigma.setDescription(form.description);
 	}
 
-
+	// ???
 	public static Result edit(String eid) {
 		return ok();
 	}
@@ -228,7 +239,7 @@ public class EnigmaController extends Controller {
 		StringWriter strw = new StringWriter();
 		try {
 			RDFWriter writer = Sesame.getWriter(strw, format);
-			String queryString = "DESCRIBE <" + models.Enigma.URI + eid + ">";
+			String queryString = "DESCRIBE <" + Enigma.URI + eid + ">";
 			oc.prepareGraphQuery(QueryLanguage.SPARQL, queryString).evaluate(writer);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,10 +1,11 @@
 @(menu: _root_.global.Menu, currentItem: _root_.global.MenuItem)
 
-
 	<ul class="@menu.getCSSClasses()">
 	@for( item <- menu.getItems() ) {
+		@if( item.userCanAccess() ) {
 		<li class="@if( item.equals(currentItem) ) { selected }">
-			<a href="@item.getUrl()" class="@if( !item.equals(currentItem) ) { pushable }">@item.getTitle()</a>
+			<a href="@item.getUrl()" class="@if( !item.equals(currentItem) ) { pushable }">@item.getLabel()</a>
 		</li>
+		}
 	}
 	</ul>

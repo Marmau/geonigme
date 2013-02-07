@@ -1,5 +1,8 @@
 package models;
 
+import global.Sesame;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -8,6 +11,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
 
@@ -153,6 +157,11 @@ public class Hunt implements RDFObject {
 
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
+	}
+	
+	public void save() throws RepositoryException {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		oc.addObject(Hunt.URI + getId(), this);
 	}
 
 	@Override

@@ -17,7 +17,7 @@
 	<label class="control-label" for="level-hunt">@Messages("dif")</label>
 	<div class="controls">
 		<div class="btn-group" id="level-hunt-group" data-toggle="buttons-radio">
-			<div class="btn active pushable" rel="tooltip" title="@Messages("difEasyTip")">@Messages("easy")</div>
+			<div class="btn @if( formHunt("level").value == null  ) { active } pushable" rel="tooltip" title="@Messages("difEasyTip")">@Messages("easy")</div>
 			<div class="btn pushable" rel="tooltip" title="@Messages("difMediumTip")">@Messages("medium")</div>
 			<div class="btn pushable" rel="tooltip" title="@Messages("difHardTip")">@Messages("hard")</div>
 		</div>

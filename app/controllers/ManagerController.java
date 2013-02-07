@@ -1,5 +1,7 @@
 package controllers;
 
+import global.AssociatedPage;
+
 import java.util.List;
 
 import org.openrdf.query.QueryEvaluationException;
@@ -10,6 +12,7 @@ import repository.UserRepository;
 
 public class ManagerController extends Controller {
 
+	@AssociatedPage("dashboard")
 	public static Result dashboard() throws RepositoryException, QueryEvaluationException {
 		if (!UserRepository.isLogged()) {
 			return redirect(routes.ApplicationController.index());

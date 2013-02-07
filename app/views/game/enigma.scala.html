@@ -1,6 +1,5 @@
 @(enigma: models.Enigma, clues: List[models.Clue])
 
-
 @import helpers._
 @import models._
 @import _root_.global._
@@ -13,16 +12,7 @@
 	}
 }
 
-@mainGame("Jouer", "game/enigma") {
-	<nav>
-		<ul class="breadcrumb">
-			<li><a href="@routes.GameController.home()">@Messages("huntList")</a></li>
-			<li><a href="@routes.GameController.playHunt(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
-			<li><a href="@routes.GameController.playHunt(enigma.getStep().getId())">@Messages("stepM") @enigma.getStep().getNumber()</a></li>
-			<li><a>@Messages("enigmaM") @enigma.getNumber()</a></li>
-		</ul>
-	</nav>
- 	
+@global.main() {
 	<div class="row-fluid">
 		<div class="span12">
 			<blockquote class="enigma">
@@ -47,11 +37,20 @@
 
 				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
 					@for(clue <- clues) {
+					<!-- texte -->
 						@if(clue.isInstanceOf[models.TextClue]) {
 							<li class="clue">@clue.getDescription()</li>
 						}
+						<!-- file -->
 						@if(clue.isInstanceOf[models.FileClue]) {
-							<li class="clue"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></li>
+						<!-- image -->
+							<!--  @if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {-->
+							<li class="clue">
+								<button type="button" id="display-picture" class="btn">Afficher l'image</button>
+								<div id="display-hide-picture" class="hide"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></div>
+							</li>
+							<!-- }-->
+						<!-- son -->
 						}
 					}
 				</ul>
@@ -62,7 +61,10 @@
 				
 				
 				<div id="template-file-clue" class="hide">
-					<li class="clue"><img alt="__description__" src="__file__" /></li>
+					<li class="clue">
+						<button type="button" id="display-picture" class="btn">Afficher l'image</button>
+						<div id="display-hide-picture" class="hide"><img alt="__description__" src="__file__" /></div>
+					</li>
 				</div>
 
 				@if(enigma.getClues().isEmpty()) {

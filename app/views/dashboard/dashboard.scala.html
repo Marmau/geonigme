@@ -3,7 +3,6 @@
 @import helpers._
 @import models._
 
-
 @displayHunts(hunts: List[Hunt], nbPerLine: Integer)(f: Hunt => Html)(g: () => Html) = @{
 	var i:Int = 0
 	var result = ""
@@ -20,13 +19,7 @@
 	new Html(result)
 }
 
-@mainDashboard("Tableau de bord", "dashboard/dashboard") {
-	<ul class="menu">
-		<li class="selected"><a href="">@Messages("dashboard")</a></li>
-		<li><a class="pushable" href="@routes.HuntController.create()">@Messages("newHunt")</a></li>
-		<li><a class="pushable" href="@routes.GameController.home()">@Messages("play")</a></li>
-	</ul>
-} {
+@global.main() {
 	@if(!hunts.isEmpty()) { 
 		<div id="container-hunt-box">
 		@for(hunt <- hunts) {

@@ -2,12 +2,7 @@
 
 @import helpers._
 
-@mainDashboard("Nouvelle chasse", "dashboard/hunt") {
-	<ul class="breadcrumb">
-		<li><a href="@routes.ManagerController.dashboard()">@Messages("dashboard")</a></li>
-		<li><a>@Messages("newHunt")</a></li>
-	</ul>
-} {
+@global.main() {
 	<div class="row-fluid">
 		<div class="span4">
 			@helper.form(action = routes.HuntController.submitCreateForm(), 'id -> "create-hunt", 'class -> "form-horizontal") {
@@ -21,6 +16,5 @@
 		<div class="span8">
 			@includes.map("hunt-map")
 		</div>
-
 	</div>
 }
