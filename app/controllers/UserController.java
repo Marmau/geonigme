@@ -41,7 +41,7 @@ public class UserController extends Controller {
 
 	@AssociatedPage("login")
 	public static Result login() {
-		if( UserRepository.isLogged() ) {
+		if (UserRepository.isLogged()) {
 			System.out.println("UserController.login() : Already loggued in.");
 			return redirectToMain();
 		}
@@ -104,11 +104,12 @@ public class UserController extends Controller {
 			return redirectToMain();
 		}
 	}
-	
+
 	public static Result redirectToMain() {
-		//return redirect(routes.ManagerController.dashboard());
+		// return redirect(routes.ManagerController.dashboard());
 		User user = UserRepository.getLoggedUser();
-		return redirect( (user != null && user.hasRights()) ? routes.AdminPanelController.userlist() : routes.ManagerController.dashboard());
+		return redirect((user != null && user.hasRights()) ? routes.AdminPanelController.userlist()
+				: routes.ManagerController.dashboard());
 	}
 
 	public static Result showRDF(String uid, String format) {

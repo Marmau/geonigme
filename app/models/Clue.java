@@ -48,17 +48,13 @@ public class Clue implements RDFObject {
 		this.number = number;
 	}
 
-	@Sparql(NS.PREFIX + "SELECT ?clue { " + 
-			"$this gngm:clueOfEnigma ?enigma. " + 
-			"$this gngm:number ?number. " + 
-			"?clue gngm:clueOfEnigma ?enigma. " + 
-			"?clue gngm:number ?nextNumber." + 
-			"FILTER (?number + 1 = ?nextNumber)" + 
-		"}")
+	@Sparql(NS.PREFIX + "SELECT ?clue { " + "$this gngm:clueOfEnigma ?enigma. " + "$this gngm:number ?number. "
+			+ "?clue gngm:clueOfEnigma ?enigma. " + "?clue gngm:number ?nextNumber."
+			+ "FILTER (?number + 1 = ?nextNumber)" + "}")
 	public Clue getNextClue() {
 		return null;
 	}
-	
+
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
 	}
@@ -68,14 +64,14 @@ public class Clue implements RDFObject {
 		this.setEnigma(null);
 		this.setNumber(null);
 	}
-	
+
 	public ObjectNode toJson() {
 		ObjectNode result = Json.newObject();
-		
+
 		result.put("id", getId());
 		result.put("number", getNumber());
 		result.put("description", getDescription());
-		
+
 		return result;
 	}
 
@@ -88,5 +84,5 @@ public class Clue implements RDFObject {
 	public Resource getResource() {
 		return null;
 	}
-	
+
 }

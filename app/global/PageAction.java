@@ -12,14 +12,14 @@ public class PageAction extends Action<AssociatedPage> {
 		Context.current.set(ctx);
 		Page page = Page.get(configuration.value());
 		CurrentRequest.setPage(page);
-		if( !page.userCanAccess() ) {
+		if (!page.userCanAccess()) {
 			System.out.println("PageAction> Access forbidden.");
 			return forbidden();
 		}
-		//System.out.println("Running request");
+		// System.out.println("Running request");
 		Result result = delegate.call(ctx);
 		CurrentRequest.remove();
-		//System.out.println("Ending request");
+		// System.out.println("Ending request");
 		return result;
 	}
 }

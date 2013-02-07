@@ -7,7 +7,7 @@ public class Step {
 
 	@AuthenticationToken
 	public String token;
-	
+
 	public String description;
 
 	@Required

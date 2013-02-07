@@ -9,18 +9,18 @@ import play.data.validation.Constraints.Required;
 
 public class Login {
 	public static final String ERROR = "Pseudonyme ou mot de passe invalide.";
-	
+
 	@AuthenticationToken
 	public String token;
-	
+
 	@Required
 	public String login;
 
 	public String password;
-	
+
 	public String validate() {
 		ObjectConnection oc = Sesame.getObjectConnection();
-	
+
 		try {
 			String uid = login.toLowerCase();
 			models.User u = oc.getObject(models.User.class, models.User.URI + uid);

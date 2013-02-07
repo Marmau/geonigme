@@ -37,10 +37,11 @@ public class EnigmaController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
 		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
-		
+
 		formEnigma.fill(new forms.Enigma());
 
-		((EnigmaCreatePage)CurrentRequest.page()).setMenuParameters(step);// Menu's parameters
+		((EnigmaCreatePage) CurrentRequest.page()).setMenuParameters(step);// Menu's
+																			// parameters
 		return ok(views.html.dashboard.createEnigma.render(step, formEnigma));
 	}
 
@@ -51,29 +52,30 @@ public class EnigmaController extends Controller {
 		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
 
 		if (formEnigma.hasErrors()) {
-			((EnigmaCreatePage)CurrentRequest.page()).setMenuParameters(step);// Menu's parameters
+			((EnigmaCreatePage) CurrentRequest.page()).setMenuParameters(step);// Menu's
+																				// parameters
 			return badRequest(views.html.dashboard.createEnigma.render(step, formEnigma));
 		} else {
 			Enigma enigma = formToEnigma(formEnigma.get());
 			enigma.setStep(step);
 			enigma.setNumber(step.getEnigmas().size() + 1);
-			
+
 			String eid = UUID.randomUUID().toString();
 			oc.addObject(Enigma.URI + eid, enigma);
-			
+
 			enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
-			
-			for (models.Clue clue: formToClues(formEnigma.get())) {
+
+			for (models.Clue clue : formToClues(formEnigma.get())) {
 				clue.setEnigma(enigma);
 				String cid = UUID.randomUUID().toString();
 				oc.addObject(models.Clue.URI + cid, clue);
 			}
-			
+
 			models.Answer answer = formToAnswer(formEnigma.get());
 			answer.setEnigma(enigma);
 			String aid = UUID.randomUUID().toString();
 			oc.addObject(models.Answer.URI + aid, answer);
-			
+
 			return redirect(routes.HuntController.show(step.getHunt().getId()));
 		}
 	}
@@ -83,38 +85,38 @@ public class EnigmaController extends Controller {
 	}
 
 	@AssociatedPage("enigmaedit")
-	public static Result update(String eid) throws RepositoryException,	QueryEvaluationException {
+	public static Result update(String eid) throws RepositoryException, QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
 		Enigma enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
-		
+
 		forms.Enigma formEnigma = new forms.Enigma();
 		formEnigma.description = enigma.getDescription();
 		formEnigma.answer = new forms.Enigma.Answer();
 		if (enigma.getAnswer() instanceof models.GeolocatedAnswer) {
-			models.GeolocatedAnswer a = (models.GeolocatedAnswer)enigma.getAnswer();
+			models.GeolocatedAnswer a = (models.GeolocatedAnswer) enigma.getAnswer();
 			formEnigma.answer.type = forms.Enigma.Answer.GeolocatedAnswer;
 			formEnigma.answer.accuracy = a.getPosition().getAccuracy();
 			formEnigma.answer.labelPosition = a.getPosition().getPlace();
 			formEnigma.answer.position = a.getPosition().toTemplateString();
 		} else if (enigma.getAnswer() instanceof models.TextAnswer) {
-			models.TextAnswer a = (models.TextAnswer)enigma.getAnswer();
+			models.TextAnswer a = (models.TextAnswer) enigma.getAnswer();
 			formEnigma.answer.type = forms.Enigma.Answer.TextAnswer;
 			formEnigma.answer.possibleTexts = new ArrayList<String>(a.getLabels());
 		} else {
 			throw new RuntimeException("Erreur dans la réponse");
 		}
-				
+
 		formEnigma.clues = new ArrayList<forms.Enigma.Clue>();
-		for (models.Clue clue: enigma.getClues()) {
+		for (models.Clue clue : enigma.getClues()) {
 			forms.Enigma.Clue formClue = new forms.Enigma.Clue();
 			if (clue instanceof models.FileClue) {
-				models.FileClue c = (models.FileClue)clue;
+				models.FileClue c = (models.FileClue) clue;
 				formClue.type = forms.Enigma.Clue.FileClue;
 				formClue.fileDescription = c.getDescription();
 				formClue.fileLink = c.getFile().toString();
 			} else if (clue instanceof models.TextClue) {
-				models.TextClue c = (models.TextClue)clue;
+				models.TextClue c = (models.TextClue) clue;
 				formClue.type = forms.Enigma.Clue.TextClue;
 				formClue.textDescription = c.getDescription();
 			} else {
@@ -122,8 +124,9 @@ public class EnigmaController extends Controller {
 			}
 			formEnigma.clues.add(formClue);
 		}
-		
-		((EnigmaEditPage)CurrentRequest.page()).setMenuParameters(enigma);// Menu's parameters
+
+		((EnigmaEditPage) CurrentRequest.page()).setMenuParameters(enigma);// Menu's
+																			// parameters
 		return ok(views.html.dashboard.updateEnigma.render(enigma, form(forms.Enigma.class).fill(formEnigma)));
 	}
 
@@ -134,35 +137,36 @@ public class EnigmaController extends Controller {
 		Enigma enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 
 		if (formEnigma.hasErrors()) {
-			((EnigmaEditPage)CurrentRequest.page()).setMenuParameters(enigma);// Menu's parameters
+			((EnigmaEditPage) CurrentRequest.page()).setMenuParameters(enigma);// Menu's
+																				// parameters
 			return badRequest(views.html.dashboard.updateEnigma.render(enigma, formEnigma));
 		} else {
 			fillEnigma(enigma, formEnigma.get());
 			oc.addObject(Enigma.URI + eid, enigma);
 			enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
-			
+
 			// Suppression des anciens indices
-			for (models.Clue oldClue: enigma.getClues()) {
+			for (models.Clue oldClue : enigma.getClues()) {
 				oldClue.reset();
 				oc.removeDesignation(oldClue, models.Clue.class);
 			}
-			
-			for (models.Clue clue: formToClues(formEnigma.get())) {
+
+			for (models.Clue clue : formToClues(formEnigma.get())) {
 				clue.setEnigma(enigma);
 				String cid = UUID.randomUUID().toString();
 				oc.addObject(models.Clue.URI + cid, clue);
 			}
-			
+
 			// Suppression de l'ancienne réponse
 			models.Answer oldAnswer = enigma.getAnswer();
 			oldAnswer.reset();
 			oc.removeDesignation(oldAnswer, models.Answer.class);
-			
+
 			models.Answer answer = formToAnswer(formEnigma.get());
 			answer.setEnigma(enigma);
 			String aid = UUID.randomUUID().toString();
 			oc.addObject(models.Answer.URI + aid, answer);
-			
+
 			return redirect(routes.HuntController.show(enigma.getStep().getHunt().getId()));
 		}
 	}
@@ -172,19 +176,20 @@ public class EnigmaController extends Controller {
 		if (form.answer.type == forms.Enigma.Answer.TextAnswer) {
 			models.TextAnswer a = new models.TextAnswer();
 			Set<String> labels = new HashSet<String>();
-			for (String label: form.answer.possibleTexts) {
+			for (String label : form.answer.possibleTexts) {
 				if (label.length() > 0) {
-					labels.add(label);					
+					labels.add(label);
 				}
 			}
 			a.setLabels(labels);
 			answer = a;
 		} else {
 			models.GeolocatedAnswer a = new models.GeolocatedAnswer();
-			a.setPosition(models.Position.createFrom(form.answer.position, form.answer.accuracy, form.answer.labelPosition));
+			a.setPosition(models.Position.createFrom(form.answer.position, form.answer.accuracy,
+					form.answer.labelPosition));
 			answer = a;
 		}
-		
+
 		return answer;
 	}
 
@@ -193,9 +198,9 @@ public class EnigmaController extends Controller {
 		if (form.clues == null) {
 			return clues;
 		}
-		
+
 		int index = 1;
-		for (forms.Enigma.Clue c: form.clues) {
+		for (forms.Enigma.Clue c : form.clues) {
 			if (c.type == forms.Enigma.Clue.TextClue) {
 				models.TextClue clue = new models.TextClue();
 				clue.setDescription(c.textDescription);
@@ -214,7 +219,7 @@ public class EnigmaController extends Controller {
 			}
 			index++;
 		}
-		
+
 		return clues;
 	}
 
@@ -224,7 +229,7 @@ public class EnigmaController extends Controller {
 
 		return e;
 	}
-	
+
 	private static void fillEnigma(Enigma enigma, forms.Enigma form) {
 		enigma.setDescription(form.description);
 	}
@@ -247,7 +252,7 @@ public class EnigmaController extends Controller {
 		}
 		return ok(strw.toString());
 	}
-	
+
 	public static Result showClueRDF(String cid, String format) {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		StringWriter strw = new StringWriter();
@@ -261,7 +266,7 @@ public class EnigmaController extends Controller {
 		}
 		return ok(strw.toString());
 	}
-		
+
 	public static Result showAnswerRDF(String aid, String format) {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		StringWriter strw = new StringWriter();

@@ -35,11 +35,11 @@ public class Position extends Point {
 
 		return result;
 	}
-	
+
 	public static Position createFrom(String position, float accuracy, String place) {
 		Position result = createFrom(position, accuracy);
 		result.setPlace(place);
-		
+
 		return result;
 	}
 

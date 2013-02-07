@@ -7,7 +7,7 @@ import org.openrdf.repository.object.RDFObject;
 
 @Iri(NS.GNGM + "Answer")
 public class Answer implements RDFObject {
-	
+
 	public static final String URI = "http://geonigme.fr/answer/";
 
 	private Enigma answerOfEnigma;
@@ -21,15 +21,15 @@ public class Answer implements RDFObject {
 	public void setEnigma(Enigma answerOfEnigma) {
 		this.answerOfEnigma = answerOfEnigma;
 	}
-	
+
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
 	}
-	
+
 	public void reset() {
 		this.setEnigma(null);
 	}
-	
+
 	public boolean isCorrect(String answer) {
 		return false;
 	}

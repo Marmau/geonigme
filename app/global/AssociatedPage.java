@@ -8,9 +8,9 @@ import java.lang.annotation.Target;
 import play.mvc.With;
 
 @With(PageAction.class)
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AssociatedPage {
 	String value();
-	//boolean value() default true;
+	// boolean value() default true;
 }

@@ -158,7 +158,7 @@ public class Hunt implements RDFObject {
 	public String getId() {
 		return getResource().stringValue().replace(URI, "");
 	}
-	
+
 	public void save() throws RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		oc.addObject(Hunt.URI + getId(), this);

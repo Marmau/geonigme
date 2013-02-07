@@ -32,18 +32,21 @@ public class StepController extends Controller {
 
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 
-		((StepCreatePage)CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
+		((StepCreatePage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
+																			// parameters
 		return ok(views.html.dashboard.createStep.render(hunt, formStep));
 	}
 
 	@AssociatedPage("stepcreate")
-	public static Result submitCreateForm(String hid) throws DatatypeConfigurationException, RepositoryException, QueryEvaluationException {
+	public static Result submitCreateForm(String hid) throws DatatypeConfigurationException, RepositoryException,
+			QueryEvaluationException {
 		Form<forms.Step> formStep = form(forms.Step.class).bindFromRequest();
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 
 		if (formStep.hasErrors()) {
-			((StepCreatePage)CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
+			((StepCreatePage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
+																				// parameters
 			return badRequest(views.html.dashboard.createStep.render(hunt, formStep));
 		} else {
 			Step step = formToStep(formStep.get());
@@ -56,7 +59,7 @@ public class StepController extends Controller {
 			return redirect(routes.HuntController.show(hid));
 		}
 	}
-	
+
 	public static Result showRDF(String sid, String format) {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		StringWriter strw = new StringWriter();
@@ -68,22 +71,23 @@ public class StepController extends Controller {
 			e.printStackTrace();
 			return notFound();
 		}
-		
+
 		return ok(strw.toString());
 	}
 
 	@AssociatedPage("stepedit")
-	public static Result update(String sid) throws RepositoryException,	QueryEvaluationException {
+	public static Result update(String sid) throws RepositoryException, QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
 		Step step = oc.getObject(Step.class, Step.URI + sid);
-		
+
 		forms.Step formStep = new forms.Step();
 		formStep.description = step.getDescription();
 		formStep.accuracy = step.getPosition().getAccuracy();
 		formStep.position = step.getPosition().toTemplateString();
 
-		((StepEditPage)CurrentRequest.page()).setMenuParameters(step);// Menu's parameters
+		((StepEditPage) CurrentRequest.page()).setMenuParameters(step);// Menu's
+																		// parameters
 		return ok(views.html.dashboard.updateStep.render(step, form(forms.Step.class).fill(formStep)));
 	}
 
@@ -94,7 +98,8 @@ public class StepController extends Controller {
 		Step step = oc.getObject(Step.class, Step.URI + sid);
 
 		if (formStep.hasErrors()) {
-			((StepEditPage)CurrentRequest.page()).setMenuParameters(step);// Menu's parameters
+			((StepEditPage) CurrentRequest.page()).setMenuParameters(step);// Menu's
+																			// parameters
 			return badRequest(views.html.dashboard.updateStep.render(step, formStep));
 		} else {
 			fillStep(step, formStep.get());
@@ -114,7 +119,7 @@ public class StepController extends Controller {
 		fillStep(step, form);
 		return step;
 	}
-	
+
 	private static void fillStep(Step step, forms.Step form) {
 		step.setDescription(form.description);
 		step.setPosition(models.Position.createFrom(form.position, form.accuracy));

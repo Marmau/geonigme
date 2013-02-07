@@ -7,7 +7,7 @@ import play.data.validation.Constraints.*;
 public class Register {
 	@AuthenticationToken
 	public String token;
-	
+
 	@Required
 	@LoginNotAlreadyUsed(message = "Ce pseudonyme est déjà utilisé.")
 	public String pseudonym;
