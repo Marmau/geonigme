@@ -7,19 +7,19 @@
 
 @createCheckAnswerButton(answer: Answer) = {
 	@if(answer.isInstanceOf[TextAnswer]) {
-		<button class="btn" id="check-answer" data-type-answer="text">Vérifiez votre réponse</button>
+		<button class="btn" id="check-answer" data-type-answer="text">@Messages("verifAnswer")</button>
 	} else {
-		<button class="btn" id="check-answer" data-type-answer="geolocated">Vérifiez votre position</button>
+		<button class="btn" id="check-answer" data-type-answer="geolocated">@Messages("verifPosition")</button>
 	}
 }
 
 @mainGame("Jouer", "game/enigma") {
 	<nav>
 		<ul class="breadcrumb">
-			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
+			<li><a href="@routes.GameController.home()">@Messages("huntList")</a></li>
 			<li><a href="@routes.GameController.playHunt(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
-			<li><a href="@routes.GameController.playHunt(enigma.getStep().getId())">&Eacute;tape @enigma.getStep().getNumber()</a></li>
-			<li><a>&Eacute;nigme @enigma.getNumber()</a></li>
+			<li><a href="@routes.GameController.playHunt(enigma.getStep().getId())">@Messages("stepM") @enigma.getStep().getNumber()</a></li>
+			<li><a>@Messages("enigmaM") @enigma.getNumber()</a></li>
 		</ul>
 	</nav>
  	
@@ -32,13 +32,13 @@
 			<div class="form-horizontal" data-check-action="@routes.GameController.checkAnswer()" id="form-check-answer">
 				@if(enigma.getAnswer().isInstanceOf[models.TextAnswer]) {
 					<div class="control-group">
-						<label class="control-label" for="answer-text">Votre réponse</label>
+						<label class="control-label" for="answer-text">@Messages("yourAnswer")</label>
 						<div class="controls">
 							<input class="span12" type="text" id="answer-text" name="text" value="" />
 						</div>
 					</div>
 				} else {
-					<blockquote>Vous devez vous rendre à l'emplacement que vous indique l'énigme. Une fois que vous pensez être au bon endroit, vérifiez votre réponse !</blockquote>
+					<blockquote>@Messages("checkPositionTip")</blockquote>
 				}
 				
 				<div class="actions">
@@ -66,10 +66,10 @@
 				</div>
 
 				@if(enigma.getClues().isEmpty()) {
-					<p>Dur dur... Il n'y aucun indice pour vous aider...</p>
+					<p>@Messages("noGameClues")</p>
 				} else {
 					@if(clues.isEmpty()) {
-						<p id="no-clues">Vous n'avez pas affiché d'indices pour le moment</p>
+						<p id="no-clues">@Messages("cluesNotShown")</p>
 					}
 				}
 
@@ -78,7 +78,7 @@
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />
 						}
-						<button type="submit" class="btn">Afficher un nouvel indice</button>
+						<button type="submit" class="btn">@Messages("showClue")</button>
 					</form>
 				}
 
@@ -87,9 +87,9 @@
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />
 						}
-						<button type="submit" class="btn btn-danger">Passer</button>
+						<button type="submit" class="btn btn-danger">@Messages("passer")</button>
 					</form>
-					<p id="info-pass" class="danger">Vous n'arrivez pas à résoudre l'énigme ? Passez...</p>
+					<p id="info-pass" class="danger">@Messages("EnigmaTooHard")</p>
 				</div>
 			</div>
 

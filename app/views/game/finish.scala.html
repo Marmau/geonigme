@@ -7,18 +7,18 @@
 @mainGame("Jouer", "game/game") {
 	<nav>
 		<ul class="breadcrumb">
-			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
+			<li><a href="@routes.GameController.home()">@Messages("huntList")</a></li>
 			<li><a><span class="hunt-name">@hunt.getLabel()</span></a></li>
 		</ul>
 	</nav>
 	
-	<p>Bravo, vous avez terminé la chasse aux trésors ! Vous pouvez d'ores et déjà en commencer une autre !</p>
+	<p>@Messages("huntFinish")</p>
 
-	<p>Cette chasse vous a permis de collecter <span class="score">@score</span> points sur les <strong>@maxScore</strong> possibles !</p> 
+	<p>@Messages("huntScore", score, maxScore)</p> 
 
 	@if(UserRepository.isLogged()) {
-		<p>Le score a été enregistré dans votre profil !</p>
+		<p>@Messages("scoreSaved")</p>
 	} else {
-		<p>Malheureusement, vous n'êtes pas connecté, votre score n'a donc pas été enregistré.</p>
+		<p>@Messages("scoreNotSaved")</p>
 	}
 }
