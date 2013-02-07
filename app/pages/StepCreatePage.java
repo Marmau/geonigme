@@ -25,14 +25,14 @@ public class StepCreatePage extends DashboardPage {
 		this.hunt = hunt;
 	}
 
-	// The entry in the menu could (should) be a copy
+	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
 		// This edit page
-		StepCreatePage p3 = (StepCreatePage) menu.getPage(name);// Should be a copy of this one
+		StepCreatePage p3 = (StepCreatePage) menu.getPage(name);// Should be a copy
 		p3.setMyParameters(hunt);
 		
 		// The hunt show page
-		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Should be a copy of this one
+		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Should be a copy
 		p2.setTitle(hunt.getLabel());
 		p2.setMyParameters(hunt);
 	}

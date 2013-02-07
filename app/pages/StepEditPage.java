@@ -26,15 +26,15 @@ public class StepEditPage extends DashboardPage {
 		this.step = step;
 	}
 
-	// The entry in the menu could (should) be a copy
+	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Step step) {
 		// This edit page
-		StepEditPage p3 = (StepEditPage) menu.getPage(name);// Should be a copy of this one
+		StepEditPage p3 = (StepEditPage) menu.getPage(name);// Should be a copy
 		p3.setMyParameters(step);
 		
 		// The hunt show page
 		Hunt hunt = step.getHunt();
-		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Should be a copy of this one
+		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Should be a copy
 		p2.setTitle(hunt.getLabel());
 		p2.setMyParameters(hunt);
 	}

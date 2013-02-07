@@ -27,20 +27,20 @@ public class EnigmaCreatePage extends DashboardPage {
 		this.step = step;
 	}
 
-	// The entry in the menu could (should) be a copy
+	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Step step) {
 		// This edit page
-		EnigmaCreatePage p4 = (EnigmaCreatePage) menu.getPage(name);// Should be a copy of this one
+		EnigmaCreatePage p4 = (EnigmaCreatePage) menu.getPage(name);// Should be a copy
 		p4.setMyParameters(step);
 		
 		// The step edit page
-		StepEditPage p3 = (StepEditPage) menu.getPage("stepedit");// Should be a copy of this one
+		StepEditPage p3 = (StepEditPage) menu.getPage("stepedit");// Should be a copy
 		p3.setTitle("Étape "+step.getNumber());
 		p3.setMyParameters(step);
 		
 		// The hunt show page
 		Hunt hunt = step.getHunt();
-		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Should be a copy of this one
+		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Should be a copy
 		p2.setTitle(hunt.getLabel());
 		p2.setMyParameters(hunt);
 	}

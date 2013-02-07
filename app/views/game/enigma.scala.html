@@ -1,6 +1,5 @@
 @(enigma: models.Enigma, clues: List[models.Clue])
 
-
 @import helpers._
 @import models._
 @import _root_.global._
@@ -13,16 +12,7 @@
 	}
 }
 
-@mainGame("Jouer", "game/enigma") {
-	<nav>
-		<ul class="breadcrumb">
-			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
-			<li><a href="@routes.GameController.playHunt(enigma.getStep().getHunt().getId())"><span class="hunt-name">@enigma.getStep().getHunt().getLabel()</span></a></li>
-			<li><a href="@routes.GameController.playHunt(enigma.getStep().getId())">&Eacute;tape @enigma.getStep().getNumber()</a></li>
-			<li><a>&Eacute;nigme @enigma.getNumber()</a></li>
-		</ul>
-	</nav>
-
+@global.main() {
 	<div class="row-fluid">
 		<div class="span12">
 			<blockquote>

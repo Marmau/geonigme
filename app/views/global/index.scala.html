@@ -1,12 +1,6 @@
 @()
 
-@mainHome("Accueil", "home") { 
-    <ul class="menu">
-        <li class="selected"><a href="@routes.ApplicationController.index()">Découvrir</a></li>
-        <li><a class="pushable" href="@routes.UserController.login()">Se connecter</a></li>
-        <li><a class="pushable" href="@routes.GameController.home()">Jouer</a></li>
-    </ul>
-} {
+@global.mainHome() {
     <div class="row-fluid">
         <div class="span6 wrapper-slideshow">
             @includes.slideshow()

@@ -13,6 +13,7 @@
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("leaflet/leaflet.css")">
 		<!--[if lte IE 8]><link rel="stylesheet" href="leaflet/leaflet.ie.css" /><![endif]-->
+		<!--link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/flexslider.css")"-->
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.min.css")">
 		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 
@@ -22,10 +23,12 @@
 		<div data-role="page">
 			<header data-role="header">
 				<div class="background"></div>
+				@if( UserController.isLogged() ) {
 				<div class="btn-group user-menu">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserController.getLoggedUser().getLoginName()<span class="caret"></span></a>
 					@Menu.memberMenu.render(page)
 				</div>
+				}
 			</header>
 			<div data-role="content" class="container-fluid">
 				<div class="row-fluid">

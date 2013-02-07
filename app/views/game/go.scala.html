@@ -4,14 +4,7 @@
 @import helpers._
 @import _root_.global._
 
-@mainGame("Jouer", "game/go") {
-	<nav>
-		<ul class="breadcrumb">
-			<li><a href="@routes.GameController.home()">Liste des chasses</a></li>
-			<li><a href="@routes.GameController.playHunt(step.getHunt().getId())"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
-			<li><a>&Eacute;tape @step.getNumber()</a></li>
-		</ul>
-	</nav>
+@global.main() {
 
 	<blockquote>
 		@step.getDescription()

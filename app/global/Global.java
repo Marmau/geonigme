@@ -15,10 +15,14 @@ import pages.AdminUserEditPage;
 import pages.DashboardPage;
 import pages.EnigmaCreatePage;
 import pages.EnigmaEditPage;
+import pages.EnigmaResultPage;
+import pages.EnigmaPlayPage;
 import pages.GamePage;
 import pages.HomePage;
 import pages.HuntCreatePage;
 import pages.HuntEditPage;
+import pages.StepPlayPage;
+import pages.HuntPlayPage;
 import pages.HuntShowPage;
 import pages.StepCreatePage;
 import pages.StepEditPage;
@@ -80,10 +84,17 @@ public class Global extends GlobalSettings {
 			//new EnigmaCreatePage("dashboard", "Nouvelle énigme", Right.MEMBER_AREA, "dashboard/enigma");
 			
 			// Game Pages
-			new GamePage("play", "Jouer", routes.GameController.home(), Right.MEMBER_AREA, "");
+			new GamePage("play", "Jouer", routes.GameController.home(), "");
+			new GamePage("huntlist", "Liste des chasses", routes.GameController.home(), "");
+			new HuntPlayPage("Jouer", "game/game");
+			new StepPlayPage("Jouer", "game/go");
+			new EnigmaPlayPage("Jouer", "game/enigma");
+			new EnigmaResultPage("enigmafail", "Jouer", "game/enigma");
+			new EnigmaResultPage("enigmasuccess", "Jouer", "game/enigma");
+			new HuntPlayPage("huntfinish", "Jouer", "game/game");
 
 			// Home Pages
-			new HomePage("home", "Découvrir", routes.ApplicationController.index(), "");
+			new HomePage("home", "Découvrir", routes.ApplicationController.index(), "home");
 			new HomePage("login", "Se connecter", routes.UserController.login(), "");// And register page
 			new HomePage("logout", "Déconnexion", routes.UserController.logout(), "");
 			
@@ -91,6 +102,7 @@ public class Global extends GlobalSettings {
 			//		***    Static Menus    ***
 			// Put all menus' configuration below
 			// Use an existing menu, declared in class Menu or use a dynamic one.
+			// If a page appears in several menus, you should set the isNavMenu parameter.
 
 			// Member's Global Menu
 			Menu.memberMenu.add("home");
@@ -105,7 +117,17 @@ public class Global extends GlobalSettings {
 			// Dashboard Menu
 			Menu.dashboardMenu.add("dashboard");
 			Menu.dashboardMenu.add("huntcreate");
-			Menu.dashboardMenu.add("play");
+			Menu.dashboardMenu.add("play", false);// Not the page menu
+			
+			// Home Menu
+			Menu.homeMenu.add("home");
+			Menu.homeMenu.add("login");
+			Menu.homeMenu.add("play");
+			
+			// Home Menu
+			Menu.gameMenu.add("dashboard", false);// Not the page menu
+			Menu.gameMenu.add("huntlist");
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();

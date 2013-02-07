@@ -8,13 +8,9 @@ public class Menu {
 	
 	public static Menu adminPanelMenu = new Menu(true);
 	public static Menu dashboardMenu = new Menu(true);
+	public static Menu homeMenu = new Menu(true);
+	public static Menu gameMenu = new Menu(true);
 	public static Menu memberMenu = new Menu(false, "dropdown-menu");
-	
-	/*
-	 * Not working by this way
-	static {
-	}
-	*/
 
 	private boolean isNavMenu;
 	private String cssClasses = "";
@@ -30,7 +26,7 @@ public class Menu {
 		this(isNavMenu, "menu");
 	}
 	
-	public Menu add(String pageName) {
+	public Menu add(String pageName, boolean isNavMenu) {
 		try {
 			Page page = Page.get(pageName);
 			add(page);
@@ -41,6 +37,9 @@ public class Menu {
 			e.printStackTrace();
 		}
 		return this;
+	}
+	public Menu add(String pageName) {
+		return add(pageName, isNavMenu);
 	}
 	
 	public Menu add(MenuItem item) {

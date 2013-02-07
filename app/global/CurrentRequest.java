@@ -37,7 +37,11 @@ public class CurrentRequest extends Controller {
 	}
 	*/
 	
-	public Page getPage() {
+	public void setRequestedPage(Page page) {
+		this.page = page;
+	}
+	
+	public Page getRequestedPage() {
 		return page;
 	}
 	
@@ -51,7 +55,14 @@ public class CurrentRequest extends Controller {
 
 	// Class' methods
 	public static void setPage(Page page) {
-		loadingPages.put(id(), new CurrentRequest(page, ctx().request(), ctx()));
+		if( !loadingPages.containsKey(id()) ) {
+			// If new request, we insert the new page
+			loadingPages.put(id(), new CurrentRequest(page, ctx().request(), ctx()));
+			
+		} else {
+			// Else we update it
+			loadingPages.get(id()).setRequestedPage(page);
+		}
 	}
 	
 	public static CurrentRequest instance() {
@@ -67,7 +78,7 @@ public class CurrentRequest extends Controller {
 		if( curr == null ) {
 			return null;
 		}
-		return curr.getPage();
+		return curr.getRequestedPage();
 	}
 	
 	public static Request request() {

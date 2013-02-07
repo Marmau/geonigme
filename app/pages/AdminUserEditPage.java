@@ -26,9 +26,9 @@ public class AdminUserEditPage extends AdminPanelPage {
 		return this;
 	}
 
-	// The entry in the menu could (should) be a copy
+	// The items of the menu could (should) be a copy
 	public void setMenuParameters(User user) {
-		AdminUserEditPage p = (AdminUserEditPage) menu.getPage(name);// Should be a copy of this one
+		AdminUserEditPage p = (AdminUserEditPage) menu.getPage(name);// Should be a copy
 		p.setMyParameters(user);
 	}
 	

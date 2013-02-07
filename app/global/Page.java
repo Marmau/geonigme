@@ -13,9 +13,12 @@ public class Page implements MenuItem {
 	
 	private static Hashtable<String, Page> instances = new Hashtable<String, Page>();
 	
+	/*
+	// Don't make a copy of child classes.
 	public static Page getCopy(String pageName) throws Exception {
 		return new Page(get(pageName));
 	}
+	*/
 	
 	public static Page get(String pageName) throws Exception {
 		Page page = instances.get(pageName);

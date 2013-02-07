@@ -23,9 +23,9 @@ public class HuntShowPage extends DashboardPage {
 		this.hunt = hunt;
 	}
 
-	// The entry in the menu could (should) be a copy
+	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
-		HuntShowPage p = (HuntShowPage) menu.getPage(name);// Should be a copy of this one
+		HuntShowPage p = (HuntShowPage) menu.getPage(name);// Should be a copy
 		p.setMyParameters(hunt);
 		p.setTitle(hunt.getLabel()+" |<span class=\"small\">"+hunt.getStringLevel()+"</span>");
 	}

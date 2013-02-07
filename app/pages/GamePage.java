@@ -6,8 +6,8 @@ import play.api.mvc.Call;
 
 public class GamePage extends Page {
 
-	public GamePage(String name, String title, Call route, Right accessRight, String startJS) throws Exception {
-		super(name, title, route, accessRight, startJS);
+	public GamePage(String name, String title, Call route, String startJS) throws Exception {
+		super(name, title, route, Right.NONE, startJS);
 		this.bodyClasses = "game";
 	}
 	

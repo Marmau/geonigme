@@ -114,7 +114,7 @@ public class UserController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Session session = Context.current().session();
 		if( session == null ) {
-			System.out.println("UserController.getLoggedUser> Session null");
+			//System.out.println("UserController.getLoggedUser> Session null");
 			return null;
 		}
 		String uid = session.get(userSessionKey);
