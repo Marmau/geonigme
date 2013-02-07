@@ -2,10 +2,10 @@
 
 @mainDashboard("Modifier une étape", "dashboard/step") {
 	<ul class="breadcrumb">
-		<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
+		<li><a href="@routes.ManagerController.dashboard()">@Messages("dashboard")</a></li>
 		<li><a href="@routes.HuntController.show(step.getHunt().getId())"><span class="hunt-name">@step.getHunt().getLabel()</span></a></li>
-		<li><a href="@routes.HuntController.show(step.getHunt().getId())">&Eacute;tape @step.getNumber()</a></li>
-		<li><a>Modifier l'étape</a></li>
+		<li><a href="@routes.HuntController.show(step.getHunt().getId())">@Messages("stepM") @step.getNumber()</a></li>
+		<li><a>@Messages("modifStep")</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
@@ -16,8 +16,8 @@
 				Symbol("data-area") -> step.getHunt().getArea().toTemplateString()) {
 				@includeFormStep(formStep) 
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.HuntController.show(step.getHunt().getId())">Annuler</a>
-					<button type="submit" name="submit-step" class="btn pushable">Enregistrer</button>
+					<a class="btn pushable" href="@routes.HuntController.show(step.getHunt().getId())">@Messages("cancel")</a>
+					<button type="submit" name="submit-step" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>

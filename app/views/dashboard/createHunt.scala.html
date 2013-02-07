@@ -4,8 +4,8 @@
 
 @mainDashboard("Nouvelle chasse", "dashboard/hunt") {
 	<ul class="breadcrumb">
-		<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
-		<li><a>Nouvelle chasse</a></li>
+		<li><a href="@routes.ManagerController.dashboard()">@Messages("dashboard")</a></li>
+		<li><a>@Messages("newHunt")</a></li>
 	</ul>
 } {
 	<div class="row-fluid">
@@ -13,7 +13,7 @@
 			@helper.form(action = routes.HuntController.submitCreateForm(), 'id -> "create-hunt", 'class -> "form-horizontal") {
 				@includeFormHunt(formHunt)
 				<div class="form-actions">
-					<button type="submit" class="btn pushable">Enregistrer</button>
+					<button type="submit" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>

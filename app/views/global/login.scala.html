@@ -4,22 +4,22 @@
 
 @mainHome("Connexion - Inscription") { 
     <ul class="menu">
-        <li><a class="pushable" href="@routes.ApplicationController.index()">Découvrir</a></li>
-        <li class="selected"><a href="@routes.UserController.login()">Se connecter</a></li>
-        <li><a class="pushable" href="@routes.GameController.home()">Jouer</a></li>
+        <li><a class="pushable" href="@routes.ApplicationController.index()">@Messages("discover")</a></li>
+        <li class="selected"><a href="@routes.UserController.login()">@Messages("connect")</a></li>
+        <li><a class="pushable" href="@routes.GameController.home()">@Messages("play")</a></li>
     </ul>
 } {
     <div class="row-fluid">
         <div class="span6" id="registration">
             <div class="introduction">
-                <div><strong>Nouveau sur Géonigme ?</strong></div>
-                <div>Inscrivez-vous !</div>
+                <div><strong>@Messages("newbie")</strong></div>
+                <div>@Messages("submit")</div>
             </div>
             @helper.form(action = routes.UserController.submitRegisterForm(), 'id -> "login-form", 'class -> "form-horizontal") {
                 @includes.authenticationToken(formRegistration("token"))
 
                 <div class="control-group @displayIfError(formRegistration("pseudonym"), "error")">
-                    <label class="control-label" for="registration-input-pseudonym">Pseudonyme</label>
+                    <label class="control-label" for="registration-input-pseudonym">@Messages("pseudo")</label>
                     <div class="controls">
                         <input name="@formRegistration("pseudonym").name()" id="registration-input-pseudonym" type="text" class="span12" value="@formRegistration("pseudonym").value()" />
                         @formRegistration("pseudonym").errors.map { error =>
@@ -28,24 +28,26 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="registration-input-email">@@dresse courriel</label>
+                    <label class="control-label" for="registration-input-email">@Messages("mail")</label>
                     <div class="controls">
                         <input name="@formRegistration("email").name()" id="registration-input-email" type="text" class="span12" value="@formRegistration("email").value()" />
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="registration-input-password">Mot de passe</label>
+                    <label class="control-label" for="registration-input-password">@Messages("pwd")</label>
                     <div class="controls">
                         <input name="@formRegistration("password").name()" id="registration-input-password" type="password" class="span12" value="@formRegistration("password").value()" autocomplete="off" />
                     </div>
                 </div>
-                <button type="submit" class="btn pushable pull-right uppercase">M'inscrire</button>
+                <div class="actions">
+                    <button type="submit" class="btn pushable pull-right uppercase">@Messages("submitMe")</button>
+                </div>
             } 
         </div>
         <div class="span6" id="connection">
             <div class="introduction">
                 <div><strong>&nbsp;</strong></div>
-                <div><strong>Sinon, connectez-vous !</strong></div>
+                <div><strong>@Messages("elseConnect")</strong></div>
             </div>
             @helper.form(action = routes.UserController.submitLoginForm(), 'id -> "login-form") {
                 @includes.authenticationToken(formLogin("token"))
@@ -58,18 +60,18 @@
                     </div>
                 }
                 <div>
-                    <label class="uppercase focus" for="connection-input-login">Pseudonyme</label>
+                    <label class="uppercase focus" for="connection-input-login">@Messages("pseudo")</label>
                     <input name="@formLogin("login").name()" id="connection-input-login" type="text" class="span12" value="@formLogin("login").value()" autofocus />
                 </div>
                 <div>
-                    <label class="uppercase" for="connection-input-password">Mot de passe</label>
+                    <label class="uppercase" for="connection-input-password">@Messages("pwd")</label>
                     <input name="@formLogin("password").name()" id="connection-input-password" type="password" class="span12" value="@formLogin("password").value()" />
                 </div>
-                <button type="submit" class="btn pushable pull-right uppercase">Me connecter</button>
+                <button type="submit" class="btn pushable pull-right uppercase">@Messages("connectMe")</button>
 
             }
             <p class="pagination-right">
-                <a href="#">J'ai oublié mon mot de passe</a>
+                <a href="#">@Messages("pwdForgot")</a>
             </p>
         </div>
     </div>

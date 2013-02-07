@@ -4,6 +4,7 @@
 @import _root_.global.Menu
 @import _root_.global.Page
 @import controllers._
+@import _root_.repository._
 
 <!DOCTYPE html>
 
@@ -27,7 +28,7 @@
 			<header data-role="header">
 				<div class="background"></div>
 				<div class="btn-group user-menu">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserController.getLoggedUser().getLoginName()<span class="caret"></span></a>
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserRepository.getLoggedUser().getLoginName()<span class="caret"></span></a>
 					@Menu.memberMenu.render(AdminPanelController.currentPage)
 				</div>
 			</header>

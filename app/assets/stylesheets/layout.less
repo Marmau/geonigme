@@ -54,20 +54,6 @@ textarea {
     outline: none;
 }
 
-.form-horizontal {
-    .control-label {
-        width: 110px;
-    }
-
-    .controls {
-        margin-left: 120px;
-    }
-
-    .form-actions {
-        padding-left: 120px;
-    }
-}
-
 .input-append .add-on:last-child {
     .border-radius(0px);
     text-shadow: none;
@@ -345,6 +331,13 @@ header {
             margin-top: 2px;
         }
 
+        a.btn.dropdown-toggle {
+            background: none;
+            border: none;
+            .box-shadow(none);
+            outline: none;
+        }
+
         &.open {
             background: none;
 
@@ -386,6 +379,7 @@ header {
             border: none;
             left: initial;
             right: 0px;
+            left:  auto;
 
             &::after {
                 right: 13px;
@@ -465,7 +459,7 @@ nav {
         .hunt-name {
             text-overflow: ellipsis;
             max-width: 250px;
-            display: inline-block;
+            display: block;
             white-space: nowrap;
             overflow: hidden;
         }
