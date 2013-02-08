@@ -44,13 +44,23 @@
 						<!-- file -->
 						@if(clue.isInstanceOf[models.FileClue]) {
 						<!-- image -->
-							<!--  @if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {-->
+							@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {
 							<li class="clue">
 								<button type="button" id="display-picture" class="btn">Afficher l'image</button>
 								<div id="display-hide-picture" class="hide"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></div>
 							</li>
-							<!-- }-->
+							}
 						<!-- son -->
+						@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("sound")) {
+							<li class="clue">
+								<button type="button" id="display-sound" class="btn">Ecouter le son</button>
+								<div id="display-hide-sound" class="hide">
+									<audio preload="auto" controls="" tabindex="0">
+   										<source src="@clue.asInstanceOf[models.FileClue].getFile()" type="audio/mpeg">
+   									</audio>
+								</div>
+							</li>
+							}
 						}
 					}
 				</ul>
@@ -61,9 +71,22 @@
 				
 				
 				<div id="template-file-clue" class="hide">
+				<!-- image -->
 					<li class="clue">
 						<button type="button" id="display-picture" class="btn">Afficher l'image</button>
 						<div id="display-hide-picture" class="hide"><img alt="__description__" src="__file__" /></div>
+					</li>
+				</div>
+				
+				<div id="template-file-clue" class="hide">
+				<!-- son -->
+					<li class="clue">
+						<button type="button" id="display-sound" class="btn">Ecouter le son</button>
+						<div id="display-hide-sound" class="hide">
+						<audio>
+   							<source src="__file__" type='audio/mpeg; codecs="mp3"'>
+   						</audio>
+   									</div>
 					</li>
 				</div>
 

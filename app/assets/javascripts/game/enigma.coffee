@@ -37,9 +37,15 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 				
 	$('#display-picture').click ->
 		if $('#display-hide-picture').hasClass('hide')
-				$('#display-hide-picture').removeClass('hide')
+			$('#display-hide-picture').removeClass('hide')
 		else
 			$('#display-hide-picture').addClass('hide')
+
+	$('#display-sound').click ->
+		if $('#display-hide-sound').hasClass('hide')
+			$('#display-hide-sound').removeClass('hide')
+		else
+			$('#display-hide-sound').addClass('hide')
 
 
 	$('#next-clue').submit ->	
