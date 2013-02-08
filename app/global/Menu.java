@@ -98,18 +98,4 @@ public class Menu {
 	public Html render() {
 		return render((MenuItem) null);
 	}
-
-	/*
-	 * <ul class="menu"> <li class="selected"><a
-	 * href="@routes.AdminPanelController.userlist()">Utilisateurs</a></li>
-	 * <li><a class="pushable"
-	 * href="@routes.AdminPanelController.userlist()">Chasses</a></li> <li><a
-	 * class="pushable" href="">Autre</a></li> </ul> <ul class="breadcrumb">
-	 * <li><a href="@routes.ManagerController.dashboard()">Tableau de
-	 * bord</a></li> <li><a
-	 * href="@routes.HuntController.show(step.getHunt().getId())"><span
-	 * class="hunt-name">@step.getHunt().getLabel()</span></a></li> <li><a
-	 * href="@routes.HuntController.show(step.getHunt().getId())">&Eacute;tape
-	 * @step.getNumber()</a></li> <li><a>Nouvelle énigme</a></li> </ul>
-	 */
 }
