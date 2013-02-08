@@ -36,16 +36,16 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 				checkAnswer(answer, type)
 				
 	$('#display-picture').click ->
-		if $('#display-hide-picture').hasClass('hide')
-			$('#display-hide-picture').removeClass('hide')
+		if $('#display-hide-picture1').hasClass('hide')
+			$('#display-hide-picture1').removeClass('hide')
 		else
-			$('#display-hide-picture').addClass('hide')
+			$('#display-hide-picture1').addClass('hide')
 
 	$('#display-sound').click ->
-		if $('#display-hide-sound').hasClass('hide')
-			$('#display-hide-sound').removeClass('hide')
+		if $('#display-hide-sound1').hasClass('hide')
+			$('#display-hide-sound1').removeClass('hide')
 		else
-			$('#display-hide-sound').addClass('hide')
+			$('#display-hide-sound1').addClass('hide')
 
 
 	$('#next-clue').submit ->	
@@ -59,9 +59,22 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 
 			$('#no-clues').hide()
 			if data.file
-				li = $('#template-file-clue').find('.clue').clone()
+				li = $('#template-picture-clue').find('.clue').clone()
 				li.html(li.html().replace('__file__', data.file))
 				$('#clues-list').append(li)
+				li = $('#template-sound-clue').find('.clue').clone()
+				li.html(li.html().replace('__file__', data.file))
+				$('#clues-list').append(li)
+				$('#display-picture').click ->
+					if $('#display-hide-picture2').hasClass('hide')
+						$('#display-hide-picture2').removeClass('hide')
+					else
+						$('#display-hide-picture2').addClass('hide')
+				$('#display-sound').click ->
+					if $('#display-hide-sound2').hasClass('hide')
+							$('#display-hide-sound2').removeClass('hide')
+					else
+							$('#display-hide-sound2').addClass('hide')
 			else
 				li = $('#template-clue').find('.clue').clone()
 				li.html(li.html().replace('__description__', data.description))
