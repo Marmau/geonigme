@@ -30,18 +30,16 @@ public class FileClue extends Clue {
 	public ObjectNode toJson() {
 		ObjectNode result = super.toJson();
 		result.put("file", getFile().toASCIIString());
+		result.put("type", getFileType());
 
 		return result;
 	}
 
 	public String getFileType() {
 		String result = "";
-		String extension = "";
 		String file = getFile().toString();
 		int pos = file.lastIndexOf('.');
-		if (0 < pos && pos <= file.length() - 2 ) {
-	        extension = file.substring(pos + 1);
-	    } 
+		String extension = file.substring(pos + 1);
 		if (extension.equals("jpg") || extension.equals("jpeg") || extension.equals("gif") || extension.equals("png")) {
 			result = "picture";
 		}

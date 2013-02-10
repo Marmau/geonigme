@@ -35,17 +35,17 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 				answer = position.coords.latitude + ',' + position.coords.longitude
 				checkAnswer(answer, type)
 				
-	$('#display-picture').click ->
-		if $('#display-hide-picture1').hasClass('hide')
-			$('#display-hide-picture1').removeClass('hide')
+	$('.display-picture').click ->
+		if $(this).siblings('.display-hide-picture').hasClass('hide')
+			$(this).siblings('.display-hide-picture').removeClass('hide')
 		else
-			$('#display-hide-picture1').addClass('hide')
+			$(this).siblings('.display-hide-picture').addClass('hide')
 
-	$('#display-sound').click ->
-		if $('#display-hide-sound1').hasClass('hide')
-			$('#display-hide-sound1').removeClass('hide')
+	$('.display-sound').click ->
+		if $(this).siblings('.display-hide-sound').hasClass('hide')
+			$(this).siblings('.display-hide-sound').removeClass('hide')
 		else
-			$('#display-hide-sound1').addClass('hide')
+			$(this).siblings('.display-hide-sound').addClass('hide')
 
 
 	$('#next-clue').submit ->	
@@ -59,22 +59,26 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 
 			$('#no-clues').hide()
 			if data.file
-				li = $('#template-picture-clue').find('.clue').clone()
-				li.html(li.html().replace('__file__', data.file))
-				$('#clues-list').append(li)
-				li = $('#template-sound-clue').find('.clue').clone()
-				li.html(li.html().replace('__file__', data.file))
-				$('#clues-list').append(li)
-				$('#display-picture').click ->
-					if $('#display-hide-picture2').hasClass('hide')
-						$('#display-hide-picture2').removeClass('hide')
-					else
-						$('#display-hide-picture2').addClass('hide')
-				$('#display-sound').click ->
-					if $('#display-hide-sound2').hasClass('hide')
-							$('#display-hide-sound2').removeClass('hide')
-					else
-							$('#display-hide-sound2').addClass('hide')
+				if data.type == 'picture'
+					console.log(data.type)
+					li = $('#template-picture-clue').find('.clue').clone()
+					li.html(li.html().replace('__file__', data.file))
+					$('#clues-list').append(li)
+					$('#display-picture').click ->
+						if $(this).siblings('.display-hide-picture').hasClass('hide')
+							$(this).siblings('.display-hide-picture').removeClass('hide')
+						else
+							$(this).siblings('.display-hide-picture').addClass('hide')
+				else if data.type == 'sound'
+					console.log(data.type)
+					li = $('#template-sound-clue').find('.clue').clone()
+					li.html(li.html().replace('__file__', data.file))
+					$('#clues-list').append(li)
+					$('#display-sound').click ->
+						if $(this).siblings('.display-hide-sound').hasClass('hide')
+							$(this).siblings('.display-hide-sound').removeClass('hide')
+						else
+							$(this).siblings('.display-hide-sound').addClass('hide')
 			else
 				li = $('#template-clue').find('.clue').clone()
 				li.html(li.html().replace('__description__', data.description))
