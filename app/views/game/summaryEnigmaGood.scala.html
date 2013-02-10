@@ -12,11 +12,11 @@
 				<p>@enigma.getDescription()</p>
 			</blockquote>
 
-			<p class="finish">Vous avez résolu cette énigme, bravo&nbsp;! Vous gagnez <span class="score">@score</span> points&nbsp;!</p>
+			<p class="finish">@Messages("enigmaSolved")<span class="score">@score</span> @Messages("points")</p>
 
 			<div class="answer summary">
 				@if(enigma.getAnswer().isInstanceOf[TextAnswer]) {
-					<p>Les réponses acceptées étaient : </p>
+					<p>@Messages("acceptedAnswers")</p>
 					<ul class="list">
 						@for(label <- enigma.getAnswer().asInstanceOf[TextAnswer].getLabels()) {
 							<li>@label</li>
@@ -24,7 +24,7 @@
 					</ul>
 				} else {
 					@defining(enigma.getAnswer().asInstanceOf[GeolocatedAnswer]) { geolocatedAnswer =>
-						<p>Il fallait donc se rendre ici : <strong>@geolocatedAnswer.getPosition().getPlace()</strong>.</p>
+						<p>@Messages("wentHere") <strong>@geolocatedAnswer.getPosition().getPlace()</strong>.</p>
 						<div class="map" id="summary-map" data-target="@geolocatedAnswer.getPosition().toTemplateString()" data-target-accuracy="@geolocatedAnswer.getPosition().getAccuracy()"></div>
 					}
 				}
@@ -32,9 +32,9 @@
 
 			<div class="used-clues summary">
 				@if(usedClues.isEmpty()) {
-					<p>Vous n'avez utilisé aucun indice pour résoudre cette énigme... Peut-être l'avez vous trouvé trop simple !</p>
+					<p>@Messages("noCluesUsed")</p>
 				} else {
-					<p>Il vous a fallu ces indices pour venir à bout de l'énigme :</p>
+					<p>@Messages("usedClues")</p>
 					<ul class="list-view">
 						@for(clue <- usedClues) {
 							@if(clue.isInstanceOf[FileClue]) {
@@ -49,7 +49,7 @@
 
 			<div class="other-clues summary">
 				@if(!otherClues.isEmpty()) {
-					<p>Ces indices étaient à votre disposition si vous n'y arriviez vraiment pas...</p>
+					<p>@Messages("unusedClues")</p>
 					<ul class="list-view">
 						@for(clue <- otherClues) {
 							@if(clue.isInstanceOf[FileClue]) {
@@ -68,9 +68,9 @@
 				}
 
 				@if(enigma.isLastEnigma()) {
-					<button type="submit" class="btn">Finir</button>
+					<button type="submit" class="btn">@Messages("ending")</button>
 				} else {
-					<button type="submit" class="btn">&Eacute;nigme suivante</button>
+					<button type="submit" class="btn">@Messages("nextEnigma")</button>
 				}
 			</form>
 		</div>

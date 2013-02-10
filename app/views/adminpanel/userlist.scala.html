@@ -16,14 +16,14 @@
 							<span>@user.getLoginName()</span>
 						</div>
 					</div>
-					<div>Inscrit le @user.getInscriptionDate()</div>
+					<div>@Messages("inscripDate", user.getInscriptionDate())</div>
 				}
 			</div>
 		}
 		</div>
 	} else { 
 		<div class="span12">
-			<p>Aucun utilisateur.</p>
+			<p>@Messages("noUser")</p>
 		</div>
 	}
 }

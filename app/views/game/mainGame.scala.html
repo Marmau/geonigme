@@ -27,9 +27,9 @@
 					@if(UserRepository.isLogged()) {
 						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserRepository.getLoggedUser().getLoginName()<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="@routes.GameController.home()">Jouer</a></li>
-							<li><a href="@routes.ManagerController.dashboard()">Tableau de bord</a></li>
-							<li><a href="@routes.UserController.logout()">Déconnexion</a></li>
+							<li><a href="@routes.GameController.home()">@Messages("play")</a></li>
+							<li><a href="@routes.ManagerController.dashboard()">@Messages("dashboard")</a></li>
+							<li><a href="@routes.UserController.logout()">@Messages("deco")</a></li>
 						</ul>
 					}
 				</div>

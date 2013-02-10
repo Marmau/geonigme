@@ -8,8 +8,8 @@
 			@helper.form(action = routes.AdminPanelController.submitHuntEditForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {
 				@dashboard.includeFormHunt(formHunt)
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.AdminPanelController.huntlist()">Annuler</a>
-					<button type="submit" class="btn pushable">Enregistrer</button>
+					<a class="btn pushable" href="@routes.AdminPanelController.huntlist()">@Messages("cancel")</a>
+					<button type="submit" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>

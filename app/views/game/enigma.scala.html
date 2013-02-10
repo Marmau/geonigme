@@ -46,7 +46,7 @@
 						<!-- image -->
 							<!--  @if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {-->
 							<li class="clue">
-								<button type="button" id="display-picture" class="btn">Afficher l'image</button>
+								<button type="button" id="display-picture" class="btn">@Messages("affImg")</button>
 								<div id="display-hide-picture" class="hide"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></div>
 							</li>
 							<!-- }-->

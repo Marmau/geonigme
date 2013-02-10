@@ -8,20 +8,20 @@
 		<div class="span4">
 			@helper.form(action = routes.AdminPanelController.submitUserEditForm(user.getId()), 'id -> "edit-user", 'class -> "form-horizontal") {
 				<div class="control-group">
-					<label class="control-label" for="name-role">Rôle</label>
+					<label class="control-label" for="name-role">@Messages("role")</label>
 					<div class="controls">
 						<div class="select" id="name-role">
 							<select name="@formUser("roleName").name">
 								@for(role <- Role.getAll()) {
-								<option value="@role.getName()" @if( formUser("roleName").value == role.getName() ) { selected } >@role.getLabel()</option>
+								<option value="@role.getName()" @if( formUser("roleName").value == role.getName() ) { selected } >@Messages(role.getName())</option>
 								}
 							</select>
 						</div>
 					</div>
 				</div>
 				<div class="form-actions">
-					<a class="btn pushable" href="@routes.AdminPanelController.userlist()">Annuler</a>
-					<button type="submit" class="btn pushable">Enregistrer</button>
+					<a class="btn pushable" href="@routes.AdminPanelController.userlist()">@Messages("cancel")</a>
+					<button type="submit" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
 		</div>
