@@ -29,12 +29,12 @@ public class HuntEditPage extends DashboardPage {
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
 		// The show page
-		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Should be a
-																	// copy
+		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Clone
+		p2.setLabel(hunt.getLabel());
 		p2.setMyParameters(hunt);
 
 		// This edit page
-		HuntEditPage p3 = (HuntEditPage) menu.getPage(name);// Should be a copy
+		HuntEditPage p3 = (HuntEditPage) menu.getPage(name);// Clone
 		p3.setMyParameters(hunt);
 	}
 

@@ -25,9 +25,9 @@ public class HuntShowPage extends DashboardPage {
 
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
-		HuntShowPage p = (HuntShowPage) menu.getPage(name);// Should be a copy
+		HuntShowPage p = (HuntShowPage) menu.getPage(name);// Clone
 		p.setMyParameters(hunt);
-		p.setTitle(hunt.getLabel() + " |<span class=\"small\">" + hunt.getStringLevel() + "</span>");
+		p.setLabel(hunt.getLabel() + " |<span class=\"small\">" + hunt.getStringLevel() + "</span>");
 	}
 
 	@Override

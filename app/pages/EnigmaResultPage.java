@@ -1,5 +1,6 @@
 package pages;
 
+import play.i18n.Messages;
 import models.Enigma;
 
 public class EnigmaResultPage extends EnigmaPlayPage {
@@ -17,8 +18,7 @@ public class EnigmaResultPage extends EnigmaPlayPage {
 	public void setMenuParameters(Enigma enigma) {
 		super.setMenuParameters(enigma);
 		// This play page
-		EnigmaResultPage p4 = (EnigmaResultPage) menu.getPage(3);// Should be a
-																	// copy
-		p4.setTitle("Résumé de l'énigme " + enigma.getNumber());
+		EnigmaResultPage p4 = (EnigmaResultPage) menu.getPage(3);// Clone
+		p4.setLabel(Messages.get("pages.enigmaSummary", enigma.getNumber()));
 	}
 }

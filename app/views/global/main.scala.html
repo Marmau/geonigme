@@ -6,8 +6,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Géonigme - @page.getTitle()</title>
+		<title>@Messages("applicationName") - @page.getTitle()</title>
 		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
@@ -40,7 +41,7 @@
 			</div>
 			<footer data-role="footer" class="container-fluid">
 				<div class="row-fluid">
-					<p class="copyright"><strong>Géonigme</strong> - &copy; copyright 2012-2013
+					<p class="copyright"><strong>@Messages("applicationName")</strong> - &copy; copyright 2012-2013
 				</div>
 			</footer>
 		</div>

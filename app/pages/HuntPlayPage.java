@@ -30,9 +30,9 @@ public class HuntPlayPage extends GamePage {
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
 		// This play page
-		HuntPlayPage p2 = (HuntPlayPage) menu.getPage(name);// Should be a copy
+		HuntPlayPage p2 = (HuntPlayPage) menu.getPage(name);// Clone
 		p2.setMyParameters(hunt);
-		p2.setTitle(hunt.getLabel());
+		p2.setLabel(hunt.getLabel());
 	}
 
 	@Override
