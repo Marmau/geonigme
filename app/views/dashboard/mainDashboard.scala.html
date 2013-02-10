@@ -1,10 +1,11 @@
-@(title: String, start: String = "")(content: Html)
+@(title: String, start: String = "")(nav: Html)(content: Html)
 
 @import _root_.forms._
 @import controllers._
 @import _root_.repository._
 
 <!DOCTYPE html>
+
 <html>
 	<head>
 		<title>Géonigme - @title</title>
@@ -17,24 +18,27 @@
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/styles.min.css")">
 		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 
-		<script data-main="@routes.Assets.at("javascripts/app")" src="@routes.Assets.at("javascripts/require.min.js")" type="text/javascript" data-start="@start"></script>
+		<script src="@routes.Assets.at("javascripts/require.min.js")" data-main="@routes.Assets.at("javascripts/app")" type="text/javascript" data-start="@start"></script>
 	</head>
-	<body class="game">
+	<body class="dashboard">
 		<div data-role="page">
 			<header data-role="header">
 				<div class="background"></div>
 				<div class="btn-group user-menu">
-					@if(UserRepository.isLogged()) {
-						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserRepository.getLoggedUser().getLoginName()<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="@routes.GameController.home()">@Messages("play")</a></li>
-							<li><a href="@routes.ManagerController.dashboard()">@Messages("dashboard")</a></li>
-							<li><a href="@routes.UserController.logout()">@Messages("deco")</a></li>
-						</ul>
-					}
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserRepository.getLoggedUser().getLoginName()<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="@routes.GameController.home()">@Messages("play")</a></li>
+						<li><a href="@routes.ManagerController.dashboard()">@Messages("dashboard")</a></li>
+						<li><a href="@routes.UserController.logout()">@Messages("deco")</a></li>
+					</ul>
 				</div>
 			</header>
 			<div data-role="content" class="container-fluid">
+				<div class="row-fluid">
+					<nav>
+						@nav
+					</nav>
+				</div>
 				@content
 			</div>
 			<footer data-role="footer" class="container-fluid">
@@ -43,6 +47,5 @@
 				</div>
 			</footer>
 		</div>
-		<div id="spinner" class="hide"></div>
 	</body>
 </html>

@@ -6,9 +6,9 @@
 
 @createCheckAnswerButton(answer: Answer) = {
 	@if(answer.isInstanceOf[TextAnswer]) {
-		<button class="btn" id="check-answer" data-type-answer="text">Vérifiez votre réponse</button>
+		<button class="btn" id="check-answer" data-type-answer="text">@Messages("verifAnswer")</button>
 	} else {
-		<button class="btn" id="check-answer" data-type-answer="geolocated">Vérifiez votre position</button>
+		<button class="btn" id="check-answer" data-type-answer="geolocated">@Messages("verifPosition")</button>
 	}
 }
 
@@ -22,13 +22,13 @@
 			<div class="form-horizontal" data-check-action="@routes.GameController.checkAnswer()" id="form-check-answer">
 				@if(enigma.getAnswer().isInstanceOf[models.TextAnswer]) {
 					<div class="control-group">
-						<label class="control-label" for="answer-text">Votre réponse</label>
+						<label class="control-label" for="answer-text">@Messages("yourAnswer")</label>
 						<div class="controls">
 							<input class="span12" type="text" id="answer-text" name="text" value="" />
 						</div>
 					</div>
 				} else {
-					<blockquote>Vous devez vous rendre à l'emplacement que vous indique l'énigme. Une fois que vous pensez être au bon endroit, vérifiez votre réponse !</blockquote>
+					<blockquote>@Messages("checkPositionTip")</blockquote>
 				}
 				
 				<div class="actions">
@@ -46,14 +46,14 @@
 						<!-- image -->
 							@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {
 							<li class="clue">
-								<button type="button" class="display-picture btn">Afficher l'image</button>
+								<button type="button" class="display-picture btn">@Messages("affImg")</button>
 								<div class="hide display-hide-picture"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></div>
 							</li>
 							}
 						<!-- son -->
 						@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("sound")) {
 							<li class="clue">
-								<button type="button" class="display-sound btn">Ecouter le son</button>
+								<button type="button" class="display-sound btn">@Messages("listen")</button>
 								<div class="hide display-hide-sound">
 									<audio preload="auto" controls="" tabindex="0">
    										<source src="@clue.asInstanceOf[models.FileClue].getFile()" type="audio/mpeg">
@@ -73,16 +73,26 @@
 				<div id="template-picture-clue" class="hide">
 				<!-- image first view -->
 					<li class="clue">
+<<<<<<< HEAD
 						<button type="button" id="display-picture" class="btn">Afficher l'image</button>
 						<div class="hide display-hide-picture"><img alt="__description__" src="__file__" /></div>
+=======
+						<button type="button" id="display-picture" class="btn">@Messages("affImg")</button>
+						<div id="display-hide-picture2" class="hide"><img alt="__description__" src="__file__" /></div>
+>>>>>>> 5df2defc2d1ff63614df7f3b920b426d3a99c3f0
 					</li>
 				</div>
 				
 				<div id="template-sound-clue" class="hide">
 				<!-- son -->
 					<li class="clue">
+<<<<<<< HEAD
 						<button type="button" id="display-sound" class="btn">Ecouter le son</button>
 						<div class="hide display-hide-sound">
+=======
+						<button type="button" id="display-sound" class="btn">@Messages("listen")</button>
+						<div id="display-hide-sound2" class="hide">
+>>>>>>> 5df2defc2d1ff63614df7f3b920b426d3a99c3f0
 						<audio preload="auto" controls="" tabindex="0">
    							<source src="__file__" type='audio/mpeg; codecs="mp3"'>
    						</audio>
@@ -90,11 +100,11 @@
 					</li>
 				</div>
 
-				@if(enigma.getClues().isEmpty) {
-					<p>Dur dur... Il n'y aucun indice pour vous aider...</p>
+				@if(enigma.getClues().isEmpty()) {
+					<p>@Messages("noGameClues")</p>
 				} else {
-					@if(clues.isEmpty) {
-						<p id="no-clues">Vous n'avez pas affiché d'indices pour le moment</p>
+					@if(clues.isEmpty()) {
+						<p id="no-clues">@Messages("cluesNotShown")</p>
 					}
 				}
 
@@ -103,7 +113,7 @@
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />
 						}
-						<button type="submit" class="btn">Afficher un nouvel indice</button>
+						<button type="submit" class="btn">@Messages("showClue")</button>
 					</form>
 				}
 
@@ -112,9 +122,9 @@
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />
 						}
-						<button type="submit" class="btn btn-danger">Passer</button>
+						<button type="submit" class="btn btn-danger">@Messages("passer")</button>
 					</form>
-					<p id="info-pass" class="danger">Vous n'arrivez pas à résoudre l'énigme ? Passez...</p>
+					<p id="info-pass" class="danger">@Messages("EnigmaTooHard")</p>
 				</div>
 			</div>
 

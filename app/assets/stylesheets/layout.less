@@ -404,6 +404,14 @@ nav {
         padding: 0px;
         margin: 0px;
 
+        li:not(.selected) a {
+            &:active, &:focus {
+                    position: relative;
+                    top: 2px;
+                    outline: none;
+                }
+        }
+
         li {
             margin-right: 20px;
             color: @colorGreen;
@@ -438,12 +446,6 @@ nav {
             a {
                 text-decoration: none;
                 color: inherit;
-
-                &:active, &:focus {
-                    position: relative;
-                    top: 2px;
-                    outline: none;
-                }
 
                 &:hover {
                     color: inherit;

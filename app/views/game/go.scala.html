@@ -5,36 +5,35 @@
 @import _root_.global._
 
 @global.main() {
-
 	<blockquote>
 		@step.getDescription()
 	</blockquote>
 	<div id="follow">
-		<p>Pour démarrer la première énigme, vous devez vous rendre au point indiqué sur la carte. Vous pouvez suivre l'itinéraire suivant :</p>
+		<p>@Messages("follow")</p>
 
 		<ul class="list-view itinerary">
-			<li>Calcul de l'itinéraire en cours...</li>
+			<li>@Messages("routCalcul")</li>
 		</ul>
 
 		<div class="template hide">
 			<div class="pedestrian">
-				<img alt="walk" src="@routes.Assets.at("images/pedestrian.png")" /> Marcher jusqu'à l'arrêt <strong>__stop__</strong> de la <strong>Ligne __line__</strong> du __type__
+				<img alt="walk" src="@routes.Assets.at("images/pedestrian.png")" /> @Messages("marche1") <strong>__stop__</strong> @Messages("marche2") <strong>__line__</strong> @Messages("marche3") __type__
 			</div>
 
 			<div class="bus">
-				<img alt="bus" src="@routes.Assets.at("images/bus.png")" /> Prendre le bus de la <strong>Ligne __line__</strong> en direction de <strong>__target__</strong>
+				<img alt="bus" src="@routes.Assets.at("images/bus.png")" /> @Messages("bus1") <strong> __line__</strong> @Messages("bus2") <strong>__target__</strong>
 			</div>
 
 			<div class="tram">
-				<img alt="tram" src="@routes.Assets.at("images/tram.png")" /> Prendre le tram de la <strong>Ligne __line__</strong> en direction de <strong>__target__</strong>
+				<img alt="tram" src="@routes.Assets.at("images/tram.png")" /> @Messages("tram") <strong> __line__</strong> @Messages("bus2") <strong>__target__</strong>
 			</div>
 
 			<div class="exit">
-				<img alt="exit" src="@routes.Assets.at("images/exit.png")" /> Descendre à l'arrêt <strong>__stop__</strong>
+				<img alt="exit" src="@routes.Assets.at("images/exit.png")" /> @Messages("takeStop") <strong>__stop__</strong>
 			</div>
 
 			<div class="target">
-				<img alt="target" src="@routes.Assets.at("images/target.png")" /> Dirigez-vous jusqu'au point d'arrivée
+				<img alt="target" src="@routes.Assets.at("images/target.png")" /> @Messages("goEnd")
 			</div>
 		</div>
 	</div>
@@ -42,14 +41,14 @@
 	<div class="map" id="go-map" data-target="@step.getPosition().toTemplateString()" data-target-accuracy="@step.getPosition().getAccuracy()" data-ws="@routes.MapController.routing()"></div>
 
 	<div class="actions">
-		<button id="im-there" class="btn btn-danger">J'y suis !</button>
-		<div id="play-step-disabled" class="btn disabled">Jouer</div>
+		<button id="im-there" class="btn btn-danger">@Messages("here")</button>
+		<div id="play-step-disabled" class="btn disabled">@Messages("play")</div>
 		<form method="POST" action="@routes.GameController.startStep()" class="hide" id="play-step">
 			@defining(AuthenticationTokenGenerator.generate()) { token =>
 				<input type="hidden" name="token" value="@token" />
 			}
-			<button type="submit" class="btn" class="btn">Jouer</button>
+			<button type="submit" class="btn" class="btn">@Messages("play")</button>
 		</form>
-		<p id="info-not-here" class="danger">Vous n'êtes pas géolocalisé sur le lieu du rendez-vous. Malgré tout, nous vous permettons de commencer la chasse si vous certifiez que vous y êtes.</p>
+		<p id="info-not-here" class="danger">@Messages("notGoodGeo")</p>
 	</div>
 }
