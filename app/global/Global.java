@@ -97,15 +97,12 @@ public class Global extends GlobalSettings {
 
 			// Home Pages
 			new HomePage("home", "Découvrir", routes.ApplicationController.index(), "home");
-			new HomePage("login", "Se connecter", routes.UserController.login(), "");// And
-																						// register
-																						// page
+			new HomePage("login", "Se connecter", routes.UserController.login(), "");// And register page
 			new HomePage("logout", "Déconnexion", routes.UserController.logout(), "");
 
 			// *** Static Menus ***
 			// Put all menus' configuration below
-			// Use an existing menu, declared in class Menu or use a dynamic
-			// one.
+			// Use an existing menu, declared in class Menu or use a dynamic one.
 			// If a page appears in several menus, you should set the isNavMenu
 			// parameter.
 
