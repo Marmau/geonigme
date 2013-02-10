@@ -35,7 +35,7 @@
 					@createCheckAnswerButton(enigma.getAnswer())
 				</div>
 
-				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size()">
+				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size">
 					@for(clue <- clues) {
 					<!-- texte -->
 						@if(clue.isInstanceOf[models.TextClue]) {
@@ -44,13 +44,23 @@
 						<!-- file -->
 						@if(clue.isInstanceOf[models.FileClue]) {
 						<!-- image -->
-							<!--  @if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {-->
+							@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {
 							<li class="clue">
 								<button type="button" id="display-picture" class="btn">@Messages("affImg")</button>
 								<div id="display-hide-picture" class="hide"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></div>
 							</li>
-							<!-- }-->
+							}
 						<!-- son -->
+						@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("sound")) {
+							<li class="clue">
+								<button type="button" id="display-sound" class="btn">@Messages("listen")</button>
+								<div id="display-hide-sound1" class="hide">
+									<audio preload="auto" controls="" tabindex="0">
+   										<source src="@clue.asInstanceOf[models.FileClue].getFile()" type="audio/mpeg">
+   									</audio>
+								</div>
+							</li>
+							}
 						}
 					}
 				</ul>
@@ -60,10 +70,23 @@
 				</div>
 				
 				
-				<div id="template-file-clue" class="hide">
+				<div id="template-picture-clue" class="hide">
+				<!-- image first view -->
 					<li class="clue">
-						<button type="button" id="display-picture" class="btn">Afficher l'image</button>
-						<div id="display-hide-picture" class="hide"><img alt="__description__" src="__file__" /></div>
+						<button type="button" id="display-picture" class="btn">@Messages("affImg")</button>
+						<div id="display-hide-picture2" class="hide"><img alt="__description__" src="__file__" /></div>
+					</li>
+				</div>
+				
+				<div id="template-sound-clue" class="hide">
+				<!-- son -->
+					<li class="clue">
+						<button type="button" id="display-sound" class="btn">@Messages("listen")</button>
+						<div id="display-hide-sound2" class="hide">
+						<audio preload="auto" controls="" tabindex="0">
+   							<source src="__file__" type='audio/mpeg; codecs="mp3"'>
+   						</audio>
+   						</div>
 					</li>
 				</div>
 
@@ -75,7 +98,7 @@
 					}
 				}
 
-				@if(clues.size() < enigma.getClues().size()) {
+				@if(clues.size < enigma.getClues().size) {
 					<form method="POST" action="@routes.GameController.clue()" id="next-clue">
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />
@@ -84,7 +107,7 @@
 					</form>
 				}
 
-				<div class="actions @displayIf(clues.size() < enigma.getClues().size(), "hide")" id="skip">
+				<div class="actions @displayIf(clues.size < enigma.getClues().size, "hide")" id="skip">
 					<form method="POST" action="@routes.GameController.skipEnigma()" id="skip-enigma">
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />

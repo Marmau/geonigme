@@ -3,14 +3,14 @@
 @import helpers._
 
 @global.main() {
-	<div class="row-fluid">
+	<div class="row-fluid hidden-phone">
 		<div class="span4">
 			@helper.form(action = routes.EnigmaController.submitUpdateForm(enigma.getId()), 
 				'id -> "create-enigma", 
 				'class -> "form-horizontal",
 				Symbol("data-area") -> enigma.getStep().getHunt().getArea().toTemplateString(),
 				Symbol("data-start-position") -> enigma.getStep().getPosition().toTemplateString(),
-				Symbol("data-start-accuracy") -> Float.toString(enigma.getStep().getPosition().getAccuracy())) {
+				Symbol("data-start-accuracy") -> enigma.getStep().getPosition().getAccuracy().toString()) {
 				@includeFormEnigma(formEnigma)
 				<div class="form-actions">
 					<a class="btn pushable" href="@routes.HuntController.show(enigma.getStep().getHunt().getId())">@Messages("cancel")</a>
@@ -23,6 +23,11 @@
 			@includes.map("enigma-map")
 		</div>
 	</div>
+
+	<div class="row-fluid visible-phone">
+		@Messages("tooSmallResolution")
+	</div>
+
 
 	@includeHiddenFormEnigma(formEnigma)
 }

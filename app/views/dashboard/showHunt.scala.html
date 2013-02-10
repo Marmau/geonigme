@@ -3,12 +3,12 @@
 @import helpers._
 @import models._
 
-@displayTextAnswers(labels: Set[String]) = @{
+@displayTextAnswers(labels: java.util.Set[String]) = @{
 	var result: String = ""
-	var iterator = labels.iterator()
+	var iterator = labels.iterator
 
 	result += iterator.next()
-	while (iterator.hasNext()) {
+	while (iterator.hasNext) {
 		result += ", " + iterator.next()
 	}
 
@@ -27,8 +27,8 @@
 	}
 }
 
-@displayClues(clues: List[Clue]) = {
-	@if(clues.isEmpty()) {
+@displayClues(clues: java.util.List[Clue]) = {
+	@if(clues.isEmpty) {
 		<h3>@Messages("noClues")</h3>
 	} else {
 		@for(clue <- clues) {
@@ -55,20 +55,20 @@
 	var result = ""
 	if (answer.isInstanceOf[GeolocatedAnswer]) {
 		var ga = answer.asInstanceOf[GeolocatedAnswer]
-		result = " data-answer-position=" + ga.getPosition().toTemplateString() + " data-answer-accuracy=" + Float.toString(ga.getPosition().getAccuracy())
+		result = " data-answer-position=" + ga.getPosition().toTemplateString() + " data-answer-accuracy=" + ga.getPosition().getAccuracy().toString()
 	} 
 
 	result
 }
 
 @displayDataStep(step: Step) = @{
-	var result = " data-start-position=" + step.getPosition().toTemplateString() + " data-start-accuracy=" + Float.toString(step.getPosition().getAccuracy())
+	var result = " data-start-position=" + step.getPosition().toTemplateString() + " data-start-accuracy=" + step.getPosition().getAccuracy().toString()
 
 	result
 }
 
 @global.main() {
-	<div class="row-fluid">
+	<div class="row-fluid hidden-phone">
 		<div class="span4" id="show-hunt" data-area-hunt="@hunt.getArea().toTemplateString()">
 			<section class="hunt">
 				<div id="tags-hunt">
@@ -89,7 +89,7 @@
 				<div class="actions">
 					<a href="@routes.StepController.create(hunt.getId())" class="action add-step">@Messages("addStep")</a>
 				</div>
-				@if(hunt.getSteps().isEmpty()) {
+				@if(hunt.getSteps().isEmpty) {
 					<a class="underline" href="@routes.StepController.create(hunt.getId())" class="no-step">@Messages("noSteps")</a>
 				} else {
 					<div class="select" id="select-step">
@@ -112,7 +112,7 @@
 									<a href="@routes.EnigmaController.create(step.getId())" class="action">@Messages("addEnigma")</a>
 								</div>
 								<div class="accordion accordion-enigmas" id="accordion@step.getNumber()-enigmas">
-									@if(step.getEnigmas().isEmpty()) {
+									@if(step.getEnigmas().isEmpty) {
 										<a class="underline" href="@routes.EnigmaController.create(step.getId())" class="no-enigma">@Messages("noEnigma")</a>
 									} else {
 										@for(enigma <- step.getEnigmas()) {
@@ -154,5 +154,9 @@
 		<div class="span8">
 			@includes.map("show-hunt-map")
 		</div>
+	</div>
+	
+	<div class="row-fluid visible-phone">
+		@Messages("tooSmallResolution")
 	</div>
 }

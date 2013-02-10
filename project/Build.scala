@@ -22,5 +22,3 @@ object ApplicationBuild extends Build {
     coffeescriptOptions := Seq()
   )
 }
-
-

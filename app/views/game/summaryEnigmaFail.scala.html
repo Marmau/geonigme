@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="clue summary">
-				@if(!enigma.getClues().isEmpty()) {
+				@if(!enigma.getClues().isEmpty) {
 					<p>@Messages("enigmaClues")</p>
 					<ul class="list-view">
 						@for(clue <- enigma.getClues()) {

@@ -1,7 +1,7 @@
 require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers, Icons) ->
 
 	containerMap = $('#go-map')
-	containerMap.height(containerMap.width() / 2)
+	containerMap.height(Math.min(containerMap.width() / 2, 400))
 	map = new BaseMap(containerMap)
 
 	stopLayers = new L.LayerGroup()

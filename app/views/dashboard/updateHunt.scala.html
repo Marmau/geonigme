@@ -3,7 +3,7 @@
 @import helpers._
 
 @global.main() {
-	<div class="row-fluid">
+	<div class="row-fluid hidden-phone">
 		<div class="span4">
 			@helper.form(action = routes.HuntController.submitUpdateForm(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {
 				@includeFormHunt(formHunt)
@@ -18,5 +18,9 @@
 			@includes.map("hunt-map")
 		</div>
 
+	</div>
+	
+	<div class="row-fluid visible-phone">
+		@Messages("tooSmallResolution")
 	</div>
 }

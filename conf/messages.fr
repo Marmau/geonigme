@@ -156,3 +156,5 @@ developer=développeur
 noHunt=Aucune chasse
 inscripDate=Inscrit le {0}
 noUser=Aucun utilisateur
+tooSmallResolution=Votre écran est trop petit pour pouvoir afficher cette page !
+listen=Ecouter le son

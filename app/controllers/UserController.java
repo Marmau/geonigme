@@ -7,7 +7,6 @@ import global.Sesame;
 
 import java.io.StringWriter;
 
-import models.Role;
 import models.User;
 
 import org.openrdf.query.QueryLanguage;
@@ -27,6 +26,7 @@ import org.openrdf.rio.RDFWriter;
 
 import play.data.Form;
 import play.mvc.*;
+import repository.RoleRepository;
 import repository.UserRepository;
 
 public class UserController extends Controller {
@@ -93,7 +93,7 @@ public class UserController extends Controller {
 			newUser.setLastLoginTime(now);
 			newUser.setLoginName(form.pseudonym);
 			newUser.setMail(form.email);
-			newUser.setRole(Role.MEMBER);
+			newUser.setRole(RoleRepository.MEMBER);
 			newUser.setPasswordSha1Hash(DigestUtils.sha256Hex(form.password));
 
 			String uid = newUser.getLoginName().toLowerCase();

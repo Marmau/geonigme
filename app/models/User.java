@@ -13,6 +13,8 @@ import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
 
+import repository.RoleRepository;
+
 @Iri(NS.USER + "User")
 public class User implements RDFObject {
 
@@ -33,8 +35,9 @@ public class User implements RDFObject {
 	@Iri(NS.USER + "role")
 	public Role getRole() {
 		if (role == null) {// Lazy loading
-			setRole(Role.MEMBER);
+			setRole(RoleRepository.MEMBER);
 		}
+		
 		return role;
 	}
 
