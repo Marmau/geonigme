@@ -1,7 +1,7 @@
 require ['maps/base_map', 'helpers', 'leaflet'], (BaseMap, Helpers) ->
 
 	containerMap = $('#presentation-game-hunt')
-	containerMap.height(containerMap.width() / 1.5)
+	containerMap.height(Math.min(containerMap.width() / 2, 400))
 
 	map = new BaseMap containerMap
 

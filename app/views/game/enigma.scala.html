@@ -6,9 +6,9 @@
 
 @createCheckAnswerButton(answer: Answer) = {
 	@if(answer.isInstanceOf[TextAnswer]) {
-		<button class="btn" id="check-answer" data-type-answer="text">@Messages("verifAnswer")</button>
+		<button class="btn" id="check-answer" data-type-answer="text">@Messages("checkAnswer")</button>
 	} else {
-		<button class="btn" id="check-answer" data-type-answer="geolocated">@Messages("verifPosition")</button>
+		<button class="btn" id="check-answer" data-type-answer="geolocated">@Messages("checkPosition")</button>
 	}
 }
 
@@ -35,7 +35,7 @@
 					@createCheckAnswerButton(enigma.getAnswer())
 				</div>
 
-				<ul data-role="listview" id="clues-list" class="list-view" data-number="@enigma.getClues().size">
+				<ul id="clues-list" class="list-view" data-number="@enigma.getClues().size">
 					@for(clue <- clues) {
 					<!-- texte -->
 						@if(clue.isInstanceOf[models.TextClue]) {
@@ -46,15 +46,19 @@
 						<!-- image -->
 							@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {
 							<li class="clue">
-								<button type="button" class="display-picture btn">@Messages("affImg")</button>
-								<div class="hide display-hide-picture"><img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" /></div>
+								<p>@clue.getDescription()</p>
+								<button type="button" class="display-picture btn" data-hide="@Messages("hideImg")" data-show="@Messages("displayImg")">@Messages("displayImg")</button>
+								<div class="hide display-hide-picture picture-clue">
+									<img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" />
+								</div>
 							</li>
 							}
 						<!-- son -->
 						@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("sound")) {
 							<li class="clue">
+								<p>@clue.getDescription()</p>
 								<button type="button" class="display-sound btn">@Messages("listen")</button>
-								<div class="hide display-hide-sound">
+								<div class="hide display-hide-sound pagination-centered">
 									<audio preload="auto" controls="" tabindex="0">
    										<source src="@clue.asInstanceOf[models.FileClue].getFile()" type="audio/mpeg">
    									</audio>
@@ -73,19 +77,23 @@
 				<div id="template-picture-clue" class="hide">
 				<!-- image first view -->
 					<li class="clue">
-						<button type="button" id="display-picture" class="btn">@Messages("affImg")</button>
-						<div class="hide display-hide-picture"><img alt="__description__" src="__file__" /></div>
+						<p>__description__</p>
+						<button type="button" class="btn display-picture" data-hide="@Messages("hideImg")" data-show="@Messages("displayImg")">@Messages("displayImg")</button>
+						<div class="hide display-hide-picture picture-clue">
+							<img alt="__description__" />
+						</div>
 					</li>
 				</div>
 				
 				<div id="template-sound-clue" class="hide">
 				<!-- son -->
 					<li class="clue">
-						<button type="button" id="display-sound" class="btn">@Messages("listen")</button>
+						<p>__description__</p>
+						<button type="button" class="btn display-sound">@Messages("listen")</button>
 						<div class="hide display-hide-sound">
-						<audio preload="auto" controls="" tabindex="0">
-   							<source src="__file__" type='audio/mpeg; codecs="mp3"'>
-   						</audio>
+							<audio preload="auto" controls="" tabindex="0">
+	   							<source type='audio/mpeg'>
+	   						</audio>
    						</div>
 					</li>
 				</div>
@@ -112,9 +120,9 @@
 						@defining(AuthenticationTokenGenerator.generate()) { token =>
 							<input type="hidden" name="token" value="@token" />
 						}
-						<button type="submit" class="btn btn-danger">@Messages("passer")</button>
+						<button type="submit" class="btn btn-danger">@Messages("skip")</button>
 					</form>
-					<p id="info-pass" class="danger">@Messages("EnigmaTooHard")</p>
+					<p id="info-pass" class="danger">@Messages("enigmaTooHard")</p>
 				</div>
 			</div>
 
