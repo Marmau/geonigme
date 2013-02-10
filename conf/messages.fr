@@ -97,7 +97,6 @@ contact=Contactez-nous
 yourmail=votre adresse courriel
 yourrequest=votre message...
 send=Envoyer
-=======
 newEnigma=Nouvelle énigme
 newStep=Nouvelle étape
 newHunt=Nouvelle chasse
