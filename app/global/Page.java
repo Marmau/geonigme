@@ -2,11 +2,9 @@ package global;
 
 import java.util.Hashtable;
 
-import forms.ContactUs;
-
 import play.api.mvc.Call;
 import play.api.templates.Html;
-import play.data.Form;
+import play.i18n.Messages;
 import repository.UserRepository;
 
 import models.Right;
@@ -17,8 +15,8 @@ public class Page implements MenuItem {
 	private static Hashtable<String, Page> instances = new Hashtable<String, Page>();
 
 	/*
-	 * // Don't make a copy of child classes. public static Page getCopy(String
-	 * pageName) throws Exception { return new Page(get(pageName)); }
+	// Don't make a copy of child classes.
+	public static Page getCopy(String pageName) throws Exception { return new Page(get(pageName)); }
 	 */
 
 	public static Page get(String pageName) throws Exception {
@@ -42,10 +40,9 @@ public class Page implements MenuItem {
 		}
 		return page.getReachableUrl();
 	}
-
-	// HashMap<String, Page> instances = new HashMap<String, Page>();
-
+	
 	protected String title;
+	protected String label;
 	protected String name;
 	protected Call route;
 	protected Right accessRight;
@@ -140,8 +137,13 @@ public class Page implements MenuItem {
 		return title;
 	}
 
+	public void setLabel(String label) {
+		this.label = label;
+	}
+	
 	public Html getLabel() {
-		return new Html(title);
+		// Should use "pages."+name with i18n, else title.
+		return new Html(( label != null ) ? label : Messages.get("pages."+name));
 	}
 
 	public String getName() {
@@ -153,21 +155,10 @@ public class Page implements MenuItem {
 	}
 
 	public String getUrl() {
-		/*
-		 * if( getRoute() != null ) {
-		 * System.out.println("Route of "+getName()+" is NOT null"); } else {
-		 * System.out.println("Route of "+getName()+" IS NULL"); }
-		 */
 		return (getRoute() != null) ? getRoute().url() : "";
 	}
 
 	public String getReachableUrl() {
-		/*
-		 * if( userCanAccess() ) {
-		 * System.out.println("User can access to page "+getName()); } else {
-		 * System.out.println("User can NOT access to page "+getName()); }
-		 * System.out.println("URL is "+getUrl());
-		 */
 		return (userCanAccess()) ? getUrl() : "";
 	}
 
@@ -184,9 +175,5 @@ public class Page implements MenuItem {
 
 	public boolean equals(Object other) {
 		return equals((Page) other);
-	}
-	
-	public Form<ContactUs> getFormContact() {
-		return new Form<>(ContactUs.class);
 	}
 }

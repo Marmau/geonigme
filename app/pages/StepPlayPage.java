@@ -5,6 +5,7 @@ import models.Hunt;
 import models.Step;
 import controllers.routes;
 import play.api.mvc.Call;
+import play.i18n.Messages;
 
 public class StepPlayPage extends GamePage {
 
@@ -24,15 +25,14 @@ public class StepPlayPage extends GamePage {
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Step step) {
 		// This play page
-		StepPlayPage p3 = (StepPlayPage) menu.getPage(name);// Should be a copy
-		p3.setTitle("Étape " + step.getNumber());
+		StepPlayPage p3 = (StepPlayPage) menu.getPage(name);// Clone
+		p3.setLabel(Messages.get("pages.enigmaNumbered", step.getNumber()));
 
 		// The hunt play page
 		Hunt hunt = step.getHunt();
-		HuntPlayPage p2 = (HuntPlayPage) menu.getPage("huntplay");// Should be a
-																	// copy
+		HuntPlayPage p2 = (HuntPlayPage) menu.getPage("huntplay");// Clone
 		p2.setMyParameters(hunt);
-		p2.setTitle(hunt.getLabel());
+		p2.setLabel(hunt.getLabel());
 	}
 
 	@Override

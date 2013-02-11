@@ -4,7 +4,7 @@
 	@for( item <- menu.getItems() ) {
 		@if( item.userCanAccess() ) {
 		<li class="@if( item.equals(currentItem) ) { selected }">
-			<a href="@item.getUrl()">@Messages(item.getName())</a>
+			<a href="@item.getUrl()">@item.getLabel()</a>
 		</li>
 		}
 	}

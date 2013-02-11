@@ -28,9 +28,7 @@ public class AdminHuntEditPage extends AdminPanelPage {
 
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
-		AdminHuntEditPage p = (AdminHuntEditPage) menu.getPage(name);// Should
-																		// be a
-																		// copy
+		AdminHuntEditPage p = (AdminHuntEditPage) menu.getPage(name);// Clone
 		p.setMyParameters(hunt);
 	}
 

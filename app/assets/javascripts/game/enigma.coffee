@@ -34,19 +34,20 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 
 				answer = position.coords.latitude + ',' + position.coords.longitude
 				checkAnswer(answer, type)
-				
-	$('.display-picture').click ->
+
+	$(document).on 'click', '.display-picture', ->
 		if $(this).siblings('.display-hide-picture').hasClass('hide')
 			$(this).siblings('.display-hide-picture').removeClass('hide')
+			$(this).html($(this).data('hide'))
 		else
 			$(this).siblings('.display-hide-picture').addClass('hide')
+			$(this).html($(this).data('show'))
 
-	$('.display-sound').click ->
+	$(document).on 'click', '.display-sound', ->
 		if $(this).siblings('.display-hide-sound').hasClass('hide')
 			$(this).siblings('.display-hide-sound').removeClass('hide')
 		else
 			$(this).siblings('.display-hide-sound').addClass('hide')
-
 
 	$('#next-clue').submit ->	
 		Spinner.start()
@@ -60,28 +61,19 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 			$('#no-clues').hide()
 			if data.file
 				if data.type == 'picture'
-					console.log(data.type)
 					li = $('#template-picture-clue').find('.clue').clone()
-					li.html(li.html().replace('__file__', data.file))
+					li.find('img').attr('alt', data.description)
+								.attr('src', data.file)
+					li.html(li.html().replace(/__description__/, data.description))
 					$('#clues-list').append(li)
-					$('#display-picture').click ->
-						if $(this).siblings('.display-hide-picture').hasClass('hide')
-							$(this).siblings('.display-hide-picture').removeClass('hide')
-						else
-							$(this).siblings('.display-hide-picture').addClass('hide')
 				else if data.type == 'sound'
-					console.log(data.type)
 					li = $('#template-sound-clue').find('.clue').clone()
-					li.html(li.html().replace('__file__', data.file))
+					li.find('audio source').attr('src', data.file)
+					li.html(li.html().replace(/__description__/, data.description))
 					$('#clues-list').append(li)
-					$('#display-sound').click ->
-						if $(this).siblings('.display-hide-sound').hasClass('hide')
-							$(this).siblings('.display-hide-sound').removeClass('hide')
-						else
-							$(this).siblings('.display-hide-sound').addClass('hide')
 			else
 				li = $('#template-clue').find('.clue').clone()
-				li.html(li.html().replace('__description__', data.description))
+				li.html(li.html().replace(/__description__/, data.description))
 				$('#clues-list').append(li)
 
 			if $('#clues-list > li').size() == $('#clues-list').data('number')
