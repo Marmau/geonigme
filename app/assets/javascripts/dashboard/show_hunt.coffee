@@ -32,8 +32,7 @@ require ['maps/poi_map', 'maps/icons', 'helpers', 'internationalization', 'fixed
 		fillColor: '#555555',
 		fillOpacity: 0.05
 	}).addTo(map)
-	str = Translation.get("huntArea")
-	areaHunt.bindPopup(str)
+	areaHunt.bindPopup(Translation.get("huntArea"))
 	map.fitBounds(bounds)
 
 	accordionEnigmas = container.find('.accordion-enigmas')

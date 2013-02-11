@@ -8,6 +8,9 @@
 	<label class="control-label" for="description-enigma">@Messages("enigmaLabel")</label>
 	<div class="controls">
 		<textarea class="span12" id="description-enigma" name="@formEnigma("description").name">@formEnigma("description").value</textarea>
+		@formEnigma("description").errors.map { error =>
+	        <p class="help-block error">@Messages(error.message)</p>
+	    }
 		<p class="help-block">@Messages("imagine")</p>
 	</div>
 </div>

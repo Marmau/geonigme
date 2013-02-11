@@ -10,7 +10,7 @@ public class Enigma {
 	@AuthenticationToken
 	public String token;
 
-	@Required(message = "Vous devez spécifier un énoncé à votre énigme.")
+	@Required(message = "enigmaNeedDescr")
 	public String description;
 
 	public Answer answer;

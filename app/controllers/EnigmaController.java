@@ -26,6 +26,7 @@ import org.openrdf.rio.RDFWriter;
 import pages.EnigmaCreatePage;
 import pages.EnigmaEditPage;
 import play.data.Form;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -104,7 +105,7 @@ public class EnigmaController extends Controller {
 			formEnigma.answer.type = forms.Enigma.Answer.TextAnswer;
 			formEnigma.answer.possibleTexts = new ArrayList<String>(a.getLabels());
 		} else {
-			throw new RuntimeException("Erreur dans la réponse");
+			throw new RuntimeException(Messages.get("wrongAnswer"));
 		}
 
 		formEnigma.clues = new ArrayList<forms.Enigma.Clue>();
@@ -120,7 +121,7 @@ public class EnigmaController extends Controller {
 				formClue.type = forms.Enigma.Clue.TextClue;
 				formClue.textDescription = c.getDescription();
 			} else {
-				throw new RuntimeException("Erreur dans l'indice");
+				throw new RuntimeException(Messages.get("wrongClue"));
 			}
 			formEnigma.clues.add(formClue);
 		}

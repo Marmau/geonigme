@@ -17,7 +17,7 @@
                     <div class="controls">
                         <input name="@formRegistration("pseudonym").name" id="registration-input-pseudonym" type="text" class="span12" value="@formRegistration("pseudonym").value" />
                         @formRegistration("pseudonym").errors.map { error =>
-                            <p class="help-block error">@error.message</p>
+                            <p class="help-block error">@Messages(error.message)</p>
                         }
                     </div>
                 </div>

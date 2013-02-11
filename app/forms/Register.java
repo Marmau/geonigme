@@ -9,7 +9,7 @@ public class Register {
 	public String token;
 
 	@Required
-	@LoginNotAlreadyUsed(message = "Ce pseudonyme est déjà utilisé.")
+	@LoginNotAlreadyUsed(message = "usedPseudo")
 	public String pseudonym;
 
 	@Required

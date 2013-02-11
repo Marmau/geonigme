@@ -6,9 +6,10 @@ import org.openrdf.repository.object.ObjectConnection;
 import forms.Constraints.AuthenticationToken;
 import global.Sesame;
 import play.data.validation.Constraints.Required;
+import play.i18n.Messages;
 
 public class Login {
-	public static final String ERROR = "Pseudonyme ou mot de passe invalide.";
+	public static final String ERROR = Messages.get("wrongLogin");
 
 	@AuthenticationToken
 	public String token;

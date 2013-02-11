@@ -1,4 +1,4 @@
-define ['maps/icons', 'leaflet'], (Icons) ->
+define ['maps/icons', 'internationalization','leaflet'], (Icons, Translation) ->
 	
 	Helpers = {}
 	
@@ -20,7 +20,7 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 			fillOpacity: '0.05'
 		})
 
-		rectangleArea.bindPopup('Zone de la chasse')
+		rectangleArea.bindPopup(Translation.get("huntArea"))
 
 		map.addLayer(rectangleArea)
 		map.fitBounds(bounds)
@@ -39,8 +39,8 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 			icon: Icons.greenFlagIcon,
 		})
 
-		marker.bindPopup('Départ de l\'étape')
-		circle.bindPopup('Départ de l\'étape')
+		marker.bindPopup(Translation.get("stepStart"))
+		circle.bindPopup(Translation.get("stepStart"))
 
 		map.addLayer(circle)
 		map.addLayer(marker)
@@ -64,8 +64,8 @@ define ['maps/icons', 'leaflet'], (Icons) ->
 			icon: Icons.redFlagIcon,
 		})
 
-		marker.bindPopup('Arrivée')
-		circle.bindPopup('Arrivée')
+		marker.bindPopup(Translation.get("end"))
+		circle.bindPopup(Translation.get("end"))
 
 		map.addLayer(circle)
 		map.addLayer(marker)

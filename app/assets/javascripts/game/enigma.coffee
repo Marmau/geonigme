@@ -1,4 +1,4 @@
-require ['helpers', 'spinner'], (Helpers, Spinner) ->
+require ['helpers', 'spinner', 'internationalization'], (Helpers, Spinner, Translation) ->
 
 	checkAnswer = (answer, type) ->
 		ws = $('#form-check-answer').data('check-action')
@@ -9,16 +9,16 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 			Spinner.stop()
 			if data
 				if type == 'text'
-					alert('Vous venez de trouvez la bonne réponse, vous pouvez continuer !')
+					alert(Translation.get("goodAnswer"))
 				else if type == 'geolocated'
-					alert('Vous êtes au bon endroit, vous pouvez continuer !')
+					alert(Translation.get("goodPlace"))
 				document.location.reload(true)
 			else 
 				$('#check-answer').removeClass('disabled')
 				if type == 'text'
-					alert('Ce n\'est pas la bonne réponse, mais persévérez, vous trouverez !')
+					alert(Translation.get("badAnswer"))
 				else if type == 'geolocated'
-					alert('Vous n\'êtes pas au bon endroit, continuez de chercher !')
+					alert(Translation.get("badPlace"))
 		
 	$('#check-answer').click ->
 		$(this).addClass('disabled')
@@ -86,4 +86,4 @@ require ['helpers', 'spinner'], (Helpers, Spinner) ->
 		return false
 
 	$('#skip-enigma').submit ->
-		return confirm('Voulez-vous vraiment passer cette énigme ?')
+		return confirm(Translation.get("passEnigma"))

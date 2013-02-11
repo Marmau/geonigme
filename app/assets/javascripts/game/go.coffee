@@ -1,4 +1,4 @@
-require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers, Icons) ->
+require ['maps/base_map', 'helpers', 'maps/icons', 'internationalization', 'leaflet'], (BaseMap, Helpers, Icons, Translation) ->
 
 	containerMap = $('#go-map')
 	containerMap.height(Math.min(containerMap.width() / 2, 400))
@@ -56,7 +56,7 @@ require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers
 			data = data.tc
 			geoJsonStops = new L.GeoJSON(data.stops, {
 				onEachFeature: (feature, layer) ->
-					popupContent = 'Arrêt : ' + feature.properties.name
+					popupContent = Translation.get("stop") + feature.properties.name
 					layer.bindPopup(popupContent)
 			})
 
@@ -89,7 +89,7 @@ require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers
 		startMarker = new L.Marker(startPosition, {
 			icon: Icons.greenFlagIcon
 		}).addTo(map)
-		startMarker.bindPopup('Départ')
+		startMarker.bindPopup(Translation.get("start"))
 
 		accuracyCircle = new L.Circle(targetPosition, targetAccuracy, {
 			color: '#B94A48',
@@ -103,7 +103,7 @@ require ['maps/base_map', 'helpers', 'maps/icons', 'leaflet'], (BaseMap, Helpers
 		targetMarker = new L.Marker(targetPosition, {
 			icon: Icons.redFlagIcon
 		}).addTo(map)
-		targetMarker.bindPopup('Arrivée')
+		targetMarker.bindPopup(Translation.get("end"))
 
 		drawTransport(startPosition, targetPosition)
 

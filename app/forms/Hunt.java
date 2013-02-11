@@ -9,15 +9,15 @@ public class Hunt {
 	@AuthenticationToken
 	public String token;
 
-	@MaxLength(value = 50, message = "Le nom de votre chasse ne peut dépasser 50 caractères.")
-	@Required(message = "Vous devez spécifier un nom à votre chasse.")
+	@MaxLength(value = 50, message = "nbMaxCharactersHunt")
+	@Required(message = "huntHaveName")
 	public String label;
 
 	@Required
 	public Integer level = 1;
 
-	@TagWellFormed(message = "Un tag n'est composé que de lettres, et ne dépasse pas 15 lettres.")
-	@MaxLength(value = 100, message = "Trop de tags.")
+	@TagWellFormed(message = "tagOnlyLetters")
+	@MaxLength(value = 100, message = "tooTags")
 	public String tags;
 
 	public String description;

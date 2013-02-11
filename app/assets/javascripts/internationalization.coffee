@@ -1,11 +1,11 @@
-define ['JSMessagesEN', 'JSMessagesFR'], (lang_en, lang_fr)->	
+define ['js_messages_en', 'js_messages_fr'], (LangEN, LangFR)->	
 	Translation = {}	
 	
 	Translation.get = (message) ->
 		if navigator.language >= "en"
-			return lang_en[message]
+			return LangEN[message]
 		else
-			return lang_fr[message]
+			return LangFR[message]
 		
 	return Translation
 			

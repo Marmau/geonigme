@@ -1,4 +1,4 @@
-define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
+define ['maps/base_map', 'maps/icons', 'internationalization', 'leaflet'], (BaseMap, Icons, Translation) ->
 	class PoiMap extends BaseMap
 		constructor: (element) ->
 			super element
@@ -7,22 +7,22 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 			@addControl(@layersControls)
 
 			@monumentsOverlay = new L.LayerGroup()
-			@layersControls.addOverlay(@monumentsOverlay, 'Monuments')
+			@layersControls.addOverlay(@monumentsOverlay, Translation.get("monuments"))
 
 			@treesOverlay = new L.LayerGroup()
-			@layersControls.addOverlay(@treesOverlay, 'Arbres')
+			@layersControls.addOverlay(@treesOverlay, Translation.get("trees"))
 
 			@greenSpacesOverlay = new L.LayerGroup()
-			@layersControls.addOverlay(@greenSpacesOverlay, 'Espaces verts')
+			@layersControls.addOverlay(@greenSpacesOverlay, Translation.get("greenSpaces"))
 
 			@fountainsOverlay = new L.LayerGroup()
-			@layersControls.addOverlay(@fountainsOverlay, 'Fontaines')
+			@layersControls.addOverlay(@fountainsOverlay, Translation.get("fountains"))
 
 			@gardensOverlay = new L.LayerGroup()
-			@layersControls.addOverlay(@gardensOverlay, 'Jardins')
+			@layersControls.addOverlay(@gardensOverlay, Translation.get("gardens"))
 
 			@publicPlacesOverlay = new L.LayerGroup()
-			@layersControls.addOverlay(@publicPlacesOverlay, 'Lieux publics')
+			@layersControls.addOverlay(@publicPlacesOverlay, Translation.get("publicPlaces"))
 
 			$.get(element.data('ws-monuments'), (data) =>
 				@monumentsOverlay.addLayer(new L.GeoJSON(data, {
@@ -34,7 +34,7 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 					onEachFeature: (feature, layer) ->
 						popupContent = '<h5>' + feature.properties['rdfs:label'] + '</h5>'
 						popupContent += '<p>' + feature.properties['rdfs:comment'] + '</p>'
-						popupContent += '<p><a target="_blank" href="' + feature.properties['foaf:isPrimaryTopicOf'] + '">Lien vers la page Wikipédia</a></p>';
+						popupContent += '<p><a target="_blank" href="' + feature.properties['foaf:isPrimaryTopicOf'] + '">' + Translation.get("wikiLink") + '</a></p>';
 
 						layer.bindPopup(popupContent)
 
@@ -53,7 +53,7 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 						popupContent = '<h5>' + feature.properties['arbre:nomUsuel'] + '</h5>'
 						popupContent += '<p>' + feature.properties['rdfs:comment'] + '</p>'
 						if feature.properties['owl:sameAs']
-							popupContent += '<p><a target="_blank" href="' + feature.properties['owl:sameAs'].replace('http://fr.dbpedia.org/resource/', 'http://fr.wikipedia.org/wiki/') + '">Lien vers la page Wikipédia</a></p>';
+							popupContent += '<p><a target="_blank" href="' + feature.properties['owl:sameAs'].replace('http://fr.dbpedia.org/resource/', 'http://fr.wikipedia.org/wiki/') + '">' + Translation.get("wikiLink") + '</a></p>';
 
 						layer.bindPopup(popupContent)
 
@@ -72,17 +72,17 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 						popupContent = '<h5>' + feature.properties['espaceVert:nom'] + '</h5>'
 						popupContent += '<p>'
 						if feature.properties['espaceVert:nombrePelouses'] > 0
-							popupContent += feature.properties['espaceVert:nombrePelouses'] + ' pelouse(s)<br />'
+							popupContent += feature.properties['espaceVert:nombrePelouses'] + Translation.get("lawns") + '<br />'
 						if feature.properties['espaceVert:nombreFleurs'] > 0
-							popupContent += feature.properties['espaceVert:nombreFleurs'] + ' fleur(s)<br />'
+							popupContent += feature.properties['espaceVert:nombreFleurs'] + Translation.get("flowers") + '<br />'
 						if feature.properties['espaceVert:nombreArbustes'] > 0
-							popupContent += feature.properties['espaceVert:nombreArbustes'] + ' arbuste(s)<br />'
+							popupContent += feature.properties['espaceVert:nombreArbustes'] + Translation.get("shrubs") + '<br />'
 						if feature.properties['espaceVert:nombreJeux'] > 0
-							popupContent += feature.properties['espaceVert:nombreJeux'] + ' jeu(x)<br />'
+							popupContent += feature.properties['espaceVert:nombreJeux'] + Translation.get("games") + '<br />'
 
 						vegetables = feature.properties['espaceVert:vegetal']
 						if vegetables
-							popupContent += '<br /><strong>Végétaux</strong><br />'
+							popupContent += '<br /><strong>' + Translation.get("plants") + '</strong><br />'
 							if vegetables.length
 								for vegetable in vegetables
 									popupContent += vegetable + '<br />'
@@ -105,7 +105,7 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 						})
 					
 					onEachFeature: (feature, layer) ->
-						popupContent = '<h5>Fontaine ' + feature.properties['rdfs:label'] + '</h5>'
+						popupContent = '<h5>' + Translation.get("fountain") + feature.properties['rdfs:label'] + '</h5>'
 
 						layer.bindPopup(popupContent)
 
@@ -123,7 +123,7 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 					
 					onEachFeature: (feature, layer) ->
 						popupContent = '<h5>' + feature.properties['rdfs:label'] + '</h5>'
-						popupContent += '<p>Nom du quartier : ' + feature.properties['jardin:nomQuartier'] + '</p>'
+						popupContent += '<p>' + Translation.get("districtName") + feature.properties['jardin:nomQuartier'] + '</p>'
 
 						layer.bindPopup(popupContent)
 
@@ -140,7 +140,7 @@ define ['maps/base_map', 'maps/icons', 'leaflet'], (BaseMap, Icons) ->
 					
 					onEachFeature: (feature, layer) ->
 						popupContent = '<h5>' + feature.properties['rdfs:label'] + '</h5>'
-						popupContent += '<p>Nom du quartier : ' + feature.properties['lieuxPublics:nomQuartier'] + '</p>'
+						popupContent += '<p>' + Translation.get("districtName") + feature.properties['lieuxPublics:nomQuartier'] + '</p>'
 
 						layer.bindPopup(popupContent)
 

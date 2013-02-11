@@ -9,7 +9,7 @@
 	<div class="controls">
 		<input class="span12" type="text" id="name-hunt" name="@formHunt("label").name" placeholder=@Messages("huntName") value="@formHunt("label").value" maxlength="50" />
 		@formHunt("label").errors.map { error =>
-	        <p class="help-block error">@error.message</p>
+	        <p class="help-block error">@Messages(error.message)</p>
 	    }
 	</div>
 </div>
@@ -30,7 +30,7 @@
 	<div class="controls">
 		<input class="span12" type="text" id="tags-hunt" name="@formHunt("tags").name" placeholder="@Messages("tagsExample")" value="@formHunt("tags").value" maxlength="100" />
 		@formHunt("tags").errors.map { error =>
-	        <p class="help-block error">@error.message</p>
+	        <p class="help-block error">@Messages(error.message)</p>
 	    }
 		<p class="help-block">@Messages("tagTip")</p>
 	</div>
