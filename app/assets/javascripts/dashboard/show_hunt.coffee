@@ -1,4 +1,4 @@
-require ['maps/poi_map', 'maps/icons', 'helpers', 'fixed_map'], (PoiMap, Icons, Helpers) ->
+require ['maps/poi_map', 'maps/icons', 'helpers', 'internationalization', 'fixed_map'], (PoiMap, Icons, Helpers, Translation) ->
 
 	map = new PoiMap $('#show-hunt-map')
 	
@@ -32,8 +32,8 @@ require ['maps/poi_map', 'maps/icons', 'helpers', 'fixed_map'], (PoiMap, Icons, 
 		fillColor: '#555555',
 		fillOpacity: 0.05
 	}).addTo(map)
-
-	areaHunt.bindPopup('Zone de la chasse')
+	str = Translation.get("huntArea")
+	areaHunt.bindPopup(str)
 	map.fitBounds(bounds)
 
 	accordionEnigmas = container.find('.accordion-enigmas')
