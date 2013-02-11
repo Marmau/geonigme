@@ -42,12 +42,12 @@
 
 	<div class="actions">
 		<button id="im-there" class="btn btn-danger">@Messages("here")</button>
-		<div id="play-step-disabled" class="btn disabled">@Messages("play")</div>
+		<div id="play-step-disabled" class="btn disabled">@Messages("pages.huntplay")</div>
 		<form method="POST" action="@routes.GameController.startStep()" class="hide" id="play-step">
 			@defining(AuthenticationTokenGenerator.generate()) { token =>
 				<input type="hidden" name="token" value="@token" />
 			}
-			<button type="submit" class="btn" class="btn">@Messages("play")</button>
+			<button type="submit" class="btn" class="btn">@Messages("pages.huntplay")</button>
 		</form>
 		<p id="info-not-here" class="danger">@Messages("notGoodGeo")</p>
 	</div>

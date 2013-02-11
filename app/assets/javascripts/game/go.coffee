@@ -131,7 +131,7 @@ require ['maps/base_map', 'helpers', 'maps/icons', 'internationalization', 'leaf
 			$('#play-step').hide()
 
 	$('#im-there').click ->
-		if confirm('Êtes-vous sûr de vous ?')
+		if confirm(Translation.get("sure"))
 			alreadyThere = true
 			Helpers.clearWatchPosition()
 			$('#im-there').hide()

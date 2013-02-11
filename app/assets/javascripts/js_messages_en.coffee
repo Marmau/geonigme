@@ -24,6 +24,7 @@ define [], ->
 		"plants":"Plants",
 		"fountain":"Fountain ",
 		"districtName":"District name: ",
+		"sure":"Are you sure?"
 	}
 	
 	return LangEN
