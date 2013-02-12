@@ -8,7 +8,6 @@ import play.i18n.Messages;
 import repository.UserRepository;
 
 import models.Right;
-import models.User;
 
 public class Page implements MenuItem {
 
@@ -82,16 +81,7 @@ public class Page implements MenuItem {
 	}
 
 	public boolean userCanAccess() {
-		if (accessRight == null) {
-			return true;
-		}
-		User user = UserRepository.getLoggedUser();
-		// User can be not logged in to access to 0 right pages.
-		// return accessRight.v() == 0 || ( user != null &&
-		// user.getRole().canDo(accessRight) );
-		// User should be logged in to access to 0 right pages. Use Right.NONE
-		// to give access to everybody
-		return user != null && user.getRole().canDo(accessRight);
+		return UserRepository.userCanDo(accessRight);
 	}
 
 	/*
