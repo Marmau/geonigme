@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.NS;
+import models.Right;
 import models.User;
 
 import org.openrdf.repository.object.ObjectConnection;
@@ -64,5 +65,13 @@ public class UserRepository {
 
 	public static List<User> getAll() {
 		return getAll("loginName");
+	}
+	
+	public static boolean userCanDo(Right right) {
+		if( right == null ) {
+			return true;
+		}
+		User user = getLoggedUser();
+		return user != null && user.getRole().canDo(right);
 	}
 }
