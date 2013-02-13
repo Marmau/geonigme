@@ -21,29 +21,28 @@
 		<script src="@routes.Assets.at("javascripts/require.min.js")" data-main="@routes.Assets.at("javascripts/app")" type="text/javascript" data-start="@page.getStartJS()"></script>
 	</head>
 	<body class="@page.getBodyClasses()">
-		<div data-role="page">
-			<header data-role="header">
-				<div class="background"></div>
-				@if( UserRepository.isLogged() ) {
-				<div class="btn-group user-menu">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserRepository.getLoggedUser().getLoginName()<span class="caret"></span></a>
-					@Menu.memberMenu.render(page)
-				</div>
-				}
-			</header>
-			<div data-role="content" class="container-fluid">
-				<div class="row-fluid">
-					<nav>
-						@page.renderMenu()
-					</nav>
-				</div>
-				@content
+		<header data-role="header">
+			<div class="background"></div>
+			@if( UserRepository.isLogged() ) {
+			<div class="btn-group user-menu">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-user"></i> @UserRepository.getLoggedUser().getLoginName()<span class="caret"></span></a>
+				@Menu.memberMenu.render(page)
 			</div>
-			<footer data-role="footer" class="container-fluid">
-				<div class="row-fluid">
-					<p class="copyright"><strong>@Messages("applicationName")</strong> - &copy; copyright 2012-2013
-				</div>
-			</footer>
+			}
+		</header>
+		<div data-role="content" class="container-fluid">
+			<div class="row-fluid">
+				<nav>
+					@page.renderMenu()
+				</nav>
+			</div>
+			@content
 		</div>
+		<footer data-role="footer" class="container-fluid">
+			<div class="row-fluid">
+				<p class="copyright"><strong>@Messages("applicationName")</strong> - &copy; copyright 2012-2013
+			</div>
+		</footer>
+		<div id="spinner" class="hide"></div>
 	</body>
 </html>
