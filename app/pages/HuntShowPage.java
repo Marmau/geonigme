@@ -1,37 +1,33 @@
 package pages;
 
+import global.PageLink;
+import global.PageMenuItem;
 import models.Hunt;
 import controllers.routes;
-import play.api.mvc.Call;
 
 public class HuntShowPage extends DashboardPage {
 
-	protected Hunt hunt = null;
+	public static final String commonName = "huntshow";
 
 	public HuntShowPage(String title, String startJS) throws Exception {
-		super("huntshow", title, null, startJS);
+		super(commonName, title, null, startJS);
 		menu.setCSSClasses("breadcrumb");
 		menu.add("dashboard");
-		menu.add(new HuntShowPage(this));// Copy it
-	}
-
-	public HuntShowPage(HuntShowPage other) throws Exception {
-		super(other);
-	}
-
-	public void setMyParameters(Hunt hunt) {
-		this.hunt = hunt;
+		menu.add(getName());
 	}
 
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
-		HuntShowPage p = (HuntShowPage) menu.getPage(name);// Clone
-		p.setMyParameters(hunt);
-		p.setLabel(hunt.getLabel() + " |<span class=\"small\">" + hunt.getStringLevel() + "</span>");
+		PageMenuItem pmi;
+		
+		// This show page.
+		pmi = menu.getPage(getName());
+		fillLink(pmi, hunt);
+		pmi.setLabel(hunt.getLabel()+" |<span class=\"small\">"+hunt.getStringLevel()+"</span>");
 	}
 
-	@Override
-	public Call getRoute() {
-		return routes.HuntController.show(hunt.getId());
+	public static void fillLink(PageLink link, Hunt hunt) {
+		link.setRoute(routes.HuntController.show(hunt.getId()));
+		link.setLabel(hunt.getLabel());
 	}
 }

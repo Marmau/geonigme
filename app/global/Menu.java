@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import play.api.templates.Html;
 
-public class Menu {
+public class Menu implements Cloneable {
 
 	public static Menu adminPanelMenu = new Menu(true);
 	public static Menu dashboardMenu = new Menu(true);
@@ -21,6 +21,21 @@ public class Menu {
 		this.cssClasses = cssClasses;
 		items = new ArrayList<MenuItem>();
 	}
+	
+	public Menu clone() {
+		Menu menu = null;
+	    try {
+	    	menu = (Menu) super.clone();
+	    } catch(CloneNotSupportedException cnse) {
+	      	// Should never happened, cause we use Cloneable
+	      	cnse.printStackTrace(System.err);
+	    }
+	    menu.items = new ArrayList<MenuItem>(items.size());
+	    for( MenuItem item : items ) {
+	    	menu.add(item);
+	    }
+	    return menu;
+	}
 
 	public Menu(boolean isNavMenu) {
 		this(isNavMenu, "menu");
@@ -29,8 +44,11 @@ public class Menu {
 	public Menu add(String pageName, boolean isNavMenu) {
 		try {
 			Page page = Page.get(pageName);
-			add(page);
-			if (isNavMenu) {
+			PageMenuItem pmi = new PageMenuItem(page);
+			pmi.setRoute(page.getRoute());
+			pmi.setLabel(page.getTitle());
+			add(pmi);
+			if( isNavMenu ) {
 				page.setMenu(this);
 			}
 		} catch (Exception e) {
@@ -38,7 +56,6 @@ public class Menu {
 		}
 		return this;
 	}
-
 	public Menu add(String pageName) {
 		return add(pageName, isNavMenu);
 	}
@@ -48,19 +65,19 @@ public class Menu {
 		return this;
 	}
 
-	// Fail if name does no match with a page.
-	public Page getPage(String name) {
-		for (MenuItem item : items) {
-			if (item.getName().equals(name)) {
-				return (Page) item;
+	// Fail if name does no match with a PageMenuItem.
+	public PageMenuItem getPage(String name) {
+		for( MenuItem item : items ) {
+			if( item.getName().equals(name) ) {
+				return (PageMenuItem) item;
 			}
 		}
 		return null;
 	}
 
 	// Fail if name does no match with a page.
-	public Page getPage(int pos) {
-		return (Page) items.get(pos);
+	public PageMenuItem getPage(int pos) {
+		return (PageMenuItem) items.get(pos);
 	}
 
 	public ArrayList<MenuItem> getItems() {
@@ -83,6 +100,11 @@ public class Menu {
 		return views.html.global.menu.render(this, currentItem);
 	}
 
+	public Html render(Page currentItem) throws Exception {
+		return render(new PageMenuItem(currentItem));
+	}
+
+	/*
 	public Html render(String currentPageName) {
 		Page page = null;
 		try {
@@ -94,6 +116,7 @@ public class Menu {
 		}
 		return render(page);
 	}
+	*/
 
 	public Html render() {
 		return render((MenuItem) null);

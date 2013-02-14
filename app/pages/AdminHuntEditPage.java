@@ -1,54 +1,33 @@
 package pages;
 
+import global.PageLink;
+import global.PageMenuItem;
 import controllers.routes;
 import models.Hunt;
 import models.Right;
-import play.api.mvc.Call;
 
 public class AdminHuntEditPage extends AdminPanelPage {
 
-	protected Hunt hunt = null;
 	public static final String commonName = "adminhuntedit";
 
 	public AdminHuntEditPage(String title, Right accessRight, String startJS) throws Exception {
 		super(commonName, title, null, accessRight, startJS);
 		menu.setCSSClasses("breadcrumb");
 		menu.add("adminhuntlist");
-		menu.add(new AdminHuntEditPage(this));// Copy it
+		menu.add(getName());
 	}
 
-	public AdminHuntEditPage(AdminHuntEditPage other) throws Exception {
-		super(other);
-	}
-
-	public AdminHuntEditPage setMyParameters(Hunt hunt) {
-		this.hunt = hunt;
-		return this;
-	}
-
-	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Hunt hunt) {
-		AdminHuntEditPage p = (AdminHuntEditPage) menu.getPage(name);// Clone
-		p.setMyParameters(hunt);
+		PageMenuItem pmi2 = menu.getPage(getName());
+		fillLink(pmi2, hunt);
 	}
 
-	@Override
-	public Call getRoute() {
-		return routes.AdminPanelController.huntedit(hunt.getId());
+	public static PageLink fillLink(PageLink link, Hunt hunt) {
+		link.setRoute(routes.AdminPanelController.huntedit(hunt.getId()));
+		return link;
 	}
-
-	public static AdminHuntEditPage getCopy() throws Exception {
-		return new AdminHuntEditPage((AdminHuntEditPage) get(commonName));
-	}
-
-	public static String getReachableUrl(Hunt hunt) {
-		try {
-			AdminHuntEditPage page = getCopy();
-			page.setMyParameters(hunt);
-			return page.getReachableUrl();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "";
-		}
+	
+	public static PageLink getLinkFor(Hunt hunt) throws Exception {
+		return fillLink(PageLink.getFor(commonName), hunt);
 	}
 }

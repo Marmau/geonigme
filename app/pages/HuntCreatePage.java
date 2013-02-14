@@ -5,15 +5,13 @@ import play.api.mvc.Call;
 
 public class HuntCreatePage extends DashboardPage {
 
+	public static final String commonName = "huntcreate";
+
 	public HuntCreatePage(String title, String startJS) throws Exception {
-		super("huntcreate", title, null, startJS);
+		super(commonName, title, null, startJS);
 		menu.setCSSClasses("breadcrumb");
 		menu.add("dashboard");
-		menu.add(new HuntCreatePage(this));// Copy it
-	}
-
-	public HuntCreatePage(HuntCreatePage other) throws Exception {
-		super(other);
+		menu.add(getName());
 	}
 
 	@Override
