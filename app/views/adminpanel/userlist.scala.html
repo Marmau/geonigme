@@ -10,7 +10,7 @@
 		<div id="container-user-box">
 		@for(user <- users) {
 			<div class="user-box">
-				@components.link(AdminUserEditPage.getCopy().setMyParameters(user)) {
+				@components.link(AdminUserEditPage.getLinkFor(user)) {
 					<div class="name">
 						<div>
 							<span>@user.getLoginName()</span>

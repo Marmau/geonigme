@@ -1,48 +1,38 @@
 package pages;
 
-import global.Page;
-import models.Hunt;
+import global.PageLink;
+import global.PageMenuItem;
 import models.Step;
 import controllers.routes;
-import play.api.mvc.Call;
 import play.i18n.Messages;
 
 public class StepEditPage extends DashboardPage {
 
-	protected Step step = null;
-
+	public static final String commonName = "stepedit";
+	
 	public StepEditPage(String title, String startJS) throws Exception {
-		super("stepedit", title, null, startJS);
+		super(commonName, title, null, startJS);
 		menu.setCSSClasses("breadcrumb");
 		menu.add("dashboard");
-		menu.add(new HuntShowPage((HuntShowPage) Page.get("huntshow")));// Copy it
-		menu.add(new StepEditPage(this));// Copy it
-	}
-
-	public StepEditPage(StepEditPage other) throws Exception {
-		super(other);
-	}
-
-	public void setMyParameters(Step step) {
-		this.step = step;
+		menu.add(HuntShowPage.commonName);
+		menu.add(commonName);
 	}
 
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Step step) {
+		PageMenuItem pmi;
+		
 		// This edit page
-		StepEditPage p3 = (StepEditPage) menu.getPage(name);// Clone
-		p3.setLabel(Messages.get("pages.stepedit", step.getNumber()));
-		p3.setMyParameters(step);
+		pmi = menu.getPage(getName());
+		fillLink(pmi, step);
 
 		// The hunt show page
-		Hunt hunt = step.getHunt();
-		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Clone
-		p2.setLabel(hunt.getLabel());
-		p2.setMyParameters(hunt);
+		pmi = menu.getPage(HuntShowPage.commonName);
+		HuntShowPage.fillLink(pmi, step.getHunt());
 	}
 
-	@Override
-	public Call getRoute() {
-		return routes.StepController.update(step.getId());
+	public static void fillLink(PageLink link, Step step) {
+		link.setRoute(routes.StepController.update(step.getId()));
+		link.setLabel(Messages.get("pages.stepedit", step.getNumber()));
 	}
 }

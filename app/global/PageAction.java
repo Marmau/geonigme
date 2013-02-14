@@ -10,7 +10,7 @@ public class PageAction extends Action<AssociatedPage> {
 	public Result call(Context ctx) throws Throwable {
 		// For Play <2.1, with 2.1+, it will be obsolete (only useless ?).
 		Context.current.set(ctx);
-		Page page = Page.get(configuration.value());
+		Page page = Page.get(configuration.value()).clone();
 		CurrentRequest.setPage(page);
 		if (!page.userCanAccess()) {
 			System.out.println("PageAction> Access forbidden.");

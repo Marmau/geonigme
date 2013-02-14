@@ -1,56 +1,46 @@
 package pages;
 
 import models.Enigma;
-import models.Hunt;
 import models.Step;
-import global.Page;
+import global.PageLink;
+import global.PageMenuItem;
 import controllers.routes;
-import play.api.mvc.Call;
 import play.i18n.Messages;
 
 public class EnigmaEditPage extends DashboardPage {
 
-	protected Enigma enigma = null;
+	public static final String commonName = "enigmaedit";
 
 	public EnigmaEditPage(String title, String startJS) throws Exception {
-		super("enigmaedit", title, null, startJS);
+		super(commonName, title, null, startJS);
 		menu.setCSSClasses("breadcrumb");
 		menu.add("dashboard");
-		menu.add(new HuntShowPage((HuntShowPage) Page.get("huntshow")));// Copy it
-		menu.add(new StepEditPage((StepEditPage) Page.get("stepedit")));// Copy it
-		menu.add(new EnigmaEditPage(this));// Copy it
-	}
-
-	public EnigmaEditPage(EnigmaEditPage other) throws Exception {
-		super(other);
-	}
-
-	public void setMyParameters(Enigma enigma) {
-		this.enigma = enigma;
+		menu.add(HuntShowPage.commonName);
+		menu.add(StepEditPage.commonName);
+		menu.add(getName());
 	}
 
 	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Enigma enigma) {
+		PageMenuItem pmi;
+
 		// This edit page
-		EnigmaEditPage p4 = (EnigmaEditPage) menu.getPage(name);// Clone
-		p4.setLabel(Messages.get("pages.enigmaedit", enigma.getNumber()));
-		p4.setMyParameters(enigma);
+		pmi = menu.getPage(name);
+		fillLink(pmi, enigma);
 
 		// The step edit page
 		Step step = enigma.getStep();
-		StepEditPage p3 = (StepEditPage) menu.getPage("stepedit");// Clone
-		p3.setLabel(Messages.get("pages.stepNumbered", step.getNumber()));
-		p3.setMyParameters(step);
+		pmi = menu.getPage(StepEditPage.commonName);
+		StepEditPage.fillLink(pmi, step);
+		pmi.setLabel(Messages.get("pages.stepNumbered", step.getNumber()));
 
 		// The hunt show page
-		Hunt hunt = step.getHunt();
-		HuntShowPage p2 = (HuntShowPage) menu.getPage("huntshow");// Clone
-		p2.setLabel(hunt.getLabel());
-		p2.setMyParameters(hunt);
+		pmi = menu.getPage(HuntShowPage.commonName);
+		HuntShowPage.fillLink(pmi, step.getHunt());
 	}
 
-	@Override
-	public Call getRoute() {
-		return routes.EnigmaController.update(enigma.getId());
+	public static void fillLink(PageLink link, Enigma enigma) {
+		link.setRoute(routes.EnigmaController.update(enigma.getId()));
+		link.setLabel(Messages.get("pages.enigmaedit", enigma.getNumber()));
 	}
 }

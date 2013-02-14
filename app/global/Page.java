@@ -9,7 +9,7 @@ import repository.UserRepository;
 
 import models.Right;
 
-public class Page implements MenuItem {
+public class Page implements Cloneable {
 
 	private static Hashtable<String, Page> instances = new Hashtable<String, Page>();
 
@@ -31,6 +31,7 @@ public class Page implements MenuItem {
 		return get(pageName).userCanAccess();
 	}
 
+	/*
 	// Should really exist ? Or dev should use get and instance method ?
 	public static String getReachableURL(String pageName) throws Exception {
 		Page page = get(pageName);
@@ -39,6 +40,7 @@ public class Page implements MenuItem {
 		}
 		return page.getReachableUrl();
 	}
+	*/
 	
 	protected String title;
 	protected String label;
@@ -74,6 +76,20 @@ public class Page implements MenuItem {
 	// Clone it !
 	public Page(Page other) throws Exception {
 		this(other.name, other.title, other.route, other.accessRight, other.startJS, true);
+	}
+	
+	public Page clone() {
+	    Page page = null;
+	    try {
+	    	page = (Page) super.clone();
+	    } catch(CloneNotSupportedException cnse) {
+	      	// Should never happened, cause we use Cloneable
+	      	cnse.printStackTrace(System.err);
+	    }
+	    
+	    page.menu = (Menu) menu.clone();
+	    
+	    return page;
 	}
 
 	// Do nothing here
@@ -115,7 +131,7 @@ public class Page implements MenuItem {
 		return menu;
 	}
 
-	public Html renderMenu() {
+	public Html renderMenu() throws Exception {
 		return getMenu().render(this);
 	}
 
@@ -144,6 +160,8 @@ public class Page implements MenuItem {
 		return route;
 	}
 
+	/*
+	// Obsolete 
 	public String getUrl() {
 		return (getRoute() != null) ? getRoute().url() : "";
 	}
@@ -151,6 +169,7 @@ public class Page implements MenuItem {
 	public String getReachableUrl() {
 		return (userCanAccess()) ? getUrl() : "";
 	}
+	*/
 
 	public Right getAccessRight() {
 		return accessRight;

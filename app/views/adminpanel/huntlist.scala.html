@@ -10,7 +10,7 @@
 		<div id="container-hunt-box">
 		@for(hunt <- hunts) {
 			<div class="user-box">
-				@components.link(AdminHuntEditPage.getCopy().setMyParameters(hunt)) {
+				@components.link(AdminHuntEditPage.getLinkFor(hunt)) {
 					<div class="name">
 						<div>
 							<span>@hunt.getLabel()</span>
