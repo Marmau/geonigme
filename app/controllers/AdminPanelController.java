@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.Iterator;
 
+import org.openrdf.repository.RepositoryException;
+
 import global.AssociatedPage;
 import global.CurrentRequest;
 import global.Page;
@@ -82,7 +84,7 @@ public class AdminPanelController extends Controller {
 	}
 	
 	@AssociatedPage("adminhuntedit")
-	public static Result submitHuntDelete(String hid){
+	public static Result submitHuntDelete(String hid) throws RepositoryException{
 		Hunt hunt = HuntRepository.get(hid);
 		if (hunt == null) {
 			return notFound();

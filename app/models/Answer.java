@@ -1,7 +1,10 @@
 package models;
 
+import global.Sesame;
+
 import org.openrdf.annotations.Iri;
 import org.openrdf.model.Resource;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
 
@@ -42,5 +45,10 @@ public class Answer implements RDFObject {
 	@Override
 	public Resource getResource() {
 		return null;
+	}
+	
+	public void delete() throws RepositoryException {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		oc.removeDesignation(this, URI + getId());
 	}
 }

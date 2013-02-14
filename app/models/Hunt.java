@@ -175,9 +175,28 @@ public class Hunt implements RDFObject {
 	}
 	
 	public void delete() throws RepositoryException {
+		
+		List<Enigma> listEnigmas = getEnigmas();
+		for(int e=0;e<listEnigmas.size();e++){
+			Answer ans = listEnigmas.get(e).getAnswer();
+			ans.delete(); // suppression des réponses des énigmes
+			
+			List<Clue> listClues = listEnigmas.get(e).getClues();
+				for(int c=0;c<listClues.size();c++){
+					listClues.get(c).delete(); // suppression des indices des énigmes
+				}
+			
+			listEnigmas.get(e).delete(); // suppression des énigmes
+		}
+		
+		List<Step> listSteps = getSteps();
+		for(int s=0;s<listSteps.size();s++){
+			listSteps.get(s).delete(); // suppression de l'étape
+		}
+		
 		ObjectConnection oc = Sesame.getObjectConnection();
 		oc.removeDesignation(this, URI + getId());
-		//getEnigmas
+
 	}
 
 	@Override
