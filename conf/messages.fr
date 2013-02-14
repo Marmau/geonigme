@@ -176,3 +176,7 @@ tagOnlyLetters=Un tag n'est composé que de lettres, et ne dépasse pas 15 lettr
 tooTags=Trop de tags.
 wrongLogin=Pseudonyme ou mot de passe invalide.
 usedPseudo=Ce pseudonyme est déjà utilisé.
+language=Langue
+langTip=Définissez dans quelle langue sera votre chasse
+fr=Français
+en=Anglais

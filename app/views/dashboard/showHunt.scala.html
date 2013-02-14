@@ -71,6 +71,11 @@
 	<div class="row-fluid hidden-phone">
 		<div class="span4" id="show-hunt" data-area-hunt="@hunt.getArea().toTemplateString()">
 			<section class="hunt">
+				<div id="language-hunt">
+					<input type="hidden" value="@hunt.getLanguage()" id="language-hidden-hunt" />
+					<a id="frFlag" class="frFlag"></a>
+					<a id="enFlag" class="enFlag"></a>
+				</div>
 				<div id="tags-hunt">
 					@for(tag <- hunt.getTags()) {
 						<span class="tag"><i class="icon-tag icon-blue"></i>@tag.getName()</span>

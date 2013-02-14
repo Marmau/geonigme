@@ -12,6 +12,9 @@ public class Hunt {
 	@MaxLength(value = 50, message = "nbMaxCharactersHunt")
 	@Required(message = "huntHaveName")
 	public String label;
+	
+	@Required
+	public String language;
 
 	@Required
 	public Integer level = 1;

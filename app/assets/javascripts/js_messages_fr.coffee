@@ -24,7 +24,9 @@ define [], ->
 		"plants":"Végétaux",
 		"fountain":"Fontaine ",
 		"districtName":"Nom du quartier : ",
-		"sure":"Êtes-vous sûr de vous ?"
+		"sure":"Êtes-vous sûr de vous ?",
+		"en":"Anglais",
+		"fr":"Français"
 	}
 	
 	return LangFR

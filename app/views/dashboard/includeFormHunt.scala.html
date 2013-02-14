@@ -14,6 +14,17 @@
 	</div>
 </div>
 <div class="control-group">
+	<label class="control-label" for="language-hunt">@Messages("language")</label>
+	<div class="controls">
+		<div class="btn-group" id="language-hunt-group" data-toggle="buttons-radio">
+			<div class="btn @if( formHunt("language").value == null  ) { active } pushable" rel="tooltip" >@Messages("fr")</div>
+			<div class="btn pushable" rel="tooltip" >@Messages("en")</div>
+		</div>
+		<input type="hidden" value="@formHunt("language").value" name="@formHunt("language").name" id="language-hunt" />
+		<p class="help-block">@Messages("langTip")</p>
+	</div>
+</div>
+<div class="control-group">
 	<label class="control-label" for="level-hunt">@Messages("dif")</label>
 	<div class="controls">
 		<div class="btn-group" id="level-hunt-group" data-toggle="buttons-radio">

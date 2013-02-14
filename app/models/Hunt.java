@@ -25,6 +25,7 @@ public class Hunt implements RDFObject {
 	private boolean published;
 	private Set<Mark> marks;
 	private Set<Tag> tags;
+	private String language;
 
 	private XMLGregorianCalendar createdAt;
 	private XMLGregorianCalendar modifiedAt;
@@ -152,6 +153,16 @@ public class Hunt implements RDFObject {
 	@Iri(NS.TAGS + "taggedWithTag")
 	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
+	}
+	
+	@Iri(NS.GNGM + "language")
+	public String getLanguage() {
+		return language;
+	}
+
+	@Iri(NS.GNGM + "language")
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	public String getId() {
