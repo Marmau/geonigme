@@ -1,4 +1,22 @@
-require ['maps/poi_map', 'helpers', 'maps/icons', 'fixed_map'], (PoiMap, Helpers, Icons) ->
+require ['maps/poi_map', 'helpers', 'maps/icons', 'internationalization','fixed_map'], (PoiMap, Helpers, Icons, Translation) ->
+
+	# Choix de la langue
+	if '' == language = $('#language-hunt').val()
+		language = Translation.get('fr')
+		$('#language-hunt').val(language)
+		
+	$('#language-hunt-group > div').removeClass('active')
+	if language == Translation.get('fr')
+		$('#language-hunt-group > div').eq(0).addClass('active')
+	else
+		$('#language-hunt-group > div').eq(1).addClass('active')
+
+	$('#language-hunt-group > div').click ->
+		if $(this).index() is 0
+			$('#language-hunt').val(Translation.get('fr'))
+		else
+			$('#language-hunt').val(Translation.get('en'))
+			
 
 	# Choix du niveau
 	if '' == level = $('#level-hunt').val()

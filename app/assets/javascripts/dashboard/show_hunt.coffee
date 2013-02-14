@@ -54,3 +54,8 @@ require ['maps/poi_map', 'maps/icons', 'helpers', 'internationalization', 'fixed
 		displayStep(stepElement.data('start-position'), stepElement.data('start-accuracy'))
 
 	$('#select-step select').trigger 'change'
+	
+	if $('#language-hidden-hunt').val() == Translation.get('en')
+		$('#frFlag').addClass('language-unselected')
+	else
+		$('#enFlag').addClass('language-unselected')

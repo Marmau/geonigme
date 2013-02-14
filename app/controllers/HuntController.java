@@ -52,7 +52,6 @@ public class HuntController extends Controller {
 		} else {
 			Hunt hunt = formToHunt(formHunt.get());
 			ObjectConnection oc = Sesame.getObjectConnection();
-
 			Set<models.Tag> tags = formToTags(formHunt.get());
 			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
 			for (models.Tag tag : tags) {
@@ -82,6 +81,7 @@ public class HuntController extends Controller {
 		formHunt.description = hunt.getDescription();
 		formHunt.level = hunt.getLevel();
 		formHunt.area = hunt.getArea().toTemplateString();
+		formHunt.language = hunt.getLanguage();
 
 		Iterator<models.Tag> it = hunt.getTags().iterator();
 		if (it.hasNext()) {
@@ -115,7 +115,6 @@ public class HuntController extends Controller {
 			return badRequest(views.html.dashboard.createHunt.render(formHunt));
 		} else {
 			fillHunt(hunt, formHunt.get());
-
 			Set<models.Tag> tags = formToTags(formHunt.get());
 			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
 			for (models.Tag tag : tags) {
@@ -204,6 +203,7 @@ public class HuntController extends Controller {
 		hunt.setPublished(false);
 		hunt.setArea(Area.createFrom(form.area));
 		hunt.setCreatedBy(UserRepository.getLoggedUser());
+		hunt.setLanguage(form.language);
 
 		GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
 		try {

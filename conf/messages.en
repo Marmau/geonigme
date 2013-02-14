@@ -175,3 +175,7 @@ tagOnlyLetters=A tag only have letters, and don't have more than 15.
 tooTags=Too many tags.
 wrongLogin=Invalid pseudonym or password.
 usedPseudo=This pseudonym is already in use.
+language=Language
+langTip=Define in which language will be your hunt 
+fr=French
+en=English
