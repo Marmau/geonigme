@@ -22,7 +22,7 @@ public class Hunt implements RDFObject {
 	private Integer level;
 	private Area area;
 	private User createdBy;
-	private boolean published;
+	private Boolean published;
 	private Set<Mark> marks;
 	private Set<Tag> tags;
 	private String language;
@@ -195,6 +195,20 @@ public class Hunt implements RDFObject {
 		}
 		
 		ObjectConnection oc = Sesame.getObjectConnection();
+		
+		//suppression de la chasse
+		setArea(null);
+		setDescription(null);
+		setLabel(null);
+		setLanguage(null);
+		setLevel(null);
+		setMarks(null);
+		setPublished(null);
+		setTags(null);
+		setCreatedBy(null);
+		setCreatedAt(null);
+		setModifiedAt(null);
+		//oc.removeDesignation(this, Hunt.class);
 		oc.removeDesignation(this, URI + getId());
 
 	}

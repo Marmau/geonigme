@@ -89,7 +89,6 @@ public class AdminPanelController extends Controller {
 		if (hunt == null) {
 			return notFound();
 		}
-
 		hunt.delete();
 		//HuntController.delete(hid);
 		

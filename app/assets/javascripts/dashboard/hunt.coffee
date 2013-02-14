@@ -35,8 +35,8 @@ require ['maps/poi_map', 'helpers', 'maps/icons', 'internationalization','fixed_
 	formAreaDisplay = container.find('#area-hunt-display')
 	
 	# Suppression
-	$('.suppr').submit ->
-		return confirm(Translation.get("passEnigma"))
+	$('#deleteHunt').submit ->
+		return confirm(Translation.get("deleteHunt"))
 	
 	# Initialisation de la map
 	map = new PoiMap $('#hunt-map')

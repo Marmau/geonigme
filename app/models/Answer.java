@@ -49,6 +49,7 @@ public class Answer implements RDFObject {
 	
 	public void delete() throws RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
+		setEnigma(null);
 		oc.removeDesignation(this, URI + getId());
 	}
 }

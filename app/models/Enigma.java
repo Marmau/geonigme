@@ -85,6 +85,9 @@ public class Enigma implements RDFObject {
 	
 	public void delete() throws RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
+		setDescription(null);
+		setNumber(null);
+		setStep(null);
 		oc.removeDesignation(this, URI + getId());
 	}
 

@@ -90,6 +90,10 @@ public class Step implements RDFObject {
 
 	public void delete() throws RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
+		setDescription(null);
+		setHunt(null);
+		setNumber(null);
+		setPosition(null);
 		oc.removeDesignation(this, URI + getId());
 	}
 	

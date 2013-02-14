@@ -80,6 +80,9 @@ public class Clue implements RDFObject {
 	
 	public void delete() throws RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
+		setDescription(null);
+		setEnigma(null);
+		setNumber(null);
 		oc.removeDesignation(this, URI + getId());
 	}
 
