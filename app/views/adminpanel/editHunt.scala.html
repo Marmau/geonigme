@@ -12,6 +12,13 @@
 					<button type="submit" class="btn pushable">@Messages("save")</button>
 				</div>
 			}
+			
+			<!-- @helper.form(action = routes.AdminPanelController.submitHuntDelete(hunt.getId()), 'id -> "create-hunt", 'class -> "form-horizontal") {-->
+				<form method="POST" action="@routes.AdminPanelController.submitHuntDelete(hunt.getId())" id="suppression">
+				<div class="form-actions">
+					<button type="submit" class="btn pushable">@Messages("delete")</button>
+				</div>
+			<!-- } -->
 		</div>
 
 		<div class="span8">

@@ -80,6 +80,20 @@ public class AdminPanelController extends Controller {
 			return redirect(routes.AdminPanelController.huntlist());
 		}
 	}
+	
+	@AssociatedPage("adminhuntedit")
+	public static Result submitHuntDelete(String hid){
+		Hunt hunt = HuntRepository.get(hid);
+		if (hunt == null) {
+			return notFound();
+		}
+
+		hunt.delete();
+		//HuntController.delete(hid);
+		
+		
+		return redirect(routes.AdminPanelController.huntlist());	
+	}
 
 	/***** USERS *****/
 

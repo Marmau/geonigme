@@ -32,6 +32,10 @@ require ['maps/poi_map', 'maps/position_accuracy', 'maps/icons', 'helpers', 'ren
 		pa.drawCenterBounds(areaHunt)
 
 	### Evenements du formulaire ###
+	
+	# Suppression
+	$('#suppression').submit ->
+		return confirm(Translation.get("deleteHunt"))
 
 	# Toggle type de réponse
 	container.find('.answer-type-btn-group > div').click ->

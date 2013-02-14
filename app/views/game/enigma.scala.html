@@ -59,7 +59,7 @@
 								<p>@clue.getDescription()</p>
 								<button type="button" class="display-sound btn">@Messages("listen")</button>
 								<div class="hide display-hide-sound pagination-centered">
-									<audio preload="auto" controls="" tabindex="0">
+									<audio preload="auto" controls="controls" tabindex="0">
    										<source src="@clue.asInstanceOf[models.FileClue].getFile()" type="audio/mpeg">
    									</audio>
 								</div>
@@ -91,7 +91,7 @@
 						<p>__description__</p>
 						<button type="button" class="btn display-sound">@Messages("listen")</button>
 						<div class="hide display-hide-sound">
-							<audio preload="auto" controls="" tabindex="0">
+							<audio preload="auto" controls="controls" tabindex="0">
 	   							<source type='audio/mpeg'>
 	   						</audio>
    						</div>

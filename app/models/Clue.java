@@ -1,9 +1,12 @@
 package models;
 
+import global.Sesame;
+
 import org.codehaus.jackson.node.ObjectNode;
 import org.openrdf.annotations.Iri;
 import org.openrdf.annotations.Sparql;
 import org.openrdf.model.Resource;
+import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
 
@@ -73,6 +76,11 @@ public class Clue implements RDFObject {
 		result.put("description", getDescription());
 
 		return result;
+	}
+	
+	public void delete() throws RepositoryException {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		oc.removeDesignation(this, URI + getId());
 	}
 
 	@Override

@@ -8,6 +8,7 @@ define [], ->
 		"badAnswer":"Ce n'est pas la bonne réponse, mais persévérez, vous trouverez !",
 		"badPlace":"Vous n\'êtes pas au bon endroit, continuez de chercher !",
 		"passEnigma":"Voulez-vous vraiment passer cette énigme ?",
+		"deleteHunt":"Voulez-vous vraiment supprimer cette chasse ?",
 		"stop":"Arrêt : ",
 		"start":"Départ",
 		"monuments":"Monuments",

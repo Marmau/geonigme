@@ -89,3 +89,4 @@ POST	/admin/user/:uid			controllers.AdminPanelController.submitUserEditForm(uid:
 GET		/admin/hunts				controllers.AdminPanelController.huntlist()
 GET		/admin/hunt/:hid			controllers.AdminPanelController.huntedit(hid: String)
 POST	/admin/hunt/:hid			controllers.AdminPanelController.submitHuntEditForm(hid: String)
+POST	/admin/hunt/:hid/delete		controllers.AdminPanelController.submitHuntDelete(hid: String)

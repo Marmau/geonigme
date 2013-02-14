@@ -163,6 +163,12 @@ public class Hunt implements RDFObject {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		oc.addObject(Hunt.URI + getId(), this);
 	}
+	
+	public void delete() throws RepositoryException {
+		ObjectConnection oc = Sesame.getObjectConnection();
+		oc.removeDesignation(this, URI + getId());
+		//getEnigmas
+	}
 
 	@Override
 	public ObjectConnection getObjectConnection() {
