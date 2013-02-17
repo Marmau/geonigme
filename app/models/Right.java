@@ -9,6 +9,7 @@ public class Right {
 	public static final Right USER_EDIT = create();
 	public static final Right HUNT_LIST = create();
 	public static final Right HUNT_EDIT = create();
+	public static final Right HUNT_DELETE = create();
 
 	private Integer value;
 
