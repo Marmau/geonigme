@@ -44,10 +44,7 @@ require ['helpers', 'spinner', 'internationalization'], (Helpers, Spinner, Trans
 			$(this).html($(this).data('show'))
 
 	$(document).on 'click', '.display-sound', ->
-		if $(this).siblings('.display-hide-sound').hasClass('hide')
-			$(this).siblings('.display-hide-sound').removeClass('hide')
-		else
-			$(this).siblings('.display-hide-sound').addClass('hide')
+		$('.playAudio').get(0).play()
 
 	$('#next-clue').submit ->	
 		Spinner.start()
