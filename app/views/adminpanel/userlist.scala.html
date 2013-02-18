@@ -8,7 +8,28 @@
 @global.main() {
 	@if(!users.isEmpty) { 
 		<div id="container-user-box">
+		<table>
+		<tr>
+			<td class="listadmin">
+				<div>
+					<span>@Messages("pseudo")</span>
+				</div>
+			</td>
+			<td class="listadmin">
+				<div>
+					<span>@Messages("role")</span>
+				</div>
+			</td>
+			<td class="listadmin">
+				<div>
+					<span>@Messages("inscripDate2")</span>
+				</div>
+			</td>
+		</tr>
+		
 		@for(user <- users) {
+		<tr>
+			<td>
 			<div class="user-box">
 				@components.link(AdminUserEditPage.getLinkFor(user)) {
 					<div class="name">
@@ -16,10 +37,18 @@
 							<span>@user.getLoginName()</span>
 						</div>
 					</div>
-					<div>@Messages("inscripDate", user.getInscriptionDate())</div>
-				}
+					}
 			</div>
+			</td>
+			<td>
+					<div>@user.getRole().getLabel()</div>
+			</td>
+			<td>
+					<div>@user.getInscriptionDate()</div>
+			</td>
+		</tr>
 		}
+		</table>
 		</div>
 	} else { 
 		<div class="span12">

@@ -8,7 +8,31 @@
 @global.main() {
 	@if(!hunts.isEmpty) { 
 		<div id="container-hunt-box">
+		<table>
+		<tr>
+			<td class="listadmin">
+				<div>
+					<span>@Messages("language")</span>
+				</div>
+			</td>
+			<td class="listadmin">
+				<div>
+					<span>@Messages("name")</span>
+				</div>
+			</td>
+			<td class="listadmin">
+				<div>
+					<span>@Messages("modif")</span>
+				</div>
+			</td>
+		</tr>
+		
 		@for(hunt <- hunts) {
+		<tr>
+		<td>
+			<div>@hunt.getLanguage()</div>
+		</td>
+		<td>
 			<div class="user-box">
 				@components.link(AdminHuntEditPage.getLinkFor(hunt)) {
 					<div class="name">
@@ -16,14 +40,21 @@
 							<span>@hunt.getLabel()</span>
 						</div>
 					</div>
-					<div>@Messages("modif") @hunt.getModifiedAt()</div>
-				}
+					}
+		</td>
+		<td>
+			<div>@hunt.getModifiedAt()</div>
+		</td>
 			</div>
+			</div>
+		</tr>
 		}
-		</div>
+		
+		</table>
 	} else { 
 		<div class="span12">
 			<p>@Messages("noHunt")</p>
 		</div>
 	}
+	
 }
