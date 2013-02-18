@@ -14,7 +14,6 @@ public class Role implements RDFObject {
 	public static final String URI = "http://geonigme.fr/role/";
 
 	private String name;
-	private String label;
 	private Integer rights;
 
 	public Role() {
@@ -52,7 +51,7 @@ public class Role implements RDFObject {
 	}
 
 	public boolean equals(Role other) {
-		return getLabel().equals(other.getLabel());
+		return getName().equals(other.getName());
 	}
 
 	public boolean equals(Object other) {
@@ -66,11 +65,6 @@ public class Role implements RDFObject {
 		return name;
 	}
 
-	@Iri(NS.GNGM + "label")
-	public String getLabel() {
-		return label;
-	}
-
 	@Iri(NS.GNGM + "rights")
 	public int getRights() {
 		return rights;
@@ -81,11 +75,6 @@ public class Role implements RDFObject {
 	@Iri(NS.GNGM + "name")
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@Iri(NS.GNGM + "label")
-	public void setLabel(String label) {
-		this.label = label;
 	}
 
 	@Iri(NS.GNGM + "rights")
