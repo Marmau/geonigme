@@ -64,7 +64,7 @@ public class Global extends GlobalSettings {
 			// Admin Panel Pages
 			new AdminPanelPage("adminuserlist", "Utilisateurs", routes.AdminPanelController.userlist(),
 					Right.USER_LIST, "");
-			new AdminPanelPage("adminmain", "Administration", routes.AdminPanelController.adminmain(),
+			new AdminPanelPage("adminhome", "Administration", routes.AdminPanelController.home(),
 					Right.USER_LIST, "");
 			new AdminPanelPage("adminhuntlist", "Chasses", routes.AdminPanelController.huntlist(), Right.HUNT_LIST, "");
 			new AdminUserEditPage("Édition d'un utilisateur", Right.USER_LIST, "");
@@ -111,11 +111,11 @@ public class Global extends GlobalSettings {
 			// Member's Global Menu
 			Menu.memberMenu.add("home");
 			Menu.memberMenu.add("dashboard");
-			Menu.memberMenu.add("adminmain");
+			Menu.memberMenu.add("adminhome");
 			Menu.memberMenu.add("logout");
 
 			// Admin Panel Menu
-			Menu.adminPanelMenu.add("adminmain");
+			Menu.adminPanelMenu.add("adminhome");
 			Menu.adminPanelMenu.add("adminuserlist");
 			Menu.adminPanelMenu.add("adminhuntlist");
 

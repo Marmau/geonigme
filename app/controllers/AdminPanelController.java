@@ -94,9 +94,9 @@ public class AdminPanelController extends Controller {
 		return redirect(routes.AdminPanelController.huntlist());	
 	}
 	
-	@AssociatedPage("adminmain")
-	public static Result adminmain() {
-		return ok(views.html.adminpanel.mainAdmin.render(UserRepository.getAll(), HuntRepository.getAll()));
+	@AssociatedPage("adminhome")
+	public static Result home() {
+		return ok(views.html.adminpanel.home.render(UserRepository.getAll(), HuntRepository.getAll()));
 	}
 
 	/***** USERS *****/
