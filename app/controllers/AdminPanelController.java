@@ -91,9 +91,12 @@ public class AdminPanelController extends Controller {
 		}
 		hunt.delete();
 		//HuntController.delete(hid);
-		
-		
 		return redirect(routes.AdminPanelController.huntlist());	
+	}
+	
+	@AssociatedPage("adminmain")
+	public static Result adminmain() {
+		return ok(views.html.adminpanel.mainAdmin.render(UserRepository.getAll(), HuntRepository.getAll()));
 	}
 
 	/***** USERS *****/

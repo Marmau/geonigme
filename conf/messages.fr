@@ -183,3 +183,5 @@ fr=Français
 en=Anglais
 nbHunt=Nombre de chasses aux trésors :
 nbUsers= Nombre d''utilisateurs :
+adminmain=Administration
+stats= Statistiques
