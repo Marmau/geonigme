@@ -11,7 +11,10 @@ define ['js_messages_en', 'js_messages_fr'], (LangEN, LangFR)->
     		return -1;
 	
 	Translation.get = (message) ->
-  		lg = if navigator.language then navigator.language else navigator.userLanguage
+		if navigator.language
+			lg = navigator.language
+		else
+			lg = navigator.userLanguage
 		if lg.indexOf("en") != -1 
 			return LangEN[message]
 		else
