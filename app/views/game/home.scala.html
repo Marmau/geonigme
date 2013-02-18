@@ -7,7 +7,7 @@
 	<ul data-role="listview" class="list-view" id="hunts-list">
 		@for(hunt <- hunts) {
 			<li>
-				<a 	class="@if(hunt.getLanguage() == Messages("en")) { flagEN } else { flagFR }" 
+				<a 	class="@if(hunt.getLanguage() == "English" || hunt.getLanguage() == "Anglais") { flagEN } else { flagFR }" 
 					href="@routes.GameController.playHunt(hunt.getId())">@hunt.getLabel()
 				</a>
 			</li>

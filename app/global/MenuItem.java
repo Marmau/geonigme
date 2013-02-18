@@ -12,8 +12,4 @@ public interface MenuItem extends Linkable {
 	
 	// Used to clone menus
 	public Object clone();
-
-	//public Html getLabel();
-
-	//public String getReachableUrl();
 }
