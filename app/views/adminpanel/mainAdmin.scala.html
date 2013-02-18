@@ -1,0 +1,24 @@
+@(users: List[models.User],hunts: java.util.List[models.Hunt])
+
+@import helpers._
+@import models._
+@import _root_.global.Menu
+@import _root_.pages._
+
+@global.main() {
+<p class="listadmin">@Messages("stats")</p>
+	@if(!users.isEmpty) { 
+		<div>@Messages("nbUsers") @users.size</div>
+	} else { 
+		<div class="span12">
+			<p>@Messages("noUser")</p>
+		</div>
+	}
+		@if(!hunts.isEmpty) { 
+		<div>@Messages("nbHunt") @hunts.size</div>
+	} else { 
+		<div class="span12">
+			<p>@Messages("noHunt")</p>
+		</div>
+	}
+}
