@@ -40,11 +40,16 @@ public class User implements RDFObject {
 	public Role getValidRole() {
 		Role role = getRole();
 		//System.out.println("User "+getLoginName()+" has role "+(( role == null ) ? "NONE" : role.getName()));
-		if ( role == null || role.getName() == null ) {// Lazy loading and validating role
+		if ( role != null ) {
+			if( role.getName() == null ) {
+				role = null;
+			} else {
+				// Overcome the f***ing Alibaba's sh*ts.
+				role = RoleRepository.get(role.getName());
+			}
+		}
+		if ( role == null ) {
 			setRole(RoleRepository.MEMBER);
-		} else {
-			// Overcome the f***ing Alibaba's sh*ts.
-			role = RoleRepository.get(role.getName());
 		}
 		return role;
 	}
