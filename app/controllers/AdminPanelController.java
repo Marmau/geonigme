@@ -141,7 +141,6 @@ public class AdminPanelController extends Controller {
 
 			user.setRole(RoleRepository.get(form.roleName));
 			user.save();
-			session(UserController.userSessionKey, uid);
 
 			return redirectToMain();
 		}
