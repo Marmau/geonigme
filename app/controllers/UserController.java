@@ -42,7 +42,7 @@ public class UserController extends Controller {
 	@AssociatedPage("login")
 	public static Result login() {
 		if (UserRepository.isLogged()) {
-			System.out.println("UserController.login() : Already loggued in.");
+			System.out.println("UserController.login() : Already logged in.");
 			return redirectToMain();
 		}
 
