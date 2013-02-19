@@ -13,7 +13,6 @@ public class HuntEditPage extends DashboardPage {
 		super(commonName, title, null, startJS);
 		menu.setCSSClasses("breadcrumb");
 		menu.add("dashboard");
-		System.out.println("HuntEditPage Adding to menu "+HuntShowPage.commonName);
 		menu.add(HuntShowPage.commonName);
 		menu.add(getName());
 	}

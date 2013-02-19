@@ -12,7 +12,7 @@ public class PageAction extends Action<AssociatedPage> {
 		Context.current.set(ctx);
 		Page page = Page.get(configuration.value()).clone();
 		CurrentRequest.setPage(page);
-		if (!page.userCanAccess()) {
+		if( !page.userCanAccess() ) {
 			System.out.println("PageAction> Access forbidden.");
 			return forbidden();
 		}

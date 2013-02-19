@@ -17,27 +17,21 @@ public class Role implements RDFObject {
 	private Integer rights;
 
 	public Role() {
-//		setName("unnamedRole");
-//		setLabel("UnnamedRole");
-//		setRights(0);
 	}
-	/*
-	 * public Role(Role other) { this(other.getLabel(), other.getRights()); }
-	 */
 
 	public boolean canDo(Right r) {
 		return canDo(r.getValue());
 	}
 
 	public boolean canDo(int r) {
-		return true;
-		// Every body is admin
-		// return (getRights() & r) == r;
+		//return true;// Everybody is admin
+		//System.out.println("Role "+name+" canDo() => "+r+"/"+getRights());
+		return (getRights() & r) == r;
 	}
 
 	public boolean hasRights() {
-		return true;
-		// return getRights() > 0;
+		//return true;// Everybody is admin
+		return getRights() > 0;
 	}
 
 	public Role grantRight(Right r) {

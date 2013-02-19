@@ -13,7 +13,6 @@ public class StepCreatePage extends DashboardPage {
 		super("stepcreate", title, null, startJS);
 		menu.setCSSClasses("breadcrumb");
 		menu.add("dashboard");
-		System.out.println("StepCreatePage Adding to menu "+HuntShowPage.commonName);
 		menu.add(HuntShowPage.commonName);
 		menu.add(getName());
 	}

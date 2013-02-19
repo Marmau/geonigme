@@ -31,13 +31,22 @@ public class User implements RDFObject {
 	public List<Hunt> getHunts() {
 		return null;
 	}
-
+	
 	@Iri(NS.USER + "role")
 	public Role getRole() {
-		if (role == null) {// Lazy loading
+		return role;
+	}
+
+	public Role getValidRole() {
+		Role role = getRole();
+		//System.out.println("User "+getLoginName()+" has role "+(( role == null ) ? "NONE" : role.getName()));
+		if ( role == null || role.getName() == null ) {// Lazy loading and validating role
 			setRole(RoleRepository.MEMBER);
+		} else {
+			// Overcome the f***ing Alibaba's sh*ts.
+			role = RoleRepository.get(role.getName());
+			//System.out.println("has a valid role.");
 		}
-		
 		return role;
 	}
 

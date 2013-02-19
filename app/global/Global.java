@@ -33,6 +33,7 @@ import play.api.mvc.Handler;
 import play.mvc.Action;
 import play.mvc.Http.Request;
 import play.mvc.Http.RequestHeader;
+import repository.RoleRepository;
 
 public class Global extends GlobalSettings {
 
@@ -58,6 +59,10 @@ public class Global extends GlobalSettings {
 		initializeFormatters();
 
 		try {
+			// *** Roles ***
+			// Initialize Roles, see RoleRepository
+			RoleRepository.init();
+			
 			// *** Pages ***
 			// Put all pages' configuration below
 
@@ -71,8 +76,7 @@ public class Global extends GlobalSettings {
 			new AdminHuntEditPage("Édition d'une chasse", Right.HUNT_LIST, "dashboard/hunt");
 
 			// Dashboard Pages
-			new DashboardPage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(),
-					"dashboard/dashboard");
+			new DashboardPage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(), "dashboard/dashboard");
 
 			new HuntShowPage("Voir la chasse", "dashboard/show_hunt");
 			new HuntCreatePage("Nouvelle chasse", "dashboard/hunt");

@@ -86,9 +86,7 @@ public class Page implements Cloneable {
 	      	// Should never happened, cause we use Cloneable
 	      	cnse.printStackTrace(System.err);
 	    }
-	    
 	    page.menu = (Menu) menu.clone();
-	    
 	    return page;
 	}
 

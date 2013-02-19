@@ -38,4 +38,9 @@ public class Right {
 	public static int allRights() {
 		return -1;// ~0
 	}
+	
+	@Override
+	public String toString() {
+		return v()+"";
+	}
 }

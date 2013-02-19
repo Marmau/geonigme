@@ -72,6 +72,13 @@ public class UserRepository {
 			return true;
 		}
 		User user = getLoggedUser();
-		return user != null && user.getRole().canDo(right);
+		/*
+		if( user == null ) {
+			System.out.println("Not loggued");
+			return false;//test only
+		}
+		System.out.println("Loggued with "+user.getLoginName());
+		*/
+		return user != null && user.getValidRole().canDo(right);
 	}
 }
