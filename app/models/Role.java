@@ -26,21 +26,22 @@ public class Role implements RDFObject {
 	public boolean canDo(int r) {
 		//return true;// Everybody is admin
 		//System.out.println("Role "+name+" canDo() => "+r+"/"+getRights());
-		return (getRights() & r) == r;
+		return (rights & r) == r;
 	}
 
 	public boolean hasRights() {
 		//return true;// Everybody is admin
-		return getRights() > 0;
+		// If user has rights and not only the MEMBER_AREA one.
+		return rights > 0 && (rights ^ ~Right.MEMBER_AREA.v()) > 0;
 	}
 
 	public Role grantRight(Right r) {
-		setRights(getRights() | r.getValue());
+		setRights(rights | r.getValue());
 		return this;
 	}
 
 	public Role revokeRight(Right r) {
-		setRights(getRights() & ~r.getValue());
+		setRights(rights & ~r.getValue());
 		return this;
 	}
 
