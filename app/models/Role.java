@@ -32,7 +32,7 @@ public class Role implements RDFObject {
 	public boolean hasRights() {
 		//return true;// Everybody is admin
 		// If user has rights and not only the MEMBER_AREA one.
-		return rights > 0 && (rights ^ ~Right.MEMBER_AREA.v()) > 0;
+		return rights != 0 && (rights & ~Right.MEMBER_AREA.v()) != 0;
 	}
 
 	public Role grantRight(Right r) {
