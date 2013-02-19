@@ -45,7 +45,6 @@ public class User implements RDFObject {
 		} else {
 			// Overcome the f***ing Alibaba's sh*ts.
 			role = RoleRepository.get(role.getName());
-			//System.out.println("has a valid role.");
 		}
 		return role;
 	}
@@ -106,7 +105,7 @@ public class User implements RDFObject {
 	}
 
 	public boolean hasRights() {
-		return getRole().hasRights();
+		return getValidRole().hasRights();
 	}
 
 	public String getId() {

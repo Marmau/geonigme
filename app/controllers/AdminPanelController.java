@@ -116,7 +116,7 @@ public class AdminPanelController extends Controller {
 		// Form<AdmUserEdit> formUserEdit = form(AdmUserEdit.class);
 		forms.AdmUserEdit formUserEdit = new forms.AdmUserEdit();
 		// System.out.println(formUserEdit);
-		formUserEdit.roleName = user.getRole().getName();
+		formUserEdit.roleName = user.getValidRole().getName();
 		((AdminUserEditPage) CurrentRequest.page()).setMenuParameters(user);// Menu's
 																			// parameters
 		return ok(views.html.adminpanel.editUser.render(user, form(forms.AdmUserEdit.class).fill(formUserEdit)));
