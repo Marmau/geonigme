@@ -45,8 +45,8 @@ public class Menu implements Cloneable {
 		try {
 			Page page = Page.get(pageName);
 			PageMenuItem pmi = new PageMenuItem(page);
-			pmi.setRoute(page.getRoute());
-			pmi.setLabel(page.getTitle());
+			//pmi.setRoute(page.getRoute());
+			//pmi.setLabel(page.getTitle());
 			add(pmi);
 			if( isNavMenu ) {
 				page.setMenu(this);

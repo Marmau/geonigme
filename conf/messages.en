@@ -163,6 +163,7 @@ pages.stepedit=Editing step {0}
 pages.enigmaNumbered=Enigma {0}
 pages.enigmaedit=Editing enigma {0}
 pages.enigmaSummary=Summary of enigma {0}
+pages.adminhome=Administration
 pages.adminuserlist=Users
 pages.adminuseredit=Editing an user
 pages.adminhuntlist=Hunts

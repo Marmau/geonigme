@@ -164,6 +164,7 @@ pages.stepedit=Édition de l''étape {0}
 pages.enigmaNumbered=Énigme {0}
 pages.enigmaedit=Édition de l''énigme {0}
 pages.enigmaSummary=Résumé de l''énigme {0}
+pages.adminhome=Administration
 pages.adminuserlist=Utilisateurs
 pages.adminuseredit=Édition d''un utilisateur
 pages.adminhuntlist=Chasses

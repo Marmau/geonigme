@@ -135,6 +135,7 @@ public class Page implements Cloneable {
 		return getMenu().render(this);
 	}
 
+	/*
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -150,6 +151,10 @@ public class Page implements Cloneable {
 	public Html getLabel() {
 		// Should use "pages."+name with i18n, else title.
 		return new Html(( label != null ) ? label : Messages.get("pages."+name));
+	}
+	*/
+	public String getTitle() {
+		return Messages.get("pages."+name);
 	}
 
 	public String getName() {

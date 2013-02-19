@@ -15,7 +15,7 @@ public class PageLink implements Linkable {
 		}
 		this.page = page;
 		setRoute(page.getRoute());
-		setLabel(page.getTitle());
+		//setLabel(page.getTitle());
 	}
 
 	public boolean userCanAccess() {
@@ -30,10 +30,15 @@ public class PageLink implements Linkable {
 	public String getReachableUrl() {
 		return (userCanAccess()) ? getUrl() : "";
 	}
+
+	public void setLabel(String label) {
+		this.label = new Html(label);
+	}
 	
 	@Override
 	public Html getLabel() {
-		return label;
+		//We can not preload it, translation rely on current request.
+		return ((label == null) ? new Html(page.getTitle()) : label);
 	}
 
 	public Page getPage() {
@@ -42,10 +47,6 @@ public class PageLink implements Linkable {
 
 	public void setRoute(Call route) {
 		this.route = route;
-	}
-
-	public void setLabel(String label) {
-		this.label = new Html(label);
 	}
 	
 	public static PageLink getFor(String pageName) throws Exception {
