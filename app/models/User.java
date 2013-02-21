@@ -50,15 +50,13 @@ public class User implements RDFObject {
 		}
 		if( role == null ) {
 			// Retrocompatibility
-			System.out.println("User "+getLoginName()+" has no role, affecting one.");
-			setRole(RoleRepository.MEMBER);
+			setRole(role = RoleRepository.MEMBER);
 		}
 		return role;
 	}
 
 	@Iri(NS.USER + "role")
 	public void setRole(Role role) {
-		System.out.println("Setting role to "+role);
 		this.role = role;
 	}
 
