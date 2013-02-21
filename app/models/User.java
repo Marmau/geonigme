@@ -2,6 +2,7 @@ package models;
 
 import global.Sesame;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -58,6 +59,11 @@ public class User implements RDFObject {
 	@Iri(NS.USER + "role")
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	public String getHumanInscriptionDate() {
+		XMLGregorianCalendar date = getInscriptionDate();
+		return new SimpleDateFormat("dd/MM/yyyy HH'h'mm").format(date.toGregorianCalendar().getTime());
 	}
 
 	@Iri(NS.USER + "inscriptionDate")
