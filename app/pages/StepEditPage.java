@@ -33,6 +33,6 @@ public class StepEditPage extends DashboardPage {
 
 	public static void fillLink(PageLink link, Step step) {
 		link.setRoute(routes.StepController.update(step.getId()));
-		link.setLabel(Messages.get("pages.stepedit", step.getNumber()));
+		link.setLabel(Messages.get("pages.stepeditNumbered", step.getNumber()));
 	}
 }

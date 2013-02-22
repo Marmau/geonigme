@@ -2,6 +2,7 @@ package models;
 
 import global.Sesame;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Set;
 
@@ -13,6 +14,8 @@ import org.openrdf.model.Resource;
 import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
+
+import play.i18n.Messages;
 
 @Iri(NS.GNGM + "Hunt")
 public class Hunt implements RDFObject {
@@ -40,6 +43,11 @@ public class Hunt implements RDFObject {
 	@Iri(NS.GNGM + "createdAt")
 	public void setCreatedAt(XMLGregorianCalendar createdAt) {
 		this.createdAt = createdAt;
+	}
+	
+	public String getHumanModifiedAt() {
+		XMLGregorianCalendar date = getModifiedAt();
+		return new SimpleDateFormat(Messages.get("dateFormat")).format(date.toGregorianCalendar().getTime());
 	}
 
 	@Iri(NS.GNGM + "modifiedAt")

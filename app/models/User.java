@@ -14,6 +14,8 @@ import org.openrdf.repository.RepositoryException;
 import org.openrdf.repository.object.ObjectConnection;
 import org.openrdf.repository.object.RDFObject;
 
+import play.i18n.Messages;
+
 import repository.RoleRepository;
 
 @Iri(NS.USER + "User")
@@ -63,7 +65,7 @@ public class User implements RDFObject {
 	
 	public String getHumanInscriptionDate() {
 		XMLGregorianCalendar date = getInscriptionDate();
-		return new SimpleDateFormat("dd/MM/yyyy - HH'h'mm").format(date.toGregorianCalendar().getTime());
+		return new SimpleDateFormat(Messages.get("dateFormat")).format(date.toGregorianCalendar().getTime());
 	}
 
 	@Iri(NS.USER + "inscriptionDate")
