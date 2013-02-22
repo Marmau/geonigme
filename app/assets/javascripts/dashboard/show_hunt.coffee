@@ -55,7 +55,7 @@ require ['maps/poi_map', 'maps/icons', 'helpers', 'internationalization', 'fixed
 
 	$('#select-step select').trigger 'change'
 	
-	if $('#language-hidden-hunt').val() == Translation.get('en')
+	if $('#language-hidden-hunt').val() == "English" or $('#language-hidden-hunt').val() == "Anglais" 
 		$('#frFlag').addClass('language-unselected')
 	else
 		$('#enFlag').addClass('language-unselected')
