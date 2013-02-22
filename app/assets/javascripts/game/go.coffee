@@ -46,34 +46,71 @@ require ['maps/base_map', 'helpers', 'maps/icons', 'internationalization', 'leaf
 		for step in steps
 			containerSteps.append($('<li></li>').html(step))
 
-	
-	drawTransport = (start, target) ->
+	writeInstructions = (instructions) ->
+		container = $('#follow')
+		containerTemplate = container.find('.template')
+		containerSteps = container.find('.itinerary')
+		cost = 0
+
+		i = 0
+		steps = []
+		for i in instructions
+			if i.type == "bus"
+				steps.push(containerTemplate.find('.bus').html()
+					.replace('__stop__', i.source_stop)
+					.replace('__line__', i.line))
+				steps.push(containerTemplate.find('.exit').html()
+					.replace('__stop__', i.target_stop))
+			else if type == "tram"
+				steps.push(containerTemplate.find('.tram').html()
+					.replace('__stop__', i.source_stop)
+					.replace('__line__', i.line))
+				steps.push(containerTemplate.find('.exit').html()
+					.replace('__stop__', i.target_stop))
+
+		steps.push(containerTemplate.find('.target').html())
+
+		containerSteps.empty()
+		for step in steps
+			containerSteps.append($('<li></li>').html(step))
+
+	drawTransport = (source, target) ->
 		ws = containerMap.data('ws')
 		$.get ws, {
-			'start': start.lng + ',' + start.lat,
-			'target': target.lng + ',' + target.lat
+			'source': source.lat + ',' + source.lng,
+			'target': target.lat + ',' + target.lng
 		}, (data) ->
-			data = data.tc
-			geoJsonStops = new L.GeoJSON(data.stops, {
+			console.log(data)
+			geoJson = new L.GeoJSON(data, {
 				onEachFeature: (feature, layer) ->
-					popupContent = Translation.get("stop") + feature.properties.name
+					if (feature && feature.properties && feature.properties.name)
+						popupContent = Translation.get("stop") + feature.properties.name
+					else if (feature && feature.properties && feature.properties.type) 
+						popupContent = Translation.get(feature.properties.type)
+						
 					layer.bindPopup(popupContent)
-			})
 
-			geoJsonTransport = new L.GeoJSON(data.layer, {
 				style: (feature) ->
-					return {
-						color: feature.properties.color,
-						weight: 6,
-						opacity: 0.8
-					}
+					if (feature && feature.properties && feature.properties.color)
+						return {
+							color: feature.properties.color,
+							weight: 6,
+							opacity: 0.8
+						} 
+					else
+						return {
+							color: '#000000',
+							weight: 6,
+							opacity: 0.8
+						}
 			})
 
-			stopLayers.clearLayers().addLayer(geoJsonStops)
-			transportLayers.clearLayers().addLayer(geoJsonTransport)
+			# stopLayers.clearLayers().addLayer(geoJsonStops)
+			transportLayers.clearLayers().addLayer(geoJson)
 
-			map.fitBounds(new L.LatLngBounds(start, target));
-			writeTransport(data.routes)
+			map.fitBounds(new L.LatLngBounds(source, target));
+			# writeTransport(data.routes)
+			writeInstructions(data.properties.instructions)
 
 
 	# Calcule l'itineraire en fonction de la position actuelle

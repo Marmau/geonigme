@@ -28,7 +28,9 @@ define [], ->
 		"districtName":"District name: ",
 		"sure":"Are you sure?",
 		"en":"English",
-		"fr":"French"
+		"fr":"French",
+		"source":"Starting point",
+		"target":"End point"
 	}
 	
 	return LangEN

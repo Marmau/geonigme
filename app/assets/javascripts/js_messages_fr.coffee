@@ -27,7 +27,9 @@ define [], ->
 		"districtName":"Nom du quartier : ",
 		"sure":"Êtes-vous sûr de vous ?",
 		"en":"Anglais",
-		"fr":"Français"
+		"fr":"Français",
+		"source":"Départ",
+		"target":"Arrivée"
 	}
 	
 	return LangFR

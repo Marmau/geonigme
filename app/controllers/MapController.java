@@ -23,11 +23,19 @@ import play.mvc.*;
 public class MapController extends Controller {
 
 	public static Result routing() throws MalformedURLException, IOException {
+//		Promise<Response> result = WS
+//				.url("http://boussole.mandarine34.fr/api/7c2xrVH6AhnOqpKd179ioUPxar8IEcvqdtSFD0sJ/getRouting/")
+//				.setQueryParameter("domain", "boussole.mandarine34.fr")
+//				.setQueryParameter("start", request().queryString().get("start")[0])
+//				.setQueryParameter("end", request().queryString().get("target")[0]).get();
+		
 		Promise<Response> result = WS
-				.url("http://boussole.mandarine34.fr/api/7c2xrVH6AhnOqpKd179ioUPxar8IEcvqdtSFD0sJ/getRouting/")
-				.setQueryParameter("domain", "boussole.mandarine34.fr")
-				.setQueryParameter("start", request().queryString().get("start")[0])
-				.setQueryParameter("end", request().queryString().get("target")[0]).get();
+//				.url("http://192.168.1.78:7777/route")
+				.url("http://localhost:7777/route")
+				.setQueryParameter("source", request().queryString().get("source")[0])
+				.setQueryParameter("target", request().queryString().get("target")[0])
+				.setQueryParameter("type", "foot|bus|tram")
+				.get();
 
 		return ok(result.get((long) 1000000).asJson());
 	}
