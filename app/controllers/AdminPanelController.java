@@ -43,6 +43,7 @@ public class AdminPanelController extends Controller {
 		formHuntEdit.description = hunt.getDescription();
 		formHuntEdit.level = hunt.getLevel();
 		formHuntEdit.area = hunt.getArea().toTemplateString();
+		formHuntEdit.language = hunt.getLanguage();
 
 		Iterator<models.Tag> it = hunt.getTags().iterator();
 		if (it.hasNext()) {
