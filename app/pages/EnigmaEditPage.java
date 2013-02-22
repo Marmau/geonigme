@@ -20,7 +20,6 @@ public class EnigmaEditPage extends DashboardPage {
 		menu.add(getName());
 	}
 
-	// The items of the menu could (should) be a copy
 	public void setMenuParameters(Enigma enigma) {
 		PageMenuItem pmi;
 
@@ -41,6 +40,6 @@ public class EnigmaEditPage extends DashboardPage {
 
 	public static void fillLink(PageLink link, Enigma enigma) {
 		link.setRoute(routes.EnigmaController.update(enigma.getId()));
-		link.setLabel(Messages.get("pages.enigmaedit", enigma.getNumber()));
+		link.setLabel(Messages.get("pages.enigmaeditNumbered", enigma.getNumber()));
 	}
 }

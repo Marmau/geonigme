@@ -78,7 +78,6 @@ public class StepController extends Controller {
 	@AssociatedPage("stepedit")
 	public static Result update(String sid) throws RepositoryException, QueryEvaluationException {
 		ObjectConnection oc = Sesame.getObjectConnection();
-
 		Step step = oc.getObject(Step.class, Step.URI + sid);
 
 		forms.Step formStep = new forms.Step();
@@ -86,8 +85,8 @@ public class StepController extends Controller {
 		formStep.accuracy = step.getPosition().getAccuracy();
 		formStep.position = step.getPosition().toTemplateString();
 
-		((StepEditPage) CurrentRequest.page()).setMenuParameters(step);// Menu's
-																		// parameters
+		((StepEditPage) CurrentRequest.page()).setMenuParameters(step);// Menu's parameters
+		
 		return ok(views.html.dashboard.updateStep.render(step, form(forms.Step.class).fill(formStep)));
 	}
 

@@ -43,6 +43,7 @@ public class AdminPanelController extends Controller {
 		formHuntEdit.description = hunt.getDescription();
 		formHuntEdit.level = hunt.getLevel();
 		formHuntEdit.area = hunt.getArea().toTemplateString();
+		formHuntEdit.language = hunt.getLanguage();
 
 		Iterator<models.Tag> it = hunt.getTags().iterator();
 		if (it.hasNext()) {
@@ -54,8 +55,7 @@ public class AdminPanelController extends Controller {
 			}
 		}
 
-		((AdminHuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
-																			// parameters
+		((AdminHuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
 		return ok(views.html.adminpanel.editHunt.render(hunt, form(forms.Hunt.class).fill(formHuntEdit)));
 	}
 
@@ -69,12 +69,11 @@ public class AdminPanelController extends Controller {
 		Form<forms.Hunt> formHuntEdit = form(forms.Hunt.class).bindFromRequest();
 
 		if (formHuntEdit.hasErrors()) {
-			((AdminHuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
-																				// parameters
+			((AdminHuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
 			return badRequest(views.html.adminpanel.editHunt.render(hunt, formHuntEdit));
 
 		} else {
-			HuntController.fillHunt(hunt, formHuntEdit.get());
+			HuntController.fillHunt(hunt, formHuntEdit.get(), true);
 			// forms.AdmHuntEdit form = formHuntEdit.get();
 
 			hunt.save();
@@ -103,7 +102,6 @@ public class AdminPanelController extends Controller {
 
 	@AssociatedPage("adminuserlist")
 	public static Result userlist() throws Exception {
-		// return forbidden("THIS IS A TEST ABOUT A FIRBIDDEN PAGE.");
 		return ok(views.html.adminpanel.userlist.render(UserRepository.getAll()));
 	}
 
@@ -117,8 +115,7 @@ public class AdminPanelController extends Controller {
 		forms.AdmUserEdit formUserEdit = new forms.AdmUserEdit();
 		// System.out.println(formUserEdit);
 		formUserEdit.roleName = user.getValidRole().getName();
-		((AdminUserEditPage) CurrentRequest.page()).setMenuParameters(user);// Menu's
-																			// parameters
+		((AdminUserEditPage) CurrentRequest.page()).setMenuParameters(user);// Menu's parameters
 		return ok(views.html.adminpanel.editUser.render(user, form(forms.AdmUserEdit.class).fill(formUserEdit)));
 	}
 
@@ -132,8 +129,7 @@ public class AdminPanelController extends Controller {
 		Form<forms.AdmUserEdit> formUserEdit = form(forms.AdmUserEdit.class).bindFromRequest();
 
 		if (formUserEdit.hasErrors()) {
-			((AdminUserEditPage) CurrentRequest.page()).setMenuParameters(user);// Menu's
-																				// parameters
+			((AdminUserEditPage) CurrentRequest.page()).setMenuParameters(user);// Menu's parameters
 			return badRequest(views.html.adminpanel.editUser.render(user, formUserEdit));
 
 		} else {

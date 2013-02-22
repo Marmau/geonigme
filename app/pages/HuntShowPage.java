@@ -26,8 +26,13 @@ public class HuntShowPage extends DashboardPage {
 		pmi.setLabel(hunt.getLabel()+" |<span class=\"small\">"+hunt.getStringLevel()+"</span>");
 	}
 
-	public static void fillLink(PageLink link, Hunt hunt) {
+	public static PageLink fillLink(PageLink link, Hunt hunt) {
 		link.setRoute(routes.HuntController.show(hunt.getId()));
 		link.setLabel(hunt.getLabel());
+		return link;
+	}
+	
+	public static PageLink getLinkFor(Hunt hunt) throws Exception {
+		return fillLink(PageLink.getFor(commonName), hunt);
 	}
 }

@@ -25,6 +25,11 @@
 					<span>@Messages("modif")</span>
 				</div>
 			</td>
+			<td class="listadmin">
+				<div>
+					<span>@Messages("actions")</span>
+				</div>
+			</td>
 		</tr>
 		
 		@for(hunt <- hunts) {
@@ -40,13 +45,17 @@
 							<span>@hunt.getLabel()</span>
 						</div>
 					</div>
-					}
+				}
+			</div>
 		</td>
 		<td>
-			<div>@hunt.getModifiedAt().getDay()/@hunt.getModifiedAt().getMonth()/@hunt.getModifiedAt().getYear() - @hunt.getModifiedAt().getHour()h@hunt.getModifiedAt().getMinute()</div>
+			<div>@hunt.getHumanModifiedAt()</div>
 		</td>
-			</div>
-			</div>
+		<td>
+			@components.link(HuntShowPage.getLinkFor(hunt)) {
+				@Messages("manage")
+			}
+		</td>
 		</tr>
 		}
 		
