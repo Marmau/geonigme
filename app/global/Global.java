@@ -4,6 +4,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import jobs.ArchiverWorker;
+
+import akka.actor.ActorRef;
+import akka.actor.Props;
+import akka.util.Duration;
 
 import models.Right;
 
@@ -30,6 +37,7 @@ import play.Application;
 import play.GlobalSettings;
 import play.api.mvc.Call;
 import play.api.mvc.Handler;
+import play.libs.Akka;
 import play.mvc.Action;
 import play.mvc.Http.Request;
 import play.mvc.Http.RequestHeader;
@@ -62,7 +70,7 @@ public class Global extends GlobalSettings {
 			// *** Roles ***
 			// Initialize Roles, see RoleRepository
 			RoleRepository.init();
-			
+
 			// *** Pages ***
 			// Put all pages' configuration below
 
@@ -76,7 +84,8 @@ public class Global extends GlobalSettings {
 			new AdminHuntEditPage("Édition d'une chasse", Right.HUNT_LIST, "dashboard/hunt");
 
 			// Dashboard Pages
-			new DashboardPage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(), "dashboard/dashboard");
+			new DashboardPage("dashboard", "Tableau de bord", routes.ManagerController.dashboard(),
+					"dashboard/dashboard");
 
 			new HuntShowPage("Voir la chasse", "dashboard/show_hunt");
 			new HuntCreatePage("Nouvelle chasse", "dashboard/hunt");
@@ -141,6 +150,18 @@ public class Global extends GlobalSettings {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		runCronJobs();
+	}
+
+	private void runCronJobs() {
+		ActorRef archiverActor = Akka.system().actorOf(new Props(ArchiverWorker.class));
+
+		Akka.system().scheduler().schedule(
+				 Duration.create(0, TimeUnit.MILLISECONDS),
+				  Duration.create(24, TimeUnit.HOURS),
+				  archiverActor, 
+				  null);
 
 	}
 

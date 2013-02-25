@@ -26,7 +26,7 @@ public class PromoteAdmin {
 		}
 		
 		Application app = new Application(new play.api.Application(new File("."), PromoteAdmin.class.getClassLoader(), null, Mode.Dev()));
-
+		
 		// Initialisation de Sésame
 		String sesameDir = app.configuration().getString("sesame.store.directory");
 
@@ -45,12 +45,12 @@ public class PromoteAdmin {
 			User user = oc.getObject(User.class, User.URI + uid);
 			user.setRole(RoleRepository.ADMINISTRATOR);
 			oc.addObject(user.getResource(), user);
-			System.out.println("Ok.");
 		} catch (RepositoryException | QueryEvaluationException e) {
 			System.out.println("Fail: unknown user.");
 		}
 		
 		Sesame.shutdown();
+		System.out.println("Ok.");
 	}
 
 }
