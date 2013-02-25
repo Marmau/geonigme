@@ -35,7 +35,7 @@ public class UserController extends Controller {
 
 	@AssociatedPage("logout")
 	public static Result logout() {
-		session().remove(userSessionKey);
+		session().clear();
 		return redirect(routes.ApplicationController.index());
 	}
 
@@ -71,7 +71,9 @@ public class UserController extends Controller {
 
 			user.setLastLoginTime(now);
 			oc.addObject(user.getResource(), user);
+			session().clear();
 			session(userSessionKey, user.getId());
+			
 			return redirectToMain();
 		}
 	}

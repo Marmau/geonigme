@@ -37,8 +37,8 @@ import repository.RoleRepository;
 
 public class Global extends GlobalSettings {
 
-	public static final int sysCheckRequestInterval = 10;// Every 10 requests
-	public static final double criticalMemoryPercent = 0.90;// 90% +
+	public static final int sysCheckRequestInterval = 10; // Every 10 requests
+	public static final double criticalMemoryPercent = 0.90; // 90% +
 	private static int sysCheckRequestCount = sysCheckRequestInterval;
 
 	@Override
