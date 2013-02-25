@@ -8,6 +8,7 @@ tmp
 dist
 .target/
 store/
+RUNNING_PID
 
 # eclipse
 .settings/
