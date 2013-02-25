@@ -41,8 +41,7 @@ public class EnigmaController extends Controller {
 
 		formEnigma.fill(new forms.Enigma());
 
-		((EnigmaCreatePage) CurrentRequest.page()).setMenuParameters(step);// Menu's
-																			// parameters
+		((EnigmaCreatePage) CurrentRequest.page()).setMenuParameters(step);
 		return ok(views.html.dashboard.createEnigma.render(step, formEnigma));
 	}
 
@@ -53,8 +52,7 @@ public class EnigmaController extends Controller {
 		models.Step step = oc.getObject(models.Step.class, models.Step.URI + sid);
 
 		if (formEnigma.hasErrors()) {
-			((EnigmaCreatePage) CurrentRequest.page()).setMenuParameters(step);// Menu's
-																				// parameters
+			((EnigmaCreatePage) CurrentRequest.page()).setMenuParameters(step);
 			return badRequest(views.html.dashboard.createEnigma.render(step, formEnigma));
 		} else {
 			Enigma enigma = formToEnigma(formEnigma.get());
@@ -138,8 +136,7 @@ public class EnigmaController extends Controller {
 		Enigma enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 
 		if (formEnigma.hasErrors()) {
-			((EnigmaEditPage) CurrentRequest.page()).setMenuParameters(enigma);// Menu's
-																				// parameters
+			((EnigmaEditPage) CurrentRequest.page()).setMenuParameters(enigma);
 			return badRequest(views.html.dashboard.updateEnigma.render(enigma, formEnigma));
 		} else {
 			fillEnigma(enigma, formEnigma.get());
@@ -234,12 +231,7 @@ public class EnigmaController extends Controller {
 	private static void fillEnigma(Enigma enigma, forms.Enigma form) {
 		enigma.setDescription(form.description);
 	}
-
-	// ???
-	public static Result edit(String eid) {
-		return ok();
-	}
-
+	
 	public static Result showRDF(String eid, String format) {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		StringWriter strw = new StringWriter();

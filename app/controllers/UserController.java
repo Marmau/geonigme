@@ -106,7 +106,6 @@ public class UserController extends Controller {
 	}
 
 	public static Result redirectToMain() {
-		// return redirect(routes.ManagerController.dashboard());
 		User user = UserRepository.getLoggedUser();
 		return redirect((user != null && user.hasRights()) ? routes.AdminPanelController.home()
 				: routes.ManagerController.dashboard());

@@ -73,8 +73,8 @@ public class HuntController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 
-		if( !UserRepository.getLoggedUser().equals(hunt.getCreatedBy())
-			&& !UserRepository.userCanDo(Right.HUNT_EDIT) ) {
+		if (!UserRepository.getLoggedUser().equals(hunt.getCreatedBy())
+				&& !UserRepository.userCanDo(Right.HUNT_EDIT)) {
 			return forbidden();
 		}
 
@@ -105,16 +105,15 @@ public class HuntController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 
-		if( !UserRepository.getLoggedUser().equals(hunt.getCreatedBy())
-			&& !UserRepository.userCanDo(Right.HUNT_EDIT) ) {
+		if (!UserRepository.getLoggedUser().equals(hunt.getCreatedBy())
+				&& !UserRepository.userCanDo(Right.HUNT_EDIT)) {
 			return forbidden();
 		}
 
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
 
 		if (formHunt.hasErrors()) {
-			((HuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
-																			// parameters
+			((HuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);
 			return badRequest(views.html.dashboard.createHunt.render(formHunt));
 		} else {
 			fillHunt(hunt, formHunt.get(), true);
@@ -143,8 +142,8 @@ public class HuntController extends Controller {
 			return notFound();
 		}
 		// If the current user didn't create it, it's a hack
-		if( !UserRepository.getLoggedUser().equals(hunt.getCreatedBy())
-			&& !UserRepository.userCanDo(Right.HUNT_EDIT) ) {
+		if (!UserRepository.getLoggedUser().equals(hunt.getCreatedBy())
+				&& !UserRepository.userCanDo(Right.HUNT_EDIT)) {
 			return forbidden();
 		}
 		((HuntShowPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
@@ -201,27 +200,28 @@ public class HuntController extends Controller {
 	}
 
 	public static void fillHunt(Hunt hunt, forms.Hunt form, boolean edition) {
-		
+
 		try {
 			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
 			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-			if( !edition ) {
+			if (!edition) {
 				hunt.setCreatedAt(now);
 			}
 			hunt.setModifiedAt(now);
 		} catch (DatatypeConfigurationException e) {
 		}
-		
+
 		hunt.setDescription(form.description);
 		hunt.setLabel(form.label);
 		hunt.setLevel(form.level);
 		hunt.setPublished(false);
 		hunt.setArea(Area.createFrom(form.area));
-		if( !edition ) {
+		if (!edition) {
 			hunt.setCreatedBy(UserRepository.getLoggedUser());
 		}
 		hunt.setLanguage(form.language);
 	}
+
 	public static void fillHunt(Hunt hunt, forms.Hunt form) {
 		fillHunt(hunt, form, false);
 	}

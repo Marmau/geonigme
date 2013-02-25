@@ -172,7 +172,7 @@ public class Constraints {
 		}
 
 		public boolean isValid(Object signedToken) {
-			return AuthenticationTokenGenerator.isValid(signedToken.toString());
+			return signedToken != null && AuthenticationTokenGenerator.isValid(signedToken.toString());
 		}
 	}
 }
