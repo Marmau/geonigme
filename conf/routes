@@ -12,10 +12,6 @@ GET		/assets/*file				controllers.Assets.at(path="/public", file)
 
 # RDF
 GET		/rdf/ontology				controllers.RdfController.ontology()
-GET 	/rdf/dump					controllers.RdfController.dump()
-GET		/rdf/reset					controllers.RdfController.reset()
-GET		/rdf/restore				controllers.RdfController.restore()
-
 
 # Game
 GET 	/play						controllers.GameController.home()

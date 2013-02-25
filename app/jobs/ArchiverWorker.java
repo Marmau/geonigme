@@ -47,7 +47,7 @@ public class ArchiverWorker extends UntypedActor {
 		writer.endRDF();
 	}
 
-	private void archive() throws IOException {
+	private void archive() {
 		ObjectConnection oc = Sesame.getObjectConnection();
 
 		StringWriter strw = new StringWriter();
@@ -64,15 +64,20 @@ public class ArchiverWorker extends UntypedActor {
 		
 		String saveDir = Play.application().configuration().getString("save.triplets.directory");
 		if (saveDir == null) {
-			System.out.println("Pas de dossier de sauvegarde défini dans application.conf");
+			System.out.println("Pas de dossier de sauvegarde défini dans application.conf : abandon");
 			return;
 		}
 		
 		String filename = "triplets-" + sdf.format(now) + ".ttl";
 		
-		FileWriter fw = new FileWriter(Play.application().getFile(saveDir + "/" + filename));
-		fw.write(strw.toString());
-		fw.close();
+		FileWriter fw;
+		try {
+			fw = new FileWriter(Play.application().getFile(saveDir + "/" + filename));
+			fw.write(strw.toString());
+			fw.close();
+		} catch (IOException e) {
+			System.out.println("Dossier n'existe pas : abandon");
+		}
 	}
 
 }
