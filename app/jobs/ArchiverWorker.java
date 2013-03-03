@@ -60,7 +60,7 @@ public class ArchiverWorker extends UntypedActor {
 		}
 		
 		Date now = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.mm.dd.HHmmss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HHmmss");
 		
 		String saveDir = Play.application().configuration().getString("save.triplets.directory");
 		if (saveDir == null) {

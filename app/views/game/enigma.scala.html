@@ -43,25 +43,25 @@
 						}
 						<!-- file -->
 						@if(clue.isInstanceOf[models.FileClue]) {
-						<!-- image -->
+							<!-- image -->
 							@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("picture")) {
-							<li class="clue">
-								<p>@clue.getDescription()</p>
-								<button type="button" class="display-picture btn" data-hide="@Messages("hideImg")" data-show="@Messages("displayImg")">@Messages("displayImg")</button>
-								<div class="hide display-hide-picture picture-clue">
-									<img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" />
-								</div>
-							</li>
+								<li class="clue">
+									<p>@clue.getDescription()</p>
+									<button type="button" class="display-picture btn" data-hide="@Messages("hideImg")" data-show="@Messages("displayImg")">@Messages("displayImg")</button>
+									<div class="hide display-hide-picture picture-clue">
+										<img alt="@clue.getDescription()" src="@clue.asInstanceOf[models.FileClue].getFile()" />
+									</div>
+								</li>
 							}
 						<!-- son -->
-						@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("sound")) {
-							<li class="clue">
-								<p>@clue.getDescription()</p>
-								<button type="button" class="display-sound btn">@Messages("listen")</button>
-									<audio class="hide playAudio">
-   										<source src="@clue.asInstanceOf[models.FileClue].getFile()" type="audio/mpeg">
-   									</audio>
-							</li>
+							@if((clue.asInstanceOf[models.FileClue].getFileType()).equals("sound")) {
+								<li class="clue">
+									<p>@clue.getDescription()</p>
+									<button type="button" class="display-sound btn">@Messages("listen")</button>
+										<audio class="hide playAudio">
+	   										<source src="@clue.asInstanceOf[models.FileClue].getFile()" type="audio/mpeg">
+	   									</audio>
+								</li>
 							}
 						}
 					}

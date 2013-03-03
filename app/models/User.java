@@ -41,9 +41,6 @@ public class User implements RDFObject {
 	}
 
 	public Role getValidRole() {
-		if (getLoginName().equals("Cartman34")) {
-			return RoleRepository.DEVELOPER;
-		}
 		Role role = getRole();
 		//System.out.println("User "+getLoginName()+" has role "+(( role == null ) ? "NONE" : role.getName()));
 		if (role != null) {
