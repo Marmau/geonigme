@@ -25,11 +25,11 @@
 					<span>@Messages("modif")</span>
 				</div>
 			</td>
-			<td class="listadmin">
+			<!-- <td class="listadmin">
 				<div>
 					<span>@Messages("actions")</span>
 				</div>
-			</td>
+			</td> -->
 		</tr>
 		
 		@for(hunt <- hunts) {
@@ -39,7 +39,7 @@
 		</td>
 		<td>
 			<div class="user-box">
-				@components.link(AdminHuntEditPage.getLinkFor(hunt)) {
+				@components.link(HuntShowPage.getLinkFor(hunt)) {
 					<div class="name">
 						<div>
 							<span>@hunt.getLabel()</span>
@@ -51,11 +51,11 @@
 		<td>
 			<div>@hunt.getHumanModifiedAt()</div>
 		</td>
-		<td>
+		<!-- <td>
 			@components.link(HuntShowPage.getLinkFor(hunt)) {
 				@Messages("manage")
 			}
-		</td>
+		</td> -->
 		</tr>
 		}
 		

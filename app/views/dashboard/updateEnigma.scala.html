@@ -15,6 +15,7 @@
 				<div class="form-actions">
 					<a class="btn pushable" href="@routes.HuntController.show(enigma.getStep().getHunt().getId())">@Messages("cancel")</a>
 					<button type="submit" name="submit-enigma" class="pushable btn">@Messages("save")</button>
+					<button type="submit" name="@formEnigma("delete").name" class="btn pushable btn-danger">@Messages("delete")</button>
 				</div>
 			}
 		</div>

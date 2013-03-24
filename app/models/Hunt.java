@@ -25,7 +25,7 @@ public class Hunt implements RDFObject {
 	private Integer level;
 	private Area area;
 	private User createdBy;
-	private Boolean published;
+	private boolean published;
 	private Set<Mark> marks;
 	private Set<Tag> tags;
 	private String language;
@@ -44,7 +44,7 @@ public class Hunt implements RDFObject {
 	public void setCreatedAt(XMLGregorianCalendar createdAt) {
 		this.createdAt = createdAt;
 	}
-	
+
 	public String getHumanModifiedAt() {
 		XMLGregorianCalendar date = getModifiedAt();
 		return new SimpleDateFormat(Messages.get("dateFormat")).format(date.toGregorianCalendar().getTime());
@@ -132,12 +132,12 @@ public class Hunt implements RDFObject {
 	}
 
 	@Iri(NS.GNGM + "published")
-	public Boolean isPublished() {
+	public boolean isPublished() {
 		return published;
 	}
 
 	@Iri(NS.GNGM + "published")
-	public void setPublished(Boolean published) {
+	public void setPublished(boolean published) {
 		this.published = published;
 	}
 
@@ -162,7 +162,7 @@ public class Hunt implements RDFObject {
 	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
 	}
-	
+
 	@Iri(NS.GNGM + "language")
 	public String getLanguage() {
 		return language;
@@ -181,29 +181,24 @@ public class Hunt implements RDFObject {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		oc.addObject(Hunt.URI + getId(), this);
 	}
-	
+
 	public void delete() throws RepositoryException {
-		
-		List<Enigma> listEnigmas = getEnigmas();
-		for(int e=0;e<listEnigmas.size();e++){
-			Answer ans = listEnigmas.get(e).getAnswer();
-			ans.delete(); // suppression des réponses des énigmes
-			
-			List<Clue> listClues = listEnigmas.get(e).getClues();
-				for(int c=0;c<listClues.size();c++){
-					listClues.get(c).delete(); // suppression des indices des énigmes
-				}
-			
-			listEnigmas.get(e).delete(); // suppression des énigmes
+		for (Enigma e: getEnigmas()) {
+			e.getAnswer().delete(); // suppression des réponses des énigmes
+
+			for (Clue c: e.getClues()) {
+				c.delete();
+			}
+
+			e.delete(); // suppression des énigmes
 		}
-		
-		List<Step> listSteps = getSteps();
-		for(int s=0;s<listSteps.size();s++){
-			listSteps.get(s).delete(); // suppression de l'étape
+
+		for (Step s: getSteps()) {
+			s.delete();
 		}
-		
+
 		ObjectConnection oc = Sesame.getObjectConnection();
-		
+
 		//suppression de la chasse
 		setArea(null);
 		setDescription(null);
@@ -211,14 +206,13 @@ public class Hunt implements RDFObject {
 		setLanguage(null);
 		setLevel(null);
 		setMarks(null);
-		setPublished(null);
+		setPublished(false);
 		setTags(null);
 		setCreatedBy(null);
 		setCreatedAt(null);
 		setModifiedAt(null);
-		//oc.removeDesignation(this, Hunt.class);
-		oc.removeDesignation(this, URI + getId());
 
+		oc.removeDesignation(this, URI + getId());
 	}
 
 	@Override

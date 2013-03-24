@@ -15,4 +15,6 @@ public class Step {
 
 	@Required
 	public Float accuracy;
+	
+	public String delete;
 }

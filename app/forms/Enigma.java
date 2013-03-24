@@ -16,6 +16,8 @@ public class Enigma {
 	public Answer answer;
 
 	public List<Clue> clues;
+	
+	public String delete;
 
 	public static class Clue {
 

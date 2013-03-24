@@ -1,6 +1,7 @@
 package controllers;
 
 import global.AssociatedPage;
+import global.AuthenticationTokenGenerator;
 import global.CurrentRequest;
 import global.Sesame;
 
@@ -16,6 +17,7 @@ import java.util.UUID;
 import models.Answer;
 import models.Clue;
 import models.Enigma;
+import models.Hunt;
 
 import org.openrdf.query.QueryEvaluationException;
 import org.openrdf.query.QueryLanguage;
@@ -79,8 +81,11 @@ public class EnigmaController extends Controller {
 		}
 	}
 
-	public static Result delete(String eid) {
-		return ok();
+	public static Result delete(Enigma enigma) throws RepositoryException {
+		Hunt hunt = enigma.getStep().getHunt();
+		enigma.delete();
+
+		return redirect(routes.HuntController.show(hunt.getId()));
 	}
 
 	@AssociatedPage("enigmaedit")
@@ -135,11 +140,16 @@ public class EnigmaController extends Controller {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Enigma enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 
+		forms.Enigma form = formEnigma.get();
+		if (form.delete != null && AuthenticationTokenGenerator.isValid(form.token)) {
+			return delete(enigma);
+		}
+		
 		if (formEnigma.hasErrors()) {
 			((EnigmaEditPage) CurrentRequest.page()).setMenuParameters(enigma);
 			return badRequest(views.html.dashboard.updateEnigma.render(enigma, formEnigma));
 		} else {
-			fillEnigma(enigma, formEnigma.get());
+			fillEnigma(enigma, form);
 			oc.addObject(Enigma.URI + eid, enigma);
 			enigma = oc.getObject(Enigma.class, Enigma.URI + eid);
 

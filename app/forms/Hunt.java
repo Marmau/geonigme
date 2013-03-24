@@ -27,4 +27,6 @@ public class Hunt {
 
 	@Required
 	public String area;
+	
+	public String delete;
 }

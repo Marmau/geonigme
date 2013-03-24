@@ -50,14 +50,16 @@
     
     #language-hunt {
     	text-align: right;
-    	.frFlag {
+        float: right;
+
+    	.fr-flag {
     		display: inline-block;
     		width: 29px; 
     		height: 20px;
     		background-image: url("../images/languageFR.png");
     	}
     	
-    	.enFlag {
+    	.en-flag {
     		display: inline-block;
     		margin-left: 5px;
     		width: 29px; 
@@ -76,8 +78,17 @@
 
     #show-hunt {
 
-        #select-step select {
+        #select-step {
             width: 120px;
+            overflow: hidden;
+            border: 1px @colorClearBlue solid;
+            height: 23px;
+            margin-bottom: 10px;
+
+            select {
+                width: 120%;
+                border: 0px;
+            }
         }
 
         a:hover {
@@ -115,6 +126,15 @@
                     position: absolute;
                     top: -33px;
                     left: 125px;
+
+                    .update-step {
+                        color: @colorClearBlue;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        vertical-align: top;
+                        margin-left: 5px;
+                    }
+
                 }
             }
 
@@ -141,16 +161,6 @@
                         border-top: 2px solid @colorOrange;
                     }
                 }
-            }
-
-            .update-step {
-                color: @colorClearBlue;
-                font-weight: bold;
-                text-transform: uppercase;
-                line-height: 24px;
-                display: inline-block;
-                vertical-align: top;
-                margin-left: 5px;
             }
 
             .step .enigmas {

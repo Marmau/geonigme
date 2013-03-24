@@ -1,6 +1,7 @@
 package controllers;
 
 import global.AssociatedPage;
+import global.AuthenticationTokenGenerator;
 import global.CurrentRequest;
 import global.Sesame;
 
@@ -32,8 +33,7 @@ public class StepController extends Controller {
 
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 
-		((StepCreatePage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
-																			// parameters
+		((StepCreatePage) CurrentRequest.page()).setMenuParameters(hunt);
 		return ok(views.html.dashboard.createStep.render(hunt, formStep));
 	}
 
@@ -45,8 +45,7 @@ public class StepController extends Controller {
 		Hunt hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
 
 		if (formStep.hasErrors()) {
-			((StepCreatePage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
-																				// parameters
+			((StepCreatePage) CurrentRequest.page()).setMenuParameters(hunt);
 			return badRequest(views.html.dashboard.createStep.render(hunt, formStep));
 		} else {
 			Step step = formToStep(formStep.get());
@@ -95,13 +94,18 @@ public class StepController extends Controller {
 		Form<forms.Step> formStep = form(forms.Step.class).bindFromRequest();
 		ObjectConnection oc = Sesame.getObjectConnection();
 		Step step = oc.getObject(Step.class, Step.URI + sid);
+		
+		forms.Step form = formStep.get();
+
+		if (form.delete != null && AuthenticationTokenGenerator.isValid(form.token)) {
+			return delete(step);
+		}
 
 		if (formStep.hasErrors()) {
-			((StepEditPage) CurrentRequest.page()).setMenuParameters(step);// Menu's
-																			// parameters
+			((StepEditPage) CurrentRequest.page()).setMenuParameters(step);
 			return badRequest(views.html.dashboard.updateStep.render(step, formStep));
 		} else {
-			fillStep(step, formStep.get());
+			fillStep(step, form);
 
 			oc.addObject(Step.URI + sid, step);
 
@@ -109,8 +113,11 @@ public class StepController extends Controller {
 		}
 	}
 
-	public static Result delete(String sid) {
-		return ok();
+	public static Result delete(Step step) throws RepositoryException {
+		Hunt hunt = step.getHunt();
+		step.delete();
+
+		return redirect(routes.HuntController.show(hunt.getId()));
 	}
 
 	private static Step formToStep(forms.Step form) {

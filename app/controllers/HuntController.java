@@ -12,6 +12,7 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import global.AssociatedPage;
+import global.AuthenticationTokenGenerator;
 import global.CurrentRequest;
 import global.Sesame;
 
@@ -111,13 +112,18 @@ public class HuntController extends Controller {
 		}
 
 		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
+		forms.Hunt form = formHunt.get();
+
+		if (form.delete != null && AuthenticationTokenGenerator.isValid(form.token)) {
+			return delete(hunt);
+		}
 
 		if (formHunt.hasErrors()) {
 			((HuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);
 			return badRequest(views.html.dashboard.createHunt.render(formHunt));
 		} else {
-			fillHunt(hunt, formHunt.get(), true);
-			Set<models.Tag> tags = formToTags(formHunt.get());
+			fillHunt(hunt, form, true);
+			Set<models.Tag> tags = formToTags(form);
 			Set<models.Tag> tagsWithURI = new HashSet<models.Tag>();
 			for (models.Tag tag : tags) {
 				oc.addObject(tag.urify(), tag);
@@ -129,6 +135,12 @@ public class HuntController extends Controller {
 
 			return redirect(routes.HuntController.show(hid));
 		}
+	}
+
+	public static Result delete(Hunt hunt) throws RepositoryException {
+		hunt.delete();
+
+		return redirect(routes.ManagerController.dashboard());
 	}
 
 	@AssociatedPage("huntshow")
@@ -146,19 +158,49 @@ public class HuntController extends Controller {
 				&& !UserRepository.userCanDo(Right.HUNT_EDIT)) {
 			return forbidden();
 		}
-		((HuntShowPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's
-																		// parameters
+		((HuntShowPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
+		
 		return ok(views.html.dashboard.showHunt.render(hunt));
 	}
 
-	// @AssociatedPage("huntdelete")
-	public static Result delete(String hid) {
-		return ok();
+	@AssociatedPage("huntedit")
+	public static Result publish(String hid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+
+		Hunt hunt = null;
+		try {
+			hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
+		} catch (Exception e) {
+			return forbidden();
+		}
+
+		if (!hunt.getCreatedBy().equals(UserRepository.getLoggedUser()) && !UserRepository.userCanDo(Right.HUNT_EDIT)) {
+			return forbidden();
+		}
+
+		hunt.setPublished(true);
+
+		return redirect(routes.HuntController.show(hid));
 	}
 
-	// @AssociatedPage("huntpublish")
-	public static Result publish(String hid) {
-		return ok();
+	@AssociatedPage("huntedit")
+	public static Result unpublish(String hid) {
+		ObjectConnection oc = Sesame.getObjectConnection();
+
+		Hunt hunt = null;
+		try {
+			hunt = oc.getObject(Hunt.class, Hunt.URI + hid);
+		} catch (Exception e) {
+			return forbidden();
+		}
+
+		if (!hunt.getCreatedBy().equals(UserRepository.getLoggedUser()) && !UserRepository.userCanDo(Right.HUNT_EDIT)) {
+			return forbidden();
+		}
+
+		hunt.setPublished(false);
+
+		return redirect(routes.HuntController.show(hid));
 	}
 
 	public static Result showRDF(String hid, String format) {
@@ -200,7 +242,6 @@ public class HuntController extends Controller {
 	}
 
 	public static void fillHunt(Hunt hunt, forms.Hunt form, boolean edition) {
-
 		try {
 			GregorianCalendar gcal = (GregorianCalendar) GregorianCalendar.getInstance();
 			XMLGregorianCalendar now = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);

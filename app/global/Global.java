@@ -157,12 +157,12 @@ public class Global extends GlobalSettings {
 	private void runCronJobs() {
 		ActorRef archiverActor = Akka.system().actorOf(new Props(ArchiverWorker.class));
 
+		// Cron job pour archiver la base de données
 		Akka.system().scheduler().schedule(
 				 Duration.create(0, TimeUnit.MILLISECONDS),
 				  Duration.create(24, TimeUnit.HOURS),
 				  archiverActor, 
 				  null);
-
 	}
 
 	@Override

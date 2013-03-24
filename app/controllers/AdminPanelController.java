@@ -5,6 +5,7 @@ import java.util.Iterator;
 import org.openrdf.repository.RepositoryException;
 
 import global.AssociatedPage;
+import global.AuthenticationTokenGenerator;
 import global.CurrentRequest;
 import global.Page;
 
@@ -66,15 +67,19 @@ public class AdminPanelController extends Controller {
 			return notFound();
 		}
 
-		Form<forms.Hunt> formHuntEdit = form(forms.Hunt.class).bindFromRequest();
+		Form<forms.Hunt> formHunt = form(forms.Hunt.class).bindFromRequest();
+		forms.Hunt form = formHunt.get();
 
-		if (formHuntEdit.hasErrors()) {
+		if (form.delete != null && AuthenticationTokenGenerator.isValid(form.token)) {
+			return delete(hid);
+		}
+		
+		if (formHunt.hasErrors()) {
 			((AdminHuntEditPage) CurrentRequest.page()).setMenuParameters(hunt);// Menu's parameters
-			return badRequest(views.html.adminpanel.editHunt.render(hunt, formHuntEdit));
+			return badRequest(views.html.adminpanel.editHunt.render(hunt, formHunt));
 
 		} else {
-			HuntController.fillHunt(hunt, formHuntEdit.get(), true);
-			// forms.AdmHuntEdit form = formHuntEdit.get();
+			HuntController.fillHunt(hunt, formHunt.get(), true);
 
 			hunt.save();
 
@@ -83,13 +88,13 @@ public class AdminPanelController extends Controller {
 	}
 	
 	@AssociatedPage("adminhuntedit")
-	public static Result submitHuntDelete(String hid) throws RepositoryException{
+	public static Result delete(String hid) throws RepositoryException {
 		Hunt hunt = HuntRepository.get(hid);
 		if (hunt == null) {
 			return notFound();
 		}
 		hunt.delete();
-		//HuntController.delete(hid);
+
 		return redirect(routes.AdminPanelController.huntlist());	
 	}
 	

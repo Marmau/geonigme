@@ -73,8 +73,8 @@
 			<section class="hunt">
 				<div id="language-hunt">
 					<input type="hidden" value="@hunt.getLanguage()" id="language-hidden-hunt" />
-					<a id="frFlag" class="frFlag"></a>
-					<a id="enFlag" class="enFlag"></a>
+					<a class="fr-flag"></a>
+					<a class="en-flag"></a>
 				</div>
 				<div id="tags-hunt">
 					@for(tag <- hunt.getTags()) {
@@ -82,12 +82,16 @@
 					}
 				</div>
 				<blockquote id="description-hunt">
-					@hunt.getDescription()
+					@hunt.getDescription()&nbsp;
 				</blockquote>
 				<div class="actions">
 					<a href="@routes.GameController.playHunt(hunt.getId())" class="action">@Messages("pages.huntplay")</a>
 					<a href="@routes.HuntController.update(hunt.getId())" class="action">@Messages("modify")</a>
-					<a href="#" class="action">@Messages("publier")</a>
+					@if(hunt.isPublished()) {
+						<a href="@routes.HuntController.unpublish(hunt.getId())" title="@Messages("explainUnpublish")" class="action">@Messages("unpublish")</a>
+					} else {
+						<a href="@routes.HuntController.publish(hunt.getId())" title="@Messages("explainPublish")" class="action">@Messages("publish")</a>
+					}
 				</div>
 			</section>
 			<section class="steps">
@@ -110,7 +114,7 @@
 								<a class="update-step pushable" href="@routes.StepController.update(step.getId())">@Messages("modify")</a>
 							</div>
 							<blockquote>
-								@step.getDescription()
+								@step.getDescription()&nbsp;
 							</blockquote>
 							<section class="enigmas">
 								<div class="actions">
@@ -154,7 +158,6 @@
 					}
 				}
 			</section>
-			
 		</div>
 		<div class="span8">
 			@includes.map("show-hunt-map")

@@ -20,7 +20,7 @@ public class HuntRepository {
 			RepositoryException {
 		ObjectConnection oc = Sesame.getObjectConnection();
 		ObjectQuery query = oc.prepareObjectQuery(NS.PREFIX
-				+ "SELECT ?hunt WHERE { ?hunt gngm:modifiedAt ?date } ORDER BY DESC(?date) LIMIT 20");
+				+ "SELECT ?hunt WHERE { ?hunt gngm:modifiedAt ?date. ?hunt gngm:published true } ORDER BY DESC(?date) LIMIT 20");
 
 		return query.evaluate(Hunt.class).asList();
 	}

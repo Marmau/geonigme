@@ -10,8 +10,8 @@ object ApplicationBuild extends Build {
   val appDependencies = Seq(
     // Add your project dependencies here
     "org.openrdf.sesame" % "sesame-runtime" % "2.6.10",
-    "org.openrdf.alibaba" % "alibaba-runtime" % "2.0-rc7"
-    //"crionics" %% "play2-authenticitytoken" % "1.0-SNAPSHOT"
+    "org.openrdf.alibaba" % "alibaba-runtime" % "2.0-rc7",
+    "com.typesafe" %% "play-plugins-mailer" % "2.0.4"
   )
 
   val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
